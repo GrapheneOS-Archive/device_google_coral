@@ -236,6 +236,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.display.foss.config=1 \
     vendor.display.foss.config_path=/vendor/etc/FOSSConfig.xml
 
+# camera google face detection
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.camera.googfd.enable=1
+
 # OEM Unlock reporting
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.oem_unlock_supported=1
