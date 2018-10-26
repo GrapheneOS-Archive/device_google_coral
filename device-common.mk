@@ -42,7 +42,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 	ro.lmk.use_minfree_levels = true \
 	ro.lmk.log_stats = true \
 
-# Modem loging file
+# Modem logging file
 PRODUCT_COPY_FILES += \
     device/google/coral/init.logging.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(PRODUCT_PLATFORM).logging.rc
 

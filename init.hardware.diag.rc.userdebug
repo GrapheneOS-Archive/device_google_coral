@@ -69,7 +69,7 @@ service vendor.cnss_diag /vendor/bin/cnss_diag -q -u -w
     disabled
     oneshot
 
-service vendor.cnss_diag_txt /vendor/bin/cnss_diag -s -f -m /data/vendor/wifi/cnss_diag/cnss_diag.conf
+service vendor.cnss_diag_txt /vendor/bin/cnss_diag -s -f -P -m /data/vendor/wifi/cnss_diag/cnss_diag.conf -t HELIUM
     class late_start
     user system
     group system
