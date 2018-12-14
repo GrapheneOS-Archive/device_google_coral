@@ -31,8 +31,18 @@ using android::hardware::vibrator::V1_2::Effect;
 
 class Vibrator : public IVibrator {
   public:
-    Vibrator(std::ofstream &&activate, std::ofstream &&duration, std::ofstream &&effect,
-             std::ofstream &&queue, std::ofstream &&scale, std::vector<uint32_t> &&v_levels);
+    typedef struct {
+        std::ofstream mActivate;
+        std::ofstream mDuration;
+        std::ofstream mEffectIndex;
+        std::ofstream mEffectQueue;
+        std::ofstream mScale;
+        std::ofstream mState;
+        std::ofstream mAspEnable;
+    } HwApi;
+
+  public:
+    Vibrator(HwApi &&hwapi, std::vector<uint32_t> &&v_levels);
 
     // Methods from ::android::hardware::vibrator::V1_0::IVibrator follow.
     using Status = ::android::hardware::vibrator::V1_0::Status;
@@ -66,11 +76,7 @@ class Vibrator : public IVibrator {
                                       uint32_t *outVolLevel, std::string *outEffectQueue);
     Return<Status> setEffectQueue(const std::string &effectQueue);
     Return<void> performEffect(Effect effect, EffectStrength strength, perform_cb _hidl_cb);
-    std::ofstream mActivate;
-    std::ofstream mDuration;
-    std::ofstream mEffectIndex;
-    std::ofstream mEffectQueue;
-    std::ofstream mScale;
+    HwApi mHwApi;
     std::vector<uint32_t> mVolLevels;
 };
 }  // namespace implementation

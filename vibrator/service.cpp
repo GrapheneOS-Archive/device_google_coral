@@ -43,6 +43,7 @@ static constexpr char STATE_PATH[] = "/sys/class/leds/vibrator/state";
 static constexpr char EFFECT_INDEX_PATH[] = "/sys/class/leds/vibrator/device/cp_trigger_index";
 static constexpr char EFFECT_QUEUE_PATH[] = "/sys/class/leds/vibrator/device/cp_trigger_queue";
 static constexpr char DIGI_SCALE_PATH[] = "/sys/class/leds/vibrator/device/dig_scale";
+static constexpr char ASP_ENABLE_PATH[] = "/sys/class/leds/vibrator/device/asp_enable";
 
 // File path to the calibration file
 static constexpr char CALIBRATION_FILEPATH[] = "/persist/haptics/cs40l25a.cal";
@@ -149,40 +150,46 @@ static bool loadCalibrationData(std::vector<uint32_t> &v_levels) {
 status_t registerVibratorService() {
     // Calibration data
     std::vector<uint32_t> v_levels(V_LEVELS_DEFAULT);
+    Vibrator::HwApi hwapi;
 
     // ostreams below are required
-    std::ofstream activate{ACTIVATE_PATH};
-    if (!activate) {
+    hwapi.mActivate.open(ACTIVATE_PATH);
+    if (!hwapi.mActivate) {
         ALOGE("Failed to open %s (%d): %s", ACTIVATE_PATH, errno, strerror(errno));
     }
 
-    std::ofstream duration{DURATION_PATH};
-    if (!duration) {
+    hwapi.mDuration.open(DURATION_PATH);
+    if (!hwapi.mDuration) {
         ALOGE("Failed to open %s (%d): %s", DURATION_PATH, errno, strerror(errno));
     }
 
-    std::ofstream state{STATE_PATH};
-    if (!state) {
+    hwapi.mState.open(STATE_PATH);
+    if (!hwapi.mState) {
         ALOGE("Failed to open %s (%d): %s", STATE_PATH, errno, strerror(errno));
     }
 
-    std::ofstream effect{EFFECT_INDEX_PATH};
-    if (!state) {
+    hwapi.mEffectIndex.open(EFFECT_INDEX_PATH);
+    if (!hwapi.mEffectIndex) {
         ALOGE("Failed to open %s (%d): %s", EFFECT_INDEX_PATH, errno, strerror(errno));
     }
 
-    std::ofstream queue{EFFECT_QUEUE_PATH};
-    if (!state) {
+    hwapi.mEffectQueue.open(EFFECT_QUEUE_PATH);
+    if (!hwapi.mEffectQueue) {
         ALOGE("Failed to open %s (%d): %s", EFFECT_QUEUE_PATH, errno, strerror(errno));
     }
 
-    std::ofstream scale{DIGI_SCALE_PATH};
-    if (!scale) {
+    hwapi.mScale.open(DIGI_SCALE_PATH);
+    if (!hwapi.mScale) {
         ALOGE("Failed to open %s (%d): %s", DIGI_SCALE_PATH, errno, strerror(errno));
     }
 
-    state << 1 << std::endl;
-    if (!state) {
+    hwapi.mAspEnable.open(ASP_ENABLE_PATH);
+    if (!hwapi.mAspEnable) {
+        ALOGE("Failed to open %s (%d): %s", ASP_ENABLE_PATH, errno, strerror(errno));
+    }
+
+    hwapi.mState << 1 << std::endl;
+    if (!hwapi.mState) {
         ALOGE("Failed to set state (%d): %s", errno, strerror(errno));
     }
 
@@ -190,9 +197,7 @@ status_t registerVibratorService() {
         ALOGW("Failed to load calibration data");
     }
 
-    sp<IVibrator> vibrator =
-        new Vibrator(std::move(activate), std::move(duration), std::move(effect), std::move(queue),
-                     std::move(scale), std::move(v_levels));
+    sp<IVibrator> vibrator = new Vibrator(std::move(hwapi), std::move(v_levels));
 
     return vibrator->registerAsService();
 }

@@ -119,27 +119,21 @@ static constexpr int8_t MAX_TRIGGER_LATENCY_MS = 6;
 
 static constexpr float AMP_ATTENUATE_STEP_SIZE = 0.125f;
 
-Vibrator::Vibrator(std::ofstream &&activate, std::ofstream &&duration, std::ofstream &&effect,
-                   std::ofstream &&queue, std::ofstream &&scale, std::vector<uint32_t> &&v_levels)
-    : mActivate(std::move(activate)),
-      mDuration(std::move(duration)),
-      mEffectIndex(std::move(effect)),
-      mEffectQueue(std::move(queue)),
-      mScale(std::move(scale)),
-      mVolLevels(std::move(v_levels)) {}
+Vibrator::Vibrator(HwApi &&hwapi, std::vector<uint32_t> &&v_levels)
+    : mHwApi(std::move(hwapi)), mVolLevels(std::move(v_levels)) {}
 
 Return<Status> Vibrator::on(uint32_t timeoutMs, uint32_t effectIndex) {
-    mEffectIndex << effectIndex << std::endl;
-    if (!mEffectIndex) {
-        mEffectIndex.clear();
+    mHwApi.mEffectIndex << effectIndex << std::endl;
+    if (!mHwApi.mEffectIndex) {
+        mHwApi.mEffectIndex.clear();
     }
-    mDuration << (timeoutMs + MAX_TRIGGER_LATENCY_MS) << std::endl;
-    if (!mDuration) {
-        mDuration.clear();
+    mHwApi.mDuration << (timeoutMs + MAX_TRIGGER_LATENCY_MS) << std::endl;
+    if (!mHwApi.mDuration) {
+        mHwApi.mDuration.clear();
     }
-    mActivate << 1 << std::endl;
-    if (!mActivate) {
-        mActivate.clear();
+    mHwApi.mActivate << 1 << std::endl;
+    if (!mHwApi.mActivate) {
+        mHwApi.mActivate.clear();
     }
 
     return Status::OK;
@@ -151,9 +145,9 @@ Return<Status> Vibrator::on(uint32_t timeoutMs) {
 }
 
 Return<Status> Vibrator::off() {
-    mActivate << 0 << std::endl;
-    if (!mActivate) {
-        mActivate.clear();
+    mHwApi.mActivate << 0 << std::endl;
+    if (!mHwApi.mActivate) {
+        mHwApi.mActivate.clear();
         ALOGE("Failed to turn vibrator off (%d): %s", errno, strerror(errno));
         return Status::UNKNOWN_ERROR;
     }
@@ -161,7 +155,7 @@ Return<Status> Vibrator::off() {
 }
 
 Return<bool> Vibrator::supportsAmplitudeControl() {
-    return (mScale ? true : false);
+    return (mHwApi.mScale ? true : false);
 }
 
 Return<Status> Vibrator::setAmplitude(uint8_t amplitude) {
@@ -178,9 +172,9 @@ Return<Status> Vibrator::setAmplitude(uint8_t amplitude, uint8_t maximum) {
     int32_t scale = std::round((-20 * std::log10(amplitude / static_cast<float>(maximum))) /
                                (AMP_ATTENUATE_STEP_SIZE));
 
-    mScale << scale << std::endl;
-    if (!mScale) {
-        mScale.clear();
+    mHwApi.mScale << scale << std::endl;
+    if (!mHwApi.mScale) {
+        mHwApi.mScale.clear();
         ALOGE("Failed to set amplitude (%d): %s", errno, strerror(errno));
         return Status::UNKNOWN_ERROR;
     }
@@ -191,11 +185,17 @@ Return<Status> Vibrator::setAmplitude(uint8_t amplitude, uint8_t maximum) {
 // Methods from ::android::hardware::vibrator::V1_3::IVibrator follow.
 
 Return<bool> Vibrator::supportsExternalControl() {
-    return false;
+    return (mHwApi.mAspEnable ? true : false);
 }
 
-Return<Status> Vibrator::setExternalControl(bool /*enabled*/) {
-    return Status::UNSUPPORTED_OPERATION;
+Return<Status> Vibrator::setExternalControl(bool enabled) {
+    mHwApi.mAspEnable << enabled << std::endl;
+    if (!mHwApi.mAspEnable) {
+        mHwApi.mAspEnable.clear();
+        ALOGE("Failed to set external control (%d): %s", errno, strerror(errno));
+        return Status::UNKNOWN_ERROR;
+    }
+    return Status::OK;
 }
 
 Return<void> Vibrator::perform(V1_0::Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
@@ -375,9 +375,9 @@ Return<Status> Vibrator::getRingtoneDetails(Effect effect, EffectStrength streng
 }
 
 Return<Status> Vibrator::setEffectQueue(const std::string &effectQueue) {
-    mEffectQueue << effectQueue << std::endl;
-    if (!mEffectQueue) {
-        mEffectQueue.clear();
+    mHwApi.mEffectQueue << effectQueue << std::endl;
+    if (!mHwApi.mEffectQueue) {
+        mHwApi.mEffectQueue.clear();
         ALOGE("Failed to write \"%s\" to effect queue (%d): %s", effectQueue.c_str(), errno,
               strerror(errno));
         return Status::UNKNOWN_ERROR;
