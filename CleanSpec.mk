@@ -70,3 +70,7 @@ $(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/lib64/hw/android.hardware.gr
 
 # Remove super_empty.img
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/super_empty.img)
+
+# Remove Vibrator HAL 1.2
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/init/android.hardware.vibrator@1.2-service.coral.rc)
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/bin/hw/android.hardware.vibrator@1.2-service.coral)

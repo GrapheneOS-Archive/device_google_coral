@@ -378,7 +378,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator HAL
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.2-service.coral \
+    android.hardware.vibrator@1.3-service.coral \
 
 # Thermal HAL
 PRODUCT_PACKAGES += \

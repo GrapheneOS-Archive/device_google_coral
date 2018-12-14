@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#define LOG_TAG "android.hardware.vibrator@1.2-service.coral"
+#define LOG_TAG "android.hardware.vibrator@1.3-service.coral"
 
-#include <android/hardware/vibrator/1.2/IVibrator.h>
+#include <android/hardware/vibrator/1.3/IVibrator.h>
 #include <hidl/HidlSupport.h>
 #include <hidl/HidlTransportSupport.h>
 #include <utils/Errors.h>
@@ -25,8 +25,8 @@
 
 using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
-using android::hardware::vibrator::V1_2::IVibrator;
-using android::hardware::vibrator::V1_2::implementation::Vibrator;
+using android::hardware::vibrator::V1_3::IVibrator;
+using android::hardware::vibrator::V1_3::implementation::Vibrator;
 using namespace android;
 
 static const uint32_t Q_FLOAT_TO_FIXED = 1 << 16;

@@ -32,7 +32,7 @@
 namespace android {
 namespace hardware {
 namespace vibrator {
-namespace V1_2 {
+namespace V1_3 {
 namespace implementation {
 
 using Status = ::android::hardware::vibrator::V1_0::Status;
@@ -186,6 +186,16 @@ Return<Status> Vibrator::setAmplitude(uint8_t amplitude, uint8_t maximum) {
     }
 
     return Status::OK;
+}
+
+// Methods from ::android::hardware::vibrator::V1_3::IVibrator follow.
+
+Return<bool> Vibrator::supportsExternalControl() {
+    return false;
+}
+
+Return<Status> Vibrator::setExternalControl(bool /*enabled*/) {
+    return Status::UNSUPPORTED_OPERATION;
 }
 
 Return<void> Vibrator::perform(V1_0::Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
@@ -448,7 +458,7 @@ exit:
 }
 
 }  // namespace implementation
-}  // namespace V1_2
+}  // namespace V1_3
 }  // namespace vibrator
 }  // namespace hardware
 }  // namespace android
