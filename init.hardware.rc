@@ -284,6 +284,10 @@ on zygote-start
     mkdir /data/vendor/wifi/wpa 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
 
+    # Create the directories used by CnE subsystem
+    mkdir /data/vendor/connectivity 0771 radio radio
+    chown radio radio /data/vendor/connectivity
+
     #create netmgr log dir
     mkdir /data/vendor/netmgr 0771 radio radio
     chmod 0771 /data/vendor/netmgr
@@ -596,36 +600,34 @@ service vendor.cdsprpcd /vendor/bin/cdsprpcd
 
 service vendor.imsqmidaemon /system/vendor/bin/imsqmidaemon
     class main
-    user system
+    user radio
     socket ims_qmid stream 0660 system radio
     group radio log diag
 
 service vendor.imsdatadaemon /system/vendor/bin/imsdatadaemon
     class main
-    user system
+    user radio
     socket ims_datad stream 0660 system radio
-    group system wifi radio inet log diag
+    group radio wifi inet log diag
     disabled
 
 service vendor.imsrcsservice /system/vendor/bin/imsrcsd
     class main
-    user system
+    user radio
     group radio diag inet log wakelock
-    disabled
 
 on property:vendor.ims.QMI_DAEMON_STATUS=1
     start vendor.imsdatadaemon
 
 service vendor.ims_rtp_daemon /system/vendor/bin/ims_rtp_daemon
    class main
-   user system
-   group radio diag inet log
-   disabled
+   user radio
+   group radio inet log
 
 service cnd /vendor/bin/cnd
    class main
-   user radio
-   group system wifi inet radio wakelock
+   user system
+   group system wifi inet radio wakelock net_admin
 
 service netmgrd /vendor/bin/netmgrd
     class main
@@ -647,8 +649,7 @@ service wait_for_strongbox /vendor/bin/hw/wait_for_strongbox
     ioprio rt 0
 
 on property:vendor.ims.DATA_DAEMON_STATUS=1
-    start vendor.ims_rtp_daemon
-    start vendor.imsrcsservice
+    restart vendor.ims_rtp_daemon
 
 service time_daemon /vendor/bin/time_daemon
    class core
