@@ -56,6 +56,8 @@ on init && property:vendor.skip.init=0
     # write /sys/block/dm-1/queue/read_ahead_kb 2048
     # write /sys/block/dm-2/queue/read_ahead_kb 2048
     # write /sys/block/dm-3/queue/read_ahead_kb 2048
+    # write /sys/block/dm-4/queue/read_ahead_kb 2048
+    # write /sys/block/dm-5/queue/read_ahead_kb 2048
 
     # Disable UFS powersaving
     write /sys/devices/platform/soc/${ro.boot.bootdevice}/clkgate_enable 0
@@ -494,6 +496,9 @@ on property:sys.boot_completed=1
     # write /sys/block/dm-1/queue/read_ahead_kb 128
     # write /sys/block/dm-2/queue/read_ahead_kb 128
     # write /sys/block/dm-3/queue/read_ahead_kb 128
+    # write /sys/block/dm-4/queue/read_ahead_kb 128
+    # write /sys/block/dm-5/queue/read_ahead_kb 128
+    # write /sys/block/dm-6/queue/read_ahead_kb 128
 
     # Enable ZRAM on boot_complete
     swapon_all /vendor/etc/fstab.${ro.boot.hardware.platform}
