@@ -29,6 +29,10 @@
 #include <fstream>
 #include <iostream>
 
+#ifndef ARRAY_SIZE
+#define ARRAY_SIZE(x) (sizeof((x)) / sizeof((x)[0]))
+#endif
+
 namespace android {
 namespace hardware {
 namespace vibrator {
@@ -37,6 +41,11 @@ namespace implementation {
 
 using Status = ::android::hardware::vibrator::V1_0::Status;
 using EffectStrength = ::android::hardware::vibrator::V1_0::EffectStrength;
+
+typedef struct {
+    uint32_t mDuration;
+    const char *mQueue;
+} RingtoneSpec;
 
 static constexpr uint32_t WAVEFORM_SIMPLE_EFFECT_INDEX = 2;
 
@@ -54,65 +63,91 @@ static constexpr uint32_t WAVEFORM_DOUBLE_CLICK_SILENCE_MS = 100;
 static constexpr uint32_t WAVEFORM_LONG_VIBRATION_EFFECT_LEVEL = 5;
 static constexpr uint32_t WAVEFORM_LONG_VIBRATION_EFFECT_INDEX = 0;
 
-static constexpr uint32_t WAVEFORM_RINGTONE_EFFECT_MS = 30000;
-
 static constexpr uint32_t WAVEFORM_TRIGGER_QUEUE_SCALE = 100;
 static constexpr uint32_t WAVEFORM_TRIGGER_QUEUE_INDEX = 65534;
 
 static constexpr uint8_t VOLTAGE_SCALE_MAX = 100;
 
-// The_big_adventure - RINGTONE_1
-static constexpr char WAVEFORM_RINGTONE1_EFFECT_QUEUE[] =
-    "!!, 11.100, 392, 11.100, 392, 11.100, 260, 10!!,"
-    "11.100, 1020, 1020, 636, 1!";
-
-// Copycat - RINGTONE_2
-static constexpr char WAVEFORM_RINGTONE2_EFFECT_QUEUE[] =
-    "!!, 11.100, 236, 11.100, 708, 11!!, 660, 2!";
-
-// Crackle - RINGTONE_3
-static constexpr char WAVEFORM_RINGTONE3_EFFECT_QUEUE[] =
-    "212, !!, 11.100, 184, 11.100, 88, 11.100, 88,"
-    "11.100, 384, 3!!, 1020, 420, 5!";
-
-// Flutterby - RINGTONE_4
-static constexpr char WAVEFORM_RINGTONE4_EFFECT_QUEUE[] =
-    "!!, 12.100, 296, 12.100, 1020, 260, 1!!, 6!";
-
-// Hotline - RINGTONE_5
-static constexpr char WAVEFORM_RINGTONE5_EFFECT_QUEUE[] =
-    "!!, 12.100, 596, 12.100, 1020, 908, 1!!, 4!";
-
-// Leaps_and_bounds - RINGTONE_6
-static constexpr char WAVEFORM_RINGTONE6_EFFECT_QUEUE[] =
-    "!!, 11.100, 244, 11.100, 116, 11.100, 112, 13.100, 276, 23!!, 1!";
-
-// Lollipop - RINGTONE_7
-static constexpr char WAVEFORM_RINGTONE7_EFFECT_QUEUE[] =
-    "!!, 11.100, 312, 11.100, 312, 11.100, 312,"
-    "11.100, 204, 11.100, 88, 10!!, 624, 1!";
-
-// Lost_and_found - RINGTONE_8
-static constexpr char WAVEFORM_RINGTONE8_EFFECT_QUEUE[] =
-    "!!, 12.100, 468, 12.100, 468, 11.100, 408, 11.100,"
-    "408, 11.100, 408, 11.100, 408, 7!!, 1020, 496, 1!";
-
-// Mash_up - RINGTONE_9
-static constexpr char WAVEFORM_RINGTONE9_EFFECT_QUEUE[] =
-    "!!, 11.100, 460, 11.100, 228, 11.100, 228, 11.100,"
-    "228, 11.100, 228, 11.100, 468, 3!!, 8, 3!";
-
-// Monkey_around - RINGTONE_10
-static constexpr char WAVEFORM_RINGTONE10_EFFECT_QUEUE[] =
-    "14.100, 20, 15.100, 20, 15.80, 20, 15.60, 912, 4!";
-
-// Schools_out - RINGTONE_11
-static constexpr char WAVEFORM_RINGTONE11_EFFECT_QUEUE[] =
-    "12.60, 596, 12.80, 596, 12.100, 596, 1020, 564, 6!";
-
-// Zen_too - RINGTONE_12
-static constexpr char WAVEFORM_RINGTONE12_EFFECT_QUEUE[] =
-    "!!, 11.100, 388, 11.100, 92, 11.100, 316, 12.100, 972, 7!!, 972, 1!";
+static constexpr RingtoneSpec WAVEFORM_RINGTONES[] = {
+    // The_big_adventure - RINGTONE_1
+    {
+        44268,
+        "!!, 11.100, 392, 11.100, 392, 11.100, 260, 10!!,"
+        "11.100, 1020, 1020, 688, 2!",
+    },
+    // Copycat - RINGTONE_2
+    {
+        38244,
+        "!!, 11.100, 240, 11.100, 712, 11!!,"
+        "940, 2!",
+    },
+    // Crackle - RINGTONE_3
+    {
+        30000,
+        "212,"
+        "!!, 11.100, 184, 11.100, 88, 11.100, 88, 11.100, 384, 3!!,"
+        "1020, 536, 5!",
+    },
+    // Flutterby - RINGTONE_4
+    {
+        33376,
+        "!!, 12.100, 296, 12.100, 1020, 260, 1!!,"
+        "6!",
+    },
+    // Hotline - RINGTONE_5
+    {
+        33320,
+        "!!, 12.100, 596, 12.100, 1020, 908, 1!!,"
+        "4!",
+    },
+    // Leaps_and_bounds - RINGTONE_6
+    {
+        48000,
+        "!!,11.100, 244, 11.100, 116, 11.100, 112,"
+        "13.100, 276, 23!!, 1!",
+    },
+    // Lollipop - RINGTONE_7
+    {
+        30024,
+        "!!, 11.100, 312, 11.100, 312, 11.100, 312, 11.100, 204,"
+        "11.100, 88, 11!!,"
+        "624, 1!",
+    },
+    // Lost_and_found - RINGTONE_8
+    {
+        58840,
+        "!!, 12.100, 468, 12.100, 468,"
+        "11.100, 408, 11.100, 408, 11.100, 408, 11.100, 408, 7!!,"
+        "1020, 880, 1!",
+    },
+    // Mash_up - RINGTONE_9
+    {
+        31200,
+        "!!, 11.100, 468, 11.100, 228, 11.100, 228, 11.100, 228,"
+        "11.100, 228, 11.100, 472, 3!!,"
+        "8, 3!",
+    },
+    // Monkey_around - RINGTONE_10
+    {
+        31560,
+        "14.100, 20,"
+        "!!, 15.100, 20, 7!!, !!, 15.80, 20, 7!!, !!, 15.60, 20, 7!!,"
+        "892, 4!",
+    },
+    // Schools_out - RINGTONE_11
+    {
+        32088,
+        "12.60, 506, 12.80, 596, 12.100, 596,"
+        "1020, 564, 6!",
+    },
+    // Zen_too - RINGTONE_12
+    {
+        37464,
+        "!!, 11.100, 388, 11.100, 92, 11.100, 316,"
+        "12.100, 972, 7!!,"
+        "972, 1!",
+    },
+};
 
 static constexpr int8_t MAX_TRIGGER_LATENCY_MS = 6;
 
@@ -126,7 +161,10 @@ Return<Status> Vibrator::on(uint32_t timeoutMs, uint32_t effectIndex) {
     if (!mHwApi.mEffectIndex) {
         mHwApi.mEffectIndex.clear();
     }
-    mHwApi.mDuration << (timeoutMs + MAX_TRIGGER_LATENCY_MS) << std::endl;
+    if (MAX_TRIGGER_LATENCY_MS <= UINT32_MAX - timeoutMs) {
+        timeoutMs += MAX_TRIGGER_LATENCY_MS;
+    }
+    mHwApi.mDuration << timeoutMs << std::endl;
     if (!mHwApi.mDuration) {
         mHwApi.mDuration.clear();
     }
@@ -305,44 +343,38 @@ Return<Status> Vibrator::getRingtoneDetails(Effect effect, EffectStrength streng
                                             uint32_t *outTimeMs, uint32_t *outVolLevel,
                                             std::string *outEffectQueue) {
     uint32_t volLevel;
-    const char *effectQueue;
+    const RingtoneSpec *ringtone;
 
     switch (effect) {
         case Effect::RINGTONE_1:
-            effectQueue = WAVEFORM_RINGTONE1_EFFECT_QUEUE;
-            break;
+            // fall-through
         case Effect::RINGTONE_2:
-            effectQueue = WAVEFORM_RINGTONE2_EFFECT_QUEUE;
-            break;
+            // fall-through
         case Effect::RINGTONE_3:
-            effectQueue = WAVEFORM_RINGTONE3_EFFECT_QUEUE;
-            break;
+            // fall-through
         case Effect::RINGTONE_4:
-            effectQueue = WAVEFORM_RINGTONE4_EFFECT_QUEUE;
-            break;
+            // fall-through
         case Effect::RINGTONE_5:
-            effectQueue = WAVEFORM_RINGTONE5_EFFECT_QUEUE;
-            break;
+            // fall-through
         case Effect::RINGTONE_6:
-            effectQueue = WAVEFORM_RINGTONE6_EFFECT_QUEUE;
-            break;
+            // fall-through
         case Effect::RINGTONE_7:
-            effectQueue = WAVEFORM_RINGTONE7_EFFECT_QUEUE;
-            break;
+            // fall-through
         case Effect::RINGTONE_8:
-            effectQueue = WAVEFORM_RINGTONE8_EFFECT_QUEUE;
-            break;
+            // fall-through
         case Effect::RINGTONE_9:
-            effectQueue = WAVEFORM_RINGTONE9_EFFECT_QUEUE;
-            break;
+            // fall-through
         case Effect::RINGTONE_10:
-            effectQueue = WAVEFORM_RINGTONE10_EFFECT_QUEUE;
-            break;
+            // fall-through
         case Effect::RINGTONE_11:
-            effectQueue = WAVEFORM_RINGTONE11_EFFECT_QUEUE;
-            break;
+            // fall-through
         case Effect::RINGTONE_12:
-            effectQueue = WAVEFORM_RINGTONE12_EFFECT_QUEUE;
+            static_assert(
+                ARRAY_SIZE(WAVEFORM_RINGTONES) >= static_cast<uint32_t>(Effect::RINGTONE_12) -
+                                                      static_cast<uint32_t>(Effect::RINGTONE_1),
+                "Ringtone array is too small!");
+            ringtone = &WAVEFORM_RINGTONES[static_cast<uint32_t>(effect) -
+                                           static_cast<uint32_t>(Effect::RINGTONE_1)];
             break;
         default:
             return Status::UNSUPPORTED_OPERATION;
@@ -362,9 +394,9 @@ Return<Status> Vibrator::getRingtoneDetails(Effect effect, EffectStrength streng
             return Status::UNSUPPORTED_OPERATION;
     }
 
-    *outTimeMs = WAVEFORM_RINGTONE_EFFECT_MS;
+    *outTimeMs = ringtone->mDuration;
     *outVolLevel = volLevel;
-    *outEffectQueue = effectQueue;
+    *outEffectQueue = ringtone->mQueue;
 
     return Status::OK;
 }
