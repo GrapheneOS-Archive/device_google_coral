@@ -151,7 +151,7 @@
             "Multiplier":0.001
         },
         {
-            "Name":"gbattery",
+            "Name":"maxfg",
             "Type":"BATTERY",
             "HotThreshold":[
                 "NAN",
@@ -245,8 +245,16 @@
             "Type":"GPU"
         },
         {
-            "Name":"battery",
-            "Type":"BATTERY"
+            "Name":"ab",
+            "Type":"NPU"
+        },
+        {
+            "Name":"cx",
+            "Type":"COMPONENT"
+        },
+        {
+            "Name":"ebi",
+            "Type":"COMPONENT"
         }
     ]
 }
