@@ -216,4 +216,8 @@ BOARD_GOOGLE_DYNAMIC_PARTITIONS_PARTITION_LIST := \
     product
 
 BOARD_GOOGLE_DYNAMIC_PARTITIONS_SIZE := 4068474880
+
+# Testing related defines
+BOARD_PERFSETUP_SCRIPT := platform_testing/scripts/perf-setup/c2f2-setup.sh
+
 -include vendor/google_devices/coral/proprietary/BoardConfigVendor.mk
