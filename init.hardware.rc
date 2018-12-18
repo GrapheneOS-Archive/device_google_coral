@@ -361,6 +361,7 @@ on early-boot
 
     # Permission for lights driver
     chown system system /sys/class/backlight/panel0-backlight/brightness
+    chown system system /sys/class/backlight/panel0-backlight/vr_mode
 
     # wait for insmod_sh to finish all modules
     wait_for_prop vendor.all.modules.ready 1
