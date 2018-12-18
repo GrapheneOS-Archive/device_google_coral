@@ -342,11 +342,6 @@ on early-boot
     chown media audio /persist/audio
     chown audioserver audio /persist/audio/audio.cal
 
-    # init GPIO for edge detect sensor
-    write /sys/class/gpio/export 145
-    write /sys/class/gpio/gpio145/direction out
-    write /sys/class/gpio/gpio145/value 1
-
     # Set up haptics-related directories and permissions
     chmod 770 /persist/haptics
     chmod 440 /persist/haptics/cs40l25a.cal
