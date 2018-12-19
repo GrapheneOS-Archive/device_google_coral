@@ -115,5 +115,8 @@ firmware_directories /vendor/firmware_mnt/image/
 # NFC
 /dev/st21nfc              0660   nfc    nfc
 
+# Airbrush
+/dev/ab_sm                0600   vendor_airbrush vendor_airbrush
+
 # TPU
 /dev/abc-pcie-tpu_0       0660   system system
