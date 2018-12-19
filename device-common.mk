@@ -35,7 +35,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac
 
 # Set lmkd options
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+PRODUCT_PRODUCT_PROPERTIES += \
 	ro.config.low_ram = false \
 	ro.lmk.kill_heaviest_task = true \
 	ro.lmk.kill_timeout_ms = 100 \
