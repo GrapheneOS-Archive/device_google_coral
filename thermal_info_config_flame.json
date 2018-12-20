@@ -151,7 +151,7 @@
             "Multiplier":0.001
         },
         {
-            "Name":"maxfg",
+            "Name":"battery",
             "Type":"BATTERY",
             "HotThreshold":[
                 "NAN",
