@@ -6,4 +6,4 @@ system                                                  /system                e
 /dev/block/bootdevice/by-name/misc                      /misc                  emmc    defaults                                             defaults
 /dev/block/bootdevice/by-name/metadata                  /metadata              ext4    noatime,nosuid,nodev,discard                         wait,formattable
 /dev/block/bootdevice/by-name/userdata                  /data                  f2fs    noatime,nosuid,nodev,discard,reserve_root=32768,resgid=1065,fsync_mode=nobarrier       latemount,wait,check,quota,formattable,fileencryption=ice,reservedsize=128M,sysfs_path=/sys/devices/platform/soc/1d84000.ufshc,keydirectory=/metadata/vold/metadata_encryption
-/dev/block/zram0                                        none                   swap    defaults                                             zramsize=1073741824,max_comp_streams=8
+/dev/block/zram0                                        none                   swap    defaults                                             zramsize=2147483648,max_comp_streams=8
