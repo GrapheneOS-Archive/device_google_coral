@@ -30,12 +30,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true
 
 # enable cal by default on accel sensor
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+PRODUCT_PRODUCT_PROPERTIES += \
     persist.vendor.debug.sensors.accel_cal=1
 
 # The default value of this variable is false and should only be set to true when
 # the device allows users to retain eSIM profiles after factory reset of user data.
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+PRODUCT_PRODUCT_PROPERTIES += \
     masterclear.allow_retain_esim_profiles_after_fdr=true
 
 PRODUCT_COPY_FILES += \
@@ -108,7 +108,7 @@ PRODUCT_PACKAGES += \
     update_verifier
 
 # Use Sdcardfs
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+PRODUCT_PRODUCT_PROPERTIES += \
     ro.sys.sdcardfs=1
 
 PRODUCT_PACKAGES += \
@@ -637,7 +637,7 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 
 # Enable stats logging in LMKD
 TARGET_LMKD_STATS_LOG := true
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+PRODUCT_PRODUCT_PROPERTIES += \
     ro.lmk.log_stats=true
 
 TARGET_ENABLE_MEDIADRM_64 := true
@@ -678,7 +678,7 @@ PRODUCT_PACKAGES += \
 
 # Disable ro.adb.secure for the factory build to work around dead touchscreens
 # Bug: 116250643
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+PRODUCT_PRODUCT_PROPERTIES += \
     ro.adb.secure=0
 
 # GPS configuration file
