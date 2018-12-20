@@ -310,6 +310,38 @@ static void DumpUFS(int fd) {
     }
 }
 
+static void DumpVibrator(int fd) {
+    const std::string dir = "/sys/class/leds/vibrator/device/";
+    const std::vector<std::string> files {
+        "asp_enable",
+        "comp_enable",
+        "cp_dig_scale",
+        "cp_trigger_index",
+        "cp_trigger_q_sub",
+        "cp_trigger_queue",
+        "dig_scale",
+        "exc_enable",
+        "f0_stored",
+        "fw_rev",
+        "heartbeat",
+        "hw_reset",
+        "leds/vibrator/activate",
+        "leds/vibrator/duration",
+        "leds/vibrator/state",
+        "num_waves",
+        "q_stored",
+        "redc_comp_enable",
+        "redc_stored",
+        "standby_timeout",
+        "vbatt_max",
+        "vbatt_min",
+    };
+
+    for (const auto &file : files) {
+        DumpFileToFd(fd, "Vibrator", dir+file);
+    }
+}
+
 // Methods from ::android::hardware::dumpstate::V1_0::IDumpstateDevice follow.
 Return<void> DumpstateDevice::dumpstateBoard(const hidl_handle& handle) {
     // Exit when dump is completed since this is a lazy HAL.
@@ -393,6 +425,8 @@ Return<void> DumpstateDevice::dumpstateBoard(const hidl_handle& handle) {
         RunCommandToFd(fd, "Citadel VER", {"/vendor/bin/hw/citadel_updater", "-lv"});
         RunCommandToFd(fd, "Citadel SELFTEST", {"/vendor/bin/hw/citadel_updater", "--selftest"});
     }
+
+    DumpVibrator(fd);
 
     // Keep this at the end as very long on not for humans
     DumpFileToFd(fd, "WLAN FW Log Symbol Table", "/vendor/firmware/Data.msc");
