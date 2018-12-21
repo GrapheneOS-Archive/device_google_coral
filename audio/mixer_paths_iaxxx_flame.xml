@@ -349,60 +349,60 @@
     <ctl name="PDM Hos" value="0" />
 
     <!-- iaxxx input ch 0~2 -->
-    <ctl name="strm0 ASRC Mode" value="ASRC_DISABLE" />
+    <ctl name="strm0 ASRC Mode" value="ASRC_ENABLE" />
     <ctl name="strm0 Master Strm Id" value="STREAMID_0" />
-    <ctl name="strm0 Format FrLn" value="8K_20MS" />
-    <ctl name="strm0 Format Sr" value="RATE_16K" />
-    <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
+    <ctl name="strm0 Format FrLn" value="NONE" />
+    <ctl name="strm0 Format Sr" value="RATE_8K" />
+    <ctl name="strm0 Format Enc" value="ENCODING_OPAQUE" />
     <ctl name="strm0 Dir" value="0" />
     <ctl name="strm0 inter strm delay" value="0" />
     <!-- iaxxx pdm port c -->
-    <ctl name="strm0 Port" value="PDMI4" />
-    <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
-    <ctl name="strm0 CH Mask En" value="1" />
+    <ctl name="strm0 Port" value="NONE" />
+    <ctl name="strm0 Port Enc" value="ENCODING_OPAQUE" />
+    <ctl name="strm0 CH Mask En" value="0" />
     <ctl name="strm0 En" value="0" />
 
-    <ctl name="strm1 ASRC Mode" value="ASRC_DISABLE" />
+    <ctl name="strm1 ASRC Mode" value="ASRC_ENABLE" />
     <ctl name="strm1 Master Strm Id" value="STREAMID_0" />
-    <ctl name="strm1 Format FrLn" value="8K_20MS" />
-    <ctl name="strm1 Format Sr" value="RATE_16K" />
-    <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
+    <ctl name="strm1 Format FrLn" value="NONE" />
+    <ctl name="strm1 Format Sr" value="RATE_8K" />
+    <ctl name="strm1 Format Enc" value="ENCODING_OPAQUE" />
     <ctl name="strm1 Dir" value="0" />
     <ctl name="strm1 inter strm delay" value="0" />
     <!-- iaxxx pdm port b -->
-    <ctl name="strm1 Port" value="PDMI6" />
-    <ctl name="strm1 Port Enc" value="ENCODING_Q23" />
-    <ctl name="strm1 CH Mask En" value="1" />
+    <ctl name="strm1 Port" value="NONE" />
+    <ctl name="strm1 Port Enc" value="ENCODING_OPAQUE" />
+    <ctl name="strm1 CH Mask En" value="0" />
     <ctl name="strm1 En" value="0" />
 
-    <ctl name="strm2 ASRC Mode" value="ASRC_DISABLE" />
+    <ctl name="strm2 ASRC Mode" value="ASRC_ENABLE" />
     <ctl name="strm2 Master Strm Id" value="STREAMID_0" />
-    <ctl name="strm2 Format FrLn" value="8K_20MS" />
-    <ctl name="strm2 Format Sr" value="RATE_16K" />
-    <ctl name="strm2 Format Enc" value="ENCODING_AFLOAT" />
+    <ctl name="strm2 Format FrLn" value="NONE" />
+    <ctl name="strm2 Format Sr" value="RATE_8K" />
+    <ctl name="strm2 Format Enc" value="ENCODING_OPAQUE" />
     <ctl name="strm2 Dir" value="0" />
     <ctl name="strm2 inter strm delay" value="0" />
     <!-- iaxxx pdm port d -->
-    <ctl name="strm2 Port" value="PDMI3" />
-    <ctl name="strm2 Port Enc" value="ENCODING_Q23" />
-    <ctl name="strm2 CH Mask En" value="1" />
+    <ctl name="strm2 Port" value="NONE" />
+    <ctl name="strm2 Port Enc" value="ENCODING_OPAQUE" />
+    <ctl name="strm2 CH Mask En" value="0" />
     <ctl name="strm2 En" value="0" />
 
-    <ctl name="Tx0Chan IpSrcId" value="RX0_ChanMgr" />
-    <ctl name="Tx1Chan IpSrcId" value="RX1_ChanMgr" />
-    <ctl name="Tx2Chan IpSrcId" value="RX2_ChanMgr" />
+    <ctl name="Tx0Chan IpSrcId" value="UNKNOWN" />
+    <ctl name="Tx1Chan IpSrcId" value="UNKNOWN" />
+    <ctl name="Tx2Chan IpSrcId" value="UNKNOWN" />
 
     <!-- iaxxx output ch 8 -->
-    <ctl name="strm8 Format Sr" value="RATE_16K" />
-    <ctl name="strm8 Format FrLn" value="8K_20MS" />
-    <ctl name="strm8 Format Enc" value="ENCODING_AFLOAT" />
-    <ctl name="strm8 ASRC Mode" value="ASRC_DISABLE" />
-    <ctl name="strm8 Master Strm Id" value="STREAMID_8" />
+    <ctl name="strm8 Format Sr" value="RATE_8K" />
+    <ctl name="strm8 Format FrLn" value="NONE" />
+    <ctl name="strm8 Format Enc" value="ENCODING_OPAQUE" />
+    <ctl name="strm8 ASRC Mode" value="ASRC_ENABLE" />
+    <ctl name="strm8 Master Strm Id" value="STREAMID_0" />
     <ctl name="strm8 inter strm delay" value="0" />
-    <ctl name="strm8 Dir" value="1" />
-    <ctl name="strm8 Port" value="PCM0" />
-    <ctl name="strm8 Port Enc" value="ENCODING_Q31" />
-    <ctl name="strm8 CH Mask En" value="1" />
+    <ctl name="strm8 Dir" value="0" />
+    <ctl name="strm8 Port" value="NONE" />
+    <ctl name="strm8 Port Enc" value="ENCODING_OPAQUE" />
+    <ctl name="strm8 CH Mask En" value="0" />
     <ctl name="strm8 En" value="0" />
     <!-- iaxxx codec end -->
 
