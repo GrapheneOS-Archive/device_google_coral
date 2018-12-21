@@ -1,4 +1,4 @@
-#! /vendor/bin/sh
+#!/vendor/bin/sh
 
 #########################################
 ### init.insmod.cfg format:           ###
@@ -6,6 +6,8 @@
 ### [insmod|setprop] [path|prop name] ###
 ### ...                               ###
 #########################################
+
+set -e
 
 if [ $# -eq 1 ]; then
   cfg_file=$1
@@ -19,6 +21,7 @@ if [ -f $cfg_file ]; then
     case $action in
       "insmod") insmod $name ;;
       "setprop") setprop $name 1 ;;
+      "enable") echo 1 > $name ;;
     esac
   done < $cfg_file
 fi
