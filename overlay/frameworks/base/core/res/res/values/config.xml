@@ -40,6 +40,9 @@
     <!-- If device has a sensor that can wake-up the lock screen -->
     <bool name="config_dozeWakeLockScreenSensorAvailable">true</bool>
 
+    <!-- If device supports pickup/lift gesture -->
+    <bool name="config_dozePulsePickup">true</bool>
+
     <!-- Set to true to add links to Cell Broadcast app from Settings and MMS app. -->
     <bool name="config_cellBroadcastAppLinks">true</bool>
 
