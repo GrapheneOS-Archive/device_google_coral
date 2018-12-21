@@ -28,8 +28,8 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
 
-    # Enable sched_boost
-    write /proc/sys/kernel/sched_boost 1
+    # Disable EAS
+    write /sys/kernel/debug/sched_features NO_ENERGY_AWARE
     mount_all /vendor/etc/fstab.persist --early
 
 # Skip init trigger for charger mode
@@ -464,10 +464,16 @@ on charger
     write /sys/devices/platform/soc/${ro.boot.bootdevice}/clkgate_enable 1
     write /sys/devices/platform/soc/${ro.boot.bootdevice}/hibern8_on_idle_enable 1
 
+    # Enable EAS
+    write /sys/kernel/debug/sched_features ENERGY_AWARE
+
     # Enable powersaving
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
 
 on property:sys.boot_completed=1
+    # Enable EAS
+    write /sys/kernel/debug/sched_features ENERGY_AWARE
+
     # No sleep till proto!
     exec - system system -- svc power stayon true
 
