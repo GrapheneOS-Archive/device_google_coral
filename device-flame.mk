@@ -27,3 +27,5 @@ DEVICE_PACKAGE_OVERLAYS += device/google/coral/flame/overlay
 # Audio XMLs for flame
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_volumes_flame.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml
+
+PRODUCT_PRODUCT_PROPERTIES += ro.com.google.ime.height_ratio=1.2
