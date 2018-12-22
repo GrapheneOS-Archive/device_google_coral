@@ -355,13 +355,14 @@ on early-boot
     chown system system /sys/class/backlight/panel0-backlight/brightness
     chown system system /sys/class/backlight/panel0-backlight/vr_mode
 
-    # wait for insmod_sh to finish all modules
+    # Wait for insmod_sh to finish all modules
     wait_for_prop vendor.all.modules.ready 1
 
     # Update dm-verity state and set partition.*.verified properties
     verity_update_state
 
-    setprop vendor.qcom.devup 1
+    # Wait for insmod_sh to finish all boot devices
+    wait_for_prop vendor.all.devices.ready 1
 
     # Permission for Vibrator
     chown system system /sys/class/leds/vibrator/device/cp_trigger_index
