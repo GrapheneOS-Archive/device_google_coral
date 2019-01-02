@@ -446,6 +446,9 @@ on boot
     start rmt_storage
     start rfs_access
 
+    # default country code
+    setprop ro.boot.wificountrycode 00
+
 service init-radio-sh /vendor/bin/init.radio.sh
     class late_start
     user radio
