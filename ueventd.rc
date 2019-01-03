@@ -120,3 +120,6 @@ firmware_directories /vendor/firmware_mnt/image/
 
 # TPU
 /dev/abc-pcie-tpu_0       0660   system system
+
+# Face Authentication
+/dev/faceauth             0660   system system
