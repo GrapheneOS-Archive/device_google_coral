@@ -114,7 +114,8 @@ int main(int /* argc */, char** /* argv */) {
 
     // Add WLAN power entity
     uint32_t wlanId = service->addPowerEntity("WLAN", PowerEntityType::SUBSYSTEM);
-    auto wlanSdp = std::make_shared<WlanStateResidencyDataProvider>(wlanId);
+    auto wlanSdp =
+        std::make_shared<WlanStateResidencyDataProvider>(wlanId, "/sys/kernel/wlan/power_stats");
     service->addStateResidencyDataProvider(std::move(wlanSdp));
 
     // Add Airbrush power entity
