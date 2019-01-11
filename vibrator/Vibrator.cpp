@@ -48,7 +48,6 @@ static constexpr uint32_t WAVEFORM_CLICK_EFFECT_MS = 9;
 
 static constexpr uint32_t WAVEFORM_HEAVY_CLICK_EFFECT_LEVEL = 3;
 static constexpr uint32_t WAVEFORM_HEAVY_CLICK_EFFECT_MS = 9;
-static constexpr uint32_t WAVEFORM_STRONG_HEAVY_CLICK_EFFECT_MS = 12;
 
 static constexpr uint32_t WAVEFORM_DOUBLE_CLICK_SILENCE_MS = 100;
 
@@ -228,11 +227,7 @@ Return<Status> Vibrator::getSimpleDetails(Effect effect, EffectStrength strength
             break;
         case Effect::HEAVY_CLICK:
             volIndex = WAVEFORM_HEAVY_CLICK_EFFECT_LEVEL;
-            if (strength == EffectStrength::STRONG) {
-                timeMs = WAVEFORM_STRONG_HEAVY_CLICK_EFFECT_MS;
-            } else {
-                timeMs = WAVEFORM_HEAVY_CLICK_EFFECT_MS;
-            }
+            timeMs = WAVEFORM_HEAVY_CLICK_EFFECT_MS;
             break;
         default:
             return Status::UNSUPPORTED_OPERATION;
