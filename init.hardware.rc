@@ -189,6 +189,7 @@ on fs
     mkdir /persist/hlos_rfs 0770 root system
     mkdir /persist/secnvm 0770 system system
     mkdir /persist/oslo 0770 system system
+    mkdir /persist/touch 0770 system system
     chmod 0770 /persist/rfs
     chmod 0770 /persist/rfs/shared
     chmod 0770 /persist/rfs/msm
@@ -342,6 +343,10 @@ on early-boot
     chmod 660 /persist/oslo/oslo.cal
     chown system system /persist/oslo
     chown system system /persist/oslo/oslo.cal
+
+    # Set up touch directories and permissions
+    chmod 770 /persist/touch
+    chown system system /persist/touch
 
     # Permission for lights driver
     chown system system /sys/class/backlight/panel0-backlight/brightness
