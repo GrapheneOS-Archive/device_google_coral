@@ -41,6 +41,10 @@ class Vibrator : public IVibrator {
         std::ofstream globalScale;
         std::ofstream state;
         std::fstream aspEnable;
+        std::ofstream gpioFallIndex;
+        std::ofstream gpioFallScale;
+        std::ofstream gpioRiseIndex;
+        std::ofstream gpioRiseScale;
     } HwApi;
 
   public:

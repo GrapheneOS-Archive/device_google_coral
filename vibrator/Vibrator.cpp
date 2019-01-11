@@ -171,6 +171,16 @@ Vibrator::Vibrator(HwApi &&hwapi, std::vector<uint32_t> &&v_levels)
     mHwApi.effectDuration.clear();
 
     mSimpleEffectDuration = std::ceil(effectDuration / EFFECT_FREQUENCY_KHZ);
+
+    const uint32_t scaleFall =
+        amplitudeToScale(mVolLevels[WAVEFORM_CLICK_EFFECT_LEVEL], VOLTAGE_SCALE_MAX);
+    const uint32_t scaleRise =
+        amplitudeToScale(mVolLevels[WAVEFORM_HEAVY_CLICK_EFFECT_LEVEL], VOLTAGE_SCALE_MAX);
+
+    mHwApi.gpioFallIndex << WAVEFORM_SIMPLE_EFFECT_INDEX << std::endl;
+    mHwApi.gpioFallScale << scaleFall << std::endl;
+    mHwApi.gpioRiseIndex << WAVEFORM_SIMPLE_EFFECT_INDEX << std::endl;
+    mHwApi.gpioRiseScale << scaleRise << std::endl;
 }
 
 Return<Status> Vibrator::on(uint32_t timeoutMs, uint32_t effectIndex) {
