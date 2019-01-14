@@ -459,6 +459,9 @@ on boot
     # default country code
     setprop ro.boot.wificountrycode 00
 
+    # WLAN debug access
+    chown system system /d/icnss/stats
+
 service init-radio-sh /vendor/bin/init.radio.sh
     class late_start
     user radio
@@ -731,6 +734,9 @@ on property:init.svc.vendor.hwcomposer-2-3=running
 on property:wlan.driver.status=ok
     # Get the wlan driver/fw version
     start vendor.wlan_sh
+
+    # Change permission for dumpstate
+    chmod 444 /sys/kernel/wlan/power_stats
 
 service insmod_sh /vendor/bin/init.insmod.sh /vendor/etc/init.insmod.${ro.hardware}.cfg
     class main
