@@ -1656,14 +1656,14 @@
     <!-- These are actual sound device specific mixer settings -->
     <!-- For Iaxxx, DMic mapping and TDM -->
 
-    <!-- PDM Port mapping : C2F2_Proto
-        DMIC1 : Port_C
-        DMIC2 : Port_B
-        DMIC3 : Port_CDCPDM1
-        Flicker Sensor: Port_D
+    <!-- PDM Port mapping : C2F2_EVT
+        DMIC1 : Port_CDCPDM1 (PDMI1)
+        DMIC2 : Port_D DI (PDMI3)
+        DMIC3 : Port_C FS (PDMI4)
+        Flicker Sensor: Port_B DI (PDMI7)
     -->
     <path name="iaxxx-port-c">
-        <ctl name="PortC MicBias" value="1" />
+        <ctl name="CDC0 MicBias" value="1" />
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="Pdm CDC Setup" value="1" />
@@ -1689,14 +1689,13 @@
     </path>
 
     <path name="iaxxx-port-b">
-        <ctl name="PortB MicBias" value="1" />
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="Pdm CDC Setup" value="1" />
         <ctl name="Pdm PortB Setup" value="1" />
         <ctl name="Pdm PortB CDC DMic6 En" value="1" />
-        <ctl name="PDM Hos" value="64" />
-        <ctl name="PDM CDC0 Start" value="64" />
+        <ctl name="PDM Hos" value="128" />
+        <ctl name="PDM CDC0 Start" value="128" />
         <ctl name="Rx0Ch EpGain" value="20" />
         <ctl name="Rx0Chan GnRmp" value="STEP_600" />
         <ctl name="Rx0Chan Gain En" value="1" />
@@ -1707,7 +1706,7 @@
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm0 Dir" value="0" />
         <ctl name="strm0 inter strm delay" value="0" />
-        <ctl name="strm0 Port" value="PDMI6" />
+        <ctl name="strm0 Port" value="PDMI7" />
         <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
         <ctl name="strm0 CH Mask En" value="1" />
         <ctl name="strm0 En" value="1" />
@@ -1715,7 +1714,7 @@
     </path>
     <!-- Port D -->
     <path name="iaxxx-port-d">
-        <ctl name="CDC0 MicBias" value="1" />
+        <ctl name="PortB MicBias" value="1" />
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="Pdm CDC Setup" value="1" />
@@ -1742,7 +1741,7 @@
 
     <!-- Port CDC_PDM1 -->
     <path name="iaxxx-port-cdcpdm1">
-        <ctl name="CDC0 MicBias" value="1" />
+        <ctl name="PortC MicBias" value="1" />
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="Pdm CDC Setup" value="1" />
@@ -1783,8 +1782,236 @@
     </path>
 
     <!-- CH1: DMIC1, CH2: DMIC2 -->
-    <path name="iaxxx-port-cb">
+    <path name="iaxxx-port-cdcpdm1-d">
         <ctl name="PortC MicBias" value="1" />
+        <ctl name="PortB MicBias" value="1" />
+
+        <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
+        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
+        <ctl name="Pdm CDC Setup" value="1" />
+
+        <ctl name="Pdm CDC1 Setup" value="1" />
+        <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
+        <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
+        <ctl name="PDM Hos" value="10" />
+        <ctl name="PDM CDC0 Start" value="10" />
+
+        <ctl name="Rx0Ch EpGain" value="20" />
+        <ctl name="Rx0Chan GnRmp" value="STEP_600" />
+        <ctl name="Rx0Chan Gain En" value="1" />
+
+        <ctl name="Rx1Ch EpGain" value="20" />
+        <ctl name="Rx1Chan GnRmp" value="STEP_600" />
+        <ctl name="Rx1Chan Gain En" value="1" />
+
+        <ctl name="strm0 ASRC Mode" value="REDBOX_2-1" />
+        <ctl name="strm0 Master Strm Id" value="STREAMID_0" />
+        <ctl name="strm0 Format FrLn" value="8K_20MS" />
+        <ctl name="strm0 Format Sr" value="RATE_48K" />
+        <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
+        <ctl name="strm0 Dir" value="0" />
+        <ctl name="strm0 inter strm delay" value="0" />
+        <ctl name="strm0 Port" value="PDMI1" />
+        <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
+        <ctl name="strm0 CH Mask En" value="1" />
+        <ctl name="strm0 En" value="1" />
+
+        <ctl name="strm1 ASRC Mode" value="REDBOX_2-1" />
+        <ctl name="strm1 Master Strm Id" value="STREAMID_0" />
+        <ctl name="strm1 Format FrLn" value="8K_20MS" />
+        <ctl name="strm1 Format Sr" value="RATE_48K" />
+        <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
+        <ctl name="strm1 Dir" value="0" />
+        <ctl name="strm1 inter strm delay" value="0" />
+        <ctl name="strm1 Port" value="PDMI3" />
+        <ctl name="strm1 Port Enc" value="ENCODING_Q23" />
+        <ctl name="strm1 CH Mask En" value="2" />
+        <ctl name="strm1 En" value="1" />
+
+        <ctl name="Tx0Chan IpSrcId" value="RX0_ChanMgr" />
+        <ctl name="Tx1Chan IpSrcId" value="RX1_ChanMgr" />
+    </path>
+
+    <!-- CH1: DMIC1, CH2: DMIC3 -->
+    <path name="iaxxx-port-cdcpdm1-c">
+        <ctl name="PortC MicBias" value="1" />
+        <ctl name="CDC0 MicBias" value="1" />
+
+        <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
+        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
+        <ctl name="Pdm CDC Setup" value="1" />
+
+        <ctl name="Pdm CDC1 Setup" value="1" />
+        <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
+        <ctl name="Pdm PortC Setup" value="1" />
+        <ctl name="Pdm PortC CDC DMic4 En" value="1" />
+
+        <ctl name="PDM Hos" value="18" />
+        <ctl name="PDM CDC0 Start" value="18" />
+
+        <ctl name="Rx0Ch EpGain" value="20" />
+        <ctl name="Rx0Chan GnRmp" value="STEP_600" />
+        <ctl name="Rx0Chan Gain En" value="1" />
+
+        <ctl name="Rx1Ch EpGain" value="20" />
+        <ctl name="Rx1Chan GnRmp" value="STEP_600" />
+        <ctl name="Rx1Chan Gain En" value="1" />
+
+        <ctl name="strm0 ASRC Mode" value="REDBOX_2-1" />
+        <ctl name="strm0 Master Strm Id" value="STREAMID_0" />
+        <ctl name="strm0 Format FrLn" value="8K_20MS" />
+        <ctl name="strm0 Format Sr" value="RATE_48K" />
+        <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
+        <ctl name="strm0 Dir" value="0" />
+        <ctl name="strm0 inter strm delay" value="0" />
+        <ctl name="strm0 Port" value="PDMI1" />
+        <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
+        <ctl name="strm0 CH Mask En" value="1" />
+        <ctl name="strm0 En" value="1" />
+
+        <ctl name="strm1 ASRC Mode" value="REDBOX_2-1" />
+        <ctl name="strm1 Master Strm Id" value="STREAMID_0" />
+        <ctl name="strm1 Format FrLn" value="8K_20MS" />
+        <ctl name="strm1 Format Sr" value="RATE_48K" />
+        <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
+        <ctl name="strm1 Dir" value="0" />
+        <ctl name="strm1 inter strm delay" value="0" />
+        <ctl name="strm1 Port" value="PDMI4" />
+        <ctl name="strm1 Port Enc" value="ENCODING_Q23" />
+        <ctl name="strm1 CH Mask En" value="2" />
+        <ctl name="strm1 En" value="1" />
+
+        <ctl name="Tx0Chan IpSrcId" value="RX0_ChanMgr" />
+        <ctl name="Tx1Chan IpSrcId" value="RX1_ChanMgr" />
+    </path>
+
+    <!-- CH1: Flicker Sensor, CH2: DMIC2 -->
+    <path name="iaxxx-port-bd">
+        <ctl name="PortB MicBias" value="1" />
+
+        <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
+        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
+        <ctl name="Pdm CDC Setup" value="1" />
+
+        <ctl name="Pdm PortB Setup" value="1" />
+        <ctl name="Pdm PortB CDC DMic6 En" value="1" />
+
+        <ctl name="Pdm CDC1 Setup" value="1" />
+        <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
+
+        <ctl name="PDM Hos" value="136" />
+        <ctl name="PDM CDC0 Start" value="136" />
+
+        <ctl name="Rx0Ch EpGain" value="20" />
+        <ctl name="Rx0Chan GnRmp" value="STEP_600" />
+        <ctl name="Rx0Chan Gain En" value="1" />
+
+        <ctl name="Rx1Ch EpGain" value="20" />
+        <ctl name="Rx1Chan GnRmp" value="STEP_600" />
+        <ctl name="Rx1Chan Gain En" value="1" />
+
+        <ctl name="strm0 ASRC Mode" value="REDBOX_2-1" />
+        <ctl name="strm0 Master Strm Id" value="STREAMID_0" />
+        <ctl name="strm0 Format FrLn" value="8K_20MS" />
+        <ctl name="strm0 Format Sr" value="RATE_48K" />
+        <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
+        <ctl name="strm0 Dir" value="0" />
+        <ctl name="strm0 inter strm delay" value="0" />
+        <ctl name="strm0 Port" value="PDMI7" />
+        <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
+        <ctl name="strm0 CH Mask En" value="1" />
+        <ctl name="strm0 En" value="1" />
+
+        <ctl name="strm1 ASRC Mode" value="REDBOX_2-1" />
+        <ctl name="strm1 Master Strm Id" value="STREAMID_0" />
+        <ctl name="strm1 Format FrLn" value="8K_20MS" />
+        <ctl name="strm1 Format Sr" value="RATE_48K" />
+        <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
+        <ctl name="strm1 Dir" value="0" />
+        <ctl name="strm1 inter strm delay" value="0" />
+        <ctl name="strm1 Port" value="PDMI3" />
+        <ctl name="strm1 Port Enc" value="ENCODING_Q23" />
+        <ctl name="strm1 CH Mask En" value="2" />
+        <ctl name="strm1 En" value="1" />
+
+        <ctl name="Tx0Chan IpSrcId" value="RX0_ChanMgr" />
+        <ctl name="Tx1Chan IpSrcId" value="RX1_ChanMgr" />
+    </path>
+
+    <!-- CH1: Flicker Sensor, CH2: DMIC2, CH3: DMIC1 -->
+    <path name="iaxxx-port-bd-cdcpdm1">
+        <ctl name="PortB MicBias" value="1" />
+        <ctl name="PortC MicBias" value="1" />
+
+        <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
+        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
+        <ctl name="Pdm CDC Setup" value="1" />
+
+        <ctl name="Pdm PortB Setup" value="1" />
+        <ctl name="Pdm PortB CDC DMic6 En" value="1" />
+        <ctl name="Pdm CDC1 Setup" value="1" />
+        <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
+        <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
+
+        <ctl name="PDM Hos" value="138" />
+        <ctl name="PDM CDC0 Start" value="138" />
+
+        <ctl name="Rx0Ch EpGain" value="20" />
+        <ctl name="Rx0Chan GnRmp" value="STEP_600" />
+        <ctl name="Rx0Chan Gain En" value="1" />
+
+        <ctl name="Rx1Ch EpGain" value="20" />
+        <ctl name="Rx1Chan GnRmp" value="STEP_600" />
+        <ctl name="Rx1Chan Gain En" value="1" />
+
+        <ctl name="Rx2Ch EpGain" value="20" />
+        <ctl name="Rx2Chan GnRmp" value="STEP_600" />
+        <ctl name="Rx2Chan Gain En" value="1" />
+
+        <ctl name="strm0 ASRC Mode" value="REDBOX_2-1" />
+        <ctl name="strm0 Master Strm Id" value="STREAMID_0" />
+        <ctl name="strm0 Format FrLn" value="8K_20MS" />
+        <ctl name="strm0 Format Sr" value="RATE_48K" />
+        <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
+        <ctl name="strm0 Dir" value="0" />
+        <ctl name="strm0 inter strm delay" value="0" />
+        <ctl name="strm0 Port" value="PDMI6" />
+        <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
+        <ctl name="strm0 CH Mask En" value="1" />
+        <ctl name="strm0 En" value="1" />
+
+        <ctl name="strm1 ASRC Mode" value="REDBOX_2-1" />
+        <ctl name="strm1 Master Strm Id" value="STREAMID_0" />
+        <ctl name="strm1 Format FrLn" value="8K_20MS" />
+        <ctl name="strm1 Format Sr" value="RATE_48K" />
+        <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
+        <ctl name="strm1 Dir" value="0" />
+        <ctl name="strm1 inter strm delay" value="0" />
+        <ctl name="strm1 Port" value="PDMI3" />
+        <ctl name="strm1 Port Enc" value="ENCODING_Q23" />
+        <ctl name="strm1 CH Mask En" value="2" />
+        <ctl name="strm1 En" value="1" />
+
+        <ctl name="strm2 ASRC Mode" value="REDBOX_2-1" />
+        <ctl name="strm2 Master Strm Id" value="STREAMID_0" />
+        <ctl name="strm2 Format FrLn" value="8K_20MS" />
+        <ctl name="strm2 Format Sr" value="RATE_48K" />
+        <ctl name="strm2 Format Enc" value="ENCODING_AFLOAT" />
+        <ctl name="strm2 Dir" value="0" />
+        <ctl name="strm2 inter strm delay" value="0" />
+        <ctl name="strm2 Port" value="PDMI1" />
+        <ctl name="strm2 Port Enc" value="ENCODING_Q23" />
+        <ctl name="strm2 CH Mask En" value="4" />
+        <ctl name="strm2 En" value="1" />
+
+        <ctl name="Tx0Chan IpSrcId" value="RX0_ChanMgr" />
+        <ctl name="Tx1Chan IpSrcId" value="RX1_ChanMgr" />
+        <ctl name="Tx2Chan IpSrcId" value="RX2_ChanMgr" />
+    </path>
+
+    <!-- CH1: DMIC3, CH2: DMIC2 -->
+    <path name="iaxxx-port-cd">
+        <ctl name="CDC0 MicBias" value="1" />
         <ctl name="PortB MicBias" value="1" />
 
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
@@ -1793,11 +2020,11 @@
 
         <ctl name="Pdm PortC Setup" value="1" />
         <ctl name="Pdm PortC CDC DMic4 En" value="1" />
-        <ctl name="Pdm PortB Setup" value="1" />
-        <ctl name="Pdm PortB CDC DMic6 En" value="1" />
+        <ctl name="Pdm CDC1 Setup" value="1" />
+        <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
 
-        <ctl name="PDM Hos" value="80" />
-        <ctl name="PDM CDC0 Start" value="80" />
+        <ctl name="PDM Hos" value="24" />
+        <ctl name="PDM CDC0 Start" value="24" />
 
         <ctl name="Rx0Ch EpGain" value="20" />
         <ctl name="Rx0Chan GnRmp" value="STEP_600" />
@@ -1826,7 +2053,7 @@
         <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm1 Dir" value="0" />
         <ctl name="strm1 inter strm delay" value="0" />
-        <ctl name="strm1 Port" value="PDMI6" />
+        <ctl name="strm1 Port" value="PDMI3" />
         <ctl name="strm1 Port Enc" value="ENCODING_Q23" />
         <ctl name="strm1 CH Mask En" value="2" />
         <ctl name="strm1 En" value="1" />
@@ -1835,10 +2062,83 @@
         <ctl name="Tx1Chan IpSrcId" value="RX1_ChanMgr" />
     </path>
 
-    <!-- CH1: DMIC1, CH2: DMIC3 -->
-    <path name="iaxxx-port-c-cdcpdm1">
-        <ctl name="PortC MicBias" value="1" />
+    <!-- CH1: DMIC3, CH2: DMIC2, CH3: DMIC1 -->
+    <path name="iaxxx-port-cd-cdcpdm1">
         <ctl name="CDC0 MicBias" value="1" />
+        <ctl name="PortB MicBias" value="1" />
+        <ctl name="PortC MicBias" value="1" />
+
+        <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
+        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
+        <ctl name="Pdm CDC Setup" value="1" />
+
+        <ctl name="Pdm PortC Setup" value="1" />
+        <ctl name="Pdm PortC CDC DMic4 En" value="1" />
+        <ctl name="Pdm CDC1 Setup" value="1" />
+        <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
+        <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
+
+        <ctl name="PDM Hos" value="26" />
+        <ctl name="PDM CDC0 Start" value="26" />
+
+        <ctl name="Rx0Ch EpGain" value="20" />
+        <ctl name="Rx0Chan GnRmp" value="STEP_600" />
+        <ctl name="Rx0Chan Gain En" value="1" />
+
+        <ctl name="Rx1Ch EpGain" value="20" />
+        <ctl name="Rx1Chan GnRmp" value="STEP_600" />
+        <ctl name="Rx1Chan Gain En" value="1" />
+
+        <ctl name="Rx2Ch EpGain" value="20" />
+        <ctl name="Rx2Chan GnRmp" value="STEP_600" />
+        <ctl name="Rx2Chan Gain En" value="1" />
+
+        <ctl name="strm0 ASRC Mode" value="REDBOX_2-1" />
+        <ctl name="strm0 Master Strm Id" value="STREAMID_0" />
+        <ctl name="strm0 Format FrLn" value="8K_20MS" />
+        <ctl name="strm0 Format Sr" value="RATE_48K" />
+        <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
+        <ctl name="strm0 Dir" value="0" />
+        <ctl name="strm0 inter strm delay" value="0" />
+        <ctl name="strm0 Port" value="PDMI4" />
+        <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
+        <ctl name="strm0 CH Mask En" value="1" />
+        <ctl name="strm0 En" value="1" />
+
+        <ctl name="strm1 ASRC Mode" value="REDBOX_2-1" />
+        <ctl name="strm1 Master Strm Id" value="STREAMID_0" />
+        <ctl name="strm1 Format FrLn" value="8K_20MS" />
+        <ctl name="strm1 Format Sr" value="RATE_48K" />
+        <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
+        <ctl name="strm1 Dir" value="0" />
+        <ctl name="strm1 inter strm delay" value="0" />
+        <ctl name="strm1 Port" value="PDMI3" />
+        <ctl name="strm1 Port Enc" value="ENCODING_Q23" />
+        <ctl name="strm1 CH Mask En" value="2" />
+        <ctl name="strm1 En" value="1" />
+
+        <ctl name="strm2 ASRC Mode" value="REDBOX_2-1" />
+        <ctl name="strm2 Master Strm Id" value="STREAMID_0" />
+        <ctl name="strm2 Format FrLn" value="8K_20MS" />
+        <ctl name="strm2 Format Sr" value="RATE_48K" />
+        <ctl name="strm2 Format Enc" value="ENCODING_AFLOAT" />
+        <ctl name="strm2 Dir" value="0" />
+        <ctl name="strm2 inter strm delay" value="0" />
+        <ctl name="strm2 Port" value="PDMI1" />
+        <ctl name="strm2 Port Enc" value="ENCODING_Q23" />
+        <ctl name="strm2 CH Mask En" value="4" />
+        <ctl name="strm2 En" value="1" />
+
+        <ctl name="Tx0Chan IpSrcId" value="RX0_ChanMgr" />
+        <ctl name="Tx1Chan IpSrcId" value="RX1_ChanMgr" />
+        <ctl name="Tx2Chan IpSrcId" value="RX2_ChanMgr" />
+    </path>
+
+    <!-- CH1: DMIC3, CH2: DMIC1, CH3: DMIC2 -->
+    <path name="iaxxx-port-c-cdcpdm1-d">
+        <ctl name="CDC0 MicBias" value="1" />
+        <ctl name="PortC MicBias" value="1" />
+        <ctl name="PortB MicBias" value="1" />
 
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
@@ -1848,9 +2148,10 @@
         <ctl name="Pdm PortC CDC DMic4 En" value="1" />
         <ctl name="Pdm CDC1 Setup" value="1" />
         <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
+        <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
 
-        <ctl name="PDM Hos" value="18" />
-        <ctl name="PDM CDC0 Start" value="18" />
+        <ctl name="PDM Hos" value="26" />
+        <ctl name="PDM CDC0 Start" value="26" />
 
         <ctl name="Rx0Ch EpGain" value="20" />
         <ctl name="Rx0Chan GnRmp" value="STEP_600" />
@@ -1859,6 +2160,10 @@
         <ctl name="Rx1Ch EpGain" value="20" />
         <ctl name="Rx1Chan GnRmp" value="STEP_600" />
         <ctl name="Rx1Chan Gain En" value="1" />
+
+        <ctl name="Rx2Ch EpGain" value="20" />
+        <ctl name="Rx2Chan GnRmp" value="STEP_600" />
+        <ctl name="Rx2Chan Gain En" value="1" />
 
         <ctl name="strm0 ASRC Mode" value="REDBOX_2-1" />
         <ctl name="strm0 Master Strm Id" value="STREAMID_0" />
@@ -1884,247 +2189,6 @@
         <ctl name="strm1 CH Mask En" value="2" />
         <ctl name="strm1 En" value="1" />
 
-        <ctl name="Tx0Chan IpSrcId" value="RX0_ChanMgr" />
-        <ctl name="Tx1Chan IpSrcId" value="RX1_ChanMgr" />
-    </path>
-
-    <!-- CH1: Flicker Sensor, CH2: DMIC2 -->
-    <path name="iaxxx-port-db">
-        <ctl name="PortB MicBias" value="1" />
-        <ctl name="CDC0 MicBias" value="1" />
-
-        <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
-        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
-        <ctl name="Pdm CDC Setup" value="1" />
-
-        <ctl name="Pdm PortB Setup" value="1" />
-        <ctl name="Pdm PortB CDC DMic6 En" value="1" />
-
-        <ctl name="Pdm CDC1 Setup" value="1" />
-        <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
-
-        <ctl name="PDM Hos" value="72" />
-        <ctl name="PDM CDC0 Start" value="72" />
-
-        <ctl name="Rx0Ch EpGain" value="20" />
-        <ctl name="Rx0Chan GnRmp" value="STEP_600" />
-        <ctl name="Rx0Chan Gain En" value="1" />
-
-        <ctl name="Rx1Ch EpGain" value="20" />
-        <ctl name="Rx1Chan GnRmp" value="STEP_600" />
-        <ctl name="Rx1Chan Gain En" value="1" />
-
-        <ctl name="strm0 ASRC Mode" value="REDBOX_2-1" />
-        <ctl name="strm0 Master Strm Id" value="STREAMID_0" />
-        <ctl name="strm0 Format FrLn" value="8K_20MS" />
-        <ctl name="strm0 Format Sr" value="RATE_48K" />
-        <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
-        <ctl name="strm0 Dir" value="0" />
-        <ctl name="strm0 inter strm delay" value="0" />
-        <ctl name="strm0 Port" value="PDMI3" />
-        <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
-        <ctl name="strm0 CH Mask En" value="1" />
-        <ctl name="strm0 En" value="1" />
-
-        <ctl name="strm1 ASRC Mode" value="REDBOX_2-1" />
-        <ctl name="strm1 Master Strm Id" value="STREAMID_1" />
-        <ctl name="strm1 Format FrLn" value="8K_20MS" />
-        <ctl name="strm1 Format Sr" value="RATE_48K" />
-        <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
-        <ctl name="strm1 Dir" value="0" />
-        <ctl name="strm1 inter strm delay" value="0" />
-        <ctl name="strm1 Port" value="PDMI6" />
-        <ctl name="strm1 Port Enc" value="ENCODING_Q23" />
-        <ctl name="strm1 CH Mask En" value="2" />
-        <ctl name="strm1 En" value="1" />
-
-        <ctl name="Tx0Chan IpSrcId" value="RX0_ChanMgr" />
-        <ctl name="Tx1Chan IpSrcId" value="RX1_ChanMgr" />
-    </path>
-
-    <!-- CH1: Flicker Sensor, CH2: DMIC2, CH3: DMIC1 -->
-    <path name="iaxxx-port-dbc">
-        <ctl name="PortB MicBias" value="1" />
-        <ctl name="CDC0 MicBias" value="1" />
-        <ctl name="PortC MicBias" value="1" />
-
-        <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
-        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
-        <ctl name="Pdm CDC Setup" value="1" />
-
-        <ctl name="Pdm PortB Setup" value="1" />
-        <ctl name="Pdm PortB CDC DMic6 En" value="1" />
-        <ctl name="Pdm CDC1 Setup" value="1" />
-        <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
-        <ctl name="Pdm PortC Setup" value="1" />
-        <ctl name="Pdm PortC CDC DMic4 En" value="1" />
-
-        <ctl name="PDM Hos" value="88" />
-        <ctl name="PDM CDC0 Start" value="88" />
-
-        <ctl name="Rx0Ch EpGain" value="20" />
-        <ctl name="Rx0Chan GnRmp" value="STEP_600" />
-        <ctl name="Rx0Chan Gain En" value="1" />
-
-        <ctl name="Rx1Ch EpGain" value="20" />
-        <ctl name="Rx1Chan GnRmp" value="STEP_600" />
-        <ctl name="Rx1Chan Gain En" value="1" />
-
-        <ctl name="Rx2Ch EpGain" value="20" />
-        <ctl name="Rx2Chan GnRmp" value="STEP_600" />
-        <ctl name="Rx2Chan Gain En" value="1" />
-
-        <ctl name="strm0 ASRC Mode" value="REDBOX_2-1" />
-        <ctl name="strm0 Master Strm Id" value="STREAMID_0" />
-        <ctl name="strm0 Format FrLn" value="8K_20MS" />
-        <ctl name="strm0 Format Sr" value="RATE_48K" />
-        <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
-        <ctl name="strm0 Dir" value="0" />
-        <ctl name="strm0 inter strm delay" value="0" />
-        <ctl name="strm0 Port" value="PDMI3" />
-        <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
-        <ctl name="strm0 CH Mask En" value="1" />
-        <ctl name="strm0 En" value="1" />
-
-        <ctl name="strm1 ASRC Mode" value="REDBOX_2-1" />
-        <ctl name="strm1 Master Strm Id" value="STREAMID_1" />
-        <ctl name="strm1 Format FrLn" value="8K_20MS" />
-        <ctl name="strm1 Format Sr" value="RATE_48K" />
-        <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
-        <ctl name="strm1 Dir" value="0" />
-        <ctl name="strm1 inter strm delay" value="0" />
-        <ctl name="strm1 Port" value="PDMI6" />
-        <ctl name="strm1 Port Enc" value="ENCODING_Q23" />
-        <ctl name="strm1 CH Mask En" value="2" />
-        <ctl name="strm1 En" value="1" />
-
-        <ctl name="strm2 ASRC Mode" value="REDBOX_2-1" />
-        <ctl name="strm2 Master Strm Id" value="STREAMID_2" />
-        <ctl name="strm2 Format FrLn" value="8K_20MS" />
-        <ctl name="strm2 Format Sr" value="RATE_48K" />
-        <ctl name="strm2 Format Enc" value="ENCODING_AFLOAT" />
-        <ctl name="strm2 Dir" value="0" />
-        <ctl name="strm2 inter strm delay" value="0" />
-        <ctl name="strm2 Port" value="PDMI4" />
-        <ctl name="strm2 Port Enc" value="ENCODING_Q23" />
-        <ctl name="strm2 CH Mask En" value="4" />
-        <ctl name="strm2 En" value="1" />
-
-        <ctl name="Tx0Chan IpSrcId" value="RX0_ChanMgr" />
-        <ctl name="Tx1Chan IpSrcId" value="RX1_ChanMgr" />
-        <ctl name="Tx2Chan IpSrcId" value="RX2_ChanMgr" />
-    </path>
-
-    <!-- CH1: DMIC3, CH2: DMIC2 -->
-    <path name="iaxxx-port-cdcpdm1-b">
-        <ctl name="PortB MicBias" value="1" />
-        <ctl name="CDC0 MicBias" value="1" />
-
-        <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
-        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
-        <ctl name="Pdm CDC Setup" value="1" />
-
-        <ctl name="Pdm PortB Setup" value="1" />
-        <ctl name="Pdm PortB CDC DMic6 En" value="1" />
-
-        <ctl name="Pdm CDC1 Setup" value="1" />
-        <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
-
-        <ctl name="PDM Hos" value="66" />
-        <ctl name="PDM CDC0 Start" value="66" />
-
-        <ctl name="Rx0Ch EpGain" value="20" />
-        <ctl name="Rx0Chan GnRmp" value="STEP_600" />
-        <ctl name="Rx0Chan Gain En" value="1" />
-
-        <ctl name="Rx1Ch EpGain" value="20" />
-        <ctl name="Rx1Chan GnRmp" value="STEP_600" />
-        <ctl name="Rx1Chan Gain En" value="1" />
-
-        <ctl name="strm0 ASRC Mode" value="REDBOX_2-1" />
-        <ctl name="strm0 Master Strm Id" value="STREAMID_0" />
-        <ctl name="strm0 Format FrLn" value="8K_20MS" />
-        <ctl name="strm0 Format Sr" value="RATE_48K" />
-        <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
-        <ctl name="strm0 Dir" value="0" />
-        <ctl name="strm0 inter strm delay" value="0" />
-        <ctl name="strm0 Port" value="PDMI1" />
-        <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
-        <ctl name="strm0 CH Mask En" value="1" />
-        <ctl name="strm0 En" value="1" />
-
-        <ctl name="strm1 ASRC Mode" value="REDBOX_2-1" />
-        <ctl name="strm1 Master Strm Id" value="STREAMID_1" />
-        <ctl name="strm1 Format FrLn" value="8K_20MS" />
-        <ctl name="strm1 Format Sr" value="RATE_48K" />
-        <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
-        <ctl name="strm1 Dir" value="0" />
-        <ctl name="strm1 inter strm delay" value="0" />
-        <ctl name="strm1 Port" value="PDMI6" />
-        <ctl name="strm1 Port Enc" value="ENCODING_Q23" />
-        <ctl name="strm1 CH Mask En" value="2" />
-        <ctl name="strm1 En" value="1" />
-
-        <ctl name="Tx0Chan IpSrcId" value="RX0_ChanMgr" />
-        <ctl name="Tx1Chan IpSrcId" value="RX1_ChanMgr" />
-    </path>
-
-    <!-- CH1: DMIC3, CH2: DMIC2, CH3: DMIC1 -->
-    <path name="iaxxx-port-cdcpdm1-bc">
-        <ctl name="PortB MicBias" value="1" />
-        <ctl name="CDC0 MicBias" value="1" />
-        <ctl name="PortC MicBias" value="1" />
-
-        <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
-        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
-        <ctl name="Pdm CDC Setup" value="1" />
-
-        <ctl name="Pdm PortB Setup" value="1" />
-        <ctl name="Pdm PortB CDC DMic6 En" value="1" />
-        <ctl name="Pdm CDC1 Setup" value="1" />
-        <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
-        <ctl name="Pdm PortC Setup" value="1" />
-        <ctl name="Pdm PortC CDC DMic4 En" value="1" />
-
-        <ctl name="PDM Hos" value="82" />
-        <ctl name="PDM CDC0 Start" value="82" />
-
-        <ctl name="Rx0Ch EpGain" value="20" />
-        <ctl name="Rx0Chan GnRmp" value="STEP_600" />
-        <ctl name="Rx0Chan Gain En" value="1" />
-
-        <ctl name="Rx1Ch EpGain" value="20" />
-        <ctl name="Rx1Chan GnRmp" value="STEP_600" />
-        <ctl name="Rx1Chan Gain En" value="1" />
-
-        <ctl name="Rx2Ch EpGain" value="20" />
-        <ctl name="Rx2Chan GnRmp" value="STEP_600" />
-        <ctl name="Rx2Chan Gain En" value="1" />
-
-        <ctl name="strm0 ASRC Mode" value="REDBOX_2-1" />
-        <ctl name="strm0 Master Strm Id" value="STREAMID_0" />
-        <ctl name="strm0 Format FrLn" value="8K_20MS" />
-        <ctl name="strm0 Format Sr" value="RATE_48K" />
-        <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
-        <ctl name="strm0 Dir" value="0" />
-        <ctl name="strm0 inter strm delay" value="0" />
-        <ctl name="strm0 Port" value="PDMI1" />
-        <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
-        <ctl name="strm0 CH Mask En" value="1" />
-        <ctl name="strm0 En" value="1" />
-
-        <ctl name="strm1 ASRC Mode" value="REDBOX_2-1" />
-        <ctl name="strm1 Master Strm Id" value="STREAMID_0" />
-        <ctl name="strm1 Format FrLn" value="8K_20MS" />
-        <ctl name="strm1 Format Sr" value="RATE_48K" />
-        <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
-        <ctl name="strm1 Dir" value="0" />
-        <ctl name="strm1 inter strm delay" value="0" />
-        <ctl name="strm1 Port" value="PDMI6" />
-        <ctl name="strm1 Port Enc" value="ENCODING_Q23" />
-        <ctl name="strm1 CH Mask En" value="2" />
-        <ctl name="strm1 En" value="1" />
-
         <ctl name="strm2 ASRC Mode" value="REDBOX_2-1" />
         <ctl name="strm2 Master Strm Id" value="STREAMID_0" />
         <ctl name="strm2 Format FrLn" value="8K_20MS" />
@@ -2132,80 +2196,7 @@
         <ctl name="strm2 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm2 Dir" value="0" />
         <ctl name="strm2 inter strm delay" value="0" />
-        <ctl name="strm2 Port" value="PDMI4" />
-        <ctl name="strm2 Port Enc" value="ENCODING_Q23" />
-        <ctl name="strm2 CH Mask En" value="4" />
-        <ctl name="strm2 En" value="1" />
-
-        <ctl name="Tx0Chan IpSrcId" value="RX0_ChanMgr" />
-        <ctl name="Tx1Chan IpSrcId" value="RX1_ChanMgr" />
-        <ctl name="Tx2Chan IpSrcId" value="RX2_ChanMgr" />
-    </path>
-
-    <!-- CH1: DMIC3, CH2: DMIC1, CH3: DMIC2 -->
-    <path name="iaxxx-port-cdcpdm1-cb">
-        <ctl name="PortB MicBias" value="1" />
-        <ctl name="CDC0 MicBias" value="1" />
-        <ctl name="PortC MicBias" value="1" />
-
-        <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
-        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
-        <ctl name="Pdm CDC Setup" value="1" />
-
-        <ctl name="Pdm PortB Setup" value="1" />
-        <ctl name="Pdm PortB CDC DMic6 En" value="1" />
-        <ctl name="Pdm CDC1 Setup" value="1" />
-        <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
-        <ctl name="Pdm PortC Setup" value="1" />
-        <ctl name="Pdm PortC CDC DMic4 En" value="1" />
-
-        <ctl name="PDM Hos" value="82" />
-        <ctl name="PDM CDC0 Start" value="82" />
-
-        <ctl name="Rx0Ch EpGain" value="20" />
-        <ctl name="Rx0Chan GnRmp" value="STEP_600" />
-        <ctl name="Rx0Chan Gain En" value="1" />
-
-        <ctl name="Rx1Ch EpGain" value="20" />
-        <ctl name="Rx1Chan GnRmp" value="STEP_600" />
-        <ctl name="Rx1Chan Gain En" value="1" />
-
-        <ctl name="Rx2Ch EpGain" value="20" />
-        <ctl name="Rx2Chan GnRmp" value="STEP_600" />
-        <ctl name="Rx2Chan Gain En" value="1" />
-
-        <ctl name="strm0 ASRC Mode" value="REDBOX_2-1" />
-        <ctl name="strm0 Master Strm Id" value="STREAMID_0" />
-        <ctl name="strm0 Format FrLn" value="8K_20MS" />
-        <ctl name="strm0 Format Sr" value="RATE_48K" />
-        <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
-        <ctl name="strm0 Dir" value="0" />
-        <ctl name="strm0 inter strm delay" value="0" />
-        <ctl name="strm0 Port" value="PDMI1" />
-        <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
-        <ctl name="strm0 CH Mask En" value="1" />
-        <ctl name="strm0 En" value="1" />
-
-        <ctl name="strm1 ASRC Mode" value="REDBOX_2-1" />
-        <ctl name="strm1 Master Strm Id" value="STREAMID_0" />
-        <ctl name="strm1 Format FrLn" value="8K_20MS" />
-        <ctl name="strm1 Format Sr" value="RATE_48K" />
-        <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
-        <ctl name="strm1 Dir" value="0" />
-        <ctl name="strm1 inter strm delay" value="0" />
-        <ctl name="strm1 Port" value="PDMI6" />
-        <ctl name="strm1 Port Enc" value="ENCODING_Q23" />
-        <ctl name="strm1 CH Mask En" value="2" />
-        <ctl name="strm1 En" value="1" />
-
-        <ctl name="strm2 ASRC Mode" value="REDBOX_2-1" />
-        <ctl name="strm2 Master Strm Id" value="STREAMID_0" />
-        <ctl name="strm2 Format FrLn" value="8K_20MS" />
-        <ctl name="strm2 Format Sr" value="RATE_48K" />
-        <ctl name="strm2 Format Enc" value="ENCODING_AFLOAT" />
-        <ctl name="strm2 Dir" value="0" />
-        <ctl name="strm2 inter strm delay" value="0" />
-        <ctl name="strm2 Port" value="PDMI4" />
+        <ctl name="strm2 Port" value="PDMI3" />
         <ctl name="strm2 Port Enc" value="ENCODING_Q23" />
         <ctl name="strm2 CH Mask En" value="4" />
         <ctl name="strm2 En" value="1" />
@@ -2215,52 +2206,52 @@
         <ctl name="Tx2Chan IpSrcId" value="RX1_ChanMgr" />
     </path>
 
-    <!-- Port C -->
-    <path name="iaxxx-dmic1">
-        <path name="iaxxx-port-c" />
-        <path name="iaxxx-port-a" />
-        <ctl name="QUAT_TDM_TX_0 Channels" value="One" />
-    </path>
-    <!-- Port B -->
-    <path name="iaxxx-dmic2">
-        <path name="iaxxx-port-b" />
-        <path name="iaxxx-port-a" />
-        <ctl name="QUAT_TDM_TX_0 Channels" value="One" />
-    </path>
     <!-- Port CDCPDM1 -->
-    <path name="iaxxx-dmic3">
+    <path name="iaxxx-dmic1">
         <path name="iaxxx-port-cdcpdm1" />
         <path name="iaxxx-port-a" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="One" />
     </path>
+    <!-- Port D -->
+    <path name="iaxxx-dmic2">
+        <path name="iaxxx-port-d" />
+        <path name="iaxxx-port-a" />
+        <ctl name="QUAT_TDM_TX_0 Channels" value="One" />
+    </path>
+    <!-- Port C -->
+    <path name="iaxxx-dmic3">
+        <path name="iaxxx-port-c" />
+        <path name="iaxxx-port-a" />
+        <ctl name="QUAT_TDM_TX_0 Channels" value="One" />
+    </path>
 
-    <!-- Port C+B -->
+    <!-- Port CDCPDM1+D -->
     <path name="iaxxx-dmic12">
-        <path name="iaxxx-port-cb" />
+        <path name="iaxxx-port-cdcpdm1-d" />
         <path name="iaxxx-port-a" />
         <ctl name="strm8 CH Mask En" value="3" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="Two" />
     </path>
 
-    <!-- Port C+CDCPDM1 -->
+    <!-- Port CDCPDM1+C -->
     <path name="iaxxx-dmic13">
-        <path name="iaxxx-port-c-cdcpdm1" />
+        <path name="iaxxx-port-cdcpdm1-c" />
         <path name="iaxxx-port-a" />
         <ctl name="strm8 CH Mask En" value="3" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="Two" />
     </path>
 
-    <!-- Port CDCPDM1+B -->
+    <!-- Port C+D -->
     <path name="iaxxx-dmic32">
-        <path name="iaxxx-port-cdcpdm1-b" />
+        <path name="iaxxx-port-cd" />
         <path name="iaxxx-port-a" />
         <ctl name="strm8 CH Mask En" value="3" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="Two" />
     </path>
 
-    <!-- Port CDCPDM1+B+C -->
+    <!-- Port C+D+CDCPDM1 -->
     <path name="iaxxx-dmic321">
-        <path name="iaxxx-port-cdcpdm1-bc" />
+        <path name="iaxxx-port-cd-cdcpdm1" />
         <path name="iaxxx-port-a" />
         <ctl name="strm8 CH Mask En" value="7" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="Four" />
@@ -2268,7 +2259,7 @@
 
     <!-- Port CDCPDM1+C+B -->
     <path name="iaxxx-dmic312">
-        <path name="iaxxx-port-cdcpdm1-cb" />
+        <path name="iaxxx-port-c-cdcpdm1-d" />
         <path name="iaxxx-port-a" />
         <ctl name="strm8 CH Mask En" value="7" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="Four" />
