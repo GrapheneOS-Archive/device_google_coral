@@ -64,6 +64,8 @@ constexpr char kUfsVersion[]{UFS_DIR "/version"};
 constexpr char kDiskStatsFile[]{"/sys/block/sda/stat"};
 constexpr char kUFSName[]{"UFS0"};
 
+constexpr char kTCPMPSYName[]{"tcpm-source-psy-usbpd0"};
+
 std::ifstream assert_open(const std::string &path) {
   std::ifstream stream(path);
   if (!stream.is_open()) {
@@ -95,7 +97,8 @@ void fill_ufs_storage_attribute(StorageAttribute *attr) {
 
 }  // anonymous namespace
 
-void healthd_board_init(struct healthd_config *) {
+void healthd_board_init(struct healthd_config *hc) {
+  hc->ignorePowerSupplyNames.push_back(android::String8(kTCPMPSYName));
   ccBackupRestoreMAX.Restore();
 }
 
