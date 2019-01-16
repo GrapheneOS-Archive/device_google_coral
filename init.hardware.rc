@@ -176,6 +176,9 @@ on init && property:vendor.skip.init=0
     write /dev/cpuset/application/background/cpus 0-7
     write /dev/cpuset/application/cpus 0-7
 
+    # Enable suspend clock reporting
+    write /sys/kernel/debug/clk/debug_suspend 1
+
 on late-init
     setprop vendor.thermal.config thermal_info_config.json
 
