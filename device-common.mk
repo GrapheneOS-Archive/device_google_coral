@@ -41,3 +41,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 	ro.lmk.kill_timeout_ms = 100 \
 	ro.lmk.use_minfree_levels = true \
 	ro.lmk.log_stats = true \
+
+# Modem loging file
+PRODUCT_COPY_FILES += \
+    device/google/coral/init.logging.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(PRODUCT_PLATFORM).logging.rc
