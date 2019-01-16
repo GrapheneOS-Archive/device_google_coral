@@ -37,9 +37,9 @@ class Vibrator : public IVibrator {
         std::ifstream effectDuration;
         std::ofstream effectIndex;
         std::ofstream effectQueue;
-        std::ofstream scale;
+        std::ofstream effectScale;
         std::ofstream state;
-        std::ofstream aspEnable;
+        std::fstream aspEnable;
     } HwApi;
 
   public:
@@ -77,6 +77,7 @@ class Vibrator : public IVibrator {
                                       uint32_t *outVolLevel, std::string *outEffectQueue);
     Return<Status> setEffectQueue(const std::string &effectQueue);
     Return<void> performEffect(Effect effect, EffectStrength strength, perform_cb _hidl_cb);
+    bool isUnderExternalControl();
     HwApi mHwApi;
     std::vector<uint32_t> mVolLevels;
     uint32_t mSimpleEffectDuration;

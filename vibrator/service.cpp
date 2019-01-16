@@ -44,7 +44,7 @@ static constexpr char EFFECT_DURATION_PATH[] =
     "/sys/class/leds/vibrator/device/cp_trigger_duration";
 static constexpr char EFFECT_INDEX_PATH[] = "/sys/class/leds/vibrator/device/cp_trigger_index";
 static constexpr char EFFECT_QUEUE_PATH[] = "/sys/class/leds/vibrator/device/cp_trigger_queue";
-static constexpr char DIGI_SCALE_PATH[] = "/sys/class/leds/vibrator/device/dig_scale";
+static constexpr char EFFECT_SCALE_PATH[] = "/sys/class/leds/vibrator/device/cp_dig_scale";
 static constexpr char ASP_ENABLE_PATH[] = "/sys/class/leds/vibrator/device/asp_enable";
 
 // File path to the calibration file
@@ -178,9 +178,9 @@ status_t registerVibratorService() {
         ALOGE("Failed to open %s (%d): %s", EFFECT_QUEUE_PATH, errno, strerror(errno));
     }
 
-    hwapi.scale.open(DIGI_SCALE_PATH);
-    if (!hwapi.scale) {
-        ALOGE("Failed to open %s (%d): %s", DIGI_SCALE_PATH, errno, strerror(errno));
+    hwapi.effectScale.open(EFFECT_SCALE_PATH);
+    if (!hwapi.effectScale) {
+        ALOGE("Failed to open %s (%d): %s", EFFECT_SCALE_PATH, errno, strerror(errno));
     }
 
     hwapi.aspEnable.open(ASP_ENABLE_PATH);

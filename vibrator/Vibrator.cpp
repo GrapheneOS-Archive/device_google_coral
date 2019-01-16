@@ -204,13 +204,17 @@ Return<Status> Vibrator::off() {
 }
 
 Return<bool> Vibrator::supportsAmplitudeControl() {
-    return (mHwApi.scale ? true : false);
+    return !isUnderExternalControl() && mHwApi.effectScale;
 }
 
 Return<Status> Vibrator::setAmplitude(uint8_t amplitude) {
     uint8_t factor = mVolLevels[WAVEFORM_LONG_VIBRATION_EFFECT_LEVEL];
     uint8_t adjusted = std::round(amplitude * (factor / static_cast<float>(VOLTAGE_SCALE_MAX)));
-    return setAmplitude(adjusted, UINT8_MAX);
+    if (!isUnderExternalControl()) {
+        return setAmplitude(adjusted, UINT8_MAX);
+    } else {
+        return Status::UNSUPPORTED_OPERATION;
+    }
 }
 
 Return<Status> Vibrator::setAmplitude(uint8_t amplitude, uint8_t maximum) {
@@ -221,9 +225,9 @@ Return<Status> Vibrator::setAmplitude(uint8_t amplitude, uint8_t maximum) {
     int32_t scale = std::round((-20 * std::log10(amplitude / static_cast<float>(maximum))) /
                                (AMP_ATTENUATE_STEP_SIZE));
 
-    mHwApi.scale << scale << std::endl;
-    if (!mHwApi.scale) {
-        mHwApi.scale.clear();
+    mHwApi.effectScale << scale << std::endl;
+    if (!mHwApi.effectScale) {
+        mHwApi.effectScale.clear();
         ALOGE("Failed to set amplitude (%d): %s", errno, strerror(errno));
         return Status::UNKNOWN_ERROR;
     }
@@ -245,6 +249,14 @@ Return<Status> Vibrator::setExternalControl(bool enabled) {
         return Status::UNKNOWN_ERROR;
     }
     return Status::OK;
+}
+
+bool Vibrator::isUnderExternalControl() {
+    bool isAspEnabled;
+    mHwApi.aspEnable.seekg(0);
+    mHwApi.aspEnable >> isAspEnabled;
+    mHwApi.aspEnable.clear();
+    return isAspEnabled;
 }
 
 Return<void> Vibrator::perform(V1_0::Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
