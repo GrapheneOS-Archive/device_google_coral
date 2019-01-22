@@ -546,7 +546,9 @@ on property:init.svc.vendor.per_mgr=running
 
 on property:sys.shutdown.requested=*
     stop per_proxy
-    # fixme: remove when b/123062257 resolved
+
+on shutdown
+    # fixme: remove when b/123062257 is resolved
     #        wakes up airbrush prior to shutdown to avoid ramdump.
     write /d/airbrush/airbrush_sm/chip_state 9
 
