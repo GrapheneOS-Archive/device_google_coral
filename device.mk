@@ -85,8 +85,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ueventd.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc
 
 
-MSM_VIDC_TARGET_LIST := sm8150 # Get the color format from kernel headers
-MASTER_SIDE_CP_TARGET_LIST := sm8150 # ION specific settings
+MSM_VIDC_TARGET_LIST := msmnile # Get the color format from kernel headers
+MASTER_SIDE_CP_TARGET_LIST := msmnile # ION specific settings
 
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
   PRODUCT_COPY_FILES += \
@@ -114,7 +114,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.sys.sdcardfs=1
 
 PRODUCT_PACKAGES += \
-    bootctrl.sm8150
+    bootctrl.msmnile
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.cp_system_other_odex=1
@@ -137,7 +137,7 @@ AB_OTA_POSTINSTALL_CONFIG += \
 # Enable update engine sideloading by including the static version of the
 # boot_control HAL and its dependencies.
 PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.sm8150 \
+    bootctrl.msmnile \
     libgptutils \
     libz \
     libcutils
@@ -266,9 +266,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.snapshot_timer=0
 
 PRODUCT_PACKAGES += \
-    hwcomposer.sm8150 \
+    hwcomposer.msmnile \
     android.hardware.graphics.composer@2.3-service \
-    gralloc.sm8150 \
+    gralloc.msmnile \
     android.hardware.graphics.mapper@2.0-impl-qti-display \
     vendor.qti.hardware.display.allocator@1.0-service
 
@@ -283,7 +283,7 @@ PRODUCT_PACKAGES += \
 
 # Memtrack HAL
 PRODUCT_PACKAGES += \
-    memtrack.sm8150 \
+    memtrack.msmnile \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service
 
@@ -351,7 +351,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service_64 \
     camera.device@3.2-impl \
-    camera.sm8150 \
+    camera.msmnile \
     libqomx_core \
     libmmjpeg_interface \
     libmmcamera_interface \
@@ -443,7 +443,7 @@ PRODUCT_PACKAGES += \
     libqcompostprocbundle
 
 PRODUCT_PACKAGES += \
-    audio.primary.sm8150 \
+    audio.primary.msmnile \
     audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default \
