@@ -46,7 +46,7 @@ static constexpr char DIGI_SCALE_PATH[] = "/sys/class/leds/vibrator/device/dig_s
 static constexpr char ASP_ENABLE_PATH[] = "/sys/class/leds/vibrator/device/asp_enable";
 
 // File path to the calibration file
-static constexpr char CALIBRATION_FILEPATH[] = "/persist/haptics/cs40l25a.cal";
+static constexpr char CALIBRATION_FILEPATH[] = "/mnt/vendor/persist/haptics/cs40l25a.cal";
 
 // Kernel ABIs for updating the calibration data
 static constexpr char F0_CONFIG[] = "f0_measured";
