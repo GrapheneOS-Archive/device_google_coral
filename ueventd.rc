@@ -125,3 +125,6 @@ firmware_directories /vendor/firmware_mnt/image/
 
 # Face Authentication
 /dev/faceauth             0660   system system
+
+# IPU
+/dev/ipu                  0666   cameraserver camera
