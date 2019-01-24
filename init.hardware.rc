@@ -182,34 +182,34 @@ on late-init
 on fs
     mount_all /vendor/etc/fstab.${ro.boot.hardware.platform} --early
 
-    mkdir /persist/audio 0770 media audio
-    mkdir /persist/data 0700 system system
-    mkdir /persist/display 0770 system graphics
-    mkdir /persist/haptics 0770 system system
-    mkdir /persist/rfs 0770 root system
-    mkdir /persist/hlos_rfs 0770 root system
-    mkdir /persist/secnvm 0770 system system
-    mkdir /persist/oslo 0770 system system
-    mkdir /persist/touch 0770 system system
-    chmod 0770 /persist/rfs
-    chmod 0770 /persist/rfs/shared
-    chmod 0770 /persist/rfs/msm
-    chmod 0770 /persist/rfs/msm/adsp
-    chmod 0770 /persist/rfs/msm/mpss
-    chmod 0770 /persist/rfs/msm/slpi
-    chmod 0770 /persist/rfs/mdm
-    chmod 0770 /persist/rfs/mdm/adsp
-    chmod 0770 /persist/rfs/mdm/mpss
-    chmod 0770 /persist/rfs/mdm/slpi
-    chmod 0770 /persist/rfs/mdm/tn
-    chmod 0770 /persist/rfs/apq
-    chmod 0770 /persist/rfs/apq/gnss
-    chmod 0770 /persist/hlos_rfs
+    mkdir /mnt/vendor/persist/audio 0770 media audio
+    mkdir /mnt/vendor/persist/data 0700 system system
+    mkdir /mnt/vendor/persist/display 0770 system graphics
+    mkdir /mnt/vendor/persist/haptics 0770 system system
+    mkdir /mnt/vendor/persist/rfs 0770 root system
+    mkdir /mnt/vendor/persist/hlos_rfs 0770 root system
+    mkdir /mnt/vendor/persist/secnvm 0770 system system
+    mkdir /mnt/vendor/persist/oslo 0770 system system
+    mkdir /mnt/vendor/persist/touch 0770 system system
+    chmod 0770 /mnt/vendor/persist/rfs
+    chmod 0770 /mnt/vendor/persist/rfs/shared
+    chmod 0770 /mnt/vendor/persist/rfs/msm
+    chmod 0770 /mnt/vendor/persist/rfs/msm/adsp
+    chmod 0770 /mnt/vendor/persist/rfs/msm/mpss
+    chmod 0770 /mnt/vendor/persist/rfs/msm/slpi
+    chmod 0770 /mnt/vendor/persist/rfs/mdm
+    chmod 0770 /mnt/vendor/persist/rfs/mdm/adsp
+    chmod 0770 /mnt/vendor/persist/rfs/mdm/mpss
+    chmod 0770 /mnt/vendor/persist/rfs/mdm/slpi
+    chmod 0770 /mnt/vendor/persist/rfs/mdm/tn
+    chmod 0770 /mnt/vendor/persist/rfs/apq
+    chmod 0770 /mnt/vendor/persist/rfs/apq/gnss
+    chmod 0770 /mnt/vendor/persist/hlos_rfs
 
     # for cycle count backup
-    mkdir /persist/battery 0700 system system
+    mkdir /mnt/vendor/persist/battery 0700 system system
 
-    restorecon_recursive /persist
+    restorecon_recursive /mnt/vendor/persist
 
 on post-fs
     # set RLIMIT_MEMLOCK to 64MB
@@ -240,7 +240,7 @@ on late-fs
     mount_all /vendor/etc/fstab.${ro.boot.hardware.platform} --late
 
     # Required for time_daemon
-    mkdir /persist/time 0770 system system
+    mkdir /mnt/vendor/persist/time 0770 system system
 
     # Start time daemon early so that the system time can be set early
     start time_daemon
@@ -315,39 +315,39 @@ on zygote-start
 
 on early-boot
     # Set up sensors-related directories and permissions
-    chmod 775 /persist/sensors
-    chmod 664 /persist/sensors/sensors_settings
-    chown root system /persist/sensors/registry
-    chmod 775 /persist/sensors/registry
-    chown root system /persist/sensors/registry/registry
-    chmod 775 /persist/sensors/registry/registry
+    chmod 775 /mnt/vendor/persist/sensors
+    chmod 664 /mnt/vendor/persist/sensors/sensors_settings
+    chown root system /mnt/vendor/persist/sensors/registry
+    chmod 775 /mnt/vendor/persist/sensors/registry
+    chown root system /mnt/vendor/persist/sensors/registry/registry
+    chmod 775 /mnt/vendor/persist/sensors/registry/registry
 
-    chown system root /persist/sensors/sensors_settings
-    chown root root /persist/sensors/registry/registry/sensors_settings
+    chown system root /mnt/vendor/persist/sensors/sensors_settings
+    chown root root /mnt/vendor/persist/sensors/registry/registry/sensors_settings
 
     mkdir /data/vendor/sensors 0770
     chown system system /data/vendor/sensors
 
-    chmod 770 /persist/audio
-    chmod 660 /persist/audio/audio.cal
-    chown media audio /persist/audio
-    chown audioserver audio /persist/audio/audio.cal
+    chmod 770 /mnt/vendor/persist/audio
+    chmod 660 /mnt/vendor/persist/audio/audio.cal
+    chown media audio /mnt/vendor/persist/audio
+    chown audioserver audio /mnt/vendor/persist/audio/audio.cal
 
     # Set up haptics-related directories and permissions
-    chmod 770 /persist/haptics
-    chmod 440 /persist/haptics/cs40l25a.cal
-    chown system system /persist/haptics
-    chown system system /persist/haptics/cs40l25a.cal
+    chmod 770 /mnt/vendor/persist/haptics
+    chmod 440 /mnt/vendor/persist/haptics/cs40l25a.cal
+    chown system system /mnt/vendor/persist/haptics
+    chown system system /mnt/vendor/persist/haptics/cs40l25a.cal
 
     # Set up oslo-related directories and permissions
-    chmod 770 /persist/oslo
-    chmod 660 /persist/oslo/oslo.cal
-    chown system system /persist/oslo
-    chown system system /persist/oslo/oslo.cal
+    chmod 770 /mnt/vendor/persist/oslo
+    chmod 660 /mnt/vendor/persist/oslo/oslo.cal
+    chown system system /mnt/vendor/persist/oslo
+    chown system system /mnt/vendor/persist/oslo/oslo.cal
 
     # Set up touch directories and permissions
-    chmod 770 /persist/touch
-    chown system system /persist/touch
+    chmod 770 /mnt/vendor/persist/touch
+    chown system system /mnt/vendor/persist/touch
 
     # Permission for lights driver
     chown system system /sys/class/backlight/panel0-backlight/brightness
