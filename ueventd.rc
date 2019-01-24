@@ -128,3 +128,6 @@ firmware_directories /vendor/firmware_mnt/image/
 
 # IPU
 /dev/ipu                  0666   cameraserver camera
+
+# AB DRAM
+/dev/ab-dram              0666   cameraserver camera
