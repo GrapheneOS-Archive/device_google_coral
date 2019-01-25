@@ -18,7 +18,7 @@ on property:init.svc.vendor.thermal-engine=running && property:persist.vendor.di
   stop vendor.thermal-engine
 
 on property:persist.vendor.disable.thermal.control=1
-  write /sys/devices/virtual/thermal/tz-by-name/quiet-therm/emul_temp 25000
+  write /sys/devices/virtual/thermal/tz-by-name/sdm-therm/emul_temp 25000
   write /sys/devices/virtual/thermal/tz-by-name/usbc-therm/emul_temp 25000
   write /sys/module/overheat_mitigation/parameters/enable 0
 
