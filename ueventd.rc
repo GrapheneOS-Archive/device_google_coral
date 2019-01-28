@@ -131,3 +131,6 @@ firmware_directories /vendor/firmware_mnt/image/
 
 # AB DRAM
 /dev/ab-dram              0666   cameraserver camera
+
+# ABC PCIE DMA
+/dev/abc-pcie-dma         0666   cameraserver camera
