@@ -55,6 +55,9 @@ on early-boot
     write /sys/module/libcomposite/parameters/disable_l1_for_hs "y"
     write /config/usb_gadget/g1/functions/gsi.rndis/rndis_class_id 1
 
+on property:init.svc.console=running
+    write /sys/class/power_supply/usb/moisture_detection_enabled 0
+
 on boot
     setprop sys.usb.configfs 2
 
