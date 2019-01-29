@@ -209,6 +209,8 @@ BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 # Use mke2fs to create ext4 images
 TARGET_USES_MKE2FS := true
 
+BOARD_EXT4_SHARE_DUP_BLOCKS := true
+
 BOARD_VENDOR_KERNEL_MODULES += \
     $(wildcard device/google/coral-kernel/*.ko)
 
