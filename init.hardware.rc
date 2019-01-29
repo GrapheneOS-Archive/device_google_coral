@@ -262,6 +262,7 @@ on post-fs-data
     mkdir /data/vendor/tloc 0700 system drmrpc
     mkdir /data/vendor/nnhal 0700 system system
     mkdir /data/vendor/time 0770 system system
+    mkdir /data/vendor/modem_fdr 0700 root system
 
 on zygote-start
     # zygote is started in common init.rc
