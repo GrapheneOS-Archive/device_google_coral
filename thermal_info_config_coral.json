@@ -181,6 +181,21 @@
             "Multiplier":0.001
         },
         {
+            "Name":"s2mpg01_tz",
+            "Type":"NPU",
+            "HotThreshold":[
+                "NAN",
+                "NAN",
+                "NAN",
+                "NAN",
+                "NAN",
+                "NAN",
+                "NAN"
+            ],
+            "VrThreshold":"NAN",
+            "Multiplier":0.001
+        },
+        {
             "Name":"sdm-therm",
             "Type":"SKIN",
             "HotThreshold":[
