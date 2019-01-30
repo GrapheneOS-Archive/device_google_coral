@@ -592,7 +592,7 @@ ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 # b/36703476: Set default log size to 1M
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.logd.size=1M
-# b/114766334: persist all logs by default rotating on 30 files of 1MiB
+# b/114766334: persist all logs by default rotating on 30 files of 1MiB 
 PRODUCT_PROPERTY_OVERRIDES += \
   logd.logpersistd=logcatd \
   logd.logpersistd.size=30
@@ -623,7 +623,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     vndk-sp
 
-PRODUCT_ENFORCE_RRO_TARGETS := *
+PRODUCT_ENFORCE_RRO_TARGETS := framework-res
 
 # Override heap growth limit due to high display density on device
 PRODUCT_PROPERTY_OVERRIDES += \
