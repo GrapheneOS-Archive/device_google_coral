@@ -32,13 +32,13 @@ using android::hardware::vibrator::V1_2::Effect;
 class Vibrator : public IVibrator {
   public:
     typedef struct {
-        std::ofstream mActivate;
-        std::ofstream mDuration;
-        std::ofstream mEffectIndex;
-        std::ofstream mEffectQueue;
-        std::ofstream mScale;
-        std::ofstream mState;
-        std::ofstream mAspEnable;
+        std::ofstream activate;
+        std::ofstream duration;
+        std::ofstream effectIndex;
+        std::ofstream effectQueue;
+        std::ofstream scale;
+        std::ofstream state;
+        std::ofstream aspEnable;
     } HwApi;
 
   public:

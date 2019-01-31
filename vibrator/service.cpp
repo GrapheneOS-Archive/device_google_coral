@@ -153,43 +153,43 @@ status_t registerVibratorService() {
     Vibrator::HwApi hwapi;
 
     // ostreams below are required
-    hwapi.mActivate.open(ACTIVATE_PATH);
-    if (!hwapi.mActivate) {
+    hwapi.activate.open(ACTIVATE_PATH);
+    if (!hwapi.activate) {
         ALOGE("Failed to open %s (%d): %s", ACTIVATE_PATH, errno, strerror(errno));
     }
 
-    hwapi.mDuration.open(DURATION_PATH);
-    if (!hwapi.mDuration) {
+    hwapi.duration.open(DURATION_PATH);
+    if (!hwapi.duration) {
         ALOGE("Failed to open %s (%d): %s", DURATION_PATH, errno, strerror(errno));
     }
 
-    hwapi.mState.open(STATE_PATH);
-    if (!hwapi.mState) {
+    hwapi.state.open(STATE_PATH);
+    if (!hwapi.state) {
         ALOGE("Failed to open %s (%d): %s", STATE_PATH, errno, strerror(errno));
     }
 
-    hwapi.mEffectIndex.open(EFFECT_INDEX_PATH);
-    if (!hwapi.mEffectIndex) {
+    hwapi.effectIndex.open(EFFECT_INDEX_PATH);
+    if (!hwapi.effectIndex) {
         ALOGE("Failed to open %s (%d): %s", EFFECT_INDEX_PATH, errno, strerror(errno));
     }
 
-    hwapi.mEffectQueue.open(EFFECT_QUEUE_PATH);
-    if (!hwapi.mEffectQueue) {
+    hwapi.effectQueue.open(EFFECT_QUEUE_PATH);
+    if (!hwapi.effectQueue) {
         ALOGE("Failed to open %s (%d): %s", EFFECT_QUEUE_PATH, errno, strerror(errno));
     }
 
-    hwapi.mScale.open(DIGI_SCALE_PATH);
-    if (!hwapi.mScale) {
+    hwapi.scale.open(DIGI_SCALE_PATH);
+    if (!hwapi.scale) {
         ALOGE("Failed to open %s (%d): %s", DIGI_SCALE_PATH, errno, strerror(errno));
     }
 
-    hwapi.mAspEnable.open(ASP_ENABLE_PATH);
-    if (!hwapi.mAspEnable) {
+    hwapi.aspEnable.open(ASP_ENABLE_PATH);
+    if (!hwapi.aspEnable) {
         ALOGE("Failed to open %s (%d): %s", ASP_ENABLE_PATH, errno, strerror(errno));
     }
 
-    hwapi.mState << 1 << std::endl;
-    if (!hwapi.mState) {
+    hwapi.state << 1 << std::endl;
+    if (!hwapi.state) {
         ALOGE("Failed to set state (%d): %s", errno, strerror(errno));
     }
 

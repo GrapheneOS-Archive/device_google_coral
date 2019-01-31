@@ -43,8 +43,8 @@ using Status = ::android::hardware::vibrator::V1_0::Status;
 using EffectStrength = ::android::hardware::vibrator::V1_0::EffectStrength;
 
 typedef struct {
-    uint32_t mDuration;
-    const char *mQueue;
+    uint32_t duration;
+    const char *queue;
 } RingtoneSpec;
 
 static constexpr uint32_t WAVEFORM_SIMPLE_EFFECT_INDEX = 2;
@@ -157,20 +157,20 @@ Vibrator::Vibrator(HwApi &&hwapi, std::vector<uint32_t> &&v_levels)
     : mHwApi(std::move(hwapi)), mVolLevels(std::move(v_levels)) {}
 
 Return<Status> Vibrator::on(uint32_t timeoutMs, uint32_t effectIndex) {
-    mHwApi.mEffectIndex << effectIndex << std::endl;
-    if (!mHwApi.mEffectIndex) {
-        mHwApi.mEffectIndex.clear();
+    mHwApi.effectIndex << effectIndex << std::endl;
+    if (!mHwApi.effectIndex) {
+        mHwApi.effectIndex.clear();
     }
     if (MAX_TRIGGER_LATENCY_MS <= UINT32_MAX - timeoutMs) {
         timeoutMs += MAX_TRIGGER_LATENCY_MS;
     }
-    mHwApi.mDuration << timeoutMs << std::endl;
-    if (!mHwApi.mDuration) {
-        mHwApi.mDuration.clear();
+    mHwApi.duration << timeoutMs << std::endl;
+    if (!mHwApi.duration) {
+        mHwApi.duration.clear();
     }
-    mHwApi.mActivate << 1 << std::endl;
-    if (!mHwApi.mActivate) {
-        mHwApi.mActivate.clear();
+    mHwApi.activate << 1 << std::endl;
+    if (!mHwApi.activate) {
+        mHwApi.activate.clear();
     }
 
     return Status::OK;
@@ -182,9 +182,9 @@ Return<Status> Vibrator::on(uint32_t timeoutMs) {
 }
 
 Return<Status> Vibrator::off() {
-    mHwApi.mActivate << 0 << std::endl;
-    if (!mHwApi.mActivate) {
-        mHwApi.mActivate.clear();
+    mHwApi.activate << 0 << std::endl;
+    if (!mHwApi.activate) {
+        mHwApi.activate.clear();
         ALOGE("Failed to turn vibrator off (%d): %s", errno, strerror(errno));
         return Status::UNKNOWN_ERROR;
     }
@@ -192,7 +192,7 @@ Return<Status> Vibrator::off() {
 }
 
 Return<bool> Vibrator::supportsAmplitudeControl() {
-    return (mHwApi.mScale ? true : false);
+    return (mHwApi.scale ? true : false);
 }
 
 Return<Status> Vibrator::setAmplitude(uint8_t amplitude) {
@@ -209,9 +209,9 @@ Return<Status> Vibrator::setAmplitude(uint8_t amplitude, uint8_t maximum) {
     int32_t scale = std::round((-20 * std::log10(amplitude / static_cast<float>(maximum))) /
                                (AMP_ATTENUATE_STEP_SIZE));
 
-    mHwApi.mScale << scale << std::endl;
-    if (!mHwApi.mScale) {
-        mHwApi.mScale.clear();
+    mHwApi.scale << scale << std::endl;
+    if (!mHwApi.scale) {
+        mHwApi.scale.clear();
         ALOGE("Failed to set amplitude (%d): %s", errno, strerror(errno));
         return Status::UNKNOWN_ERROR;
     }
@@ -222,13 +222,13 @@ Return<Status> Vibrator::setAmplitude(uint8_t amplitude, uint8_t maximum) {
 // Methods from ::android::hardware::vibrator::V1_3::IVibrator follow.
 
 Return<bool> Vibrator::supportsExternalControl() {
-    return (mHwApi.mAspEnable ? true : false);
+    return (mHwApi.aspEnable ? true : false);
 }
 
 Return<Status> Vibrator::setExternalControl(bool enabled) {
-    mHwApi.mAspEnable << enabled << std::endl;
-    if (!mHwApi.mAspEnable) {
-        mHwApi.mAspEnable.clear();
+    mHwApi.aspEnable << enabled << std::endl;
+    if (!mHwApi.aspEnable) {
+        mHwApi.aspEnable.clear();
         ALOGE("Failed to set external control (%d): %s", errno, strerror(errno));
         return Status::UNKNOWN_ERROR;
     }
@@ -394,17 +394,17 @@ Return<Status> Vibrator::getRingtoneDetails(Effect effect, EffectStrength streng
             return Status::UNSUPPORTED_OPERATION;
     }
 
-    *outTimeMs = ringtone->mDuration;
+    *outTimeMs = ringtone->duration;
     *outVolLevel = volLevel;
-    *outEffectQueue = ringtone->mQueue;
+    *outEffectQueue = ringtone->queue;
 
     return Status::OK;
 }
 
 Return<Status> Vibrator::setEffectQueue(const std::string &effectQueue) {
-    mHwApi.mEffectQueue << effectQueue << std::endl;
-    if (!mHwApi.mEffectQueue) {
-        mHwApi.mEffectQueue.clear();
+    mHwApi.effectQueue << effectQueue << std::endl;
+    if (!mHwApi.effectQueue) {
+        mHwApi.effectQueue.clear();
         ALOGE("Failed to write \"%s\" to effect queue (%d): %s", effectQueue.c_str(), errno,
               strerror(errno));
         return Status::UNKNOWN_ERROR;
