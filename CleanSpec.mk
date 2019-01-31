@@ -74,3 +74,6 @@ $(call add-clean-step, rm -rf $(PRODUCT_OUT)/super_empty.img)
 # Remove Vibrator HAL 1.2
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/init/android.hardware.vibrator@1.2-service.coral.rc)
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/bin/hw/android.hardware.vibrator@1.2-service.coral)
+
+# Remove Misnamed Vibrator VINTF Fragment
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/vintf/manifest/manifest.xml)
