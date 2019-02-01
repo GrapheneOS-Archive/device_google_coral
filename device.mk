@@ -24,6 +24,7 @@ PRODUCT_SOONG_NAMESPACES += \
     device/google/coral \
     hardware/qcom/sm8150 \
     hardware/qcom/sm8150/display \
+    vendor/google/camera \
     vendor/qcom/sm8150
 
 PRODUCT_PROPERTY_OVERRIDES += \
