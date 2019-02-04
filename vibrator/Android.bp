@@ -16,7 +16,7 @@ cc_binary {
     name: "android.hardware.vibrator@1.3-service.coral",
     relative_install_path: "hw",
     init_rc: ["android.hardware.vibrator@1.3-service.coral.rc"],
-    vintf_fragments: ["manifest.xml"],
+    vintf_fragments: ["android.hardware.vibrator@1.3-service.coral.xml"],
     srcs: ["service.cpp", "Vibrator.cpp"],
     cflags: ["-Wall", "-Werror"],
     shared_libs: [
