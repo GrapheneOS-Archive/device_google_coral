@@ -211,8 +211,26 @@ TARGET_USES_MKE2FS := true
 
 BOARD_EXT4_SHARE_DUP_BLOCKS := true
 
+# Kernel modules
+ifeq (,$(filter-out flame_kasan coral_kasan, $(TARGET_PRODUCT)))
+BOARD_VENDOR_KERNEL_MODULES += \
+    $(wildcard device/google/coral-kernel/kasan/*.ko)
+else ifeq (,$(filter-out flame_kernel_debug_memory coral_kernel_debug_memory, $(TARGET_PRODUCT)))
+BOARD_VENDOR_KERNEL_MODULES += \
+    $(wildcard device/google/coral-kernel/debug_memory/*.ko)
+else ifeq (,$(filter-out flame_kernel_debug_locking coral_kernel_debug_locking, $(TARGET_PRODUCT)))
+BOARD_VENDOR_KERNEL_MODULES += \
+    $(wildcard device/google/coral-kernel/debug_locking/*.ko)
+else ifeq (,$(filter-out flame_kernel_debug_hang coral_kernel_debug_hang, $(TARGET_PRODUCT)))
+BOARD_VENDOR_KERNEL_MODULES += \
+    $(wildcard device/google/coral-kernel/debug_hang/*.ko)
+else ifeq (,$(filter-out flame_kernel_debug_api coral_kernel_debug_api, $(TARGET_PRODUCT)))
+BOARD_VENDOR_KERNEL_MODULES += \
+    $(wildcard device/google/coral-kernel/debug_api/*.ko)
+else
 BOARD_VENDOR_KERNEL_MODULES += \
     $(wildcard device/google/coral-kernel/*.ko)
+endif
 
 BOARD_SUPER_PARTITION_SIZE := 8145338368
 BOARD_SUPER_PARTITION_GROUPS := google_dynamic_partitions
