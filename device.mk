@@ -648,10 +648,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_cdma_sub=0
 
-# Set display color mode to Automatic by default
+# Set display color mode to Boosted by default
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.sf.color_saturation=1.0 \
-    persist.sys.sf.native_mode=1
+    persist.sys.sf.color_saturation=1.1 \
+    persist.sys.sf.native_mode=0
 
 # Keymaster configuration
 PRODUCT_COPY_FILES += \
