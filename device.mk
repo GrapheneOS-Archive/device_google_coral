@@ -350,8 +350,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service_64 \
+    android.hardware.camera.provider@2.4-impl-google \
     camera.device@3.2-impl \
     camera.msmnile \
+    libgooglecamerahal \
+    libgooglecamerahwl_impl \
     libqomx_core \
     libmmjpeg_interface \
     libmmcamera_interface \
