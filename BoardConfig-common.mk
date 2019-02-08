@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-TARGET_BOARD_PLATFORM := sm8150
+TARGET_BOARD_PLATFORM := msmnile
 TARGET_BOARD_INFO_FILE := device/google/coral/board-info.txt
 USES_DEVICE_GOOGLE_CORAL := true
 TARGET_NO_BOOTLOADER := true
@@ -113,7 +113,7 @@ include device/google/coral-sepolicy/coral-sepolicy.mk
 
 TARGET_FS_CONFIG_GEN := device/google/coral/config.fs
 
-QCOM_BOARD_PLATFORMS += sm8150
+QCOM_BOARD_PLATFORMS += msmnile
 QC_PROP_ROOT := vendor/qcom/sm8150/proprietary
 QC_PROP_PATH := $(QC_PROP_ROOT)
 BOARD_HAVE_BLUETOOTH_QCOM := true
