@@ -55,7 +55,7 @@ ifeq ($(wildcard vendor/google_devices/coral/proprietary/device-vendor-coral.mk)
 endif
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := device/google/coral-kernel/Image.lz4-dtb
+    LOCAL_KERNEL := device/google/coral-kernel/Image.lz4
 else
     LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
