@@ -118,7 +118,7 @@ QC_PROP_ROOT := vendor/qcom/sm8150/proprietary
 QC_PROP_PATH := $(QC_PROP_ROOT)
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BOARD_HAVE_QCOM_FM := false
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/google/coral/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := build/make/target/board/mainline_arm64/bluetooth
 
 # Camera
 TARGET_USES_AOSP := true
