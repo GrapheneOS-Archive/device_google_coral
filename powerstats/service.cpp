@@ -130,7 +130,7 @@ int main(int /* argc */, char** /* argv */) {
     std::vector<std::pair<std::string, std::string>> airStateHeaders = {
         std::make_pair("Active", "ACTIVE"),
         std::make_pair("Sleep", "SLEEP"),
-        std::make_pair("Deep sleep", "DEEP SLEEP"),
+        std::make_pair("Deep-Sleep", "DEEP SLEEP"),
         std::make_pair("Suspend", "SUSPEND"),
         std::make_pair("Off", "OFF"),
         std::make_pair("Unknown", "UNKNOWN"),
