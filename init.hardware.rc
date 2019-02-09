@@ -187,6 +187,10 @@ on init && property:vendor.skip.init=0
 on late-init
     setprop vendor.thermal.config thermal_info_config.json
 
+# Override thermal HAL config for JAWS board
+on fs && property:ro.revision="DEV1.0"
+    setprop vendor.thermal.config thermal_info_config_jaws.json
+
 on fs
     mount_all /vendor/etc/fstab.${ro.boot.hardware.platform} --early
 
