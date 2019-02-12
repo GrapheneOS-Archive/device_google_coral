@@ -266,6 +266,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.snapshot_timer=0
 
 PRODUCT_PACKAGES += \
+    lights.msmnile \
     hwcomposer.msmnile \
     android.hardware.graphics.composer@2.3-service \
     gralloc.msmnile \
