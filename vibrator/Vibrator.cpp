@@ -149,7 +149,8 @@ static constexpr RingtoneSpec WAVEFORM_RINGTONES[] = {
     },
 };
 
-static constexpr int8_t MAX_TRIGGER_LATENCY_MS = 6;
+static constexpr int8_t MAX_COLD_START_LATENCY_MS = 6; // I2C Transaction + DSP Return-From-Standby
+static constexpr int8_t MAX_PAUSE_TIMING_ERROR_MS = 1; // ALERT Irq Handling
 
 static constexpr float AMP_ATTENUATE_STEP_SIZE = 0.125f;
 
@@ -160,9 +161,6 @@ Return<Status> Vibrator::on(uint32_t timeoutMs, uint32_t effectIndex) {
     mHwApi.effectIndex << effectIndex << std::endl;
     if (!mHwApi.effectIndex) {
         mHwApi.effectIndex.clear();
-    }
-    if (MAX_TRIGGER_LATENCY_MS <= UINT32_MAX - timeoutMs) {
-        timeoutMs += MAX_TRIGGER_LATENCY_MS;
     }
     mHwApi.duration << timeoutMs << std::endl;
     if (!mHwApi.duration) {
@@ -178,6 +176,9 @@ Return<Status> Vibrator::on(uint32_t timeoutMs, uint32_t effectIndex) {
 
 // Methods from ::android::hardware::vibrator::V1_1::IVibrator follow.
 Return<Status> Vibrator::on(uint32_t timeoutMs) {
+    if (MAX_COLD_START_LATENCY_MS <= UINT32_MAX - timeoutMs) {
+        timeoutMs += MAX_COLD_START_LATENCY_MS;
+    }
     return on(timeoutMs, WAVEFORM_LONG_VIBRATION_EFFECT_INDEX);
 }
 
@@ -285,7 +286,7 @@ Return<Status> Vibrator::getSimpleDetails(Effect effect, EffectStrength strength
             return Status::UNSUPPORTED_OPERATION;
     }
 
-    timeMs += MAX_TRIGGER_LATENCY_MS;  // Add expected cold-start latency
+    timeMs += MAX_COLD_START_LATENCY_MS;
 
     *outTimeMs = timeMs;
     *outVolLevel = volLevel;
@@ -316,7 +317,7 @@ Return<Status> Vibrator::getCompoundDetails(Effect effect, EffectStrength streng
             effectBuilder << ",";
 
             effectBuilder << WAVEFORM_DOUBLE_CLICK_SILENCE_MS;
-            timeMs += WAVEFORM_DOUBLE_CLICK_SILENCE_MS + MAX_TRIGGER_LATENCY_MS;
+            timeMs += WAVEFORM_DOUBLE_CLICK_SILENCE_MS + MAX_PAUSE_TIMING_ERROR_MS;
 
             effectBuilder << ",";
 
