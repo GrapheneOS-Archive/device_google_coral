@@ -266,7 +266,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.snapshot_timer=0
 
 PRODUCT_PACKAGES += \
-    lights.msmnile \
     hwcomposer.msmnile \
     android.hardware.graphics.composer@2.3-service \
     gralloc.msmnile \
@@ -279,7 +278,7 @@ PRODUCT_PACKAGES += \
 
 # Light HAL
 PRODUCT_PACKAGES += \
-    lights.$(PRODUCT_PLATFORM) \
+    lights.msmnile \
     hardware.google.light@1.0-service
 
 # Memtrack HAL
