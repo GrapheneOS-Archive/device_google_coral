@@ -50,13 +50,10 @@ typedef struct {
 static constexpr uint32_t WAVEFORM_SIMPLE_EFFECT_INDEX = 2;
 
 static constexpr uint32_t WAVEFORM_TICK_EFFECT_LEVEL = 1;
-static constexpr uint32_t WAVEFORM_TICK_EFFECT_MS = 9;
 
 static constexpr uint32_t WAVEFORM_CLICK_EFFECT_LEVEL = 2;
-static constexpr uint32_t WAVEFORM_CLICK_EFFECT_MS = 9;
 
 static constexpr uint32_t WAVEFORM_HEAVY_CLICK_EFFECT_LEVEL = 3;
-static constexpr uint32_t WAVEFORM_HEAVY_CLICK_EFFECT_MS = 9;
 
 static constexpr uint32_t WAVEFORM_DOUBLE_CLICK_SILENCE_MS = 100;
 
@@ -153,9 +150,23 @@ static constexpr int8_t MAX_COLD_START_LATENCY_MS = 6; // I2C Transaction + DSP 
 static constexpr int8_t MAX_PAUSE_TIMING_ERROR_MS = 1; // ALERT Irq Handling
 
 static constexpr float AMP_ATTENUATE_STEP_SIZE = 0.125f;
+static constexpr float EFFECT_FREQUENCY_KHZ = 48.0f;
 
 Vibrator::Vibrator(HwApi &&hwapi, std::vector<uint32_t> &&v_levels)
-    : mHwApi(std::move(hwapi)), mVolLevels(std::move(v_levels)) {}
+    : mHwApi(std::move(hwapi)), mVolLevels(std::move(v_levels)) {
+    uint32_t effectDuration;
+
+    mHwApi.effectIndex << WAVEFORM_SIMPLE_EFFECT_INDEX << std::endl;
+    if (!mHwApi.effectIndex) {
+        mHwApi.effectIndex.clear();
+    }
+
+    mHwApi.effectDuration.seekg(0);
+    mHwApi.effectDuration >> effectDuration;
+    mHwApi.effectDuration.clear();
+
+    mSimpleEffectDuration = std::ceil(effectDuration / EFFECT_FREQUENCY_KHZ);
+}
 
 Return<Status> Vibrator::on(uint32_t timeoutMs, uint32_t effectIndex) {
     mHwApi.effectIndex << effectIndex << std::endl;
@@ -258,15 +269,12 @@ Return<Status> Vibrator::getSimpleDetails(Effect effect, EffectStrength strength
     switch (effect) {
         case Effect::TICK:
             volIndex = WAVEFORM_TICK_EFFECT_LEVEL;
-            timeMs = WAVEFORM_TICK_EFFECT_MS;
             break;
         case Effect::CLICK:
             volIndex = WAVEFORM_CLICK_EFFECT_LEVEL;
-            timeMs = WAVEFORM_CLICK_EFFECT_MS;
             break;
         case Effect::HEAVY_CLICK:
             volIndex = WAVEFORM_HEAVY_CLICK_EFFECT_LEVEL;
-            timeMs = WAVEFORM_HEAVY_CLICK_EFFECT_MS;
             break;
         default:
             return Status::UNSUPPORTED_OPERATION;
@@ -286,7 +294,7 @@ Return<Status> Vibrator::getSimpleDetails(Effect effect, EffectStrength strength
             return Status::UNSUPPORTED_OPERATION;
     }
 
-    timeMs += MAX_COLD_START_LATENCY_MS;
+    timeMs = mSimpleEffectDuration + MAX_COLD_START_LATENCY_MS;
 
     *outTimeMs = timeMs;
     *outVolLevel = volLevel;

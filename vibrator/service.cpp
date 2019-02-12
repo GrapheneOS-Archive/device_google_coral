@@ -40,6 +40,8 @@ static const std::vector<uint32_t> V_LEVELS_DEFAULT = {60, 70, 80, 90, 100, 76};
 static constexpr char ACTIVATE_PATH[] = "/sys/class/leds/vibrator/activate";
 static constexpr char DURATION_PATH[] = "/sys/class/leds/vibrator/duration";
 static constexpr char STATE_PATH[] = "/sys/class/leds/vibrator/state";
+static constexpr char EFFECT_DURATION_PATH[] =
+    "/sys/class/leds/vibrator/device/cp_trigger_duration";
 static constexpr char EFFECT_INDEX_PATH[] = "/sys/class/leds/vibrator/device/cp_trigger_index";
 static constexpr char EFFECT_QUEUE_PATH[] = "/sys/class/leds/vibrator/device/cp_trigger_queue";
 static constexpr char DIGI_SCALE_PATH[] = "/sys/class/leds/vibrator/device/dig_scale";
@@ -166,6 +168,11 @@ status_t registerVibratorService() {
     hwapi.state.open(STATE_PATH);
     if (!hwapi.state) {
         ALOGE("Failed to open %s (%d): %s", STATE_PATH, errno, strerror(errno));
+    }
+
+    hwapi.effectDuration.open(EFFECT_DURATION_PATH);
+    if (!hwapi.effectDuration) {
+        ALOGE("Failed to open %s (%d): %s", EFFECT_DURATION_PATH, errno, strerror(errno));
     }
 
     hwapi.effectIndex.open(EFFECT_INDEX_PATH);
