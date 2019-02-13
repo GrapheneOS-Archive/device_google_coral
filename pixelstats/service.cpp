@@ -39,7 +39,7 @@ const struct SysfsCollector::SysfsPaths sysfs_paths = {
     .CodecPath = "",  // b/117976641
 };
 
-const char *const kAudioUevent = "";  // b/117976410
+const char *const kAudioUevent = "/kernel/q6audio/q6voice_uevent";
 
 int main() {
     LOG(INFO) << "starting PixelStats";
