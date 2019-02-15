@@ -20,6 +20,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/mainline.mk)
 
 $(call inherit-product, device/google/coral/device-coral.mk)
 $(call inherit-product-if-exists, vendor/google_devices/coral/proprietary/device-vendor.mk)
+$(call inherit-product-if-exists, vendor/google_devices/coral/prebuilts/device-vendor-coral.mk)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.ringtone=Ring_Synth_04.ogg \
