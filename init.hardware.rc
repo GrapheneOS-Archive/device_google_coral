@@ -333,7 +333,7 @@ on early-boot
     chmod 775 /mnt/vendor/persist/sensors/registry
     chown root system /mnt/vendor/persist/sensors/registry/registry
     chmod 775 /mnt/vendor/persist/sensors/registry/registry
-
+    chmod 664 /mnt/vendor/persist/sensors/registry/registry/sensors_registry
     chown system root /mnt/vendor/persist/sensors/sensors_settings
     chown root root /mnt/vendor/persist/sensors/registry/registry/sensors_settings
 
