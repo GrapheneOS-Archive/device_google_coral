@@ -38,6 +38,7 @@ class Vibrator : public IVibrator {
         std::ofstream effectIndex;
         std::ofstream effectQueue;
         std::ofstream effectScale;
+        std::ofstream globalScale;
         std::ofstream state;
         std::fstream aspEnable;
     } HwApi;
@@ -66,7 +67,8 @@ class Vibrator : public IVibrator {
   private:
     Return<Status> on(uint32_t timeoutMs, uint32_t effectIndex);
     // set 'amplitude' based on an arbitrary scale determined by 'maximum'
-    Return<Status> setAmplitude(uint8_t amplitude, uint8_t maximum);
+    Return<Status> setEffectAmplitude(uint8_t amplitude, uint8_t maximum);
+    Return<Status> setGlobalAmplitude(bool set);
     // 'simple' effects are those precompiled and loaded into the controller
     Return<Status> getSimpleDetails(Effect effect, EffectStrength strength, uint32_t *outTimeMs,
                                     uint32_t *outVolLevel);
