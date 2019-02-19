@@ -355,6 +355,7 @@ PRODUCT_PACKAGES += \
     camera.msmnile \
     libgooglecamerahal \
     libgooglecamerahwl_impl \
+    libgoogle_camera_hal_tests \
     libqomx_core \
     libmmjpeg_interface \
     libmmcamera_interface \
