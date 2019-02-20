@@ -83,6 +83,9 @@
            <item>"bt-pan"</item>
     </string-array>
 
+    <!-- Boolean indicating if current platform supports HFP inband ringing -->
+    <bool name="config_bluetooth_hfp_inband_ringing_support">true</bool>
+
     <bool translatable="false" name="config_tether_upstream_automatic">true</bool>
 
     <!-- This string array should be overridden by the device to present a list of network
