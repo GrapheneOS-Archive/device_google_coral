@@ -14,13 +14,11 @@
 # limitations under the License.
 #
 
-on property:init.svc.vendor.thermal-engine=running && property:persist.vendor.disable.thermal.control=1
-  stop vendor.thermal-engine
-
 on property:persist.vendor.disable.thermal.control=1
-  write /sys/devices/virtual/thermal/tz-by-name/sdm-therm/emul_temp 25000
-  write /sys/devices/virtual/thermal/tz-by-name/usbc-therm/emul_temp 25000
-  write /sys/module/overheat_mitigation/parameters/enable 0
+    stop vendor.thermal-engine
+    write /sys/devices/virtual/thermal/tz-by-name/sdm-therm/mode disabled
+    write /sys/devices/virtual/thermal/tz-by-name/sdm-therm-monitor/mode disabled
+    write /sys/module/overheat_mitigation/parameters/enable 0
 
 on property:persist.vendor.disable.usb.overheat.mitigation=1
-  write /sys/devices/virtual/thermal/tz-by-name/usbc-therm/emul_temp 25000
+    write /sys/module/overheat_mitigation/parameters/enable 0
