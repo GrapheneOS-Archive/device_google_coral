@@ -34,7 +34,6 @@ on early-init
 
 # Disable VDSO on JAWS boards.
 on early-init && property:ro.revision="DEV1.0"
-    write /sys/module/vdso/parameters/enable_64 0
     write /sys/module/vdso/parameters/enable_32 0
 
 # Skip init trigger for charger mode
