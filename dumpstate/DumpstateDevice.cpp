@@ -323,6 +323,7 @@ static void DumpVibrator(int fd) {
         "asp_enable",
         "comp_enable",
         "cp_dig_scale",
+        "cp_trigger_duration",
         "cp_trigger_index",
         "cp_trigger_q_sub",
         "cp_trigger_queue",

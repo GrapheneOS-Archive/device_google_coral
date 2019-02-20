@@ -377,6 +377,7 @@ on early-boot
     chown system system /sys/class/leds/vibrator/device/asp_enable
     chown system system /sys/class/leds/vibrator/device/comp_enable
     chown system system /sys/class/leds/vibrator/device/cp_dig_scale
+    chown system system /sys/class/leds/vibrator/device/cp_trigger_duration
     chown system system /sys/class/leds/vibrator/device/cp_trigger_index
     chown system system /sys/class/leds/vibrator/device/cp_trigger_q_sub
     chown system system /sys/class/leds/vibrator/device/cp_trigger_queue

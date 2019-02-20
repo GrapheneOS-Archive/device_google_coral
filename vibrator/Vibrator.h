@@ -34,6 +34,7 @@ class Vibrator : public IVibrator {
     typedef struct {
         std::ofstream activate;
         std::ofstream duration;
+        std::ifstream effectDuration;
         std::ofstream effectIndex;
         std::ofstream effectQueue;
         std::ofstream scale;
@@ -78,6 +79,7 @@ class Vibrator : public IVibrator {
     Return<void> performEffect(Effect effect, EffectStrength strength, perform_cb _hidl_cb);
     HwApi mHwApi;
     std::vector<uint32_t> mVolLevels;
+    uint32_t mSimpleEffectDuration;
 };
 }  // namespace implementation
 }  // namespace V1_3
