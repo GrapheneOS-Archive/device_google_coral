@@ -40,8 +40,8 @@
          ComponentName of a dream to show whenever the system would otherwise have gone to sleep. -->
     <string translatable="false" name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
 
-    <!-- Type of the double tap sensor. Empty if double tap is not supported. -->
-    <string name="config_dozeDoubleTapSensorType" translatable="false">com.google.sensor.double_touch</string>
+    <!-- Type of the ambient tap sensor. Empty if ambient tap is not supported. -->
+    <string name="config_dozeTapSensorType" translatable="false">com.google.sensor.single_touch</string>
 
     <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
          The N entries of this array define N  1 zones as follows:
