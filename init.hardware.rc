@@ -704,6 +704,12 @@ service tftp_server /vendor/bin/tftp_server
    user root
    group root system
 
+service modem_svc /vendor/bin/modem_svc
+   class core
+   user root
+   group system
+   capabilities NET_BIND_SERVICE
+
 service port-bridge /vendor/bin/port-bridge
    class main
    user radio
