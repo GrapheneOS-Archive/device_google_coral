@@ -776,3 +776,11 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # Oslo feature flag
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.vendor.aware_available=true
+
+QTI_TELEPHONY_UTILS := qti-telephony-utils
+QTI_TELEPHONY_UTILS += qti_telephony_utils.xml
+PRODUCT_PACKAGES += $(QTI_TELEPHONY_UTILS)
+
+HIDL_WRAPPER := qti-telephony-hidl-wrapper
+HIDL_WRAPPER += qti_telephony_hidl_wrapper.xml
+PRODUCT_PACKAGES += $(HIDL_WRAPPER)
