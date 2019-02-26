@@ -23,3 +23,9 @@ DEVICE_PACKAGE_OVERLAYS += device/google/coral/coral/overlay
 # Audio XMLs for coral
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_volumes_coral.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.surface_flinger.display_primary_red=0.500651,0.235556,0.00009 \
+    ro.surface_flinger.display_primary_green=0.267109,0.695556,0.045211 \
+    ro.surface_flinger.display_primary_blue=0.16107,0.064444,0.848491 \
+    ro.surface_flinger.display_primary_white=0.950352,1.0,1.089366
