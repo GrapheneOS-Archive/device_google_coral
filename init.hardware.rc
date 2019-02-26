@@ -236,6 +236,12 @@ on post-fs
 
 on late-fs
     # Start services for bootanim
+    start init_native_display_primaries
+    wait_for_prop vendor.display.native_display_primaries_ready 1
+    setprop ro.surface_flinger.display_primary_red ${vendor.display.primary_red}
+    setprop ro.surface_flinger.display_primary_green ${vendor.display.primary_green}
+    setprop ro.surface_flinger.display_primary_blue ${vendor.display.primary_blue}
+    setprop ro.surface_flinger.display_primary_white ${vendor.display.primary_white}
     start surfaceflinger
     start bootanim
     start vendor.hwcomposer-2-3
@@ -455,6 +461,9 @@ on early-boot
 
     # Permission for Health Storage HAL
     chown system system /sys/devices/platform/soc/1d84000.ufshc/manual_gc
+
+    # Permissions for reading display native color gamut
+    chown system graphics /mnt/vendor/persist/display/native_gamut.csv
 
 on boot
     mkdir /dev/socket/qmux_radio 0770 radio radio
@@ -772,6 +781,13 @@ service insmod_sh /vendor/bin/init.insmod.sh /vendor/etc/init.insmod.${ro.hardwa
     class main
     user root
     group root system
+    disabled
+    oneshot
+
+service init_native_display_primaries /vendor/bin/init.native_display_primaries.sh
+    class main
+    user system
+    group graphics
     disabled
     oneshot
 
