@@ -19,6 +19,9 @@ PRODUCT_PLATFORM := sm8150
 
 include device/google/coral/device.mk
 
+# Set Vendor SPL to match platform
+VENDOR_SECURITY_PATCH = $(PLATFORM_SECURITY_PATCH)
+
 # A2DP offload enabled for compilation
 AUDIO_FEATURE_ENABLED_A2DP_OFFLOAD := true
 
