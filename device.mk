@@ -791,6 +791,13 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/init.insmod.coral.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/init.insmod.coral.cfg \
 	$(LOCAL_PATH)/init.insmod.flame.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/init.insmod.flame.cfg
 
+# Use /product/etc/fstab.postinstall to mount system_other
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.postinstall.fstab.prefix=/product
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/fstab.postinstall:$(TARGET_COPY_OUT_PRODUCT)/etc/fstab.postinstall
+
 # powerstats HAL
 PRODUCT_PACKAGES += \
     android.hardware.power.stats@1.0-service.pixel
