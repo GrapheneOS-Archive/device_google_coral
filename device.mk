@@ -433,9 +433,14 @@ endif
 
 # Wifi
 PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0-service \
     wificond \
     libwpa_client
+
+# Only add default wifi service for aosp targets
+ifneq ($(filter aosp_%,$(TARGET_PRODUCT)),)
+PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0-service
+endif
 
 # WLAN driver configuration files
 PRODUCT_COPY_FILES += \
