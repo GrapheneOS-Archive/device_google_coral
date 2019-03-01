@@ -51,3 +51,5 @@ PRODUCT_COPY_FILES += \
 
 # Pixelstats broken mic detection
 PRODUCT_PROPERTY_OVERRIDES += vendor.audio.mic_break=true
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.use_color_management=true
