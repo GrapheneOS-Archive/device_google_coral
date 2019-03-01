@@ -153,6 +153,7 @@ PRODUCT_PACKAGES += \
 # The following modules are included in debuggable builds only.
 PRODUCT_PACKAGES_DEBUG += \
     bootctl \
+    r.vendor \
     update_engine_client
 
 PRODUCT_COPY_FILES += \
