@@ -1293,11 +1293,11 @@
         <ctl name="strm4 CH Mask En" value="0xFF0"/>
         <ctl name="Route Status" value="Active"/>
         <ctl name="strm4 En" value="1"/>
-        <ctl name="Plgin7Ip Ep0 Conf" value="RX0_ChanMgr"/>
-        <ctl name="Plgin7Ip Ep1 Conf" value="RX4_ChanMgr"/>
-        <ctl name="Plgin7Ip Ep2 Conf" value="RX7_ChanMgr"/>
-        <ctl name="Plgin7En" value="Rx0Plgin7On"/>
-        <ctl name="Plgin7Blk1En" value="1"/>
+        <ctl name="Plgin4Ip Ep0 Conf" value="RX0_ChanMgr"/>
+        <ctl name="Plgin4Ip Ep1 Conf" value="RX4_ChanMgr"/>
+        <ctl name="Plgin4Ip Ep2 Conf" value="RX7_ChanMgr"/>
+        <ctl name="Plgin4En" value="Rx0Plgin4On"/>
+        <ctl name="Plgin4Blk1En" value="1"/>
     </path>
 
     <path name="mic-route-external-clock">
@@ -1321,7 +1321,7 @@
     </path>
 
     <path name="hotword-route-with-bargein">
-        <ctl name="Plgin0Ip Ep0 Conf" value="plugin7Out0"/>
+        <ctl name="Plgin0Ip Ep0 Conf" value="plugin4Out0"/>
         <path name="hotword-route"/>
     </path>
 
@@ -1332,44 +1332,44 @@
 
     <path name="ambient-route">
     <!-- enable ambient route -->
-        <ctl name="Plgin5En" value="Rx0Plgin5On"/>
-        <ctl name="Plgin5Blk1En" value="1"/>
+        <ctl name="Plgin2En" value="Rx0Plgin2On"/>
+        <ctl name="Plgin2Blk1En" value="1"/>
     </path>
 
     <path name="ambient-route-with-bargein">
-        <ctl name="Plgin5Ip Ep0 Conf" value="plugin7Out0"/>
+        <ctl name="Plgin2Ip Ep0 Conf" value="plugin4Out0"/>
         <path name="ambient-route"/>
     </path>
 
     <path name="ambient-route-without-bargein">
-        <ctl name="Plgin5Ip Ep0 Conf" value="RX0_ChanMgr"/>
+        <ctl name="Plgin2Ip Ep0 Conf" value="RX0_ChanMgr"/>
         <path name="ambient-route"/>
     </path>
 
     <path name="chre-route">
     <!-- enable chre route -->
-        <ctl name="Plgin6En" value="Rx0Plgin6On"/>
-        <ctl name="Plgin6Blk1En" value="1"/>
+        <ctl name="Plgin5En" value="Rx0Plgin5On"/>
+        <ctl name="Plgin5Blk1En" value="1"/>
     </path>
 
     <path name="chre-route-with-bargein">
-        <ctl name="Plgin6Ip Ep0 Conf" value="plugin7Out0"/>
+        <ctl name="Plgin5Ip Ep0 Conf" value="plugin4Out0"/>
         <path name="chre-route"/>
     </path>
 
     <path name="chre-route-without-bargein">
-        <ctl name="Plgin6Ip Ep0 Conf" value="RX0_ChanMgr"/>
+        <ctl name="Plgin5Ip Ep0 Conf" value="RX0_ChanMgr"/>
         <path name="chre-route"/>
     </path>
 
     <path name="oslo-route">
     <!-- enable oslo route -->
-        <ctl name="sensor0 Ip Conf" value="plugin3Out1"/>
+        <ctl name="sensor0 Ip Conf" value="plugin9Out1"/>
         <ctl name="sensor0 En" value="1"/>
-        <ctl name="Plgin2Ip Ep0 Conf" value="SensorOut0"/>
-        <ctl name="Plgin3Ip Ep0 Conf" value="plugin2Out0"/>
-        <ctl name="Plgin2Blk1En" value="1"/>
-        <ctl name="Plgin3Blk1En" value="1"/>
+        <ctl name="Plgin8Ip Ep0 Conf" value="SensorOut0"/>
+        <ctl name="Plgin9Ip Ep0 Conf" value="plugin8Out0"/>
+        <ctl name="Plgin8Blk1En" value="1"/>
+        <ctl name="Plgin9Blk1En" value="1"/>
     </path>
 
     <path name="buffer-audio-route">
@@ -1378,7 +1378,7 @@
     </path>
 
     <path name="buffer-route-with-bargein">
-        <ctl name="Plgin1Ip Ep0 Conf" value="plugin7Out0" />
+        <ctl name="Plgin1Ip Ep0 Conf" value="plugin4Out0" />
         <path name="buffer-audio-route" />
     </path>
 
