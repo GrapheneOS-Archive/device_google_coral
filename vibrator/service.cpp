@@ -72,14 +72,9 @@ static std::string trim(const std::string &str, const std::string &whitespace = 
     return str.substr(str_begin, str_range);
 }
 
-static void ltrim(std::istream &stream) {
-    while (std::isspace(static_cast<char>(stream.get()))) {
-    }
-    stream.unget();
-}
-
-static bool loadCalibrationData(std::vector<uint32_t> &v_levels) {
+static bool loadCalibrationData(std::vector<uint32_t> &outVLevels) {
     std::map<std::string, std::string> config_data;
+    bool ret = true;
 
     std::ofstream f0{F0_FILEPATH};
     if (!f0) {
@@ -99,7 +94,7 @@ static bool loadCalibrationData(std::vector<uint32_t> &v_levels) {
     std::ifstream cal_data{CALIBRATION_FILEPATH};
     if (!cal_data) {
         ALOGE("Failed to open %s (%d): %s", CALIBRATION_FILEPATH, errno, strerror(errno));
-        return false;
+        ret = false;
     }
 
     for (std::string line; std::getline(cal_data, line);) {
@@ -108,25 +103,23 @@ static bool loadCalibrationData(std::vector<uint32_t> &v_levels) {
         }
         std::istringstream is_line(line);
         std::string key, value;
-        if (std::getline(is_line, key, ':')) {
-            uint32_t i = 0;
-            if (key == VOLTAGES_CONFIG) {
-                ltrim(is_line);
-                while (std::getline(is_line, value, ' ')) {
-                    if (i >= v_levels.size()) {
-                        ALOGE("invalid v_levels config!");
-                        return false;
-                    }
-                    v_levels[i++] = std::stoul(value);
-                }
-                if (i != v_levels.size()) {
-                    ALOGE("invalid v_levels config!");
-                    return false;
-                }
-                continue;
-            } else if (std::getline(is_line, value)) {
-                config_data[trim(key)] = trim(value);
-            }
+        if (std::getline(is_line, key, ':') && std::getline(is_line, value)) {
+            config_data[trim(key)] = trim(value);
+        }
+    }
+
+    if (config_data.find(VOLTAGES_CONFIG) != config_data.end()) {
+        std::istringstream voltages(config_data[VOLTAGES_CONFIG]);
+        std::vector<uint32_t> vLevels;
+        uint32_t v;
+        while (voltages >> v) {
+            vLevels.push_back(v);
+        }
+        if (voltages.eof() && outVLevels.size() == vLevels.size()) {
+            outVLevels = std::move(vLevels);
+        } else {
+            ALOGE("invalid v_levels config!");
+            ret = false;
         }
     }
 
@@ -146,7 +139,7 @@ static bool loadCalibrationData(std::vector<uint32_t> &v_levels) {
         q << Q_DEFAULT << std::endl;
     }
 
-    return true;
+    return ret;
 }
 
 status_t registerVibratorService() {
