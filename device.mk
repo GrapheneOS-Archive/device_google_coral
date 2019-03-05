@@ -803,3 +803,7 @@ PRODUCT_PACKAGES += $(HIDL_WRAPPER)
 # Increment the SVN for any official public releases
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.vendor.build.svn=1
+
+# Load unit-specific display native gamut
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init.native_display_primaries.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.native_display_primaries.sh

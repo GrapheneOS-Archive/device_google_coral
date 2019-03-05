@@ -25,9 +25,3 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_volumes_flame.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml
 
 PRODUCT_PRODUCT_PROPERTIES += ro.com.google.ime.height_ratio=1.2
-
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.surface_flinger.display_primary_red=0.571498,0.268889,0.000102 \
-    ro.surface_flinger.display_primary_green=0.264549,0.688889,0.044777 \
-    ro.surface_flinger.display_primary_blue=0.183287,0.073333,0.965525 \
-    ro.surface_flinger.display_primary_white=0.950352,1.0,1.089366
