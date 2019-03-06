@@ -821,7 +821,8 @@ service cnss-daemon /vendor/bin/cnss-daemon -n -l
 
 service loc_launcher /vendor/bin/loc_launcher
     class late_start
-    group gps inet diag wifi
+    user gps
+    group gps
 
 service vendor.spdaemon /vendor/bin/spdaemon
     class core
