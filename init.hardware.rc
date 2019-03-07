@@ -849,3 +849,8 @@ service vendor.wlan_sh /vendor/bin/init.qcom.wlan.sh
     group root
     disabled
     oneshot
+
+# DSDS feature
+# Enable 2nd qcrild when the property set to dsds
+on property:persist.radio.multisim.config=dsds
+    start vendor.qcrild2
