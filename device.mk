@@ -745,11 +745,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.power@1.3-service.coral-libperfmgr
 
-# Disable ro.adb.secure for the factory build to work around dead touchscreens
-# Bug: 116250643
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.adb.secure=0
-
 # GPS configuration file
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf
