@@ -26,7 +26,8 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/qcom/sm8150 \
     hardware/qcom/sm8150/display \
     vendor/google/camera \
-    vendor/qcom/sm8150
+    vendor/qcom/sm8150 \
+    vendor/google/interfaces
 
 PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true
@@ -437,12 +438,6 @@ endif
 PRODUCT_PACKAGES += \
     wificond \
     libwpa_client
-
-# Only add default wifi service for aosp targets
-ifneq ($(filter aosp_%,$(TARGET_PRODUCT)),)
-PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0-service
-endif
 
 # WLAN driver configuration files
 PRODUCT_COPY_FILES += \
