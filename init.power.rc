@@ -81,7 +81,7 @@ on property:sys.boot_completed=1
     write /sys/devices/platform/soc/soc:qcom,cpu7-cpu-l3-lat/devfreq/soc:qcom,cpu7-cpu-l3-lat/governor mem_latency
     write /sys/devices/platform/soc/soc:qcom,cpu7-cpu-l3-lat/devfreq/soc:qcom,cpu7-cpu-l3-lat/polling_interval 10
     #Gold+ L3 ratio ceil is 20000
-    write /sys/devices/platform/soc/soc:qcom,cpu0-cpu-l3-lat/devfreq/soc:qcom,cpu0-cpu-l3-lat/mem_latency/ratio_ceil 20000
+    write /sys/devices/platform/soc/soc:qcom,cpu7-cpu-l3-lat/devfreq/soc:qcom,cpu7-cpu-l3-lat/mem_latency/ratio_ceil 20000
 
     write /sys/devices/platform/soc/soc:qcom,cpu4-llcc-ddr-lat/devfreq/soc:qcom,cpu4-llcc-ddr-lat/governor mem_latency
     write /sys/devices/platform/soc/soc:qcom,cpu4-llcc-ddr-lat/devfreq/soc:qcom,cpu4-llcc-ddr-lat/polling_interval 10
