@@ -32,8 +32,11 @@ value:2904
 [AID_VENDOR_ADPL_ODL]
 value:2905
 
-[AID_VENDOR_AIRBRUSH]
+[AID_VENDOR_QRTR]
 value:2906
+
+[AID_VENDOR_AIRBRUSH]
+value:2907
 
 [vendor/bin/pm-service]
 mode: 0755
