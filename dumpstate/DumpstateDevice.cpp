@@ -415,7 +415,6 @@ Return<void> DumpstateDevice::dumpstateBoard(const hidl_handle& handle) {
     RunCommandToFd(fd, "USB Device Descriptors", {"/vendor/bin/sh", "-c", "cd /sys/bus/usb/devices/1-1 && cat product && cat bcdDevice; cat descriptors | od -t x1 -w16 -N96"});
     RunCommandToFd(fd, "Power supply properties", {"/vendor/bin/sh", "-c", "for f in `ls /sys/class/power_supply/*/uevent` ; do echo \"------ $f\\n`cat $f`\\n\" ; done"});
     RunCommandToFd(fd, "PMIC Votables", {"/vendor/bin/sh", "-c", "cat /sys/kernel/debug/pmic-votable/*/status"});
-    DumpFileToFd(fd, "Battery cycle count", "/d/google_battery/cycle_count_bins");
     DumpFileToFd(fd, "Maxim FG History", "/dev/maxfg_history");
     DumpFileToFd(fd, "Maxim FG registers", "/d/regmap/1-0036/registers");
     DumpFileToFd(fd, "Maxim FG NV RAM", "/d/regmap/1-000b/registers");
