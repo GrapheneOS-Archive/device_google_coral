@@ -668,15 +668,6 @@
         <item>440</item>
     </array>
 
-    <!-- The nominal white coordinates, in CIE1931 XYZ color space, for Display White Balance to
-         use in its calculations. AWB will adapt this white point to the target ambient white
-         point. The array must include a total of 3 float values (X, Y, Z) -->
-      <string-array name="config_displayWhiteBalanceDisplayNominalWhite">
-          <!-- Nominal White X --> <item>0.950352</item>
-          <!-- Nominal White Y --> <item>1.0     </item>
-          <!-- Nominal White Z --> <item>1.089366</item>
-      </string-array>
-
     <!-- Shutdown if the battery temperature exceeds (this value * 0.1) Celsius. -->
     <integer name="config_shutdownBatteryTemperature">600</integer>
 
