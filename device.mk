@@ -137,6 +137,13 @@ AB_OTA_POSTINSTALL_CONFIG += \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
 
+AB_OTA_POSTINSTALL_CONFIG += \
+    RUN_POSTINSTALL_vendor=true \
+    POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
+    FILESYSTEM_TYPE_vendor=ext4 \
+    POSTINSTALL_OPTIONAL_vendor=true
+
+
 # Enable update engine sideloading by including the static version of the
 # boot_control HAL and its dependencies.
 PRODUCT_STATIC_BOOT_CONTROL_HAL := \
@@ -149,6 +156,10 @@ PRODUCT_PACKAGES += \
     update_engine_sideload \
     sg_write_buffer \
     f2fs_io
+
+# Userdata Checkpointing OTA GC
+PRODUCT_PACKAGES += \
+    checkpoint_gc
 
 # The following modules are included in debuggable builds only.
 PRODUCT_PACKAGES_DEBUG += \
