@@ -80,7 +80,7 @@ extern "C" {
 #define AB_SLOT_B_SUFFIX                "_b"
 #define PTN_XBL                         "xbl"
 #define PTN_SWAP_LIST                   PTN_XBL, \
-            "abl", "aop", "cmnlib", "cmnlib64", "devcfg", \
+            "abl", "aop", "devcfg", \
             "dtbo", "hyp", "keymaster", "qupfw", "storsec", \
             "tz", "vbmeta", "vbmeta_system", "xbl_config"
 
