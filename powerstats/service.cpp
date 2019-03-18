@@ -156,8 +156,8 @@ int main(int /* argc */, char** /* argv */) {
             new GenericStateResidencyDataProvider(
                     "/sys/devices/platform/soc/soc:abc-sm/state_stats");
 
-    uint32_t airId = service->addPowerEntity("Airbrush", PowerEntityType::SUBSYSTEM);
-    airSdp->addEntity(airId, PowerEntityConfig("Airbrush Subsystem Power Stats",
+    uint32_t airId = service->addPowerEntity("Visual-Core", PowerEntityType::SUBSYSTEM);
+    airSdp->addEntity(airId, PowerEntityConfig("Pixel Visual Core Subsystem Power Stats",
             generateGenericStateResidencyConfigs(airStateConfig, airStateHeaders)));
 
     service->addStateResidencyDataProvider(airSdp);
