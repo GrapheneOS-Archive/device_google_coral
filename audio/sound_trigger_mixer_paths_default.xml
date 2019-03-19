@@ -1291,7 +1291,6 @@
         <ctl name="strm4 Port" value="PCM4"/>
         <ctl name="strm4 Port Enc" value="ENCODING_Q15"/>
         <ctl name="strm4 CH Mask En" value="0xFF0"/>
-        <ctl name="Route Status" value="Active"/>
         <ctl name="strm4 En" value="1"/>
         <ctl name="Plgin4Ip Ep0 Conf" value="RX0_ChanMgr"/>
         <ctl name="Plgin4Ip Ep1 Conf" value="RX4_ChanMgr"/>
