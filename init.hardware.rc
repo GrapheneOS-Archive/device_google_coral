@@ -515,6 +515,9 @@ on charger
     # Enable powersaving
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
 
+    # Enable thermal mitigation
+    write /sys/devices/virtual/thermal/tz-by-name/backup-charge/mode enabled
+
 on property:sys.boot_completed=1
     # Enable EAS
     write /sys/kernel/debug/sched_features ENERGY_AWARE
