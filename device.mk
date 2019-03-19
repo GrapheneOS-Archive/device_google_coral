@@ -594,6 +594,10 @@ PRODUCT_COPY_FILES += \
     device/google/coral/audio/data/crus_sp_config_flame_rx.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/crus_sp_config_flame_rx.bin \
     device/google/coral/audio/data/crus_sp_config_flame_tx.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/crus_sp_config_flame_tx.bin
 
+# Audio audiozoom config data
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/audio/audiozoom.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audiozoom.xml
+
 # and ensure that the xaac decoder is built
 PRODUCT_PACKAGES += \
     libstagefright_soft_xaacdec.vendor
