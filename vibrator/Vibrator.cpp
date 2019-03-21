@@ -256,7 +256,12 @@ Return<void> Vibrator::perform_1_1(V1_1::Effect_1_1 effect, EffectStrength stren
     return performEffect(static_cast<Effect>(effect), strength, _hidl_cb);
 }
 
-Return<void> Vibrator::perform_1_2(Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
+Return<void> Vibrator::perform_1_2(V1_2::Effect effect, EffectStrength strength,
+                                   perform_cb _hidl_cb) {
+    return performEffect(static_cast<Effect>(effect), strength, _hidl_cb);
+}
+
+Return<void> Vibrator::perform_1_3(Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
     return performEffect(effect, strength, _hidl_cb);
 }
 
@@ -267,6 +272,8 @@ Return<Status> Vibrator::getSimpleDetails(Effect effect, EffectStrength strength
     uint32_t volIndex;
 
     switch (effect) {
+        case Effect::TEXTURE_TICK:
+            // fall-through
         case Effect::TICK:
             volIndex = WAVEFORM_TICK_EFFECT_LEVEL;
             break;
@@ -430,6 +437,8 @@ Return<void> Vibrator::performEffect(Effect effect, EffectStrength strength, per
     std::string effectQueue;
 
     switch (effect) {
+        case Effect::TEXTURE_TICK:
+            // fall-through
         case Effect::TICK:
             // fall-through
         case Effect::CLICK:

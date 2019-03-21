@@ -27,8 +27,6 @@ namespace vibrator {
 namespace V1_3 {
 namespace implementation {
 
-using android::hardware::vibrator::V1_2::Effect;
-
 class Vibrator : public IVibrator {
   public:
     typedef struct {
@@ -61,7 +59,9 @@ class Vibrator : public IVibrator {
                          perform_cb _hidl_cb) override;
     Return<void> perform_1_1(V1_1::Effect_1_1 effect, EffectStrength strength,
                              perform_cb _hidl_cb) override;
-    Return<void> perform_1_2(Effect effect, EffectStrength strength, perform_cb _hidl_cb) override;
+    Return<void> perform_1_2(V1_2::Effect effect, EffectStrength strength, perform_cb _hidl_cb)
+            override;
+    Return<void> perform_1_3(Effect effect, EffectStrength strength, perform_cb _hidl_cb) override;
 
   private:
     Return<Status> on(uint32_t timeoutMs, uint32_t effectIndex);
