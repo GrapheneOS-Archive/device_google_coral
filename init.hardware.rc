@@ -271,6 +271,9 @@ on late-fs
     # Init sensor specific services
     start init-sensors-sh
 
+    # turn off vblank irq immediately after turning off
+    write /sys/module/drm/parameters/vblankoffdelay -1
+
 on post-fs-data
     mkdir /vendor/data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
