@@ -57,12 +57,12 @@ static constexpr uint32_t WAVEFORM_HEAVY_CLICK_EFFECT_LEVEL = 3;
 
 static constexpr uint32_t WAVEFORM_DOUBLE_CLICK_SILENCE_MS = 100;
 
-static constexpr uint32_t WAVEFORM_LONG_VIBRATION_EFFECT_LEVEL = 5;
 static constexpr uint32_t WAVEFORM_LONG_VIBRATION_EFFECT_INDEX = 0;
 
 static constexpr uint32_t WAVEFORM_TRIGGER_QUEUE_SCALE = 100;
 static constexpr uint32_t WAVEFORM_TRIGGER_QUEUE_INDEX = 65534;
 
+static constexpr uint32_t VOLTAGE_GLOBAL_SCALE_LEVEL = 5;
 static constexpr uint8_t VOLTAGE_SCALE_MAX = 100;
 
 static constexpr RingtoneSpec WAVEFORM_RINGTONES[] = {
@@ -152,6 +152,11 @@ static constexpr int8_t MAX_PAUSE_TIMING_ERROR_MS = 1; // ALERT Irq Handling
 static constexpr float AMP_ATTENUATE_STEP_SIZE = 0.125f;
 static constexpr float EFFECT_FREQUENCY_KHZ = 48.0f;
 
+static uint8_t amplitudeToScale(uint8_t amplitude, uint8_t maximum) {
+    return std::round((-20 * std::log10(amplitude / static_cast<float>(maximum))) /
+                      (AMP_ATTENUATE_STEP_SIZE));
+}
+
 Vibrator::Vibrator(HwApi &&hwapi, std::vector<uint32_t> &&v_levels)
     : mHwApi(std::move(hwapi)), mVolLevels(std::move(v_levels)) {
     uint32_t effectDuration;
@@ -166,6 +171,16 @@ Vibrator::Vibrator(HwApi &&hwapi, std::vector<uint32_t> &&v_levels)
     mHwApi.effectDuration.clear();
 
     mSimpleEffectDuration = std::ceil(effectDuration / EFFECT_FREQUENCY_KHZ);
+
+    const uint32_t scaleFall =
+        amplitudeToScale(mVolLevels[WAVEFORM_CLICK_EFFECT_LEVEL], VOLTAGE_SCALE_MAX);
+    const uint32_t scaleRise =
+        amplitudeToScale(mVolLevels[WAVEFORM_HEAVY_CLICK_EFFECT_LEVEL], VOLTAGE_SCALE_MAX);
+
+    mHwApi.gpioFallIndex << WAVEFORM_SIMPLE_EFFECT_INDEX << std::endl;
+    mHwApi.gpioFallScale << scaleFall << std::endl;
+    mHwApi.gpioRiseIndex << WAVEFORM_SIMPLE_EFFECT_INDEX << std::endl;
+    mHwApi.gpioRiseScale << scaleRise << std::endl;
 }
 
 Return<Status> Vibrator::on(uint32_t timeoutMs, uint32_t effectIndex) {
@@ -190,10 +205,12 @@ Return<Status> Vibrator::on(uint32_t timeoutMs) {
     if (MAX_COLD_START_LATENCY_MS <= UINT32_MAX - timeoutMs) {
         timeoutMs += MAX_COLD_START_LATENCY_MS;
     }
+    setGlobalAmplitude(true);
     return on(timeoutMs, WAVEFORM_LONG_VIBRATION_EFFECT_INDEX);
 }
 
 Return<Status> Vibrator::off() {
+    setGlobalAmplitude(false);
     mHwApi.activate << 0 << std::endl;
     if (!mHwApi.activate) {
         mHwApi.activate.clear();
@@ -204,27 +221,42 @@ Return<Status> Vibrator::off() {
 }
 
 Return<bool> Vibrator::supportsAmplitudeControl() {
-    return (mHwApi.scale ? true : false);
+    return !isUnderExternalControl() && mHwApi.effectScale;
 }
 
 Return<Status> Vibrator::setAmplitude(uint8_t amplitude) {
-    uint8_t factor = mVolLevels[WAVEFORM_LONG_VIBRATION_EFFECT_LEVEL];
-    uint8_t adjusted = std::round(amplitude * (factor / static_cast<float>(VOLTAGE_SCALE_MAX)));
-    return setAmplitude(adjusted, UINT8_MAX);
-}
-
-Return<Status> Vibrator::setAmplitude(uint8_t amplitude, uint8_t maximum) {
     if (!amplitude) {
         return Status::BAD_VALUE;
     }
 
-    int32_t scale = std::round((-20 * std::log10(amplitude / static_cast<float>(maximum))) /
-                               (AMP_ATTENUATE_STEP_SIZE));
+    if (!isUnderExternalControl()) {
+        return setEffectAmplitude(amplitude, UINT8_MAX);
+    } else {
+        return Status::UNSUPPORTED_OPERATION;
+    }
+}
 
-    mHwApi.scale << scale << std::endl;
-    if (!mHwApi.scale) {
-        mHwApi.scale.clear();
-        ALOGE("Failed to set amplitude (%d): %s", errno, strerror(errno));
+Return<Status> Vibrator::setEffectAmplitude(uint8_t amplitude, uint8_t maximum) {
+    int32_t scale = amplitudeToScale(amplitude, maximum);
+
+    mHwApi.effectScale << scale << std::endl;
+    if (!mHwApi.effectScale) {
+        mHwApi.effectScale.clear();
+        ALOGE("Failed to set effect amplitude (%d): %s", errno, strerror(errno));
+        return Status::UNKNOWN_ERROR;
+    }
+
+    return Status::OK;
+}
+
+Return<Status> Vibrator::setGlobalAmplitude(bool set) {
+    uint8_t amplitude = set ? mVolLevels[VOLTAGE_GLOBAL_SCALE_LEVEL] : VOLTAGE_SCALE_MAX;
+    int32_t scale = amplitudeToScale(amplitude, VOLTAGE_SCALE_MAX);
+
+    mHwApi.globalScale << scale << std::endl;
+    if (!mHwApi.globalScale) {
+        mHwApi.globalScale.clear();
+        ALOGE("Failed to set global amplitude (%d): %s", errno, strerror(errno));
         return Status::UNKNOWN_ERROR;
     }
 
@@ -238,6 +270,8 @@ Return<bool> Vibrator::supportsExternalControl() {
 }
 
 Return<Status> Vibrator::setExternalControl(bool enabled) {
+    setGlobalAmplitude(enabled);
+
     mHwApi.aspEnable << enabled << std::endl;
     if (!mHwApi.aspEnable) {
         mHwApi.aspEnable.clear();
@@ -245,6 +279,14 @@ Return<Status> Vibrator::setExternalControl(bool enabled) {
         return Status::UNKNOWN_ERROR;
     }
     return Status::OK;
+}
+
+bool Vibrator::isUnderExternalControl() {
+    bool isAspEnabled;
+    mHwApi.aspEnable.seekg(0);
+    mHwApi.aspEnable >> isAspEnabled;
+    mHwApi.aspEnable.clear();
+    return isAspEnabled;
 }
 
 Return<void> Vibrator::perform(V1_0::Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
@@ -492,7 +534,7 @@ Return<void> Vibrator::performEffect(Effect effect, EffectStrength strength, per
         effectIndex = WAVEFORM_SIMPLE_EFFECT_INDEX;
     }
 
-    setAmplitude(volLevel, VOLTAGE_SCALE_MAX);
+    setEffectAmplitude(volLevel, VOLTAGE_SCALE_MAX);
     on(timeMs, effectIndex);
 
 exit:
