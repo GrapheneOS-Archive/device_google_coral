@@ -1018,7 +1018,7 @@
     <ctl name="Update Block2 Req" value="0"/>
 
     <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_NONE"/>
-    <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_NONE"/>
+    <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_NONE"/>
     <ctl name="CDC DMIC Enable" value="0"/>
 
     <ctl name="PCM PortA Setup" value="0"/>
@@ -1148,12 +1148,15 @@
     <ctl name="Plgin14En" value="Off"/>
     <ctl name="Plgin15En" value="Off"/>
 
+    <ctl name="Port ApllCLK Src" value="IAXXX_SRC_SYSCLK" />
+    <ctl name="SSP Core Boot" value="0"/>
+
     <path name="port-c">
     <!-- Port-C PDM4 -->
         <ctl name="Route Status" value="Active"/>
+        <ctl name="SSP Core Boot" value="1"/>
         <ctl name="CDC0 MicBias" value="1"/>
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
-        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_32K"/>
         <ctl name="Pdm CDC Setup" value="1"/>
         <ctl name="Pdm PortC Setup" value="1"/>
         <ctl name="Pdm PortC CDC DMic4 En" value="1"/>
@@ -1179,8 +1182,8 @@
     <path name="port-b">
     <!-- Port-B PDM7 -->
         <ctl name="Route Status" value="Active"/>
+        <ctl name="SSP Core Boot" value="1"/>
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
-        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_32K"/>
         <ctl name="Pdm CDC Setup" value="1"/>
         <ctl name="Pdm PortB Setup" value="1"/>
         <ctl name="Pdm PortB CDC DMic6 En" value="1"/>
@@ -1206,9 +1209,9 @@
     <path name="port-d">
     <!-- Port-D PDM3 -->
         <ctl name="Route Status" value="Active"/>
+        <ctl name="SSP Core Boot" value="1"/>
         <ctl name="PortB MicBias" value="1"/>
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
-        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_32K"/>
         <ctl name="Pdm CDC Setup" value="1"/>
         <ctl name="Pdm CDC1 Setup" value="1"/>
         <ctl name="Pdm CDC1 CDC DMic3 En" value="1"/>
@@ -1234,9 +1237,9 @@
     <path name="port-cdc">
     <!-- Port-CDC PDM1 -->
         <ctl name="Route Status" value="Active"/>
+        <ctl name="SSP Core Boot" value="1"/>
         <ctl name="PortC MicBias" value="1"/>
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
-        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_32K"/>
         <ctl name="Pdm CDC Setup" value="1"/>
         <ctl name="Pdm CDC1 Setup" value="1"/>
         <ctl name="Pdm CDC0 CDC DMic1 En" value="1"/>
@@ -1297,44 +1300,50 @@
         <ctl name="Plgin7Blk1En" value="1"/>
     </path>
 
+    <path name="mic-route-external-clock">
+        <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
+        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
+        <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_32K" />
+        <path name="mic1-route" />
+    </path>
+
+    <path name="mic-route-internal-clock">
+        <ctl name="Port ApllCLK Src" value="IAXXX_INT_OSC" />
+        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
+        <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_32K" />
+        <path name="mic1-route" />
+    </path>
+
     <path name="hotword-route">
     <!-- enable hotword route -->
         <ctl name="Plgin0En" value="Rx0Plgin0On"/>
-        <ctl name="Plgin1En" value="Rx0Plgin1On"/>
         <ctl name="Plgin0Blk1En" value="1"/>
-        <ctl name="Plgin1Blk1En" value="1"/>
     </path>
 
     <path name="hotword-route-with-bargein">
         <ctl name="Plgin0Ip Ep0 Conf" value="plugin7Out0"/>
-        <ctl name="Plgin1Ip Ep0 Conf" value="plugin7Out0"/>
         <path name="hotword-route"/>
     </path>
 
     <path name="hotword-route-without-bargein">
         <ctl name="Plgin0Ip Ep0 Conf" value="RX0_ChanMgr"/>
-        <ctl name="Plgin1Ip Ep0 Conf" value="RX0_ChanMgr"/>
         <path name="hotword-route"/>
     </path>
 
-    <path name="ambient-entity-route">
-    <!-- enable hotword route -->
-        <ctl name="Plgin4En" value="Rx0Plgin4On"/>
+    <path name="ambient-route">
+    <!-- enable ambient route -->
         <ctl name="Plgin5En" value="Rx0Plgin5On"/>
-        <ctl name="Plgin4Blk1En" value="1"/>
         <ctl name="Plgin5Blk1En" value="1"/>
     </path>
 
-    <path name="ambient-entity-route-with-bargein">
-        <ctl name="Plgin4Ip Ep0 Conf" value="plugin7Out0"/>
+    <path name="ambient-route-with-bargein">
         <ctl name="Plgin5Ip Ep0 Conf" value="plugin7Out0"/>
-        <path name="ambient-entity-route"/>
+        <path name="ambient-route"/>
     </path>
 
-    <path name="ambient-entity-route-without-bargein">
-        <ctl name="Plgin4Ip Ep0 Conf" value="RX0_ChanMgr"/>
+    <path name="ambient-route-without-bargein">
         <ctl name="Plgin5Ip Ep0 Conf" value="RX0_ChanMgr"/>
-        <path name="ambient-entity-route"/>
+        <path name="ambient-route"/>
     </path>
 
     <path name="chre-route">
@@ -1361,6 +1370,41 @@
         <ctl name="Plgin3Ip Ep0 Conf" value="plugin2Out0"/>
         <ctl name="Plgin2Blk1En" value="1"/>
         <ctl name="Plgin3Blk1En" value="1"/>
+    </path>
+
+    <path name="buffer-audio-route">
+        <ctl name="Plgin1En" value="Rx0Plgin1On" />
+        <ctl name="Plgin1Blk1En" value="1" />
+    </path>
+
+    <path name="buffer-route-with-bargein">
+        <ctl name="Plgin1Ip Ep0 Conf" value="plugin7Out0" />
+        <path name="buffer-audio-route" />
+    </path>
+
+    <path name="buffer-route-without-bargein">
+        <ctl name="Plgin1Ip Ep0 Conf" value="RX0_ChanMgr" />
+        <path name="buffer-audio-route" />
+    </path>
+
+    <path name="downlink-audio-route">
+        <ctl name="PCM PortA Setup" value="1" />
+        <ctl name="PCM PortA Start" value="0x7F" />
+        <ctl name="strm2 ASRC Mode" value="ASRC_ENABLE" />
+        <ctl name="strm2 Master Strm Id" value="STREAMID_2" />
+        <ctl name="strm2 Format FrLn" value="16K_10MS" />
+        <ctl name="strm2 Format Sr" value="RATE_16K" />
+        <ctl name="strm2 Format Enc" value="ENCODING_AFLOAT" />
+        <ctl name="strm2 Dir" value="0" />
+        <ctl name="strm2 inter strm delay" value="0" />
+        <ctl name="strm2 Port" value="PCM0" />
+        <ctl name="strm2 Port Enc" value="ENCODING_Q15" />
+        <ctl name="strm2 CH Mask En" value="0xc0" />
+        <ctl name="strm2 En" value="1" />
+        <ctl name="Plgin4Ip Ep0 Conf" value="RX6_ChanMgr" />
+        <ctl name="Plgin4Ip Ep1 Conf" value="RX7_ChanMgr" />
+        <ctl name="Plgin4En" value="Rx0Plgin4On" />
+        <ctl name="Plgin4Blk1En" value="1" />
     </path>
 
 </mixer>

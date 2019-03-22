@@ -285,10 +285,15 @@
     <ctl name="MultiMedia15 Mixer QUAT_TDM_TX_0" value="0" />
     <ctl name="MultiMedia16 Mixer QUAT_TDM_TX_0" value="0" />
     <ctl name="QUAT_TDM_TX_0 Channels" value="One" />
+    <ctl name="QUAT_TDM_TX_0 Format" value="S32_LE" />
+    <ctl name="QUAT_TDM_RX_0 Format" value="S32_LE" />
     <!-- iaxxx tdm end -->
     <!-- iaxxx codec -->
     <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_NONE" />
-    <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_NONE" />
+    <ctl name="Port ApllCLK Src" value="IAXXX_SRC_SYSCLK" />
+    <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_NONE" />
+    <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_NONE" />
+    <ctl name="Route Status" value="InActive" />
     <!-- PDM Port mapping : Jaws
          Dmic1 : PortC
          Dmic2 : PortB
@@ -325,6 +330,7 @@
     <ctl name="PortC MicBias" value="0" />
     <ctl name="CDC0 MicBias" value="0" />
     <ctl name="CDC1 MicBias" value="0" />
+    <ctl name="SSP Core Boot" value="0" />
 
     <!-- input gain -->
     <ctl name="Rx0Chan GnRmp" value="STEP_0" />
@@ -356,6 +362,7 @@
     <ctl name="strm0 Format Enc" value="ENCODING_OPAQUE" />
     <ctl name="strm0 Dir" value="0" />
     <ctl name="strm0 inter strm delay" value="0" />
+    <ctl name="strm0 Xfer Mode" value="SSP" />
     <!-- iaxxx pdm port c -->
     <ctl name="strm0 Port" value="NONE" />
     <ctl name="strm0 Port Enc" value="ENCODING_OPAQUE" />
@@ -397,13 +404,16 @@
     <ctl name="strm8 Format FrLn" value="NONE" />
     <ctl name="strm8 Format Enc" value="ENCODING_OPAQUE" />
     <ctl name="strm8 ASRC Mode" value="ASRC_ENABLE" />
-    <ctl name="strm8 Master Strm Id" value="STREAMID_0" />
+    <ctl name="strm8 Master Strm Id" value="STREAMID_8" />
     <ctl name="strm8 inter strm delay" value="3000" />
     <ctl name="strm8 Dir" value="0" />
     <ctl name="strm8 Port" value="NONE" />
     <ctl name="strm8 Port Enc" value="ENCODING_OPAQUE" />
     <ctl name="strm8 CH Mask En" value="0" />
     <ctl name="strm8 En" value="0" />
+    <ctl name="strm8 Xfer Mode" value="SSP" />
+    <ctl name="strm8 Low Latency IpStr Id" value="STREAMID_NONE" />
+
     <!-- iaxxx codec end -->
 
     <!-- Multimode Voice1 -->
@@ -1668,9 +1678,13 @@
         Flicker Sensor: Port_B DI (PDMI7)
     -->
     <path name="iaxxx-port-c">
+        <ctl name="Route Status" value="Active" />
+        <ctl name="SSP Core Boot" value="1" />
+        <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
+        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
+        <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="CDC0 MicBias" value="1" />
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
-        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="Pdm CDC Setup" value="1" />
         <ctl name="Pdm PortC Setup" value="1" />
         <ctl name="Pdm PortC CDC DMic4 En" value="1" />
@@ -1694,8 +1708,12 @@
     </path>
 
     <path name="iaxxx-port-b">
+        <ctl name="Route Status" value="Active" />
+        <ctl name="SSP Core Boot" value="1" />
+        <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
+        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
+        <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
-        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="Pdm CDC Setup" value="1" />
         <ctl name="Pdm PortB Setup" value="1" />
         <ctl name="Pdm PortB CDC DMic6 En" value="1" />
@@ -1719,9 +1737,13 @@
     </path>
     <!-- Port D -->
     <path name="iaxxx-port-d">
+        <ctl name="Route Status" value="Active" />
+        <ctl name="SSP Core Boot" value="1" />
+        <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
+        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
+        <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortB MicBias" value="1" />
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
-        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="Pdm CDC Setup" value="1" />
         <ctl name="Pdm CDC1 Setup" value="1" />
         <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
@@ -1746,9 +1768,13 @@
 
     <!-- Port CDC_PDM1 -->
     <path name="iaxxx-port-cdcpdm1">
+        <ctl name="Route Status" value="Active" />
+        <ctl name="SSP Core Boot" value="1" />
+        <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
+        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
+        <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortC MicBias" value="1" />
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
-        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="Pdm CDC Setup" value="1" />
         <ctl name="Pdm CDC1 Setup" value="1" />
         <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
@@ -1782,17 +1808,38 @@
         <ctl name="strm8 Dir" value="1" />
         <ctl name="strm8 Port" value="PCM0" />
         <ctl name="strm8 Port Enc" value="ENCODING_Q31" />
-        <ctl name="strm8 CH Mask En" value="1" />
-        <ctl name="strm8 En" value="1" />
+        <!--ctl name="strm8 CH Mask En" value="1" /-->
+        <!--ctl name="strm8 En" value="1" /-->
+    </path>
+
+    <!-- Port A, QUAT_TDM_TX -->
+    <path name="iaxxx-port-a-ll">
+        <ctl name="strm8 Format Sr" value="RATE_48K" />
+        <ctl name="strm8 Format FrLn" value="8K_20MS" />
+        <ctl name="strm8 Format Enc" value="ENCODING_AFLOAT" />
+        <ctl name="strm8 ASRC Mode" value="ASRC_DISABLE" />
+        <ctl name="strm8 Xfer Mode" value="SSP_Low_Lat_PT" />
+        <ctl name="strm8 Low Latency IpStr Id" value="STREAMID_0" />
+        <ctl name="strm8 Master Strm Id" value="STREAMID_8" />
+        <ctl name="strm8 inter strm delay" value="0" />
+        <ctl name="strm8 Dir" value="1" />
+        <ctl name="strm8 Port" value="PCM0" />
+        <ctl name="strm8 Port Enc" value="ENCODING_Q31" />
+        <!--ctl name="strm8 CH Mask En" value="1" /-->
+        <!--ctl name="strm8 En" value="1" /-->
     </path>
 
     <!-- CH1: DMIC1, CH2: DMIC2 -->
     <path name="iaxxx-port-cdcpdm1-d">
+        <ctl name="Route Status" value="Active" />
+        <ctl name="SSP Core Boot" value="1" />
+        <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
+        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
+        <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortC MicBias" value="1" />
         <ctl name="PortB MicBias" value="1" />
 
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
-        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="Pdm CDC Setup" value="1" />
 
         <ctl name="Pdm CDC1 Setup" value="1" />
@@ -1837,13 +1884,50 @@
         <ctl name="Tx1Chan IpSrcId" value="RX1_ChanMgr" />
     </path>
 
+    <!-- CH1: DMIC1, CH2: DMIC2 -->
+    <path name="iaxxx-port-cdcpdm1-d-ll">
+        <ctl name="Route Status" value="Active" />
+        <ctl name="SSP Core Boot" value="1" />
+        <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
+        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
+        <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
+        <ctl name="PortC MicBias" value="1" />
+        <ctl name="PortB MicBias" value="1" />
+
+        <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
+        <ctl name="Pdm CDC Setup" value="1" />
+
+        <ctl name="Pdm CDC1 Setup" value="1" />
+        <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
+        <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
+        <ctl name="PDM Hos" value="2" />
+        <ctl name="PDM CDC0 Start" value="10" />
+
+        <ctl name="strm0 ASRC Mode" value="REDBOX_2-1" />
+        <ctl name="strm0 Master Strm Id" value="STREAMID_0" />
+        <ctl name="strm0 Format FrLn" value="8K_20MS" />
+        <ctl name="strm0 Format Sr" value="RATE_48K" />
+        <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
+        <ctl name="strm0 Dir" value="0" />
+        <ctl name="strm0 inter strm delay" value="0" />
+        <ctl name="strm0 Port" value="PDMI1" />
+        <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
+        <ctl name="strm0 CH Mask En" value="5" />
+        <ctl name="strm0 Xfer Mode" value="SSP_Low_Lat_PT" />
+        <ctl name="strm0 En" value="1" />
+    </path>
+
     <!-- CH1: DMIC1, CH2: DMIC3 -->
     <path name="iaxxx-port-cdcpdm1-c">
+        <ctl name="Route Status" value="Active" />
+        <ctl name="SSP Core Boot" value="1" />
+        <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
+        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
+        <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortC MicBias" value="1" />
         <ctl name="CDC0 MicBias" value="1" />
 
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
-        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="Pdm CDC Setup" value="1" />
 
         <ctl name="Pdm CDC1 Setup" value="1" />
@@ -1890,12 +1974,50 @@
         <ctl name="Tx1Chan IpSrcId" value="RX1_ChanMgr" />
     </path>
 
+    <!-- CH1: DMIC1, CH2: DMIC3 -->
+    <path name="iaxxx-port-cdcpdm1-c-ll">
+        <ctl name="Route Status" value="Active" />
+        <ctl name="SSP Core Boot" value="1" />
+        <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
+        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
+        <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
+        <ctl name="PortC MicBias" value="1" />
+        <ctl name="CDC0 MicBias" value="1" />
+
+        <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
+        <ctl name="Pdm CDC Setup" value="1" />
+
+        <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
+        <ctl name="Pdm PortC Setup" value="1" />
+        <ctl name="Pdm PortC CDC DMic4 En" value="1" />
+
+        <ctl name="PDM Hos" value="2" />
+        <ctl name="PDM CDC0 Start" value="18" />
+
+        <ctl name="strm0 ASRC Mode" value="REDBOX_2-1" />
+        <ctl name="strm0 Master Strm Id" value="STREAMID_0" />
+        <ctl name="strm0 Format FrLn" value="8K_20MS" />
+        <ctl name="strm0 Format Sr" value="RATE_48K" />
+        <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
+        <ctl name="strm0 Dir" value="0" />
+        <ctl name="strm0 inter strm delay" value="0" />
+        <ctl name="strm0 Port" value="PDMI1" />
+        <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
+        <ctl name="strm0 CH Mask En" value="9" />
+        <ctl name="strm0 Xfer Mode" value="SSP_Low_Lat_PT" />
+        <ctl name="strm0 En" value="1" />
+    </path>
+
     <!-- CH1: Flicker Sensor, CH2: DMIC2 -->
     <path name="iaxxx-port-bd">
+        <ctl name="Route Status" value="Active" />
+        <ctl name="SSP Core Boot" value="1" />
+        <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
+        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
+        <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortB MicBias" value="1" />
 
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
-        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="Pdm CDC Setup" value="1" />
 
         <ctl name="Pdm PortB Setup" value="1" />
@@ -1945,11 +2067,15 @@
 
     <!-- CH1: Flicker Sensor, CH2: DMIC2, CH3: DMIC1 -->
     <path name="iaxxx-port-bd-cdcpdm1">
+        <ctl name="Route Status" value="Active" />
+        <ctl name="SSP Core Boot" value="1" />
+        <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
+        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
+        <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortB MicBias" value="1" />
         <ctl name="PortC MicBias" value="1" />
 
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
-        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="Pdm CDC Setup" value="1" />
 
         <ctl name="Pdm PortB Setup" value="1" />
@@ -2016,11 +2142,15 @@
 
     <!-- CH1: DMIC3, CH2: DMIC2 -->
     <path name="iaxxx-port-cd">
+        <ctl name="Route Status" value="Active" />
+        <ctl name="SSP Core Boot" value="1" />
+        <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
+        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
+        <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="CDC0 MicBias" value="1" />
         <ctl name="PortB MicBias" value="1" />
 
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
-        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="Pdm CDC Setup" value="1" />
 
         <ctl name="Pdm PortC Setup" value="1" />
@@ -2069,12 +2199,16 @@
 
     <!-- CH1: DMIC3, CH2: DMIC2, CH3: DMIC1 -->
     <path name="iaxxx-port-cd-cdcpdm1">
+        <ctl name="Route Status" value="Active" />
+        <ctl name="SSP Core Boot" value="1" />
+        <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
+        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
+        <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="CDC0 MicBias" value="1" />
         <ctl name="PortB MicBias" value="1" />
         <ctl name="PortC MicBias" value="1" />
 
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
-        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="Pdm CDC Setup" value="1" />
 
         <ctl name="Pdm PortC Setup" value="1" />
@@ -2141,12 +2275,16 @@
 
     <!-- CH1: DMIC3, CH2: DMIC1, CH3: DMIC2 -->
     <path name="iaxxx-port-c-cdcpdm1-d">
+        <ctl name="Route Status" value="Active" />
+        <ctl name="SSP Core Boot" value="1" />
+        <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
+        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
+        <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="CDC0 MicBias" value="1" />
         <ctl name="PortC MicBias" value="1" />
         <ctl name="PortB MicBias" value="1" />
 
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
-        <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="Pdm CDC Setup" value="1" />
 
         <ctl name="Pdm PortC Setup" value="1" />
@@ -2211,22 +2349,64 @@
         <ctl name="Tx2Chan IpSrcId" value="RX1_ChanMgr" />
     </path>
 
+    <path name="iaxxx-port-cdcpdm1-dc-ll">
+        <ctl name="Route Status" value="Active" />
+        <ctl name="SSP Core Boot" value="1" />
+        <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
+        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
+        <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
+        <ctl name="CDC0 MicBias" value="1" />
+        <ctl name="PortC MicBias" value="1" />
+        <ctl name="PortB MicBias" value="1" />
+
+        <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
+        <ctl name="Pdm CDC Setup" value="1" />
+
+        <ctl name="Pdm PortC Setup" value="1" />
+        <ctl name="Pdm PortC CDC DMic4 En" value="1" />
+        <ctl name="Pdm CDC1 Setup" value="1" />
+        <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
+        <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
+
+        <ctl name="PDM Hos" value="2" />
+        <ctl name="PDM CDC0 Start" value="26" />
+
+        <ctl name="strm0 ASRC Mode" value="REDBOX_2-1" />
+        <ctl name="strm0 Master Strm Id" value="STREAMID_0" />
+        <ctl name="strm0 Format FrLn" value="8K_20MS" />
+        <ctl name="strm0 Format Sr" value="RATE_48K" />
+        <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
+        <ctl name="strm0 Dir" value="0" />
+        <ctl name="strm0 inter strm delay" value="0" />
+        <ctl name="strm0 Port" value="PDMI1" />
+        <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
+        <ctl name="strm0 CH Mask En" value="13" />
+        <ctl name="strm0 Xfer Mode" value="SSP_Low_Lat_PT" />
+        <ctl name="strm0 En" value="1" />
+    </path>
+
     <!-- Port CDCPDM1 -->
     <path name="iaxxx-dmic1">
         <path name="iaxxx-port-cdcpdm1" />
         <path name="iaxxx-port-a" />
+        <ctl name="strm8 CH Mask En" value="1" />
+        <ctl name="strm8 En" value="1" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="One" />
     </path>
     <!-- Port D -->
     <path name="iaxxx-dmic2">
         <path name="iaxxx-port-d" />
         <path name="iaxxx-port-a" />
+        <ctl name="strm8 CH Mask En" value="1" />
+        <ctl name="strm8 En" value="1" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="One" />
     </path>
     <!-- Port C -->
     <path name="iaxxx-dmic3">
         <path name="iaxxx-port-c" />
         <path name="iaxxx-port-a" />
+        <ctl name="strm8 CH Mask En" value="1" />
+        <ctl name="strm8 En" value="1" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="One" />
     </path>
 
@@ -2235,6 +2415,7 @@
         <path name="iaxxx-port-cdcpdm1-d" />
         <path name="iaxxx-port-a" />
         <ctl name="strm8 CH Mask En" value="3" />
+        <ctl name="strm8 En" value="1" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="Two" />
     </path>
 
@@ -2243,6 +2424,7 @@
         <path name="iaxxx-port-cdcpdm1-c" />
         <path name="iaxxx-port-a" />
         <ctl name="strm8 CH Mask En" value="3" />
+        <ctl name="strm8 En" value="1" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="Two" />
     </path>
 
@@ -2251,6 +2433,7 @@
         <path name="iaxxx-port-cd" />
         <path name="iaxxx-port-a" />
         <ctl name="strm8 CH Mask En" value="3" />
+        <ctl name="strm8 En" value="1" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="Two" />
     </path>
 
@@ -2259,6 +2442,7 @@
         <path name="iaxxx-port-cd-cdcpdm1" />
         <path name="iaxxx-port-a" />
         <ctl name="strm8 CH Mask En" value="7" />
+        <ctl name="strm8 En" value="1" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="Three" />
     </path>
 
@@ -2267,6 +2451,26 @@
         <path name="iaxxx-port-c-cdcpdm1-d" />
         <path name="iaxxx-port-a" />
         <ctl name="strm8 CH Mask En" value="7" />
+        <ctl name="strm8 En" value="1" />
+        <ctl name="QUAT_TDM_TX_0 Channels" value="Three" />
+    </path>
+
+    <!-- Low Latency Passthough path -->
+    <!-- Port CDCPDM1+C for LowLatency -->
+    <path name="iaxxx-dmic13-ll">
+        <path name="iaxxx-port-cdcpdm1-c-ll" />
+        <path name="iaxxx-port-a-ll" />
+        <ctl name="strm8 CH Mask En" value="3" />
+        <ctl name="strm8 En" value="1" />
+        <ctl name="QUAT_TDM_TX_0 Channels" value="Two" />
+    </path>
+
+    <!-- Port CDCPDM1+D+C for LowLatency -->
+    <path name="iaxxx-dmic123-ll">
+        <path name="iaxxx-port-cdcpdm1-dc-ll" />
+        <path name="iaxxx-port-a-ll" />
+        <ctl name="strm8 CH Mask En" value="7" />
+        <ctl name="strm8 En" value="1" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="Three" />
     </path>
     <!-- For Iaxxx, DMic mapping and TDM END -->
@@ -2351,6 +2555,10 @@
     <!-- Ch1: 3rd mic DEC8/TX8, Ch2: 2nd mic DEC6/TX6, Ch3: 1st mic DEC5/TX5-->
     <path name="triple-mic">
         <path name="iaxxx-dmic312" />
+    </path>
+    <!-- Ch1: 1st mic CH2: 2nd mic Ch3: 3rd mic -->
+    <path name="triple-mic-ll">
+        <path name="iaxxx-dmic123-ll" />
     </path>
 
     <!-- SPK -->
