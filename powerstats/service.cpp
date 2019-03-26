@@ -91,6 +91,18 @@ int main(int /* argc */, char** /* argv */) {
     uint32_t slpiId = service->addPowerEntity("SLPI", PowerEntityType::SUBSYSTEM);
     rpmSdp->addEntity(slpiId, PowerEntityConfig("SLPI", rpmStateResidencyConfigs));
 
+    uint32_t slpiIslandId = service->addPowerEntity("SLPI_ISLAND", PowerEntityType::SUBSYSTEM);
+    rpmSdp->addEntity(slpiIslandId, PowerEntityConfig("SLPI_ISLAND", {
+        {.name = "uImage",
+         .entryCountSupported = true,
+         .entryCountPrefix = "Sleep Count:",
+         .totalTimeSupported = true,
+         .totalTimePrefix = "Sleep Accumulated Duration:",
+         .totalTimeTransform = rpmConvertToMs,
+         .lastEntrySupported = true,
+         .lastEntryPrefix = "Sleep Last Entered At:",
+         .lastEntryTransform = rpmConvertToMs}}));
+
     service->addStateResidencyDataProvider(rpmSdp);
 
     // Add SoC power entity
