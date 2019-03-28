@@ -271,6 +271,9 @@ on late-fs
     # Init sensor specific services
     start init-sensors-sh
 
+    # turn off vblank irq immediately after turning off
+    write /sys/module/drm/parameters/vblankoffdelay -1
+
 on post-fs-data
     mkdir /vendor/data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
@@ -284,6 +287,7 @@ on post-fs-data
     mkdir /data/vendor/time 0770 system system
     mkdir /data/vendor/modem_fdr 0700 root system
     mkdir /data/vendor/display 0770 system graphics
+    mkdir /data/vendor/camera 0770 camera camera
 
 on zygote-start
     # zygote is started in common init.rc
@@ -400,6 +404,10 @@ on early-boot
     chown system system /sys/class/leds/vibrator/device/exc_enable
     chown system system /sys/class/leds/vibrator/device/f0_stored
     chown system system /sys/class/leds/vibrator/device/fw_rev
+    chown system system /sys/class/leds/vibrator/device/gpio1_fall_dig_scale
+    chown system system /sys/class/leds/vibrator/device/gpio1_fall_index
+    chown system system /sys/class/leds/vibrator/device/gpio1_rise_dig_scale
+    chown system system /sys/class/leds/vibrator/device/gpio1_rise_index
     chown system system /sys/class/leds/vibrator/device/heartbeat
     chown system system /sys/class/leds/vibrator/device/hw_reset
     chown system system /sys/class/leds/vibrator/device/num_waves

@@ -1150,7 +1150,8 @@
 
     <path name="port-c">
     <!-- Port-C PDM4 -->
-        <ctl name="PortC MicBias" value="1"/>
+        <ctl name="Route Status" value="Active"/>
+        <ctl name="CDC0 MicBias" value="1"/>
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
         <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_32K"/>
         <ctl name="Pdm CDC Setup" value="1"/>
@@ -1172,20 +1173,19 @@
         <ctl name="strm0 Port Enc" value="ENCODING_Q23"/>
         <ctl name="strm0 CH Mask En" value="1"/>
         <ctl name="Rx0 Mux Port" value="PDMI4"/>
-        <ctl name="Route Status" value="Active"/>
         <ctl name="strm0 En" value="1"/>
     </path>
 
     <path name="port-b">
-    <!-- Port-B PDM6 -->
-        <ctl name="PortB MicBias" value="1"/>
+    <!-- Port-B PDM7 -->
+        <ctl name="Route Status" value="Active"/>
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
         <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_32K"/>
         <ctl name="Pdm CDC Setup" value="1"/>
         <ctl name="Pdm PortB Setup" value="1"/>
         <ctl name="Pdm PortB CDC DMic6 En" value="1"/>
-        <ctl name="PDM Hos" value="0x40"/>
-        <ctl name="PDM CDC0 Start" value="0x40"/>
+        <ctl name="PDM Hos" value="0x80"/>
+        <ctl name="PDM CDC0 Start" value="0x80"/>
         <ctl name="Rx0Chan GnRmp" value="STEP_2000"/>
         <ctl name="Rx0Ch EpGain" value="40"/>
         <ctl name="Rx0Chan Gain En" value="1"/>
@@ -1196,17 +1196,17 @@
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT"/>
         <ctl name="strm0 Dir" value="0"/>
         <ctl name="strm0 inter strm delay" value="0"/>
-        <ctl name="strm0 Port" value="PDMI6"/>
+        <ctl name="strm0 Port" value="PDMI7"/>
         <ctl name="strm0 Port Enc" value="ENCODING_Q23"/>
         <ctl name="strm0 CH Mask En" value="1"/>
-        <ctl name="Rx0 Mux Port" value="PDMI6"/>
-        <ctl name="Route Status" value="Active"/>
+        <ctl name="Rx0 Mux Port" value="PDMI7"/>
         <ctl name="strm0 En" value="1"/>
     </path>
 
     <path name="port-d">
     <!-- Port-D PDM3 -->
-        <ctl name="CDC0 MicBias" value="1"/>
+        <ctl name="Route Status" value="Active"/>
+        <ctl name="PortB MicBias" value="1"/>
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
         <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_32K"/>
         <ctl name="Pdm CDC Setup" value="1"/>
@@ -1227,14 +1227,14 @@
         <ctl name="strm0 Port" value="PDMI3"/>
         <ctl name="strm0 Port Enc" value="ENCODING_Q23"/>
         <ctl name="strm0 CH Mask En" value="1" />
-        <ctl name="Route Status" value="Active"/>
         <ctl name="Rx0 Mux Port" value="PDMI3"/>
         <ctl name="strm0 En" value="1" />
     </path>
 
     <path name="port-cdc">
     <!-- Port-CDC PDM1 -->
-        <ctl name="CDC0 MicBias" value="1"/>
+        <ctl name="Route Status" value="Active"/>
+        <ctl name="PortC MicBias" value="1"/>
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
         <ctl name="PDM Port ACLK" value="IAXXX_AUD_PORT_32K"/>
         <ctl name="Pdm CDC Setup" value="1"/>
@@ -1255,24 +1255,23 @@
         <ctl name="strm0 Port" value="PDMI1"/>
         <ctl name="strm0 Port Enc" value="ENCODING_Q23"/>
         <ctl name="strm0 CH Mask En" value="1"/>
-        <ctl name="Route Status" value="Active"/>
         <ctl name="Rx0 Mux Port" value="PDMI1"/>
         <ctl name="strm0 En" value="1"/>
     </path>
 
     <path name="mic1-route">
     <!-- main mic -->
-        <path name="port-c"/>
+        <path name="port-cdc"/>
     </path>
 
     <path name="mic2-route">
     <!-- second mic -->
-        <path name="port-b"/>
+        <path name="port-d"/>
     </path>
 
     <path name="mic3-route">
     <!-- third mic -->
-        <path name="port-cdc"/>
+        <path name="port-c"/>
     </path>
 
     <path name="bargein-route">
