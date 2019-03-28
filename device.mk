@@ -764,7 +764,7 @@ PRODUCT_COPY_FILES += \
 
 # power HAL
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.3-service.coral-libperfmgr
+    android.hardware.power@1.3-service.pixel-libperfmgr
 
 # GPS configuration file
 PRODUCT_COPY_FILES += \
@@ -840,3 +840,6 @@ PRODUCT_COPY_FILES += \
 # b/128679787: temporarily use legacy adb USB implementation
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.adb.nonblocking_ffs=0
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
