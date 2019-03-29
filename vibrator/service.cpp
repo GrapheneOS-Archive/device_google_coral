@@ -44,8 +44,13 @@ static constexpr char EFFECT_DURATION_PATH[] =
     "/sys/class/leds/vibrator/device/cp_trigger_duration";
 static constexpr char EFFECT_INDEX_PATH[] = "/sys/class/leds/vibrator/device/cp_trigger_index";
 static constexpr char EFFECT_QUEUE_PATH[] = "/sys/class/leds/vibrator/device/cp_trigger_queue";
-static constexpr char DIGI_SCALE_PATH[] = "/sys/class/leds/vibrator/device/dig_scale";
+static constexpr char EFFECT_SCALE_PATH[] = "/sys/class/leds/vibrator/device/cp_dig_scale";
+static constexpr char GLOBAL_SCALE_PATH[] = "/sys/class/leds/vibrator/device/dig_scale";
 static constexpr char ASP_ENABLE_PATH[] = "/sys/class/leds/vibrator/device/asp_enable";
+static constexpr char GPIO_FALL_INDEX[] = "/sys/class/leds/vibrator/device/gpio1_fall_index";
+static constexpr char GPIO_FALL_SCALE[] = "/sys/class/leds/vibrator/device/gpio1_fall_dig_scale";
+static constexpr char GPIO_RISE_INDEX[] = "/sys/class/leds/vibrator/device/gpio1_rise_index";
+static constexpr char GPIO_RISE_SCALE[] = "/sys/class/leds/vibrator/device/gpio1_rise_dig_scale";
 
 // File path to the calibration file
 static constexpr char CALIBRATION_FILEPATH[] = "/mnt/vendor/persist/haptics/cs40l25a.cal";
@@ -178,14 +183,39 @@ status_t registerVibratorService() {
         ALOGE("Failed to open %s (%d): %s", EFFECT_QUEUE_PATH, errno, strerror(errno));
     }
 
-    hwapi.scale.open(DIGI_SCALE_PATH);
-    if (!hwapi.scale) {
-        ALOGE("Failed to open %s (%d): %s", DIGI_SCALE_PATH, errno, strerror(errno));
+    hwapi.effectScale.open(EFFECT_SCALE_PATH);
+    if (!hwapi.effectScale) {
+        ALOGE("Failed to open %s (%d): %s", EFFECT_SCALE_PATH, errno, strerror(errno));
+    }
+
+    hwapi.globalScale.open(GLOBAL_SCALE_PATH);
+    if (!hwapi.globalScale) {
+        ALOGE("Failed to open %s (%d): %s", GLOBAL_SCALE_PATH, errno, strerror(errno));
     }
 
     hwapi.aspEnable.open(ASP_ENABLE_PATH);
     if (!hwapi.aspEnable) {
         ALOGE("Failed to open %s (%d): %s", ASP_ENABLE_PATH, errno, strerror(errno));
+    }
+
+    hwapi.gpioFallIndex.open(GPIO_FALL_INDEX);
+    if (!hwapi.gpioFallIndex) {
+        ALOGE("Failed to open %s (%d): %s", GPIO_FALL_INDEX, errno, strerror(errno));
+    }
+
+    hwapi.gpioFallScale.open(GPIO_FALL_SCALE);
+    if (!hwapi.gpioFallScale) {
+        ALOGE("Failed to open %s (%d): %s", GPIO_FALL_SCALE, errno, strerror(errno));
+    }
+
+    hwapi.gpioRiseIndex.open(GPIO_RISE_INDEX);
+    if (!hwapi.gpioRiseIndex) {
+        ALOGE("Failed to open %s (%d): %s", GPIO_RISE_INDEX, errno, strerror(errno));
+    }
+
+    hwapi.gpioRiseScale.open(GPIO_RISE_SCALE);
+    if (!hwapi.gpioRiseScale) {
+        ALOGE("Failed to open %s (%d): %s", GPIO_RISE_SCALE, errno, strerror(errno));
     }
 
     hwapi.state << 1 << std::endl;

@@ -72,7 +72,33 @@
         <device name="SND_DEVICE_OUT_VOICE_TTY_HCO_SPEAKER" acdb_id="14"/>
         <device name="SND_DEVICE_IN_VOICE_TTY_VCO_SPEAKER_MIC" acdb_id="19"/>
         <device name="SND_DEVICE_OUT_USB_HEADSET_SPEC" acdb_id="515"/>
+        <device name="SND_DEVICE_IN_CAMCORDER_LANDSCAPE" acdb_id="61"/>
+        <device name="SND_DEVICE_IN_CAMCORDER_INVERT_LANDSCAPE" acdb_id="61"/>
+        <device name="SND_DEVICE_IN_CAMCORDER_PORTRAIT" acdb_id="61"/>
+        <device name="SND_DEVICE_IN_CAMCORDER_SELFIE_LANDSCAPE" acdb_id="66"/>
+        <device name="SND_DEVICE_IN_CAMCORDER_SELFIE_INVERT_LANDSCAPE" acdb_id="66"/>
+        <device name="SND_DEVICE_IN_CAMCORDER_SELFIE_PORTRAIT" acdb_id="66"/>
     </acdb_ids>
+    <external_specific_dev>
+        <!-- availiable overwrite external snd device
+            SND_DEVICE_OUT_USB_HEADSET
+            SND_DEVICE_OUT_USB_HEADPHONES
+            SND_DEVICE_OUT_VOICE_USB_HEADPHONES
+            SND_DEVICE_OUT_VOICE_USB_HEADSET
+            SND_DEVICE_OUT_VOICE_TTY_FULL_USB
+            SND_DEVICE_OUT_VOICE_TTY_VCO_USB
+
+            SND_DEVICE_IN_USB_HEADSET_MIC
+            SND_DEVICE_IN_USB_HEADSET_MIC_AEC
+            SND_DEVICE_IN_VOICE_USB_HEADSET_MIC
+            SND_DEVICE_IN_UNPROCESSED_USB_HEADSET_MIC
+            SND_DEVICE_IN_VOICE_RECOG_USB_HEADSET_MIC
+        -->
+        <!-- condor -->
+        <ext_device name="SND_DEVICE_OUT_VOICE_USB_HEADSET" usbid="18d1:5034" acdb_id="56" />
+        <ext_device name="SND_DEVICE_IN_VOICE_USB_HEADSET_MIC" usbid="18d1:5034" acdb_id="55" />
+
+    </external_specific_dev>
     <bit_width_configs>
         <device name="SND_DEVICE_OUT_SPEAKER" bit_width="24"/>
     </bit_width_configs>

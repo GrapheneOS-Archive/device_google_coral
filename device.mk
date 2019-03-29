@@ -251,7 +251,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.display.paneltype=2 \
     ro.vendor.display.sensortype=2 \
     vendor.display.foss.config=1 \
-    vendor.display.foss.config_path=/vendor/etc/FOSSConfig.xml
+    vendor.display.foss.config_path=/vendor/etc/FOSSConfig.xml \
+    vendor.display.qdcm.mode_combine=1
+
 
 # camera google face detection
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -424,8 +426,8 @@ PRODUCT_PACKAGES += \
     libgps.utils \
     libgnss \
     liblocation_api \
-    android.hardware.gnss@1.1-impl-qti \
-    android.hardware.gnss@1.1-service-qti
+    android.hardware.gnss@2.0-impl-qti \
+    android.hardware.gnss@2.0-service-qti
 
 # Wireless Charger HAL
 PRODUCT_PACKAGES += \
