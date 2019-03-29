@@ -77,3 +77,6 @@ $(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/bin/hw/android.hardware.vibr
 
 # Remove Misnamed Vibrator VINTF Fragment
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/vintf/manifest/manifest.xml)
+
+# Rename power HAL
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/init/android.hardware.power@1.3-service.coral-libperfmgr.rc)
