@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#define LOG_TAG "libpixelpowerstats"
+
 #include <algorithm>
 #include <thread>
 #include <exception>
@@ -49,7 +51,7 @@ void RailDataProvider::findIioPowerMonitorNodes() {
   char filePath[MAX_FILE_PATH_LEN];
   DIR *iioDir = opendir(kIioDirRoot);
   if (!iioDir) {
-    ALOGE("Error opening directory: %s", kIioDirRoot);
+    ALOGE("Error opening directory: %s, error: %d", kIioDirRoot, errno);
     return;
   }
   while (ent = readdir(iioDir), ent) {
@@ -61,7 +63,7 @@ void RailDataProvider::findIioPowerMonitorNodes() {
       snprintf(filePath, MAX_FILE_PATH_LEN, "%s/%s", ent->d_name, "name");
       fd = openat(dirfd(iioDir), filePath, O_RDONLY);
       if (fd < 0) {
-        ALOGW("Failed to open directory: %s", filePath);
+        ALOGW("Failed to open directory: %s, error: %d", filePath, errno);
         continue;
       }
       if (read(fd, devName, MAX_DEVICE_NAME_LEN) < 0) {
@@ -202,6 +204,7 @@ Return<void> RailDataProvider::getRailInfo(IPowerStats::getRailInfo_cb _hidl_cb)
   size_t index;
   std::lock_guard<std::mutex> _lock(mOdpm.mLock);
   if (mOdpm.hwEnabled == false) {
+    ALOGI("getRailInfo not supported");
     _hidl_cb(rInfo, Status::NOT_SUPPORTED);
     return Void();
   }
