@@ -239,6 +239,7 @@ PRODUCT_PACKAGES += \
     tunneling_hal_test \
     sensor_param_test \
     oslo_config_test \
+    oslo_data_injection_test \
     odsp_api_test \
     crash_event_logger \
     dump_debug_info
