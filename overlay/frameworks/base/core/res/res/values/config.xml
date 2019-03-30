@@ -444,6 +444,10 @@
     <integer translatable="false" name="config_wifi_framework_wifi_score_bad_rssi_threshold_5GHz">-80</integer>
     <integer translatable="false" name="config_wifi_framework_wifi_score_bad_rssi_threshold_24GHz">-83</integer>
 
+    <string name="config_wlan_data_service_package">vendor.qti.iwlan</string>
+    <string name="config_wlan_network_service_package">vendor.qti.iwlan</string>
+    <string name="config_qualified_networks_service_package">vendor.qti.iwlan</string>
+
     <!-- Enables or disables haptic effect when the text insertion/selection handle is moved
           manually by the user. Off by default, since the expected haptic feedback may not be
           available on some devices. -->
