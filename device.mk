@@ -156,7 +156,8 @@ PRODUCT_STATIC_BOOT_CONTROL_HAL := \
 PRODUCT_PACKAGES += \
     update_engine_sideload \
     sg_write_buffer \
-    f2fs_io
+    f2fs_io \
+    check_f2fs
 
 # Userdata Checkpointing OTA GC
 PRODUCT_PACKAGES += \
