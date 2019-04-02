@@ -79,8 +79,6 @@ class Vibrator : public IVibrator {
     // 'compound' effects are those composed by stringing multiple 'simple' effects
     Return<Status> getCompoundDetails(Effect effect, EffectStrength strength, uint32_t *outTimeMs,
                                       uint32_t *outVolLevel, std::string *outEffectQueue);
-    Return<Status> getRingtoneDetails(Effect effect, EffectStrength strength, uint32_t *outTimeMs,
-                                      uint32_t *outVolLevel, std::string *outEffectQueue);
     Return<Status> setEffectQueue(const std::string &effectQueue);
     Return<void> performEffect(Effect effect, EffectStrength strength, perform_cb _hidl_cb);
     bool isUnderExternalControl();
