@@ -49,6 +49,8 @@ typedef struct {
 
 static constexpr uint32_t WAVEFORM_SIMPLE_EFFECT_INDEX = 2;
 
+static constexpr uint32_t WAVEFORM_TEXTURE_TICK_EFFECT_LEVEL = 0;
+
 static constexpr uint32_t WAVEFORM_TICK_EFFECT_LEVEL = 1;
 
 static constexpr uint32_t WAVEFORM_CLICK_EFFECT_LEVEL = 2;
@@ -312,12 +314,30 @@ Return<Status> Vibrator::getSimpleDetails(Effect effect, EffectStrength strength
     uint32_t timeMs;
     uint32_t volLevel;
     uint32_t volIndex;
+    int8_t volOffset;
+
+    switch (strength) {
+        case EffectStrength::LIGHT:
+            volOffset = -1;
+            break;
+        case EffectStrength::MEDIUM:
+            volOffset = 0;
+            break;
+        case EffectStrength::STRONG:
+            volOffset = 1;
+            break;
+        default:
+            return Status::UNSUPPORTED_OPERATION;
+    }
 
     switch (effect) {
         case Effect::TEXTURE_TICK:
-            // fall-through
+            volIndex = WAVEFORM_TEXTURE_TICK_EFFECT_LEVEL;
+            volOffset = 0;
+            break;
         case Effect::TICK:
             volIndex = WAVEFORM_TICK_EFFECT_LEVEL;
+            volOffset = 0;
             break;
         case Effect::CLICK:
             volIndex = WAVEFORM_CLICK_EFFECT_LEVEL;
@@ -329,20 +349,7 @@ Return<Status> Vibrator::getSimpleDetails(Effect effect, EffectStrength strength
             return Status::UNSUPPORTED_OPERATION;
     }
 
-    switch (strength) {
-        case EffectStrength::LIGHT:
-            volLevel = mVolLevels[--volIndex];
-            break;
-        case EffectStrength::MEDIUM:
-            volLevel = mVolLevels[volIndex];
-            break;
-        case EffectStrength::STRONG:
-            volLevel = mVolLevels[++volIndex];
-            break;
-        default:
-            return Status::UNSUPPORTED_OPERATION;
-    }
-
+    volLevel = mVolLevels[volIndex + volOffset];
     timeMs = mSimpleEffectDuration + MAX_COLD_START_LATENCY_MS;
 
     *outTimeMs = timeMs;

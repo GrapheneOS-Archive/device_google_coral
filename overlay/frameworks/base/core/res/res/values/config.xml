@@ -93,15 +93,13 @@
          - If 100 <= Y < 1000, we require Y < (1 - 0.05) * X = 0.95X;
          - If 1000 <= Y, we require Y < (1 - 0) * X = X. -->
     <array name="config_displayWhiteBalanceBaseThresholds">
-        <item>2700</item>
-        <item>3100</item>
-        <item>3700</item>
-        <item>4200</item>
-        <item>4800</item>
-        <item>5300</item>
+        <item>5700</item>
         <item>6000</item>
-        <item>7000</item>
-        <item>8000</item>
+        <item>6050</item>
+        <item>6300</item>
+        <item>6400</item>
+        <item>6850</item>
+        <item>7450</item>
     </array>
 
     <!-- See DisplayWhiteBalanceThrottler.
@@ -109,15 +107,13 @@
          non-empty, the same length as config_displayWhiteBalanceBaseThresholds, and contain
          non-negative numbers. -->
     <array name="config_displayWhiteBalanceIncreaseThresholds">
-        <item>0.06897</item>
-        <item>0.05882</item>
-        <item>0.05063</item>
-        <item>0.04444</item>
-        <item>0.03960</item>
-        <item>0.03540</item>
-        <item>0.03077</item>
-        <item>0.02667</item>
-        <item>0.02500</item>
+        <item>0.0085470</item>
+        <item>0.0082988</item>
+        <item>0.0080972</item>
+        <item>0.0078740</item>
+        <item>0.0075472</item>
+        <item>0.0069930</item>
+        <item>0.0067114</item>
     </array>
 
     <!-- See DisplayWhiteBalanceThrottler.
@@ -125,21 +121,19 @@
          non-empty, the same length as config_displayWhiteBalanceBaseThresholds, and contain
          non-negative numbers. -->
     <array name="config_displayWhiteBalanceDecreaseThresholds">
-        <item>0.06897</item>
-        <item>0.05882</item>
-        <item>0.05063</item>
-        <item>0.04444</item>
-        <item>0.03960</item>
-        <item>0.03540</item>
-        <item>0.03077</item>
-        <item>0.02667</item>
-        <item>0.02500</item>
+        <item>0.0085470</item>
+        <item>0.0082988</item>
+        <item>0.0080972</item>
+        <item>0.0078740</item>
+        <item>0.0075472</item>
+        <item>0.0069930</item>
+        <item>0.0067114</item>
     </array>
 
     <!-- See DisplayWhiteBalanceController.
          The ambient color temperature (in cct) to which we fall back when the ambient brightness
          drops beneath a certain threshold. -->
-    <item name="config_displayWhiteBalanceLowLightAmbientColorTemperature" format="float" type="dimen">6200.0</item>
+    <item name="config_displayWhiteBalanceLowLightAmbientColorTemperature" format="float" type="dimen">5700.0</item>
 
     <!-- See DisplayWhiteBalanceController.
          A float array containing a list of ambient color temperatures, in Kelvin. This array,
@@ -427,5 +421,6 @@
           manually by the user. Off by default, since the expected haptic feedback may not be
           available on some devices. -->
     <bool name="config_enableHapticTextHandle">true</bool>
-
+    <!-- Enable Zram writeback feature to allow unused pages in zram be written to flash. -->
+    <bool name="config_zramWriteback">true</bool>
 </resources>

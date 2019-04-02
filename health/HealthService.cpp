@@ -43,17 +43,17 @@ using hardware::google::pixel::health::CycleCountBackupRestore;
 using hardware::google::pixel::health::DeviceHealth;
 using hardware::google::pixel::health::LowBatteryShutdownMetrics;
 
-#define FG_DIR "/sys/class/power_supply/maxfg"
+#define FG_DIR "/sys/class/power_supply/battery"
 constexpr char kBatteryResistance[] {FG_DIR "/resistance"};
 constexpr char kBatteryOCV[] {FG_DIR "/voltage_ocv"};
 constexpr char kVoltageAvg[] {FG_DIR "/voltage_avg"};
-constexpr char kCycleCountsBins[] {FG_DIR "/cycle_counts_bins"};
+constexpr char kCycleCountsBins[] {FG_DIR "/cycle_counts"};
 constexpr char kGaugeSerial[] {FG_DIR "/serial_number"};
 
 static BatteryMetricsLogger battMetricsLogger(kBatteryResistance, kBatteryOCV);
 static LowBatteryShutdownMetrics shutdownMetrics(kVoltageAvg);
-static CycleCountBackupRestore ccBackupRestoreMAX(
-    10, kCycleCountsBins, "/persist/battery/max_cycle_counts_bins", kGaugeSerial);
+static CycleCountBackupRestore ccBackupRestore(
+    10, kCycleCountsBins, "/persist/battery/cycle_counts", kGaugeSerial);
 static DeviceHealth deviceHealth;
 
 #define UFS_DIR "/sys/devices/platform/soc/1d84000.ufshc"
@@ -99,14 +99,14 @@ void fill_ufs_storage_attribute(StorageAttribute *attr) {
 
 void healthd_board_init(struct healthd_config *hc) {
   hc->ignorePowerSupplyNames.push_back(android::String8(kTCPMPSYName));
-  ccBackupRestoreMAX.Restore();
+  ccBackupRestore.Restore();
 }
 
 int healthd_board_battery_update(struct android::BatteryProperties *props) {
   deviceHealth.update(props);
   battMetricsLogger.logBatteryProperties(props);
   shutdownMetrics.logShutdownVoltage(props);
-  ccBackupRestoreMAX.Backup(props->batteryLevel);
+  ccBackupRestore.Backup(props->batteryLevel);
   return 0;
 }
 
