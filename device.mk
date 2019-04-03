@@ -53,6 +53,9 @@ TARGET_PRODUCT_PROP := $(LOCAL_PATH)/product.prop
 
 $(call inherit-product, $(LOCAL_PATH)/utils.mk)
 
+# Installs gsi keys into ramdisk, to boot a GSI with verified boot.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+
 ifeq ($(wildcard vendor/google_devices/coral/proprietary/device-vendor-coral.mk),)
     BUILD_WITHOUT_VENDOR := true
 endif
