@@ -296,6 +296,10 @@ static void DumpTouch(int fd) {
                        {"/vendor/bin/sh", "-c",
                         "echo 33 12 > /proc/fts/driver_test && "
                         "cat /proc/fts/driver_test"});
+        RunCommandToFd(fd, "Golden Mutual Raw Data",
+                       {"/vendor/bin/sh", "-c",
+                        "echo 34 > /proc/fts/driver_test && "
+                        "cat /proc/fts/driver_test"});
     }
 }
 
