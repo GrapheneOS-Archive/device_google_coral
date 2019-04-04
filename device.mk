@@ -156,7 +156,8 @@ PRODUCT_STATIC_BOOT_CONTROL_HAL := \
 PRODUCT_PACKAGES += \
     update_engine_sideload \
     sg_write_buffer \
-    f2fs_io
+    f2fs_io \
+    check_f2fs
 
 # Userdata Checkpointing OTA GC
 PRODUCT_PACKAGES += \
@@ -210,6 +211,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml \
     frameworks/native/data/etc/android.hardware.telephony.carrierlock.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.carrierlock.xml \
     frameworks/native/data/etc/android.hardware.strongbox_keystore.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.strongbox_keystore.xml \
+    frameworks/native/data/etc/android.hardware.nfc.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.uicc.xml \
+    frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.ese.xml \
 
 # Audio fluence, ns, aec property, voice and media volume steps
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -239,7 +242,10 @@ PRODUCT_PACKAGES += \
     tunneling_hal_test \
     sensor_param_test \
     oslo_config_test \
-    odsp_api_test
+    oslo_data_injection_test \
+    odsp_api_test \
+    crash_event_logger \
+    dump_debug_info
 endif
 
 # graphics
@@ -251,7 +257,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.display.paneltype=2 \
     ro.vendor.display.sensortype=2 \
     vendor.display.foss.config=1 \
-    vendor.display.foss.config_path=/vendor/etc/FOSSConfig.xml
+    vendor.display.foss.config_path=/vendor/etc/FOSSConfig.xml \
+    vendor.display.qdcm.mode_combine=1
+
 
 # camera google face detection
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -343,7 +351,7 @@ PRODUCT_PACKAGES += \
     NfcNci \
     Tag \
     SecureElement \
-    android.hardware.nfc@1.1-service.st \
+    android.hardware.nfc@1.2-service.st \
 
 PRODUCT_COPY_FILES += \
     device/google/coral/nfc/libnfc-hal-st.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-hal-st.conf \
@@ -424,8 +432,8 @@ PRODUCT_PACKAGES += \
     libgps.utils \
     libgnss \
     liblocation_api \
-    android.hardware.gnss@1.1-impl-qti \
-    android.hardware.gnss@1.1-service-qti
+    android.hardware.gnss@2.0-impl-qti \
+    android.hardware.gnss@2.0-service-qti
 
 # Wireless Charger HAL
 PRODUCT_PACKAGES += \
@@ -594,6 +602,10 @@ PRODUCT_COPY_FILES += \
     device/google/coral/audio/data/crus_sp_config_flame_rx.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/crus_sp_config_flame_rx.bin \
     device/google/coral/audio/data/crus_sp_config_flame_tx.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/crus_sp_config_flame_tx.bin
 
+# Audio audiozoom config data
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/audio/audiozoom.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audiozoom.xml
+
 # and ensure that the xaac decoder is built
 PRODUCT_PACKAGES += \
     libstagefright_soft_xaacdec.vendor
@@ -758,7 +770,7 @@ PRODUCT_COPY_FILES += \
 
 # power HAL
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.3-service.coral-libperfmgr
+    android.hardware.power@1.3-service.pixel-libperfmgr
 
 # GPS configuration file
 PRODUCT_COPY_FILES += \
@@ -784,6 +796,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/init.insmod.coral.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/init.insmod.coral.cfg \
 	$(LOCAL_PATH)/init.insmod.flame.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/init.insmod.flame.cfg
+
+# Use /product/etc/fstab.postinstall to mount system_other
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.postinstall.fstab.prefix=/product
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/fstab.postinstall:$(TARGET_COPY_OUT_PRODUCT)/etc/fstab.postinstall
 
 # powerstats HAL
 PRODUCT_PACKAGES += \
@@ -827,3 +846,13 @@ PRODUCT_COPY_FILES += \
 # b/128679787: temporarily use legacy adb USB implementation
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.adb.nonblocking_ffs=0
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
+
+# ZRAM writeback
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.zram.mark_idle_delay_mins=60 \
+    ro.zram.first_wb_delay_mins=180 \
+    ro.zram.periodic_wb_delay_hours=24
+

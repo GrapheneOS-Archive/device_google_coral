@@ -339,6 +339,10 @@ static void DumpVibrator(int fd) {
         "exc_enable",
         "f0_stored",
         "fw_rev",
+        "gpio1_fall_dig_scale",
+        "gpio1_fall_index",
+        "gpio1_rise_dig_scale",
+        "gpio1_rise_index",
         "heartbeat",
         "hw_reset",
         "leds/vibrator/activate",
@@ -419,8 +423,8 @@ Return<void> DumpstateDevice::dumpstateBoard(const hidl_handle& handle) {
     RunCommandToFd(fd, "PMIC Votables", {"/vendor/bin/sh", "-c", "cat /sys/kernel/debug/pmic-votable/*/status"});
     DumpFileToFd(fd, "Charger Stats", "/sys/class/power_supply/battery/charge_details");
     DumpFileToFd(fd, "Maxim FG History", "/dev/maxfg_history");
-    DumpFileToFd(fd, "Maxim FG registers", "/d/regmap/1-0036/registers");
-    DumpFileToFd(fd, "Maxim FG NV RAM", "/d/regmap/1-000b/registers");
+    RunCommandToFd(fd, "Maxim FG registers", {"/vendor/bin/sh", "-c", "cat /d/regmap/*-0036/registers"});
+    RunCommandToFd(fd, "Maxim FG NV RAM", {"/vendor/bin/sh", "-c", "cat /d/regmap/*-000b/registers"});
     RunCommandToFd(fd, "Google Charger", {"/vendor/bin/sh", "-c", "cd /d/google_charger/; for f in `ls pps_*` ; do echo \"$f: `cat $f`\" ; done"});
     RunCommandToFd(fd, "Google Battery", {"/vendor/bin/sh", "-c", "cd /d/google_battery/; for f in `ls ssoc_*` ; do echo \"$f: `cat $f`\" ; done"});
     DumpFileToFd(fd, "WLC VER", "/sys/devices/platform/soc/a88000.i2c/i2c-0/0-0061/version");

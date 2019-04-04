@@ -20,7 +20,7 @@
         "1267200",
         "1171200",
         "1113600",
-        "300000"
+        "576000"
       ],
       "ResetOnInit": true
     },
@@ -776,6 +776,12 @@
       "Node": "GPUMaxFreq",
       "Duration": 0,
       "Value": "600000000"
+    },
+    {
+      "PowerHint": "TPU_BOOST",
+      "Node": "PMQoSCpuDmaLatency",
+      "Duration": 2000,
+      "Value": "44"
     }
   ]
 }

@@ -27,8 +27,6 @@ namespace vibrator {
 namespace V1_3 {
 namespace implementation {
 
-using android::hardware::vibrator::V1_2::Effect;
-
 class Vibrator : public IVibrator {
   public:
     typedef struct {
@@ -37,9 +35,14 @@ class Vibrator : public IVibrator {
         std::ifstream effectDuration;
         std::ofstream effectIndex;
         std::ofstream effectQueue;
-        std::ofstream scale;
+        std::ofstream effectScale;
+        std::ofstream globalScale;
         std::ofstream state;
-        std::ofstream aspEnable;
+        std::fstream aspEnable;
+        std::ofstream gpioFallIndex;
+        std::ofstream gpioFallScale;
+        std::ofstream gpioRiseIndex;
+        std::ofstream gpioRiseScale;
     } HwApi;
 
   public:
@@ -61,22 +64,24 @@ class Vibrator : public IVibrator {
                          perform_cb _hidl_cb) override;
     Return<void> perform_1_1(V1_1::Effect_1_1 effect, EffectStrength strength,
                              perform_cb _hidl_cb) override;
-    Return<void> perform_1_2(Effect effect, EffectStrength strength, perform_cb _hidl_cb) override;
+    Return<void> perform_1_2(V1_2::Effect effect, EffectStrength strength, perform_cb _hidl_cb)
+            override;
+    Return<void> perform_1_3(Effect effect, EffectStrength strength, perform_cb _hidl_cb) override;
 
   private:
     Return<Status> on(uint32_t timeoutMs, uint32_t effectIndex);
     // set 'amplitude' based on an arbitrary scale determined by 'maximum'
-    Return<Status> setAmplitude(uint8_t amplitude, uint8_t maximum);
+    Return<Status> setEffectAmplitude(uint8_t amplitude, uint8_t maximum);
+    Return<Status> setGlobalAmplitude(bool set);
     // 'simple' effects are those precompiled and loaded into the controller
     Return<Status> getSimpleDetails(Effect effect, EffectStrength strength, uint32_t *outTimeMs,
                                     uint32_t *outVolLevel);
     // 'compound' effects are those composed by stringing multiple 'simple' effects
     Return<Status> getCompoundDetails(Effect effect, EffectStrength strength, uint32_t *outTimeMs,
                                       uint32_t *outVolLevel, std::string *outEffectQueue);
-    Return<Status> getRingtoneDetails(Effect effect, EffectStrength strength, uint32_t *outTimeMs,
-                                      uint32_t *outVolLevel, std::string *outEffectQueue);
     Return<Status> setEffectQueue(const std::string &effectQueue);
     Return<void> performEffect(Effect effect, EffectStrength strength, perform_cb _hidl_cb);
+    bool isUnderExternalControl();
     HwApi mHwApi;
     std::vector<uint32_t> mVolLevels;
     uint32_t mSimpleEffectDuration;

@@ -42,16 +42,22 @@ on early-fs
 
 on init && property:vendor.skip.init=0
     # Boot time fs tuning
-    # readahead has been set to 2048 in kernel
     write /sys/block/sda/queue/iostats 0
     write /sys/block/sda/queue/scheduler cfq
     write /sys/block/sda/queue/iosched/slice_idle 0
+    write /sys/block/sda/queue/read_ahead_kb 2048
     write /sys/block/sda/queue/nr_requests 256
-    write /sys/block/sde/queue/iostats 0
-    write /sys/block/sde/queue/scheduler cfq
-    write /sys/block/sde/queue/iosched/slice_idle 0
-    write /sys/block/sde/queue/nr_requests 256
-
+    write /sys/block/sdf/queue/iostats 0
+    write /sys/block/sdf/queue/scheduler cfq
+    write /sys/block/sdf/queue/iosched/slice_idle 0
+    write /sys/block/sdf/queue/read_ahead_kb 2048
+    write /sys/block/sdf/queue/nr_requests 256
+    write /sys/block/dm-0/queue/read_ahead_kb 2048
+    write /sys/block/dm-1/queue/read_ahead_kb 2048
+    write /sys/block/dm-2/queue/read_ahead_kb 2048
+    write /sys/block/dm-3/queue/read_ahead_kb 2048
+    write /sys/block/dm-4/queue/read_ahead_kb 2048
+    write /sys/block/dm-5/queue/read_ahead_kb 2048
     # Disable UFS powersaving
     write /sys/devices/platform/soc/${ro.boot.bootdevice}/clkgate_enable 0
     write /sys/devices/platform/soc/${ro.boot.bootdevice}/hibern8_on_idle_enable 0
@@ -191,6 +197,10 @@ on init && property:vendor.skip.init=0
 
 on late-init
     setprop vendor.thermal.config thermal_info_config.json
+    chown system system /sys/devices/virtual/thermal/tz-by-name/sdm-therm-monitor/trip_point_0_temp
+    chown system system /sys/devices/virtual/thermal/tz-by-name/sdm-therm-monitor/trip_point_0_hyst
+    chown system system /sys/devices/virtual/thermal/tz-by-name/usbc-therm-monitor/trip_point_0_temp
+    chown system system /sys/devices/virtual/thermal/tz-by-name/usbc-therm-monitor/trip_point_0_hyst
 
 # Override thermal HAL config for JAWS board
 on fs && property:ro.revision="DEV1.0"
@@ -261,6 +271,10 @@ on late-fs
 
     # Mount RW partitions which need run fsck
     mount_all /vendor/etc/fstab.${ro.boot.hardware.platform} --late
+    # Boot time fs tune
+    write /sys/block/dm-3/queue/read_ahead_kb 2048
+    write /sys/block/dm-4/queue/read_ahead_kb 2048
+    write /sys/block/dm-6/queue/read_ahead_kb 2048
 
     # Required for time_daemon
     mkdir /mnt/vendor/persist/time 0770 system system
@@ -270,6 +284,9 @@ on late-fs
 
     # Init sensor specific services
     start init-sensors-sh
+
+    # turn off vblank irq immediately after turning off
+    write /sys/module/drm/parameters/vblankoffdelay -1
 
 on post-fs-data
     mkdir /vendor/data/tombstones 0771 system system
@@ -284,6 +301,7 @@ on post-fs-data
     mkdir /data/vendor/time 0770 system system
     mkdir /data/vendor/modem_fdr 0700 root system
     mkdir /data/vendor/display 0770 system graphics
+    mkdir /data/vendor/camera 0770 camera camera
 
 on zygote-start
     # zygote is started in common init.rc
@@ -400,6 +418,10 @@ on early-boot
     chown system system /sys/class/leds/vibrator/device/exc_enable
     chown system system /sys/class/leds/vibrator/device/f0_stored
     chown system system /sys/class/leds/vibrator/device/fw_rev
+    chown system system /sys/class/leds/vibrator/device/gpio1_fall_dig_scale
+    chown system system /sys/class/leds/vibrator/device/gpio1_fall_index
+    chown system system /sys/class/leds/vibrator/device/gpio1_rise_dig_scale
+    chown system system /sys/class/leds/vibrator/device/gpio1_rise_index
     chown system system /sys/class/leds/vibrator/device/heartbeat
     chown system system /sys/class/leds/vibrator/device/hw_reset
     chown system system /sys/class/leds/vibrator/device/num_waves
@@ -794,6 +816,7 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     #   group wifi inet keystore
     interface android.hardware.wifi.supplicant@1.0::ISupplicant default
     interface android.hardware.wifi.supplicant@1.1::ISupplicant default
+    interface android.hardware.wifi.supplicant@1.2::ISupplicant default
     class main
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
