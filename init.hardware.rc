@@ -913,3 +913,15 @@ on property:persist.radio.multisim.config=dsds
 on property:sys.retaildemo.enabled=1
     setprop vendor.thermal.mode retail
     restart vendor.thermal-engine
+
+# charger driver exposes now finer grain control, map demo mode to those properties
+# NOTE: demo mode can only be exit wiping data (which reset the persist properties)
+on property:sys.retaildemo.enabled=1
+    setprop persist.vendor.charge.stop.level 35
+    setprop persist.vendor.charge.start.level 30
+
+on property:persist.vendor.charge.stop.level=*
+    write /sys/devices/platform/soc/soc:google,charger/charge_stop_level ${persist.vendor.charge.stop.level}
+
+on property:persist.vendor.charge.start.level=*
+    write /sys/devices/platform/soc/soc:google,charger/charge_start_level ${persist.vendor.charge.start.level}
