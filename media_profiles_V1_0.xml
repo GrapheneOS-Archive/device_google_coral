@@ -1052,6 +1052,31 @@
     <!-- ****************************************************************** -->
     <CamcorderProfiles cameraId="6">
 
+        <!-- 480p: 640 x 480 30fps -->
+        <EncoderProfile quality="480p" fileFormat="mp4" duration="30">
+            <Video codec="h264"
+                   bitRate="6000000"
+                   width="640"
+                   height="480"
+                   frameRate="30" />
+            <Audio codec="aac"
+                   bitRate="96000"
+                   sampleRate="48000"
+                   channels="1" />
+        </EncoderProfile>
+
+        <ImageEncoding quality="95" />
+        <ImageEncoding quality="80" />
+        <ImageEncoding quality="70" />
+        <ImageDecoding memCap="20000000" />
+
+    </CamcorderProfiles>
+
+    <!-- ****************************************************************** -->
+    <!-- camera id = 7                                                      -->
+    <!-- ****************************************************************** -->
+    <CamcorderProfiles cameraId="7">
+
         <!-- low: 176 x 144 30fps -->
         <EncoderProfile quality="low" fileFormat="3gp" duration="60">
             <Video codec="h264"
