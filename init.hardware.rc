@@ -647,7 +647,7 @@ service vendor.qseecomd /vendor/bin/qseecomd
     user root
     group root
 
-service vendor.thermal-engine /vendor/bin/thermal-engine -c /vendor/etc/thermal-engine-${ro.hardware}.conf
+service vendor.thermal-engine /vendor/bin/thermal-engine -c /vendor/etc/thermal-engine-${ro.hardware}-${vendor.thermal.mode:-normal}_mode.conf
    class main
    user root
    socket thermal-send-client stream 0666 system system
@@ -908,3 +908,7 @@ service vendor.wlan_sh /vendor/bin/init.qcom.wlan.sh
 # Enable 2nd qcrild when the property set to dsds
 on property:persist.radio.multisim.config=dsds
     start vendor.qcrild2
+
+on property:sys.retaildemo.enabled=1
+    setprop vendor.thermal.mode retail
+    restart vendor.thermal-engine
