@@ -313,8 +313,16 @@
             "Type":"COMPONENT"
         },
         {
+            "Name":"dc_icl",
+            "Type":"BATTERY"
+        },
+        {
             "Name":"ebi",
             "Type":"COMPONENT"
+        },
+        {
+            "Name":"fcc",
+            "Type":"BATTERY"
         }
     ]
 }
