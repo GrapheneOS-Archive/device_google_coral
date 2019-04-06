@@ -453,39 +453,39 @@ on early-boot
     chmod 0660 /dev/sensor_tunnel
 
     # Permission for Dot and Flood
-    chown cameraserver camera /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/led_laser_enable
+    chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/led_laser_enable
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/led_laser_enable
-    chown cameraserver camera /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/is_certified
+    chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/is_certified
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/is_certified
-    chown cameraserver camera /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/led_laser_write_byte
+    chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/led_laser_write_byte
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/led_laser_write_byte
-    chown cameraserver camera /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/is_silego_validated
+    chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/is_silego_validated
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/is_silego_validated
-    chown cameraserver camera /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/led_laser_read_byte
+    chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/led_laser_read_byte
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/led_laser_read_byte
-    chown cameraserver camera /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/itoc_cali_data_store
+    chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/itoc_cali_data_store
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/itoc_cali_data_store
-    chown cameraserver camera /dev/lm36011_flood
+    chown system system /dev/lm36011_flood
     chmod 0660 /dev/lm36011_flood
-    chown cameraserver camera /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/led_laser_enable
+    chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/led_laser_enable
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/led_laser_enable
-    chown cameraserver camera /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/is_certified
+    chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/is_certified
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/is_certified
-    chown cameraserver camera /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/led_laser_write_byte
+    chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/led_laser_write_byte
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/led_laser_write_byte
-    chown cameraserver camera /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/is_silego_validated
+    chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/is_silego_validated
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/is_silego_validated
-    chown cameraserver camera /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/led_laser_read_byte
+    chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/led_laser_read_byte
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/led_laser_read_byte
-    chown cameraserver camera /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/itoc_cali_data_store
+    chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/itoc_cali_data_store
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/itoc_cali_data_store
-    chown cameraserver camera /dev/lm36011_dot
+    chown system system /dev/lm36011_dot
     chmod 0660 /dev/lm36011_dot
 
     # Permission for camera sensor
-    chown cameraserver camera /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-sensor@3/set_strobe_type
+    chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-sensor@3/set_strobe_type
     chmod 0660 sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-sensor@3/set_strobe_type
-    chown cameraserver camera /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-sensor@4/set_strobe_type
+    chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-sensor@4/set_strobe_type
     chmod 0660 sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-sensor@4/set_strobe_type
 
     # FG cycle count read from dumpstate + backup restore from health HAL (and pixelstats)
