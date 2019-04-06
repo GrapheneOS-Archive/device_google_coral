@@ -90,6 +90,21 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <instance>default</instance>
         </interface>
     </hal>
+    <!-- video Codec2 hal -->
+    <hal format="hidl">
+        <name>android.hardware.media.c2</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IComponentStore</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IConfigurable</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <!-- /video Codec2 hal -->
     <!-- video omx hal -->
     <hal format="hidl">
         <name>android.hardware.media.omx</name>
@@ -157,6 +172,15 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </interface>
     </hal>
     <hal format="hidl">
+      <name>vendor.google.wireless_charger</name>
+      <transport>hwbinder</transport>
+      <version>1.0</version>
+      <interface>
+        <name>IWirelessCharger</name>
+        <instance>default</instance>
+      </interface>
+    </hal>
+    <hal format="hidl">
         <name>android.hardware.configstore</name>
         <transport>hwbinder</transport>
         <impl level="generic"></impl>
@@ -192,7 +216,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <version>2.4</version>
         <interface>
             <name>ICameraProvider</name>
-            <instance>legacy/0</instance>
+            <instance>internal/0</instance>
         </interface>
     </hal>
     <!-- gatekeeper -->

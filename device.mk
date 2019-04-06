@@ -84,7 +84,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.qcom.wlan.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.wlan.sh \
     $(LOCAL_PATH)/init.sensors.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.sensors.sh \
     $(LOCAL_PATH)/sensors.hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf \
-    $(LOCAL_PATH)/thermal-engine-$(PRODUCT_HARDWARE).conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-$(PRODUCT_HARDWARE).conf \
+    $(LOCAL_PATH)/thermal-engine-$(PRODUCT_HARDWARE)-normal_mode.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-$(PRODUCT_HARDWARE)-normal_mode.conf \
+    $(LOCAL_PATH)/thermal-engine-$(PRODUCT_HARDWARE)-retail_mode.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-$(PRODUCT_HARDWARE)-retail_mode.conf \
     $(LOCAL_PATH)/ueventd.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc
 
 
@@ -121,8 +122,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.cp_system_other_odex=1
-
-AB_OTA_UPDATER := true
 
 AB_OTA_PARTITIONS += \
     boot \
@@ -265,6 +264,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.googfd.enable=1
 
+# Lets the vendor library that Google Camera HWL is enabled
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.camera.google_hwl.enabled=true \
+    persist.camera.google_hwl.name=libgooglecamerahwl_impl.so
+
 # OEM Unlock reporting
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.oem_unlock_supported=1
@@ -377,14 +381,19 @@ PRODUCT_PACKAGES += \
     libc2dcolorconvert
 
 # Enable Codec 2.0
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.media.codec2=2 \
+
 PRODUCT_PACKAGES += \
     libqcodec2 \
     vendor.qti.media.c2@1.0-service \
+    media_codecs_c2.xml \
+    media_codecs_performance_c2.xml
 
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service_64 \
     android.hardware.camera.provider@2.4-impl-google \
+    android.hardware.camera.provider@2.4-service-google \
     camera.device@3.2-impl \
     camera.msmnile \
     libgooglecamerahal \
@@ -615,10 +624,15 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_c2_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_c2_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_c2_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_video.xml \
     $(LOCAL_PATH)/media_profiles_V1_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
+
 
 # Vendor seccomp policy files for media components:
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/seccomp_policy/codec2.vendor.ext.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/codec2.vendor.ext.policy \
     $(LOCAL_PATH)/seccomp_policy/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -735,8 +749,6 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 TARGET_LMKD_STATS_LOG := true
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.lmk.log_stats=true
-
-TARGET_ENABLE_MEDIADRM_64 := true
 
 # default usb oem functions
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
