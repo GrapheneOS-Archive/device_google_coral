@@ -1680,6 +1680,7 @@
         DMIC3 : Port_CDCPDM1
         Flicker Sensor: Port_D
     -->
+    <!-- Port C, non Phone -->
     <path name="iaxxx-port-c">
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="1" />
@@ -1691,14 +1692,14 @@
         <ctl name="Pdm CDC Setup" value="1" />
         <ctl name="Pdm PortC Setup" value="1" />
         <ctl name="Pdm PortC CDC DMic4 En" value="1" />
-        <ctl name="PDM Hos" value="16" />
+        <ctl name="PDM Hos" value="255" />
         <ctl name="PDM CDC0 Start" value="16" />
         <ctl name="Rx0Ch EpGain" value="20" />
         <ctl name="Rx0Chan GnRmp" value="STEP_600" />
         <ctl name="Rx0Chan Gain En" value="1" />
         <ctl name="strm0 ASRC Mode" value="REDBOX_2-1" />
         <ctl name="strm0 Master Strm Id" value="STREAMID_0" />
-        <ctl name="strm0 Format FrLn" value="8K_20MS" />
+        <ctl name="strm0 Format FrLn" value="48K_10MS" />
         <ctl name="strm0 Format Sr" value="RATE_48K" />
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm0 Dir" value="0" />
@@ -1710,7 +1711,7 @@
         <ctl name="strm0 En" value="1" />
         <ctl name="Tx0Chan IpSrcId" value="RX0_ChanMgr" />
     </path>
-
+    <!-- Port B, No one use -->
     <path name="iaxxx-port-b">
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="1" />
@@ -1741,7 +1742,7 @@
         <ctl name="strm0 En" value="1" />
         <ctl name="Tx0Chan IpSrcId" value="RX0_ChanMgr" />
     </path>
-    <!-- Port D -->
+    <!-- Port D, No one use -->
     <path name="iaxxx-port-d">
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="1" />
@@ -1772,7 +1773,7 @@
         <ctl name="Tx0Chan IpSrcId" value="RX0_ChanMgr" />
     </path>
 
-    <!-- Port CDC_PDM1 -->
+    <!-- Port CDC_PDM1, No one use -->
     <path name="iaxxx-port-cdcpdm1">
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="1" />
@@ -1807,7 +1808,7 @@
     <!-- Port A, QUAT_TDM_TX -->
     <path name="iaxxx-port-a">
         <ctl name="strm8 Format Sr" value="RATE_48K" />
-        <ctl name="strm8 Format FrLn" value="8K_20MS" />
+        <!--ctl name="strm8 Format FrLn" value="8K_20MS" /-->
         <ctl name="strm8 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm8 ASRC Mode" value="ASRC_ENABLE" />
         <ctl name="strm8 Master Strm Id" value="STREAMID_0" />
@@ -1836,7 +1837,7 @@
         <!--ctl name="strm8 En" value="1" /-->
     </path>
 
-    <!-- CH1: DMIC1, CH2: DMIC2 -->
+    <!-- CH1: DMIC1, CH2: DMIC2, VR -->
     <path name="iaxxx-port-cb">
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="1" />
@@ -1855,7 +1856,7 @@
         <ctl name="Pdm PortB Setup" value="1" />
         <ctl name="Pdm PortB CDC DMic6 En" value="1" />
 
-        <ctl name="PDM Hos" value="80" />
+        <ctl name="PDM Hos" value="255" />
         <ctl name="PDM CDC0 Start" value="80" />
 
         <ctl name="Rx0Ch EpGain" value="20" />
@@ -1868,7 +1869,7 @@
 
         <ctl name="strm0 ASRC Mode" value="REDBOX_2-1" />
         <ctl name="strm0 Master Strm Id" value="STREAMID_0" />
-        <ctl name="strm0 Format FrLn" value="8K_20MS" />
+        <ctl name="strm0 Format FrLn" value="48K_10MS" />
         <ctl name="strm0 Format Sr" value="RATE_48K" />
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm0 Dir" value="0" />
@@ -1881,7 +1882,7 @@
 
         <ctl name="strm1 ASRC Mode" value="REDBOX_2-1" />
         <ctl name="strm1 Master Strm Id" value="STREAMID_0" />
-        <ctl name="strm1 Format FrLn" value="8K_20MS" />
+        <ctl name="strm1 Format FrLn" value="48K_10MS" />
         <ctl name="strm1 Format Sr" value="RATE_48K" />
         <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm1 Dir" value="0" />
@@ -1932,7 +1933,7 @@
         <ctl name="strm0 En" value="1" />
     </path>
 
-    <!-- CH1: DMIC1, CH2: DMIC3 -->
+    <!-- CH1: DMIC1, CH2: DMIC3, Phone -->
     <path name="iaxxx-port-c-cdcpdm1">
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="1" />
@@ -2164,7 +2165,7 @@
         <ctl name="Tx2Chan IpSrcId" value="RX2_ChanMgr" />
     </path>
 
-    <!-- CH1: DMIC3, CH2: DMIC2 -->
+    <!-- CH1: DMIC3, CH2: DMIC2, no one use -->
     <path name="iaxxx-port-cdcpdm1-b">
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="1" />
@@ -2224,7 +2225,7 @@
         <ctl name="Tx1Chan IpSrcId" value="RX1_ChanMgr" />
     </path>
 
-    <!-- CH1: DMIC3, CH2: DMIC2, CH3: DMIC1 -->
+    <!-- CH1: DMIC3, CH2: DMIC2, CH3: DMIC1, non Phone -->
     <path name="iaxxx-port-cdcpdm1-bc">
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="1" />
@@ -2245,7 +2246,7 @@
         <ctl name="Pdm PortC Setup" value="1" />
         <ctl name="Pdm PortC CDC DMic4 En" value="1" />
 
-        <ctl name="PDM Hos" value="82" />
+        <ctl name="PDM Hos" value="255" />
         <ctl name="PDM CDC0 Start" value="82" />
 
         <ctl name="Rx0Ch EpGain" value="20" />
@@ -2262,7 +2263,7 @@
 
         <ctl name="strm0 ASRC Mode" value="REDBOX_2-1" />
         <ctl name="strm0 Master Strm Id" value="STREAMID_0" />
-        <ctl name="strm0 Format FrLn" value="8K_20MS" />
+        <ctl name="strm0 Format FrLn" value="48K_10MS" />
         <ctl name="strm0 Format Sr" value="RATE_48K" />
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm0 Dir" value="0" />
@@ -2275,7 +2276,7 @@
 
         <ctl name="strm1 ASRC Mode" value="REDBOX_2-1" />
         <ctl name="strm1 Master Strm Id" value="STREAMID_0" />
-        <ctl name="strm1 Format FrLn" value="8K_20MS" />
+        <ctl name="strm1 Format FrLn" value="48K_10MS" />
         <ctl name="strm1 Format Sr" value="RATE_48K" />
         <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm1 Dir" value="0" />
@@ -2288,7 +2289,7 @@
 
         <ctl name="strm2 ASRC Mode" value="REDBOX_2-1" />
         <ctl name="strm2 Master Strm Id" value="STREAMID_0" />
-        <ctl name="strm2 Format FrLn" value="8K_20MS" />
+        <ctl name="strm2 Format FrLn" value="48K_10MS" />
         <ctl name="strm2 Format Sr" value="RATE_48K" />
         <ctl name="strm2 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm2 Dir" value="0" />
@@ -2304,7 +2305,7 @@
         <ctl name="Tx2Chan IpSrcId" value="RX2_ChanMgr" />
     </path>
 
-    <!-- CH1: DMIC3, CH2: DMIC1, CH3: DMIC2 -->
+    <!-- CH1: DMIC3, CH2: DMIC1, CH3: DMIC2, Phone -->
     <path name="iaxxx-port-cdcpdm1-cb">
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="1" />
@@ -2423,70 +2424,78 @@
         <ctl name="strm0 En" value="1" />
     </path>
 
-    <!-- Port C -->
+    <!-- Port C, non Phone -->
     <path name="iaxxx-dmic1">
         <path name="iaxxx-port-c" />
+        <ctl name="strm8 Format FrLn" value="48K_10MS" />
         <path name="iaxxx-port-a" />
         <ctl name="strm8 CH Mask En" value="1" />
         <ctl name="strm8 En" value="1" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="One" />
     </path>
-    <!-- Port B -->
-    <path name="iaxxx-dmic2">
+    <!-- Port B, no one use -->
+    <!--path name="iaxxx-dmic2">
         <path name="iaxxx-port-b" />
+        <ctl name="strm8 Format FrLn" value="8K_20MS" />
         <path name="iaxxx-port-a" />
         <ctl name="strm8 CH Mask En" value="1" />
         <ctl name="strm8 En" value="1" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="One" />
-    </path>
-    <!-- Port CDCPDM1 -->
-    <path name="iaxxx-dmic3">
+    </path-->
+    <!-- Port CDCPDM1, no one use -->
+    <!--path name="iaxxx-dmic3">
         <path name="iaxxx-port-cdcpdm1" />
+        <ctl name="strm8 Format FrLn" value="8K_20MS" />
         <path name="iaxxx-port-a" />
         <ctl name="strm8 CH Mask En" value="1" />
         <ctl name="strm8 En" value="1" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="One" />
-    </path>
+    </path-->
 
-    <!-- Port C+B -->
+    <!-- Port C+B, VR -->
     <path name="iaxxx-dmic12">
         <path name="iaxxx-port-cb" />
+        <ctl name="strm8 Format FrLn" value="48K_10MS" />
         <path name="iaxxx-port-a" />
         <ctl name="strm8 CH Mask En" value="3" />
         <ctl name="strm8 En" value="1" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="Two" />
     </path>
 
-    <!-- Port C+CDCPDM1 -->
+    <!-- Port C+CDCPDM1, Phone -->
     <path name="iaxxx-dmic13">
         <path name="iaxxx-port-c-cdcpdm1" />
+        <ctl name="strm8 Format FrLn" value="8K_20MS" />
         <path name="iaxxx-port-a" />
         <ctl name="strm8 CH Mask En" value="3" />
         <ctl name="strm8 En" value="1" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="Two" />
     </path>
 
-    <!-- Port CDCPDM1+B -->
-    <path name="iaxxx-dmic32">
+    <!-- Port CDCPDM1+B, no one use -->
+    <!-- path name="iaxxx-dmic32">
         <path name="iaxxx-port-cdcpdm1-b" />
+        <ctl name="strm8 Format FrLn" value="8K_20MS" />
         <path name="iaxxx-port-a" />
         <ctl name="strm8 CH Mask En" value="3" />
         <ctl name="strm8 En" value="1" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="Two" />
-    </path>
+    </path-->
 
-    <!-- Port CDCPDM1+B+C -->
+    <!-- Port CDCPDM1+B+C, non Phone -->
     <path name="iaxxx-dmic321">
         <path name="iaxxx-port-cdcpdm1-bc" />
+        <ctl name="strm8 Format FrLn" value="48K_10MS" />
         <path name="iaxxx-port-a" />
         <ctl name="strm8 CH Mask En" value="7" />
         <ctl name="strm8 En" value="1" />
         <ctl name="QUAT_TDM_TX_0 Channels" value="Three" />
     </path>
 
-    <!-- Port CDCPDM1+C+B -->
+    <!-- Port CDCPDM1+C+B, Phone -->
     <path name="iaxxx-dmic312">
         <path name="iaxxx-port-cdcpdm1-cb" />
+        <ctl name="strm8 Format FrLn" value="8K_20MS" />
         <path name="iaxxx-port-a" />
         <ctl name="strm8 CH Mask En" value="7" />
         <ctl name="strm8 En" value="1" />
@@ -2772,7 +2781,7 @@
     <path name="handset-mic-sbc">
     </path>
 
-    <!-- three mic TX 3rd:DEC8 22dB, 2nd:DEC6 22dB, 1st:DEC5 22dB,-->
+    <!-- three mic TX 3rd:DEC8 22dB, 2nd:DEC6 22dB, 1st:DEC5 22dB, VR -->
     <path name="three-mic">
         <path name="iaxxx-dmic321"/>
         <ctl name="Rx0Ch EpGain" value="22" />
@@ -3124,7 +3133,7 @@
     </path>
 
     <!-- Dual MIC case -->
-    <!-- Ch1: 1st mic DEC7/TX7, Ch2: 2nd mic DEC8/TX8 -->
+    <!-- Ch1: 1st mic DEC7/TX7, Ch2: 2nd mic DEC8/TX8, Phone -->
     <path name="handset-dmic-endfire">
         <path name="iaxxx-dmic13" />
     </path>
