@@ -361,6 +361,7 @@
     <ctl name="strm0 Format Sr" value="RATE_8K" />
     <ctl name="strm0 Format Enc" value="ENCODING_OPAQUE" />
     <ctl name="strm0 Dir" value="0" />
+    <ctl name="strm0 DC block en" value="0" />
     <ctl name="strm0 inter strm delay" value="0" />
     <ctl name="strm0 Xfer Mode" value="SSP" />
     <!-- iaxxx pdm port c -->
@@ -375,6 +376,7 @@
     <ctl name="strm1 Format Sr" value="RATE_8K" />
     <ctl name="strm1 Format Enc" value="ENCODING_OPAQUE" />
     <ctl name="strm1 Dir" value="0" />
+    <ctl name="strm1 DC block en" value="0" />
     <ctl name="strm1 inter strm delay" value="0" />
     <!-- iaxxx pdm port b -->
     <ctl name="strm1 Port" value="NONE" />
@@ -388,6 +390,7 @@
     <ctl name="strm2 Format Sr" value="RATE_8K" />
     <ctl name="strm2 Format Enc" value="ENCODING_OPAQUE" />
     <ctl name="strm2 Dir" value="0" />
+    <ctl name="strm2 DC block en" value="0" />
     <ctl name="strm2 inter strm delay" value="0" />
     <!-- iaxxx pdm port d -->
     <ctl name="strm2 Port" value="NONE" />
@@ -1699,6 +1702,7 @@
         <ctl name="strm0 Format Sr" value="RATE_48K" />
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm0 Dir" value="0" />
+        <ctl name="strm0 DC block en" value="1" />
         <ctl name="strm0 inter strm delay" value="0" />
         <ctl name="strm0 Port" value="PDMI4" />
         <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
@@ -1729,6 +1733,7 @@
         <ctl name="strm0 Format Sr" value="RATE_48K" />
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm0 Dir" value="0" />
+        <ctl name="strm0 DC block en" value="1" />
         <ctl name="strm0 inter strm delay" value="0" />
         <ctl name="strm0 Port" value="PDMI6" />
         <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
@@ -1790,6 +1795,7 @@
         <ctl name="strm0 Format Sr" value="RATE_48K" />
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm0 Dir" value="0" />
+        <ctl name="strm0 DC block en" value="1" />
         <ctl name="strm0 inter strm delay" value="0" />
         <ctl name="strm0 Port" value="PDMI1" />
         <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
@@ -1813,7 +1819,7 @@
         <!--ctl name="strm8 En" value="1" /-->
     </path>
 
-    <!-- Port A, QUAT_TDM_TX -->
+    <!-- Port A, QUAT_TDM_TX (Low Latency Passthough) -->
     <path name="iaxxx-port-a-ll">
         <ctl name="strm8 Format Sr" value="RATE_48K" />
         <ctl name="strm8 Format FrLn" value="8K_20MS" />
@@ -1866,6 +1872,7 @@
         <ctl name="strm0 Format Sr" value="RATE_48K" />
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm0 Dir" value="0" />
+        <ctl name="strm0 DC block en" value="1" />
         <ctl name="strm0 inter strm delay" value="0" />
         <ctl name="strm0 Port" value="PDMI4" />
         <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
@@ -1878,6 +1885,7 @@
         <ctl name="strm1 Format Sr" value="RATE_48K" />
         <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm1 Dir" value="0" />
+        <ctl name="strm1 DC block en" value="1" />
         <ctl name="strm1 inter strm delay" value="0" />
         <ctl name="strm1 Port" value="PDMI6" />
         <ctl name="strm1 Port Enc" value="ENCODING_Q23" />
@@ -1888,7 +1896,7 @@
         <ctl name="Tx1Chan IpSrcId" value="RX1_ChanMgr" />
     </path>
 
-    <!-- CH1: DMIC1, CH2: DMIC2 -->
+    <!-- CH1: DMIC1, CH2: DMIC2 (Low Latency Passthough) -->
     <path name="iaxxx-port-cb-ll">
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="1" />
@@ -1915,6 +1923,7 @@
         <ctl name="strm0 Format Sr" value="RATE_48K" />
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm0 Dir" value="0" />
+        <!-- ctl name="strm0 DC block en" value="1" /-->
         <ctl name="strm0 inter strm delay" value="0" />
         <ctl name="strm0 Port" value="PDMI4" />
         <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
@@ -1958,6 +1967,7 @@
         <ctl name="strm0 Format Sr" value="RATE_48K" />
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm0 Dir" value="0" />
+        <ctl name="strm0 DC block en" value="1" />
         <ctl name="strm0 inter strm delay" value="0" />
         <ctl name="strm0 Port" value="PDMI4" />
         <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
@@ -1970,6 +1980,7 @@
         <ctl name="strm1 Format Sr" value="RATE_48K" />
         <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm1 Dir" value="0" />
+        <ctl name="strm1 DC block en" value="1" />
         <ctl name="strm1 inter strm delay" value="0" />
         <ctl name="strm1 Port" value="PDMI1" />
         <ctl name="strm1 Port Enc" value="ENCODING_Q23" />
@@ -1980,7 +1991,7 @@
         <ctl name="Tx1Chan IpSrcId" value="RX1_ChanMgr" />
     </path>
 
-    <!-- CH1: DMIC3, CH2: DMIC1 -->
+    <!-- CH1: DMIC3, CH2: DMIC1 (Low Latency Passthough) -->
     <path name="iaxxx-port-cdcpdm1-c-ll">
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="1" />
@@ -2006,6 +2017,7 @@
         <ctl name="strm0 Format Sr" value="RATE_48K" />
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm0 Dir" value="0" />
+        <!-- ctl name="strm0 DC block en" value="1" /-->
         <ctl name="strm0 inter strm delay" value="0" />
         <ctl name="strm0 Port" value="PDMI1" />
         <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
@@ -2062,6 +2074,7 @@
         <ctl name="strm1 Format Sr" value="RATE_48K" />
         <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm1 Dir" value="0" />
+        <ctl name="strm1 DC block en" value="1" />
         <ctl name="strm1 inter strm delay" value="0" />
         <ctl name="strm1 Port" value="PDMI6" />
         <ctl name="strm1 Port Enc" value="ENCODING_Q23" />
@@ -2126,6 +2139,7 @@
         <ctl name="strm1 Format Sr" value="RATE_48K" />
         <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm1 Dir" value="0" />
+        <ctl name="strm1 DC block en" value="1" />
         <ctl name="strm1 inter strm delay" value="0" />
         <ctl name="strm1 Port" value="PDMI6" />
         <ctl name="strm1 Port Enc" value="ENCODING_Q23" />
@@ -2138,6 +2152,7 @@
         <ctl name="strm2 Format Sr" value="RATE_48K" />
         <ctl name="strm2 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm2 Dir" value="0" />
+        <ctl name="strm2 DC block en" value="1" />
         <ctl name="strm2 inter strm delay" value="0" />
         <ctl name="strm2 Port" value="PDMI4" />
         <ctl name="strm2 Port Enc" value="ENCODING_Q23" />
@@ -2185,6 +2200,7 @@
         <ctl name="strm0 Format Sr" value="RATE_48K" />
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm0 Dir" value="0" />
+        <ctl name="strm0 DC block en" value="1" />
         <ctl name="strm0 inter strm delay" value="0" />
         <ctl name="strm0 Port" value="PDMI1" />
         <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
@@ -2197,6 +2213,7 @@
         <ctl name="strm1 Format Sr" value="RATE_48K" />
         <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm1 Dir" value="0" />
+        <ctl name="strm1 DC block en" value="1" />
         <ctl name="strm1 inter strm delay" value="0" />
         <ctl name="strm1 Port" value="PDMI6" />
         <ctl name="strm1 Port Enc" value="ENCODING_Q23" />
@@ -2249,6 +2266,7 @@
         <ctl name="strm0 Format Sr" value="RATE_48K" />
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm0 Dir" value="0" />
+        <ctl name="strm0 DC block en" value="1" />
         <ctl name="strm0 inter strm delay" value="0" />
         <ctl name="strm0 Port" value="PDMI1" />
         <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
@@ -2261,6 +2279,7 @@
         <ctl name="strm1 Format Sr" value="RATE_48K" />
         <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm1 Dir" value="0" />
+        <ctl name="strm1 DC block en" value="1" />
         <ctl name="strm1 inter strm delay" value="0" />
         <ctl name="strm1 Port" value="PDMI6" />
         <ctl name="strm1 Port Enc" value="ENCODING_Q23" />
@@ -2273,6 +2292,7 @@
         <ctl name="strm2 Format Sr" value="RATE_48K" />
         <ctl name="strm2 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm2 Dir" value="0" />
+        <ctl name="strm2 DC block en" value="1" />
         <ctl name="strm2 inter strm delay" value="0" />
         <ctl name="strm2 Port" value="PDMI4" />
         <ctl name="strm2 Port Enc" value="ENCODING_Q23" />
@@ -2326,6 +2346,7 @@
         <ctl name="strm0 Format Sr" value="RATE_48K" />
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm0 Dir" value="0" />
+        <ctl name="strm0 DC block en" value="1" />
         <ctl name="strm0 inter strm delay" value="0" />
         <ctl name="strm0 Port" value="PDMI1" />
         <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
@@ -2338,6 +2359,7 @@
         <ctl name="strm1 Format Sr" value="RATE_48K" />
         <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm1 Dir" value="0" />
+        <ctl name="strm1 DC block en" value="1" />
         <ctl name="strm1 inter strm delay" value="0" />
         <ctl name="strm1 Port" value="PDMI6" />
         <ctl name="strm1 Port Enc" value="ENCODING_Q23" />
@@ -2350,6 +2372,7 @@
         <ctl name="strm2 Format Sr" value="RATE_48K" />
         <ctl name="strm2 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm2 Dir" value="0" />
+        <ctl name="strm2 DC block en" value="1" />
         <ctl name="strm2 inter strm delay" value="0" />
         <ctl name="strm2 Port" value="PDMI4" />
         <ctl name="strm2 Port Enc" value="ENCODING_Q23" />
@@ -2361,6 +2384,7 @@
         <ctl name="Tx2Chan IpSrcId" value="RX1_ChanMgr" />
     </path>
 
+    <!-- CH1: DMIC3, CH2: DMIC1, CH3: DMIC2 (Low Latency Passthough) -->
     <path name="iaxxx-port-cdcpdm1-cb-ll">
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="1" />
@@ -2390,6 +2414,7 @@
         <ctl name="strm0 Format Sr" value="RATE_48K" />
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm0 Dir" value="0" />
+        <!-- ctl name="strm0 DC block en" value="1" /-->
         <ctl name="strm0 inter strm delay" value="0" />
         <ctl name="strm0 Port" value="PDMI1" />
         <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
@@ -3018,20 +3043,20 @@
         <ctl name="Rx0Chan Gain En" value="1" />
     </path>
 
-    <!-- Ch1: 3rd mic DEC8/TX8, Ch2: 2nd mic DEC6/TX6, Ch3: 1st mic DEC5/TX5-->
+    <!-- Ch1: 3rd mic, Ch2: 2nd mic, Ch3: 1st mic-->
     <path name="camcorder-mic">
         <path name="iaxxx-dmic321"/>
         <ctl name="QUAT_TDM_RX_0 Format" value="S32_LE" />
         <ctl name="QUAT_TDM_TX_0 Format" value="S32_LE" />
-        <ctl name="Rx0Ch EpGain" value="20" />
+        <ctl name="Rx0Ch EpGain" value="0" />
         <ctl name="Rx0Chan GnRmp" value="STEP_600" />
         <ctl name="Rx0Chan Gain En" value="1" />
 
-        <ctl name="Rx1Ch EpGain" value="20" />
+        <ctl name="Rx1Ch EpGain" value="0" />
         <ctl name="Rx1Chan GnRmp" value="STEP_600" />
         <ctl name="Rx1Chan Gain En" value="1" />
 
-        <ctl name="Rx2Ch EpGain" value="20" />
+        <ctl name="Rx2Ch EpGain" value="0" />
         <ctl name="Rx2Chan GnRmp" value="STEP_600" />
         <ctl name="Rx2Chan Gain En" value="1" />
     </path>

@@ -80,3 +80,7 @@ $(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/vintf/manifest/manifest.
 
 # Rename power HAL
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/init/android.hardware.power@1.3-service.coral-libperfmgr.rc)
+
+# Remove legacy camera provider
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/init/android.hardware.camera.provider@2.4-service_64.rc)
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/bin/hw/android.hardware.camera.provider@2.4-service_64)
