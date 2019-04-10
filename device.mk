@@ -799,7 +799,6 @@ PRODUCT_PACKAGES += \
 
 # Reliability reporting
 PRODUCT_PACKAGES += \
-    hardware.google.pixelstats@1.0-service \
     pixelstats-vendor
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
