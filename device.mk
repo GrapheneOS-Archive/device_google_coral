@@ -259,9 +259,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.display.foss.config_path=/vendor/etc/FOSSConfig.xml \
     vendor.display.qdcm.mode_combine=1
 
-# Camera: make ois manual mode on by default
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.camera.ois.manual=true
 
 # camera google face detection
 PRODUCT_PROPERTY_OVERRIDES += \
