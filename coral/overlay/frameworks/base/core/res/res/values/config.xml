@@ -674,8 +674,9 @@
     <!-- Whether or not we should show the option to show battery percentage -->
     <bool name="config_battery_percentage_setting_available">true</bool>
 
-    <!-- Default radius of the software rounded corners. -->
-    <dimen name="rounded_corner_radius">140px</dimen>
+    <!-- Radius of the software rounded corners. -->
+    <dimen name="rounded_corner_radius_top">118px</dimen>
+    <dimen name="rounded_corner_radius_bottom">113px</dimen>
 
     <!-- Height of the status bar -->
     <dimen name="status_bar_height_portrait">28dp</dimen>
