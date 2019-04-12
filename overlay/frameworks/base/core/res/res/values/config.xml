@@ -299,6 +299,23 @@
     radio is unable to find any MCC information to infer wifi country code from -->
     <bool translatable="false" name="config_wifi_revert_country_code_on_cellular_loss">false</bool>
 
+    <!-- Array indicating wifi fatal firmware alert error code list from driver -->
+    <integer-array translatable="false" name="config_wifi_fatal_firmware_alert_error_code_list">
+        <item>1</item>      <!-- WLAN_LOG_REASON_ROAM_FAIL -->
+        <item>256</item>    <!-- DATA_STALL_LOG_NONE -->
+        <item>257</item>    <!-- DATA_STALL_LOG_FW_VDEV_PAUSE -->
+        <item>258</item>    <!-- DATA_STALL_LOG_HWSCHED_CMD_FILTER -->
+        <item>259</item>    <!-- DATA_STALL_LOG_HWSCHED_CMD_FLUSH -->
+        <item>260</item>    <!-- DATA_STALL_LOG_FW_RX_REFILL_FAILED -->
+        <item>261</item>    <!-- DATA_STALL_LOG_FW_RX_FCS_LEN_ERROR -->
+        <item>262</item>    <!-- DATA_STALL_LOG_FW_WDOG_ERRORS -->
+        <item>263</item>    <!-- DATA_STALL_LOG_BB_WDOG_ERROR -->
+        <item>264</item>    <!-- DATA_STALL_LOG_POST_TIM_NO_TXRX_ERROR -->
+        <item>512</item>    <!-- DATA_STALL_LOG_HOST_STA_TX_TIMEOUT -->
+        <item>513</item>    <!-- DATA_STALL_LOG_HOST_SOFTAP_TX_TIMEOUT -->
+        <item>514</item>    <!-- DATA_STALL_LOG_NUD_FAILURE -->
+    </integer-array>
+
     <!-- Boolean indicating whether or not wifi should turn off when emergency call is made -->
     <bool translatable="false" name="config_wifi_turn_off_during_emergency_call">true</bool>
 
