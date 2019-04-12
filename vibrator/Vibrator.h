@@ -70,6 +70,8 @@ class Vibrator : public IVibrator {
 
   private:
     Return<Status> on(uint32_t timeoutMs, uint32_t effectIndex);
+    template <typename T>
+    Return<void> perform(T effect, EffectStrength strength, perform_cb _hidl_cb);
     // set 'amplitude' based on an arbitrary scale determined by 'maximum'
     Return<Status> setEffectAmplitude(uint8_t amplitude, uint8_t maximum);
     Return<Status> setGlobalAmplitude(bool set);
