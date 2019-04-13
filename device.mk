@@ -862,10 +862,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.native_display_primaries.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.native_display_primaries.sh
 
-# b/128679787: temporarily use legacy adb USB implementation
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.adb.nonblocking_ffs=0
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
@@ -874,4 +870,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.zram.mark_idle_delay_mins=60 \
     ro.zram.first_wb_delay_mins=180 \
     ro.zram.periodic_wb_delay_hours=24
-
