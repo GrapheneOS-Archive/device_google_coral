@@ -3123,7 +3123,7 @@
     <!-- Dual MIC case -->
     <!-- Ch1: 1st mic DEC7/TX7, Ch2: 2nd mic DEC8/TX8, Phone -->
     <path name="handset-dmic-endfire">
-        <path name="iaxxx-dmic13" />
+        <path name="iaxxx-dmic13-ll" />
     </path>
 
     <!-- Phone SPK TX 3rd: 16dB, 1st: 16dB, 2nd: 16dB,-->
