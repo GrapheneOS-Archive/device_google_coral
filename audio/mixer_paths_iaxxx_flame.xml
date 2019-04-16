@@ -204,9 +204,28 @@
     <ctl name="AANC_SLIM_0_RX MUX" value="ZERO"/>
     <ctl name="ASM Bit Width" value="24"/>
     <ctl name="Instance ID Support" value="1"/>
+
+    <!-- mixer control to configure group afe tdm ports.
+         Index 0: TDM Interface number.
+             Ex: PRI = 0 (RX), 1 (TX)
+             Ex: SEC = 2 (RX), 3 (TX)
+         Index 1: TDM slot number. Ex: RX0 = 0, RX1 = 1.
+         Index 2: Channel 1's slot offset
+         Index 3: Channel 2's slot offset
+             Currently can configure for only 2 channels.
+         Index 4: Termination value. Must be FF.
+    -->
+    <ctl name="TDM Slot Map" id = "0" value="0"/>
+    <ctl name="TDM Slot Map" id = "1" value="0"/>
+    <ctl name="TDM Slot Map" id = "2" value="0"/>
+    <ctl name="TDM Slot Map" id = "3" value="4"/>
+    <ctl name="TDM Slot Map" id = "4" value="0xFF"/>
+
     <!-- Cirrus TDM config -->
     <ctl name="TERT_TDM_RX_0 Channels" value="Two"/>
     <ctl name="TERT_TDM_RX_0 Format" value="S32_LE"/>
+    <ctl name="TERT_TDM_RX_1 Channels" value="One"/>
+    <ctl name="TERT_TDM_RX_1 Format" value="S32_LE"/>
     <ctl name="TERT_TDM_TX_0 Channels" value="Eight"/>
     <ctl name="TERT_TDM_TX_0 Format" value="S32_LE"/>
     <ctl name="TERT_TDM_RX_0 Data Format" value="LPCM" />
@@ -684,6 +703,8 @@
     <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia14" value="0"/>
     <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia15" value="0"/>
     <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia16" value="0"/>
+    <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia30" value="0"/>
+    <ctl name="TERT_TDM_RX_1 Audio Mixer MultiMedia31" value="0"/>
 
     <!-- Headphone Default mode - uLP -->
     <ctl name="RX HPH Mode" value="CLS_H_ULP"/>
@@ -995,6 +1016,27 @@
 
     <path name="low-latency-playback voice-tty-hco-handset">
         <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia5" value="1"/>
+    </path>
+
+    <path name="audio-with-haptics-playback">
+        <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia30" value="1"/>
+        <ctl name="TERT_TDM_RX_1 Audio Mixer MultiMedia31" value="1"/>
+    </path>
+
+    <path name="audio-with-haptics-playback handset">
+        <path name="audio-with-haptics-playback"/>
+    </path>
+
+    <path name="audio-with-haptics-playback speaker">
+        <path name="audio-with-haptics-playback"/>
+    </path>
+
+    <path name="audio-with-haptics-playback speaker-safe">
+        <path name="audio-with-haptics-playback speaker"/>
+    </path>
+
+    <path name="audio-with-haptics-playback speaker-protected">
+        <path name="audio-with-haptics-playback"/>
     </path>
 
     <path name="audio-ull-playback">
