@@ -2,7 +2,7 @@
 
 NATIVE_GAMUT_FILE='/mnt/vendor/persist/display/native_gamut.csv'
 
-get_primary () { grep $1 $NATIVE_GAMUT_FILE | tr '\r' ' '; }
+get_primary () { grep ^$1 $NATIVE_GAMUT_FILE | tr '\r' ' '; }
 # Data for a primary is stored in a csv string of 6 values: R,G,B,X,Y,Z
 # These helper functions provide access these values
 get_primary_coords () { echo $1 | cut -d ',' -f 4,5,6; }
