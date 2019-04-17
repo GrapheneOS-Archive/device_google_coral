@@ -106,6 +106,14 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
+        <name>vendor.google.darwinn.service</name>
+        <version>1.0</version>
+        <interface>
+            <name>IDarwinnService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.radio.am</name>
         <version>1.0</version>
         <interface>
