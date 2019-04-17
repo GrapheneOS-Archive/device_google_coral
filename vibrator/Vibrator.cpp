@@ -56,7 +56,6 @@ static constexpr uint32_t WAVEFORM_DOUBLE_CLICK_SILENCE_MS = 100;
 
 static constexpr uint32_t WAVEFORM_LONG_VIBRATION_EFFECT_INDEX = 0;
 
-static constexpr uint32_t WAVEFORM_TRIGGER_QUEUE_SCALE = 100;
 static constexpr uint32_t WAVEFORM_TRIGGER_QUEUE_INDEX = 65534;
 
 static constexpr uint32_t VOLTAGE_GLOBAL_SCALE_LEVEL = 5;
@@ -283,7 +282,7 @@ Return<Status> Vibrator::getSimpleDetails(Effect effect, EffectStrength strength
 }
 
 Return<Status> Vibrator::getCompoundDetails(Effect effect, EffectStrength strength,
-                                            uint32_t *outTimeMs, uint32_t *outVolLevel,
+                                            uint32_t *outTimeMs, uint32_t * /*outVolLevel*/,
                                             std::string *outEffectQueue) {
     Status status;
     uint32_t timeMs;
@@ -295,7 +294,7 @@ Return<Status> Vibrator::getCompoundDetails(Effect effect, EffectStrength streng
         case Effect::DOUBLE_CLICK:
             timeMs = 0;
 
-            status = getSimpleDetails(Effect::TICK, strength, &thisTimeMs, &thisVolLevel);
+            status = getSimpleDetails(Effect::CLICK, strength, &thisTimeMs, &thisVolLevel);
             if (status != Status::OK) {
                 return status;
             }
@@ -309,7 +308,7 @@ Return<Status> Vibrator::getCompoundDetails(Effect effect, EffectStrength streng
 
             effectBuilder << ",";
 
-            status = getSimpleDetails(Effect::CLICK, strength, &thisTimeMs, &thisVolLevel);
+            status = getSimpleDetails(Effect::HEAVY_CLICK, strength, &thisTimeMs, &thisVolLevel);
             if (status != Status::OK) {
                 return status;
             }
@@ -322,7 +321,6 @@ Return<Status> Vibrator::getCompoundDetails(Effect effect, EffectStrength streng
     }
 
     *outTimeMs = timeMs;
-    *outVolLevel = WAVEFORM_TRIGGER_QUEUE_SCALE;
     *outEffectQueue = effectBuilder.str();
 
     return Status::OK;
@@ -375,10 +373,10 @@ Return<void> Vibrator::performEffect(Effect effect, EffectStrength strength, per
         }
         effectIndex = WAVEFORM_TRIGGER_QUEUE_INDEX;
     } else {
+        setEffectAmplitude(volLevel, VOLTAGE_SCALE_MAX);
         effectIndex = WAVEFORM_SIMPLE_EFFECT_INDEX;
     }
 
-    setEffectAmplitude(volLevel, VOLTAGE_SCALE_MAX);
     on(timeMs, effectIndex);
 
 exit:
