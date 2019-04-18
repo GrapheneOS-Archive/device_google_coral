@@ -36,13 +36,4 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <instance>AtCmdFwdService</instance>
         </interface>
     </hal>
-    <hal format="hidl">
-        <name>hardware.google.pixelstats</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IPixelStats</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
 </manifest>
