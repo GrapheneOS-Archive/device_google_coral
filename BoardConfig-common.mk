@@ -45,6 +45,7 @@ BOARD_KERNEL_CMDLINE += service_locator.enable=1
 BOARD_KERNEL_CMDLINE += androidboot.memcg=1 cgroup.memory=nokmem
 BOARD_KERNEL_CMDLINE += usbcore.autosuspend=7
 BOARD_KERNEL_CMDLINE += androidboot.usbcontroller=a600000.dwc3 swiotlb=2048
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive # STOPSHIP b/113232677
 BOARD_KERNEL_CMDLINE += androidboot.boot_devices=soc/1d84000.ufshc
 
 BOARD_KERNEL_BASE        := 0x00000000
@@ -60,7 +61,6 @@ BOARD_DTBOIMG_PARTITION_SIZE := 8388608
 
 TARGET_NO_KERNEL := false
 BOARD_USES_RECOVERY_AS_BOOT := true
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 BOARD_USES_METADATA_PARTITION := true
 
 # Partitions (listed in the file) to be wiped under recovery.
