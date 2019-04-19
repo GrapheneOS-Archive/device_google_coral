@@ -29,24 +29,29 @@ namespace implementation {
 
 class Vibrator : public IVibrator {
   public:
-    typedef struct {
-        std::ofstream activate;
-        std::ofstream duration;
-        std::ifstream effectDuration;
-        std::ofstream effectIndex;
-        std::ofstream effectQueue;
-        std::ofstream effectScale;
-        std::ofstream globalScale;
-        std::ofstream state;
-        std::fstream aspEnable;
-        std::ofstream gpioFallIndex;
-        std::ofstream gpioFallScale;
-        std::ofstream gpioRiseIndex;
-        std::ofstream gpioRiseScale;
-    } HwApi;
+    class HwApi {
+      public:
+        virtual ~HwApi() = default;
+        virtual bool setActivate(bool value) = 0;
+        virtual bool setDuration(uint32_t value) = 0;
+        virtual bool getEffectDuration(uint32_t *value) = 0;
+        virtual bool setEffectIndex(uint32_t value) = 0;
+        virtual bool setEffectQueue(std::string value) = 0;
+        virtual bool hasEffectScale() = 0;
+        virtual bool setEffectScale(uint32_t value) = 0;
+        virtual bool setGlobalScale(uint32_t value) = 0;
+        virtual bool setState(bool value) = 0;
+        virtual bool hasAspEnable() = 0;
+        virtual bool getAspEnable(bool *value) = 0;
+        virtual bool setAspEnable(bool value) = 0;
+        virtual bool setGpioFallIndex(uint32_t value) = 0;
+        virtual bool setGpioFallScale(uint32_t value) = 0;
+        virtual bool setGpioRiseIndex(uint32_t value) = 0;
+        virtual bool setGpioRiseScale(uint32_t value) = 0;
+    };
 
   public:
-    Vibrator(HwApi &&hwapi, std::vector<uint32_t> &&v_levels);
+    Vibrator(std::unique_ptr<HwApi> hwapi, std::vector<uint32_t> &&v_levels);
 
     // Methods from ::android::hardware::vibrator::V1_0::IVibrator follow.
     using Status = ::android::hardware::vibrator::V1_0::Status;
@@ -64,14 +69,14 @@ class Vibrator : public IVibrator {
                          perform_cb _hidl_cb) override;
     Return<void> perform_1_1(V1_1::Effect_1_1 effect, EffectStrength strength,
                              perform_cb _hidl_cb) override;
-    Return<void> perform_1_2(V1_2::Effect effect, EffectStrength strength, perform_cb _hidl_cb)
-            override;
+    Return<void> perform_1_2(V1_2::Effect effect, EffectStrength strength,
+                             perform_cb _hidl_cb) override;
     Return<void> perform_1_3(Effect effect, EffectStrength strength, perform_cb _hidl_cb) override;
 
   private:
     Return<Status> on(uint32_t timeoutMs, uint32_t effectIndex);
     template <typename T>
-    Return<void> perform(T effect, EffectStrength strength, perform_cb _hidl_cb);
+    Return<void> performWrapper(T effect, EffectStrength strength, perform_cb _hidl_cb);
     // set 'amplitude' based on an arbitrary scale determined by 'maximum'
     Return<Status> setEffectAmplitude(uint8_t amplitude, uint8_t maximum);
     Return<Status> setGlobalAmplitude(bool set);
@@ -84,7 +89,7 @@ class Vibrator : public IVibrator {
     Return<Status> setEffectQueue(const std::string &effectQueue);
     Return<void> performEffect(Effect effect, EffectStrength strength, perform_cb _hidl_cb);
     bool isUnderExternalControl();
-    HwApi mHwApi;
+    std::unique_ptr<HwApi> mHwApi;
     std::vector<uint32_t> mVolLevels;
     uint32_t mSimpleEffectDuration;
 };

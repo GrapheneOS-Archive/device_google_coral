@@ -15,7 +15,6 @@
  */
 #define LOG_TAG "android.hardware.vibrator@1.3-service.coral"
 
-#include <android/hardware/vibrator/1.3/IVibrator.h>
 #include <hidl/HidlSupport.h>
 #include <hidl/HidlTransportSupport.h>
 #include <utils/Errors.h>
@@ -25,7 +24,6 @@
 
 using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
-using android::hardware::vibrator::V1_3::IVibrator;
 using android::hardware::vibrator::V1_3::implementation::Vibrator;
 using namespace android;
 
@@ -64,6 +62,133 @@ static constexpr char VOLTAGES_CONFIG[] = "v_levels";
 static constexpr char F0_FILEPATH[] = "/sys/class/leds/vibrator/device/f0_stored";
 static constexpr char REDC_FILEPATH[] = "/sys/class/leds/vibrator/device/redc_stored";
 static constexpr char Q_FILEPATH[] = "/sys/class/leds/vibrator/device/q_stored";
+
+class HwApi : public Vibrator::HwApi {
+  public:
+    HwApi();
+
+    bool setActivate(bool value) override { return set(value, mActivate); }
+    bool setDuration(uint32_t value) override { return set(value, mDuration); }
+    bool getEffectDuration(uint32_t *value) override { return get(value, mEffectDuration); }
+    bool setEffectIndex(uint32_t value) override { return set(value, mEffectIndex); }
+    bool setEffectQueue(std::string value) override { return set(value, mEffectQueue); }
+    bool hasEffectScale() override { return has(mEffectScale); }
+    bool setEffectScale(uint32_t value) override { return set(value, mEffectScale); }
+    bool setGlobalScale(uint32_t value) override { return set(value, mGlobalScale); }
+    bool setState(bool value) override { return set(value, mState); }
+    bool hasAspEnable() override { return has(mAspEnable); }
+    bool getAspEnable(bool *value) override { return get(value, mAspEnable); }
+    bool setAspEnable(bool value) override { return set(value, mAspEnable); }
+    bool setGpioFallIndex(uint32_t value) override { return set(value, mGpioFallIndex); }
+    bool setGpioFallScale(uint32_t value) override { return set(value, mGpioFallScale); }
+    bool setGpioRiseIndex(uint32_t value) override { return set(value, mGpioRiseIndex); }
+    bool setGpioRiseScale(uint32_t value) override { return set(value, mGpioRiseScale); }
+
+  private:
+    bool has(std::ostream &stream) { return !!stream; }
+    template <typename T>
+    bool get(T *value, std::istream &stream) {
+        bool ret;
+        stream.seekg(0);
+        stream >> *value;
+        ret = !!stream;
+        stream.clear();
+        return ret;
+    }
+    template <typename T>
+    bool set(const T &value, std::ostream &stream) {
+        bool ret;
+        stream << value << std::endl;
+        if (!(ret = !!stream)) {
+            stream.clear();
+        }
+        return ret;
+    }
+
+  private:
+    std::ofstream mActivate;
+    std::ofstream mDuration;
+    std::ifstream mEffectDuration;
+    std::ofstream mEffectIndex;
+    std::ofstream mEffectQueue;
+    std::ofstream mEffectScale;
+    std::ofstream mGlobalScale;
+    std::ofstream mState;
+    std::fstream mAspEnable;
+    std::ofstream mGpioFallIndex;
+    std::ofstream mGpioFallScale;
+    std::ofstream mGpioRiseIndex;
+    std::ofstream mGpioRiseScale;
+};
+
+HwApi::HwApi() {
+    // ostreams below are required
+
+    mActivate.open(ACTIVATE_PATH);
+    if (!mActivate) {
+        ALOGE("Failed to open %s (%d): %s", ACTIVATE_PATH, errno, strerror(errno));
+    }
+
+    mDuration.open(DURATION_PATH);
+    if (!mDuration) {
+        ALOGE("Failed to open %s (%d): %s", DURATION_PATH, errno, strerror(errno));
+    }
+
+    mState.open(STATE_PATH);
+    if (!mState) {
+        ALOGE("Failed to open %s (%d): %s", STATE_PATH, errno, strerror(errno));
+    }
+
+    mEffectDuration.open(EFFECT_DURATION_PATH);
+    if (!mEffectDuration) {
+        ALOGE("Failed to open %s (%d): %s", EFFECT_DURATION_PATH, errno, strerror(errno));
+    }
+
+    mEffectIndex.open(EFFECT_INDEX_PATH);
+    if (!mEffectIndex) {
+        ALOGE("Failed to open %s (%d): %s", EFFECT_INDEX_PATH, errno, strerror(errno));
+    }
+
+    mEffectQueue.open(EFFECT_QUEUE_PATH);
+    if (!mEffectQueue) {
+        ALOGE("Failed to open %s (%d): %s", EFFECT_QUEUE_PATH, errno, strerror(errno));
+    }
+
+    mEffectScale.open(EFFECT_SCALE_PATH);
+    if (!mEffectScale) {
+        ALOGE("Failed to open %s (%d): %s", EFFECT_SCALE_PATH, errno, strerror(errno));
+    }
+
+    mGlobalScale.open(GLOBAL_SCALE_PATH);
+    if (!mGlobalScale) {
+        ALOGE("Failed to open %s (%d): %s", GLOBAL_SCALE_PATH, errno, strerror(errno));
+    }
+
+    mAspEnable.open(ASP_ENABLE_PATH);
+    if (!mAspEnable) {
+        ALOGE("Failed to open %s (%d): %s", ASP_ENABLE_PATH, errno, strerror(errno));
+    }
+
+    mGpioFallIndex.open(GPIO_FALL_INDEX);
+    if (!mGpioFallIndex) {
+        ALOGE("Failed to open %s (%d): %s", GPIO_FALL_INDEX, errno, strerror(errno));
+    }
+
+    mGpioFallScale.open(GPIO_FALL_SCALE);
+    if (!mGpioFallScale) {
+        ALOGE("Failed to open %s (%d): %s", GPIO_FALL_SCALE, errno, strerror(errno));
+    }
+
+    mGpioRiseIndex.open(GPIO_RISE_INDEX);
+    if (!mGpioRiseIndex) {
+        ALOGE("Failed to open %s (%d): %s", GPIO_RISE_INDEX, errno, strerror(errno));
+    }
+
+    mGpioRiseScale.open(GPIO_RISE_SCALE);
+    if (!mGpioRiseScale) {
+        ALOGE("Failed to open %s (%d): %s", GPIO_RISE_SCALE, errno, strerror(errno));
+    }
+}
 
 static std::string trim(const std::string &str, const std::string &whitespace = " \t") {
     const auto str_begin = str.find_first_not_of(whitespace);
@@ -150,76 +275,9 @@ static bool loadCalibrationData(std::vector<uint32_t> &outVLevels) {
 status_t registerVibratorService() {
     // Calibration data
     std::vector<uint32_t> v_levels(V_LEVELS_DEFAULT);
-    Vibrator::HwApi hwapi;
+    auto hwapi = std::make_unique<HwApi>();
 
-    // ostreams below are required
-    hwapi.activate.open(ACTIVATE_PATH);
-    if (!hwapi.activate) {
-        ALOGE("Failed to open %s (%d): %s", ACTIVATE_PATH, errno, strerror(errno));
-    }
-
-    hwapi.duration.open(DURATION_PATH);
-    if (!hwapi.duration) {
-        ALOGE("Failed to open %s (%d): %s", DURATION_PATH, errno, strerror(errno));
-    }
-
-    hwapi.state.open(STATE_PATH);
-    if (!hwapi.state) {
-        ALOGE("Failed to open %s (%d): %s", STATE_PATH, errno, strerror(errno));
-    }
-
-    hwapi.effectDuration.open(EFFECT_DURATION_PATH);
-    if (!hwapi.effectDuration) {
-        ALOGE("Failed to open %s (%d): %s", EFFECT_DURATION_PATH, errno, strerror(errno));
-    }
-
-    hwapi.effectIndex.open(EFFECT_INDEX_PATH);
-    if (!hwapi.effectIndex) {
-        ALOGE("Failed to open %s (%d): %s", EFFECT_INDEX_PATH, errno, strerror(errno));
-    }
-
-    hwapi.effectQueue.open(EFFECT_QUEUE_PATH);
-    if (!hwapi.effectQueue) {
-        ALOGE("Failed to open %s (%d): %s", EFFECT_QUEUE_PATH, errno, strerror(errno));
-    }
-
-    hwapi.effectScale.open(EFFECT_SCALE_PATH);
-    if (!hwapi.effectScale) {
-        ALOGE("Failed to open %s (%d): %s", EFFECT_SCALE_PATH, errno, strerror(errno));
-    }
-
-    hwapi.globalScale.open(GLOBAL_SCALE_PATH);
-    if (!hwapi.globalScale) {
-        ALOGE("Failed to open %s (%d): %s", GLOBAL_SCALE_PATH, errno, strerror(errno));
-    }
-
-    hwapi.aspEnable.open(ASP_ENABLE_PATH);
-    if (!hwapi.aspEnable) {
-        ALOGE("Failed to open %s (%d): %s", ASP_ENABLE_PATH, errno, strerror(errno));
-    }
-
-    hwapi.gpioFallIndex.open(GPIO_FALL_INDEX);
-    if (!hwapi.gpioFallIndex) {
-        ALOGE("Failed to open %s (%d): %s", GPIO_FALL_INDEX, errno, strerror(errno));
-    }
-
-    hwapi.gpioFallScale.open(GPIO_FALL_SCALE);
-    if (!hwapi.gpioFallScale) {
-        ALOGE("Failed to open %s (%d): %s", GPIO_FALL_SCALE, errno, strerror(errno));
-    }
-
-    hwapi.gpioRiseIndex.open(GPIO_RISE_INDEX);
-    if (!hwapi.gpioRiseIndex) {
-        ALOGE("Failed to open %s (%d): %s", GPIO_RISE_INDEX, errno, strerror(errno));
-    }
-
-    hwapi.gpioRiseScale.open(GPIO_RISE_SCALE);
-    if (!hwapi.gpioRiseScale) {
-        ALOGE("Failed to open %s (%d): %s", GPIO_RISE_SCALE, errno, strerror(errno));
-    }
-
-    hwapi.state << 1 << std::endl;
-    if (!hwapi.state) {
+    if (!hwapi->setState(true)) {
         ALOGE("Failed to set state (%d): %s", errno, strerror(errno));
     }
 
@@ -227,7 +285,7 @@ status_t registerVibratorService() {
         ALOGW("Failed to load calibration data");
     }
 
-    sp<IVibrator> vibrator = new Vibrator(std::move(hwapi), std::move(v_levels));
+    sp<Vibrator> vibrator = new Vibrator(std::move(hwapi), std::move(v_levels));
 
     return vibrator->registerAsService();
 }

@@ -72,18 +72,12 @@ static uint8_t amplitudeToScale(uint8_t amplitude, uint8_t maximum) {
                       (AMP_ATTENUATE_STEP_SIZE));
 }
 
-Vibrator::Vibrator(HwApi &&hwapi, std::vector<uint32_t> &&v_levels)
+Vibrator::Vibrator(std::unique_ptr<HwApi> hwapi, std::vector<uint32_t> &&v_levels)
     : mHwApi(std::move(hwapi)), mVolLevels(std::move(v_levels)) {
     uint32_t effectDuration;
 
-    mHwApi.effectIndex << WAVEFORM_SIMPLE_EFFECT_INDEX << std::endl;
-    if (!mHwApi.effectIndex) {
-        mHwApi.effectIndex.clear();
-    }
-
-    mHwApi.effectDuration.seekg(0);
-    mHwApi.effectDuration >> effectDuration;
-    mHwApi.effectDuration.clear();
+    mHwApi->setEffectIndex(WAVEFORM_SIMPLE_EFFECT_INDEX);
+    mHwApi->getEffectDuration(&effectDuration);
 
     mSimpleEffectDuration = std::ceil(effectDuration / EFFECT_FREQUENCY_KHZ);
 
@@ -92,25 +86,16 @@ Vibrator::Vibrator(HwApi &&hwapi, std::vector<uint32_t> &&v_levels)
     const uint32_t scaleRise =
         amplitudeToScale(mVolLevels[WAVEFORM_HEAVY_CLICK_EFFECT_LEVEL], VOLTAGE_SCALE_MAX);
 
-    mHwApi.gpioFallIndex << WAVEFORM_SIMPLE_EFFECT_INDEX << std::endl;
-    mHwApi.gpioFallScale << scaleFall << std::endl;
-    mHwApi.gpioRiseIndex << WAVEFORM_SIMPLE_EFFECT_INDEX << std::endl;
-    mHwApi.gpioRiseScale << scaleRise << std::endl;
+    mHwApi->setGpioFallIndex(WAVEFORM_SIMPLE_EFFECT_INDEX);
+    mHwApi->setGpioFallScale(scaleFall);
+    mHwApi->setGpioRiseIndex(WAVEFORM_SIMPLE_EFFECT_INDEX);
+    mHwApi->setGpioRiseScale(scaleRise);
 }
 
 Return<Status> Vibrator::on(uint32_t timeoutMs, uint32_t effectIndex) {
-    mHwApi.effectIndex << effectIndex << std::endl;
-    if (!mHwApi.effectIndex) {
-        mHwApi.effectIndex.clear();
-    }
-    mHwApi.duration << timeoutMs << std::endl;
-    if (!mHwApi.duration) {
-        mHwApi.duration.clear();
-    }
-    mHwApi.activate << 1 << std::endl;
-    if (!mHwApi.activate) {
-        mHwApi.activate.clear();
-    }
+    mHwApi->setEffectIndex(effectIndex);
+    mHwApi->setDuration(timeoutMs);
+    mHwApi->setActivate(1);
 
     return Status::OK;
 }
@@ -126,9 +111,7 @@ Return<Status> Vibrator::on(uint32_t timeoutMs) {
 
 Return<Status> Vibrator::off() {
     setGlobalAmplitude(false);
-    mHwApi.activate << 0 << std::endl;
-    if (!mHwApi.activate) {
-        mHwApi.activate.clear();
+    if (!mHwApi->setActivate(0)) {
         ALOGE("Failed to turn vibrator off (%d): %s", errno, strerror(errno));
         return Status::UNKNOWN_ERROR;
     }
@@ -136,7 +119,7 @@ Return<Status> Vibrator::off() {
 }
 
 Return<bool> Vibrator::supportsAmplitudeControl() {
-    return !isUnderExternalControl() && mHwApi.effectScale;
+    return !isUnderExternalControl() && mHwApi->hasEffectScale();
 }
 
 Return<Status> Vibrator::setAmplitude(uint8_t amplitude) {
@@ -154,9 +137,7 @@ Return<Status> Vibrator::setAmplitude(uint8_t amplitude) {
 Return<Status> Vibrator::setEffectAmplitude(uint8_t amplitude, uint8_t maximum) {
     int32_t scale = amplitudeToScale(amplitude, maximum);
 
-    mHwApi.effectScale << scale << std::endl;
-    if (!mHwApi.effectScale) {
-        mHwApi.effectScale.clear();
+    if (!mHwApi->setEffectScale(scale)) {
         ALOGE("Failed to set effect amplitude (%d): %s", errno, strerror(errno));
         return Status::UNKNOWN_ERROR;
     }
@@ -168,9 +149,7 @@ Return<Status> Vibrator::setGlobalAmplitude(bool set) {
     uint8_t amplitude = set ? mVolLevels[VOLTAGE_GLOBAL_SCALE_LEVEL] : VOLTAGE_SCALE_MAX;
     int32_t scale = amplitudeToScale(amplitude, VOLTAGE_SCALE_MAX);
 
-    mHwApi.globalScale << scale << std::endl;
-    if (!mHwApi.globalScale) {
-        mHwApi.globalScale.clear();
+    if (!mHwApi->setGlobalScale(scale)) {
         ALOGE("Failed to set global amplitude (%d): %s", errno, strerror(errno));
         return Status::UNKNOWN_ERROR;
     }
@@ -181,15 +160,13 @@ Return<Status> Vibrator::setGlobalAmplitude(bool set) {
 // Methods from ::android::hardware::vibrator::V1_3::IVibrator follow.
 
 Return<bool> Vibrator::supportsExternalControl() {
-    return (mHwApi.aspEnable ? true : false);
+    return (mHwApi->hasAspEnable() ? true : false);
 }
 
 Return<Status> Vibrator::setExternalControl(bool enabled) {
     setGlobalAmplitude(enabled);
 
-    mHwApi.aspEnable << enabled << std::endl;
-    if (!mHwApi.aspEnable) {
-        mHwApi.aspEnable.clear();
+    if (!mHwApi->setAspEnable(enabled)) {
         ALOGE("Failed to set external control (%d): %s", errno, strerror(errno));
         return Status::UNKNOWN_ERROR;
     }
@@ -198,14 +175,12 @@ Return<Status> Vibrator::setExternalControl(bool enabled) {
 
 bool Vibrator::isUnderExternalControl() {
     bool isAspEnabled;
-    mHwApi.aspEnable.seekg(0);
-    mHwApi.aspEnable >> isAspEnabled;
-    mHwApi.aspEnable.clear();
+    mHwApi->getAspEnable(&isAspEnabled);
     return isAspEnabled;
 }
 
 template <typename T>
-Return<void> Vibrator::perform(T effect, EffectStrength strength, perform_cb _hidl_cb) {
+Return<void> Vibrator::performWrapper(T effect, EffectStrength strength, perform_cb _hidl_cb) {
     auto validRange = hidl_enum_range<T>();
     if (effect < *validRange.begin() || effect > *std::prev(validRange.end())) {
         _hidl_cb(Status::UNSUPPORTED_OPERATION, 0);
@@ -215,21 +190,21 @@ Return<void> Vibrator::perform(T effect, EffectStrength strength, perform_cb _hi
 }
 
 Return<void> Vibrator::perform(V1_0::Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
-    return perform<decltype(effect)>(effect, strength, _hidl_cb);
+    return performWrapper(effect, strength, _hidl_cb);
 }
 
 Return<void> Vibrator::perform_1_1(V1_1::Effect_1_1 effect, EffectStrength strength,
                                    perform_cb _hidl_cb) {
-    return perform<decltype(effect)>(effect, strength, _hidl_cb);
+    return performWrapper(effect, strength, _hidl_cb);
 }
 
 Return<void> Vibrator::perform_1_2(V1_2::Effect effect, EffectStrength strength,
                                    perform_cb _hidl_cb) {
-    return perform<decltype(effect)>(effect, strength, _hidl_cb);
+    return performWrapper(effect, strength, _hidl_cb);
 }
 
 Return<void> Vibrator::perform_1_3(Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
-    return perform<decltype(effect)>(effect, strength, _hidl_cb);
+    return performWrapper(effect, strength, _hidl_cb);
 }
 
 Return<Status> Vibrator::getSimpleDetails(Effect effect, EffectStrength strength,
@@ -327,9 +302,7 @@ Return<Status> Vibrator::getCompoundDetails(Effect effect, EffectStrength streng
 }
 
 Return<Status> Vibrator::setEffectQueue(const std::string &effectQueue) {
-    mHwApi.effectQueue << effectQueue << std::endl;
-    if (!mHwApi.effectQueue) {
-        mHwApi.effectQueue.clear();
+    if (!mHwApi->setEffectQueue(effectQueue)) {
         ALOGE("Failed to write \"%s\" to effect queue (%d): %s", effectQueue.c_str(), errno,
               strerror(errno));
         return Status::UNKNOWN_ERROR;
