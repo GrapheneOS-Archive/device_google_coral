@@ -807,6 +807,34 @@
     <path name="echo-reference headphones-44.1">
     </path>
 
+    <path name="echo-reference-voip">
+        <path name="echo-reference" />
+    </path>
+
+    <path name="echo-reference-voip handset">
+        <path name="echo-reference handset" />
+    </path>
+
+    <path name="echo-reference-voip speaker">
+        <path name="echo-reference speaker" />
+    </path>
+
+    <path name="echo-reference-voip headphones">
+        <path name="echo-reference headphones" />
+    </path>
+
+    <path name="echo-reference-voip usb-headset">
+        <path name="echo-reference usb-headset" />
+    </path>
+
+    <path name="echo-reference-voip usb-headphones">
+        <path name="echo-reference usb-headphones" />
+     </path>
+
+    <path name="echo-reference-voip headphones-44.1">
+        <path name="echo-reference headphones-44.1" />
+    </path>
+
     <path name="deep-buffer-playback">
         <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia1" value="1"/>
     </path>
