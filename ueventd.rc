@@ -117,6 +117,9 @@ firmware_directories /vendor/firmware_mnt/image/
 # NFC
 /dev/st21nfc              0660   nfc    nfc
 
+#eSE device
+/dev/st54j_se             0660   secure_element secure_element
+
 # Airbrush
 /dev/ab_sm                0600   vendor_airbrush vendor_airbrush
 
