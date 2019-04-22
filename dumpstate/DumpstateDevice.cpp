@@ -422,6 +422,7 @@ Return<void> DumpstateDevice::dumpstateBoard(const hidl_handle& handle) {
     DumpFileToFd(fd, "PD Engine", "/d/logbuffer/usbpd");
     DumpFileToFd(fd, "BMS", "/d/logbuffer/ssoc");
     DumpFileToFd(fd, "smblib", "/d/logbuffer/smblib");
+    DumpFileToFd(fd, "WLC logs", "/d/logbuffer/wireless");
     DumpFileToFd(fd, "ipc-local-ports", "/d/msm_ipc_router/dump_local_ports");
     RunCommandToFd(fd, "USB Device Descriptors", {"/vendor/bin/sh", "-c", "cd /sys/bus/usb/devices/1-1 && cat product && cat bcdDevice; cat descriptors | od -t x1 -w16 -N96"});
     RunCommandToFd(fd, "Power supply properties", {"/vendor/bin/sh", "-c", "for f in `ls /sys/class/power_supply/*/uevent` ; do echo \"------ $f\\n`cat $f`\\n\" ; done"});
