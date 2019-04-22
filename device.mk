@@ -411,8 +411,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     sensors.$(PRODUCT_HARDWARE) \
-    android.hardware.sensors@1.0-impl \
-    android.hardware.sensors@1.0-service
+    android.hardware.sensors@2.0-impl \
+    android.hardware.sensors@2.0-service \
+    android.hardware.sensors@2.0-service.rc
+
 
 PRODUCT_PACKAGES += \
     fs_config_dirs \
