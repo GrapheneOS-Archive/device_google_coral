@@ -689,5 +689,7 @@
 
     <!-- Height of the status bar -->
     <dimen name="status_bar_height_portrait">28dp</dimen>
-
+    <!-- Not allow to switch to higher refresh rate when display brightness setting is
+         equal or less than this value -->
+    <integer name="config_brightnessThresholdOfPeakRefreshRate">16</integer>
 </resources>
