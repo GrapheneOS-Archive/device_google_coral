@@ -21,6 +21,9 @@
 class MockApi : public ::android::hardware::vibrator::V1_3::implementation::Vibrator::HwApi {
   public:
     MOCK_METHOD0(destructor, void());
+    MOCK_METHOD1(setF0, bool(uint32_t value));
+    MOCK_METHOD1(setRedc, bool(uint32_t value));
+    MOCK_METHOD1(setQ, bool(uint32_t value));
     MOCK_METHOD1(setActivate, bool(bool value));
     MOCK_METHOD1(setDuration, bool(uint32_t value));
     MOCK_METHOD1(getEffectDuration, bool(uint32_t *value));
@@ -39,6 +42,17 @@ class MockApi : public ::android::hardware::vibrator::V1_3::implementation::Vibr
     MOCK_METHOD1(setGpioRiseScale, bool(uint32_t value));
 
     ~MockApi() override { destructor(); };
+};
+
+class MockCal : public ::android::hardware::vibrator::V1_3::implementation::Vibrator::HwCal {
+  public:
+    MOCK_METHOD0(destructor, void());
+    MOCK_METHOD1(getF0, bool(uint32_t *value));
+    MOCK_METHOD1(getRedc, bool(uint32_t *value));
+    MOCK_METHOD1(getQ, bool(uint32_t *value));
+    MOCK_METHOD1(getVolLevels, bool(std::array<uint32_t, 6> *value));
+
+    ~MockCal() override { destructor(); };
 };
 
 #endif  // ANDROID_HARDWARE_VIBRATOR_TEST_MOCKS_H

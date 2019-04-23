@@ -72,9 +72,25 @@ static uint8_t amplitudeToScale(uint8_t amplitude, uint8_t maximum) {
                       (AMP_ATTENUATE_STEP_SIZE));
 }
 
-Vibrator::Vibrator(std::unique_ptr<HwApi> hwapi, std::vector<uint32_t> &&v_levels)
-    : mHwApi(std::move(hwapi)), mVolLevels(std::move(v_levels)) {
+Vibrator::Vibrator(std::unique_ptr<HwApi> hwapi, std::unique_ptr<HwCal> hwcal)
+    : mHwApi(std::move(hwapi)), mHwCal(std::move(hwcal)) {
+    uint32_t caldata;
     uint32_t effectDuration;
+
+    if (!mHwApi->setState(true)) {
+        ALOGE("Failed to set state (%d): %s", errno, strerror(errno));
+    }
+
+    if (mHwCal->getF0(&caldata)) {
+        mHwApi->setF0(caldata);
+    }
+    if (mHwCal->getRedc(&caldata)) {
+        mHwApi->setRedc(caldata);
+    }
+    if (mHwCal->getQ(&caldata)) {
+        mHwApi->setQ(caldata);
+    }
+    mHwCal->getVolLevels(&mVolLevels);
 
     mHwApi->setEffectIndex(WAVEFORM_SIMPLE_EFFECT_INDEX);
     mHwApi->getEffectDuration(&effectDuration);

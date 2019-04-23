@@ -21,6 +21,7 @@
 #include <utils/StrongPointer.h>
 
 #include "Vibrator.h"
+#include "utils.h"
 
 using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
@@ -33,7 +34,7 @@ static const uint32_t Q_INDEX_TO_FIXED = Q_INDEX_TO_FLOAT * Q_FLOAT_TO_FIXED;
 static const uint32_t Q_INDEX_OFFSET = 2.0f * Q_FLOAT_TO_FIXED;
 
 static constexpr uint32_t Q_DEFAULT = 15.5 * Q_FLOAT_TO_FIXED;
-static const std::vector<uint32_t> V_LEVELS_DEFAULT = {60, 70, 80, 90, 100, 76};
+static const std::array<uint32_t, 6> V_LEVELS_DEFAULT = {60, 70, 80, 90, 100, 76};
 
 static constexpr char ACTIVATE_PATH[] = "/sys/class/leds/vibrator/activate";
 static constexpr char DURATION_PATH[] = "/sys/class/leds/vibrator/duration";
@@ -66,7 +67,9 @@ static constexpr char Q_FILEPATH[] = "/sys/class/leds/vibrator/device/q_stored";
 class HwApi : public Vibrator::HwApi {
   public:
     HwApi();
-
+    bool setF0(uint32_t value) override { return set(value, mF0); }
+    bool setRedc(uint32_t value) override { return set(value, mRedc); }
+    bool setQ(uint32_t value) override { return set(value, mQ); }
     bool setActivate(bool value) override { return set(value, mActivate); }
     bool setDuration(uint32_t value) override { return set(value, mDuration); }
     bool getEffectDuration(uint32_t *value) override { return get(value, mEffectDuration); }
@@ -106,6 +109,9 @@ class HwApi : public Vibrator::HwApi {
     }
 
   private:
+    std::ofstream mF0;
+    std::ofstream mRedc;
+    std::ofstream mQ;
     std::ofstream mActivate;
     std::ofstream mDuration;
     std::ifstream mEffectDuration;
@@ -123,6 +129,21 @@ class HwApi : public Vibrator::HwApi {
 
 HwApi::HwApi() {
     // ostreams below are required
+
+    mF0.open(F0_FILEPATH);
+    if (!mF0) {
+        ALOGE("Failed to open %s (%d): %s", F0_FILEPATH, errno, strerror(errno));
+    }
+
+    mRedc.open(REDC_FILEPATH);
+    if (!mRedc) {
+        ALOGE("Failed to open %s (%d): %s", REDC_FILEPATH, errno, strerror(errno));
+    }
+
+    mQ.open(Q_FILEPATH);
+    if (!mQ) {
+        ALOGE("Failed to open %s (%d): %s", Q_FILEPATH, errno, strerror(errno));
+    }
 
     mActivate.open(ACTIVATE_PATH);
     if (!mActivate) {
@@ -202,29 +223,67 @@ static std::string trim(const std::string &str, const std::string &whitespace = 
     return str.substr(str_begin, str_range);
 }
 
-static bool loadCalibrationData(std::vector<uint32_t> &outVLevels) {
-    std::map<std::string, std::string> config_data;
-    bool ret = true;
-
-    std::ofstream f0{F0_FILEPATH};
-    if (!f0) {
-        ALOGE("Failed to open %s (%d): %s", F0_FILEPATH, errno, strerror(errno));
+class HwCal : public Vibrator::HwCal {
+  public:
+    HwCal();
+    bool getF0(uint32_t *value) override { return get(F0_CONFIG, value); }
+    bool getRedc(uint32_t *value) override { return get(REDC_CONFIG, value); }
+    bool getQ(uint32_t *value) override {
+        if (get(Q_CONFIG, value)) {
+            return true;
+        }
+        if (get(Q_INDEX, value)) {
+            *value = *value * Q_INDEX_TO_FIXED + Q_INDEX_OFFSET;
+            return true;
+        }
+        *value = Q_DEFAULT;
+        return true;
+    }
+    bool getVolLevels(std::array<uint32_t, 6> *value) override {
+        if (get(VOLTAGES_CONFIG, value)) {
+            return true;
+        }
+        *value = V_LEVELS_DEFAULT;
+        return true;
     }
 
-    std::ofstream redc{REDC_FILEPATH};
-    if (!redc) {
-        ALOGE("Failed to open %s (%d): %s", REDC_FILEPATH, errno, strerror(errno));
+  private:
+    template <typename T>
+    static Enable_If_Iterable<T, true> unpack(std::istream &stream, T *value) {
+        for (auto &entry : *value) {
+            stream >> entry;
+        }
     }
 
-    std::ofstream q{Q_FILEPATH};
-    if (!q) {
-        ALOGE("Failed to open %s (%d): %s", Q_FILEPATH, errno, strerror(errno));
+    template <typename T>
+    static Enable_If_Iterable<T, false> unpack(std::istream &stream, T *value) {
+        stream >> *value;
     }
 
+    template <typename T>
+    bool get(const char *key, T *value) {
+        auto it = mCalData.find(key);
+        if (it == mCalData.end()) {
+            ALOGE("Missing %s config!", key);
+            return false;
+        }
+        std::stringstream stream{it->second};
+        unpack(stream, value);
+        if (!stream || !stream.eof()) {
+            ALOGE("Invalid %s config!", key);
+            return false;
+        }
+        return true;
+    }
+
+  private:
+    std::map<std::string, std::string> mCalData;
+};
+
+HwCal::HwCal() {
     std::ifstream cal_data{CALIBRATION_FILEPATH};
     if (!cal_data) {
         ALOGE("Failed to open %s (%d): %s", CALIBRATION_FILEPATH, errno, strerror(errno));
-        ret = false;
     }
 
     for (std::string line; std::getline(cal_data, line);) {
@@ -234,58 +293,13 @@ static bool loadCalibrationData(std::vector<uint32_t> &outVLevels) {
         std::istringstream is_line(line);
         std::string key, value;
         if (std::getline(is_line, key, ':') && std::getline(is_line, value)) {
-            config_data[trim(key)] = trim(value);
+            mCalData[trim(key)] = trim(value);
         }
     }
-
-    if (config_data.find(VOLTAGES_CONFIG) != config_data.end()) {
-        std::istringstream voltages(config_data[VOLTAGES_CONFIG]);
-        std::vector<uint32_t> vLevels;
-        uint32_t v;
-        while (voltages >> v) {
-            vLevels.push_back(v);
-        }
-        if (voltages.eof() && outVLevels.size() == vLevels.size()) {
-            outVLevels = std::move(vLevels);
-        } else {
-            ALOGE("invalid v_levels config!");
-            ret = false;
-        }
-    }
-
-    if (config_data.find(F0_CONFIG) != config_data.end()) {
-        f0 << config_data[F0_CONFIG] << std::endl;
-    }
-
-    if (config_data.find(REDC_CONFIG) != config_data.end()) {
-        redc << config_data[REDC_CONFIG] << std::endl;
-    }
-
-    if (config_data.find(Q_CONFIG) != config_data.end()) {
-        q << config_data[Q_CONFIG] << std::endl;
-    } else if (config_data.find(Q_INDEX) != config_data.end()) {
-        q << std::stoul(config_data[Q_INDEX]) * Q_INDEX_TO_FIXED + Q_INDEX_OFFSET << std::endl;
-    } else {
-        q << Q_DEFAULT << std::endl;
-    }
-
-    return ret;
 }
 
 status_t registerVibratorService() {
-    // Calibration data
-    std::vector<uint32_t> v_levels(V_LEVELS_DEFAULT);
-    auto hwapi = std::make_unique<HwApi>();
-
-    if (!hwapi->setState(true)) {
-        ALOGE("Failed to set state (%d): %s", errno, strerror(errno));
-    }
-
-    if (!loadCalibrationData(v_levels)) {
-        ALOGW("Failed to load calibration data");
-    }
-
-    sp<Vibrator> vibrator = new Vibrator(std::move(hwapi), std::move(v_levels));
+    sp<Vibrator> vibrator = new Vibrator(std::make_unique<HwApi>(), std::make_unique<HwCal>());
 
     return vibrator->registerAsService();
 }

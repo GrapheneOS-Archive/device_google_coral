@@ -44,7 +44,7 @@ static EffectQueue Queue(const T &first, const U &second, Args... rest);
 
 // Constants With Arbitrary Values
 
-static constexpr EffectLevel V_LEVELS[]{40, 50, 60, 70, 80, 90};
+static constexpr std::array<EffectLevel, 6> V_LEVELS{40, 50, 60, 70, 80, 90};
 static constexpr EffectDuration EFFECT_DURATION{15};
 
 // Constants With Prescribed Values
@@ -110,18 +110,21 @@ class VibratorTest : public Test, public WithParamInterface<EffectTuple> {
   public:
     void SetUp() override {
         std::unique_ptr<MockApi> mockapi;
+        std::unique_ptr<MockCal> mockcal;
 
-        createMock(&mockapi);
-        createVibrator(std::move(mockapi));
+        createMock(&mockapi, &mockcal);
+        createVibrator(std::move(mockapi), std::move(mockcal));
     }
 
     void TearDown() override { deleteVibrator(); }
 
   protected:
-    void createMock(std::unique_ptr<MockApi> *mockapi) {
+    void createMock(std::unique_ptr<MockApi> *mockapi, std::unique_ptr<MockCal> *mockcal) {
         *mockapi = std::make_unique<MockApi>();
+        *mockcal = std::make_unique<MockCal>();
 
         mMockApi = mockapi->get();
+        mMockCal = mockcal->get();
 
         ON_CALL(*mMockApi, destructor()).WillByDefault(Assign(&mMockApi, nullptr));
 
@@ -129,15 +132,21 @@ class VibratorTest : public Test, public WithParamInterface<EffectTuple> {
             .WillByDefault(
                 DoAll(SetArgPointee<0>(msToCycles(EFFECT_DURATION)), ::testing::Return(true)));
 
+        ON_CALL(*mMockCal, destructor()).WillByDefault(Assign(&mMockCal, nullptr));
+
+        ON_CALL(*mMockCal, getVolLevels(_))
+            .WillByDefault(DoAll(SetArgPointee<0>(V_LEVELS), ::testing::Return(true)));
+
         relaxMock(false);
     }
 
-    void createVibrator(std::unique_ptr<MockApi> mockapi, bool relaxed = true) {
+    void createVibrator(std::unique_ptr<MockApi> mockapi, std::unique_ptr<MockCal> mockcal,
+                        bool relaxed = true) {
         std::vector<uint32_t> vlevels{std::begin(V_LEVELS), std::end(V_LEVELS)};
         if (relaxed) {
             relaxMock(true);
         }
-        mVibrator = new Vibrator(std::move(mockapi), std::move(vlevels));
+        mVibrator = new Vibrator(std::move(mockapi), std::move(mockcal));
         if (relaxed) {
             relaxMock(false);
         }
@@ -152,10 +161,15 @@ class VibratorTest : public Test, public WithParamInterface<EffectTuple> {
 
   private:
     void relaxMock(bool relax) {
-        Mock::VerifyAndClearExpectations(mMockApi);
         auto times = relax ? AnyNumber() : Exactly(0);
 
+        Mock::VerifyAndClearExpectations(mMockApi);
+        Mock::VerifyAndClearExpectations(mMockCal);
+
         EXPECT_CALL(*mMockApi, destructor()).Times(times);
+        EXPECT_CALL(*mMockApi, setF0(_)).Times(times);
+        EXPECT_CALL(*mMockApi, setRedc(_)).Times(times);
+        EXPECT_CALL(*mMockApi, setQ(_)).Times(times);
         EXPECT_CALL(*mMockApi, setActivate(_)).Times(times);
         EXPECT_CALL(*mMockApi, setDuration(_)).Times(times);
         EXPECT_CALL(*mMockApi, getEffectDuration(_)).Times(times);
@@ -172,34 +186,69 @@ class VibratorTest : public Test, public WithParamInterface<EffectTuple> {
         EXPECT_CALL(*mMockApi, setGpioFallScale(_)).Times(times);
         EXPECT_CALL(*mMockApi, setGpioRiseIndex(_)).Times(times);
         EXPECT_CALL(*mMockApi, setGpioRiseScale(_)).Times(times);
+
+        EXPECT_CALL(*mMockCal, destructor()).Times(times);
+        EXPECT_CALL(*mMockCal, getF0(_)).Times(times);
+        EXPECT_CALL(*mMockCal, getRedc(_)).Times(times);
+        EXPECT_CALL(*mMockCal, getQ(_)).Times(times);
+        EXPECT_CALL(*mMockCal, getVolLevels(_)).Times(times);
     }
 
   protected:
     MockApi *mMockApi;
+    MockCal *mMockCal;
     sp<IVibrator> mVibrator;
 };
 
 TEST_F(VibratorTest, HwApi) {
     std::unique_ptr<MockApi> mockapi;
-    Sequence s;
+    std::unique_ptr<MockCal> mockcal;
+    uint32_t f0Val = std::rand();
+    uint32_t redcVal = std::rand();
+    uint32_t qVal = std::rand();
+    Expectation volGet;
+    Sequence f0Seq, redcSeq, qSeq, volSeq, durSeq;
 
     EXPECT_CALL(*mMockApi, destructor()).WillOnce(DoDefault());
+    EXPECT_CALL(*mMockCal, destructor()).WillOnce(DoDefault());
 
     deleteVibrator(false);
 
-    createMock(&mockapi);
+    createMock(&mockapi, &mockcal);
 
+    EXPECT_CALL(*mMockCal, getF0(_))
+        .InSequence(f0Seq)
+        .WillOnce(DoAll(SetArgPointee<0>(f0Val), ::testing::Return(true)));
+    EXPECT_CALL(*mMockApi, setF0(f0Val)).InSequence(f0Seq).WillOnce(::testing::Return(true));
+
+    EXPECT_CALL(*mMockCal, getRedc(_))
+        .InSequence(redcSeq)
+        .WillOnce(DoAll(SetArgPointee<0>(redcVal), ::testing::Return(true)));
+    EXPECT_CALL(*mMockApi, setRedc(redcVal)).InSequence(redcSeq).WillOnce(::testing::Return(true));
+
+    EXPECT_CALL(*mMockCal, getQ(_))
+        .InSequence(qSeq)
+        .WillOnce(DoAll(SetArgPointee<0>(qVal), ::testing::Return(true)));
+    EXPECT_CALL(*mMockApi, setQ(qVal)).InSequence(qSeq).WillOnce(::testing::Return(true));
+
+    volGet = EXPECT_CALL(*mMockCal, getVolLevels(_)).WillOnce(DoDefault());
+
+    EXPECT_CALL(*mMockApi, setState(true)).WillOnce(::testing::Return(true));
     EXPECT_CALL(*mMockApi, setEffectIndex(EFFECT_INDEX))
-        .InSequence(s)
+        .InSequence(durSeq)
         .WillOnce(::testing::Return(true));
-    EXPECT_CALL(*mMockApi, getEffectDuration(_)).InSequence(s).WillOnce(DoDefault());
+    EXPECT_CALL(*mMockApi, getEffectDuration(_)).InSequence(durSeq).WillOnce(DoDefault());
 
     EXPECT_CALL(*mMockApi, setGpioFallIndex(GPIO_FALL_INDEX)).WillOnce(::testing::Return(true));
-    EXPECT_CALL(*mMockApi, setGpioFallScale(GPIO_FALL_SCALE)).WillOnce(::testing::Return(true));
+    EXPECT_CALL(*mMockApi, setGpioFallScale(GPIO_FALL_SCALE))
+        .After(volGet)
+        .WillOnce(::testing::Return(true));
     EXPECT_CALL(*mMockApi, setGpioRiseIndex(GPIO_RISE_INDEX)).WillOnce(::testing::Return(true));
-    EXPECT_CALL(*mMockApi, setGpioRiseScale(GPIO_RISE_SCALE)).WillOnce(::testing::Return(true));
+    EXPECT_CALL(*mMockApi, setGpioRiseScale(GPIO_RISE_SCALE))
+        .After(volGet)
+        .WillOnce(::testing::Return(true));
 
-    createVibrator(std::move(mockapi), false);
+    createVibrator(std::move(mockapi), std::move(mockcal), false);
 }
 
 TEST_F(VibratorTest, on) {

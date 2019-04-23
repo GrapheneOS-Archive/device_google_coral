@@ -32,6 +32,9 @@ class Vibrator : public IVibrator {
     class HwApi {
       public:
         virtual ~HwApi() = default;
+        virtual bool setF0(uint32_t value) = 0;
+        virtual bool setRedc(uint32_t value) = 0;
+        virtual bool setQ(uint32_t value) = 0;
         virtual bool setActivate(bool value) = 0;
         virtual bool setDuration(uint32_t value) = 0;
         virtual bool getEffectDuration(uint32_t *value) = 0;
@@ -50,8 +53,17 @@ class Vibrator : public IVibrator {
         virtual bool setGpioRiseScale(uint32_t value) = 0;
     };
 
+    class HwCal {
+      public:
+        virtual ~HwCal() = default;
+        virtual bool getF0(uint32_t *value) = 0;
+        virtual bool getRedc(uint32_t *value) = 0;
+        virtual bool getQ(uint32_t *value) = 0;
+        virtual bool getVolLevels(std::array<uint32_t, 6> *value) = 0;
+    };
+
   public:
-    Vibrator(std::unique_ptr<HwApi> hwapi, std::vector<uint32_t> &&v_levels);
+    Vibrator(std::unique_ptr<HwApi> hwapi, std::unique_ptr<HwCal> hwcal);
 
     // Methods from ::android::hardware::vibrator::V1_0::IVibrator follow.
     using Status = ::android::hardware::vibrator::V1_0::Status;
@@ -90,9 +102,11 @@ class Vibrator : public IVibrator {
     Return<void> performEffect(Effect effect, EffectStrength strength, perform_cb _hidl_cb);
     bool isUnderExternalControl();
     std::unique_ptr<HwApi> mHwApi;
-    std::vector<uint32_t> mVolLevels;
+    std::unique_ptr<HwCal> mHwCal;
+    std::array<uint32_t, 6> mVolLevels;
     uint32_t mSimpleEffectDuration;
 };
+
 }  // namespace implementation
 }  // namespace V1_3
 }  // namespace vibrator

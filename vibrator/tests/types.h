@@ -19,7 +19,7 @@
 #include <android/hardware/vibrator/1.3/IVibrator.h>
 
 using EffectIndex = uint16_t;
-using EffectLevel = uint8_t;
+using EffectLevel = uint32_t;
 using EffectAmplitude = uint8_t;
 using EffectScale = uint16_t;
 using EffectDuration = uint32_t;
