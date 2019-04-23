@@ -207,7 +207,7 @@
     <!-- Cirrus TDM config -->
     <ctl name="TERT_TDM_RX_0 Channels" value="Two"/>
     <ctl name="TERT_TDM_RX_0 Format" value="S32_LE"/>
-    <ctl name="TERT_TDM_TX_0 Channels" value="Eight"/>
+    <ctl name="TERT_TDM_TX_0 Channels" value="Four"/>
     <ctl name="TERT_TDM_TX_0 Format" value="S32_LE"/>
     <ctl name="TERT_TDM_RX_0 Data Format" value="LPCM" />
 
@@ -225,17 +225,17 @@
     <ctl name="Channel Mux" value="RX1"/>
     <ctl name="ASPTX1SRC" value="VMON"/>
     <ctl name="ASPTX2SRC" value="IMON"/>
-    <ctl name="ASPTX3SRC" value="VPMON"/>
+    <ctl name="ASPTX3SRC" value="Zero Fill"/>
     <ctl name="ASPTX4SRC" value="Zero Fill"/>
     <ctl name="ASPTX5SRC" value="Zero Fill"/>
     <ctl name="ASPTX6SRC" value="Zero Fill"/>
     <ctl name="R Channel Mux" value="RX2"/>
     <ctl name="R ASPTX1SRC" value="Zero Fill"/>
     <ctl name="R ASPTX2SRC" value="Zero Fill"/>
-    <ctl name="R ASPTX3SRC" value="Zero Fill"/>
-    <ctl name="R ASPTX4SRC" value="VMON"/>
-    <ctl name="R ASPTX5SRC" value="IMON"/>
-    <ctl name="R ASPTX6SRC" value="VPMON"/>
+    <ctl name="R ASPTX3SRC" value="VMON"/>
+    <ctl name="R ASPTX4SRC" value="IMON"/>
+    <ctl name="R ASPTX5SRC" value="Zero Fill"/>
+    <ctl name="R ASPTX6SRC" value="Zero Fill"/>
     <!-- Cirrus Amp Enables end -->
     <!-- HFP start -->
     <ctl name="HFP_PRI_AUX_UL_HL Switch" value="0"/>
