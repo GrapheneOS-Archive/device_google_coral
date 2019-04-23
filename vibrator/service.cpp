@@ -36,33 +36,21 @@ static const uint32_t Q_INDEX_OFFSET = 2.0f * Q_FLOAT_TO_FIXED;
 static constexpr uint32_t Q_DEFAULT = 15.5 * Q_FLOAT_TO_FIXED;
 static const std::array<uint32_t, 6> V_LEVELS_DEFAULT = {60, 70, 80, 90, 100, 76};
 
-static constexpr char ACTIVATE_PATH[] = "/sys/class/leds/vibrator/activate";
-static constexpr char DURATION_PATH[] = "/sys/class/leds/vibrator/duration";
-static constexpr char STATE_PATH[] = "/sys/class/leds/vibrator/state";
-static constexpr char EFFECT_DURATION_PATH[] =
-    "/sys/class/leds/vibrator/device/cp_trigger_duration";
-static constexpr char EFFECT_INDEX_PATH[] = "/sys/class/leds/vibrator/device/cp_trigger_index";
-static constexpr char EFFECT_QUEUE_PATH[] = "/sys/class/leds/vibrator/device/cp_trigger_queue";
-static constexpr char EFFECT_SCALE_PATH[] = "/sys/class/leds/vibrator/device/cp_dig_scale";
-static constexpr char GLOBAL_SCALE_PATH[] = "/sys/class/leds/vibrator/device/dig_scale";
-static constexpr char ASP_ENABLE_PATH[] = "/sys/class/leds/vibrator/device/asp_enable";
-static constexpr char GPIO_FALL_INDEX[] = "/sys/class/leds/vibrator/device/gpio1_fall_index";
-static constexpr char GPIO_FALL_SCALE[] = "/sys/class/leds/vibrator/device/gpio1_fall_dig_scale";
-static constexpr char GPIO_RISE_INDEX[] = "/sys/class/leds/vibrator/device/gpio1_rise_index";
-static constexpr char GPIO_RISE_SCALE[] = "/sys/class/leds/vibrator/device/gpio1_rise_dig_scale";
-
-// File path to the calibration file
-static constexpr char CALIBRATION_FILEPATH[] = "/mnt/vendor/persist/haptics/cs40l25a.cal";
-
-// Kernel ABIs for updating the calibration data
 static constexpr char F0_CONFIG[] = "f0_measured";
 static constexpr char REDC_CONFIG[] = "redc_measured";
 static constexpr char Q_CONFIG[] = "q_measured";
 static constexpr char Q_INDEX[] = "q_index";
 static constexpr char VOLTAGES_CONFIG[] = "v_levels";
-static constexpr char F0_FILEPATH[] = "/sys/class/leds/vibrator/device/f0_stored";
-static constexpr char REDC_FILEPATH[] = "/sys/class/leds/vibrator/device/redc_stored";
-static constexpr char Q_FILEPATH[] = "/sys/class/leds/vibrator/device/q_stored";
+
+template <typename T>
+static void fileFromEnv(const char *env, T *stream) {
+    auto file = std::getenv(env);
+
+    stream->open(file);
+    if (!*stream) {
+        ALOGE("Failed to open %s:%s (%d): %s", env, file, errno, strerror(errno));
+    }
+}
 
 class HwApi : public Vibrator::HwApi {
   public:
@@ -129,86 +117,22 @@ class HwApi : public Vibrator::HwApi {
 
 HwApi::HwApi() {
     // ostreams below are required
-
-    mF0.open(F0_FILEPATH);
-    if (!mF0) {
-        ALOGE("Failed to open %s (%d): %s", F0_FILEPATH, errno, strerror(errno));
-    }
-
-    mRedc.open(REDC_FILEPATH);
-    if (!mRedc) {
-        ALOGE("Failed to open %s (%d): %s", REDC_FILEPATH, errno, strerror(errno));
-    }
-
-    mQ.open(Q_FILEPATH);
-    if (!mQ) {
-        ALOGE("Failed to open %s (%d): %s", Q_FILEPATH, errno, strerror(errno));
-    }
-
-    mActivate.open(ACTIVATE_PATH);
-    if (!mActivate) {
-        ALOGE("Failed to open %s (%d): %s", ACTIVATE_PATH, errno, strerror(errno));
-    }
-
-    mDuration.open(DURATION_PATH);
-    if (!mDuration) {
-        ALOGE("Failed to open %s (%d): %s", DURATION_PATH, errno, strerror(errno));
-    }
-
-    mState.open(STATE_PATH);
-    if (!mState) {
-        ALOGE("Failed to open %s (%d): %s", STATE_PATH, errno, strerror(errno));
-    }
-
-    mEffectDuration.open(EFFECT_DURATION_PATH);
-    if (!mEffectDuration) {
-        ALOGE("Failed to open %s (%d): %s", EFFECT_DURATION_PATH, errno, strerror(errno));
-    }
-
-    mEffectIndex.open(EFFECT_INDEX_PATH);
-    if (!mEffectIndex) {
-        ALOGE("Failed to open %s (%d): %s", EFFECT_INDEX_PATH, errno, strerror(errno));
-    }
-
-    mEffectQueue.open(EFFECT_QUEUE_PATH);
-    if (!mEffectQueue) {
-        ALOGE("Failed to open %s (%d): %s", EFFECT_QUEUE_PATH, errno, strerror(errno));
-    }
-
-    mEffectScale.open(EFFECT_SCALE_PATH);
-    if (!mEffectScale) {
-        ALOGE("Failed to open %s (%d): %s", EFFECT_SCALE_PATH, errno, strerror(errno));
-    }
-
-    mGlobalScale.open(GLOBAL_SCALE_PATH);
-    if (!mGlobalScale) {
-        ALOGE("Failed to open %s (%d): %s", GLOBAL_SCALE_PATH, errno, strerror(errno));
-    }
-
-    mAspEnable.open(ASP_ENABLE_PATH);
-    if (!mAspEnable) {
-        ALOGE("Failed to open %s (%d): %s", ASP_ENABLE_PATH, errno, strerror(errno));
-    }
-
-    mGpioFallIndex.open(GPIO_FALL_INDEX);
-    if (!mGpioFallIndex) {
-        ALOGE("Failed to open %s (%d): %s", GPIO_FALL_INDEX, errno, strerror(errno));
-    }
-
-    mGpioFallScale.open(GPIO_FALL_SCALE);
-    if (!mGpioFallScale) {
-        ALOGE("Failed to open %s (%d): %s", GPIO_FALL_SCALE, errno, strerror(errno));
-    }
-
-    mGpioRiseIndex.open(GPIO_RISE_INDEX);
-    if (!mGpioRiseIndex) {
-        ALOGE("Failed to open %s (%d): %s", GPIO_RISE_INDEX, errno, strerror(errno));
-    }
-
-    mGpioRiseScale.open(GPIO_RISE_SCALE);
-    if (!mGpioRiseScale) {
-        ALOGE("Failed to open %s (%d): %s", GPIO_RISE_SCALE, errno, strerror(errno));
-    }
+    fileFromEnv("F0_FILEPATH", &mF0);
+    fileFromEnv("REDC_FILEPATH", &mRedc);
+    fileFromEnv("Q_FILEPATH", &mQ);
+    fileFromEnv("ACTIVATE_PATH", &mActivate);
+    fileFromEnv("DURATION_PATH", &mDuration);
+    fileFromEnv("STATE_PATH", &mState);
+    fileFromEnv("EFFECT_DURATION_PATH", &mEffectDuration);
+    fileFromEnv("EFFECT_INDEX_PATH", &mEffectIndex);
+    fileFromEnv("EFFECT_QUEUE_PATH", &mEffectQueue);
+    fileFromEnv("EFFECT_SCALE_PATH", &mEffectScale);
+    fileFromEnv("GLOBAL_SCALE_PATH", &mGlobalScale);
+    fileFromEnv("ASP_ENABLE_PATH", &mAspEnable);
+    fileFromEnv("GPIO_FALL_INDEX", &mGpioFallIndex);
+    fileFromEnv("GPIO_FALL_SCALE", &mGpioFallScale);
+    fileFromEnv("GPIO_RISE_INDEX", &mGpioRiseIndex);
+    fileFromEnv("GPIO_RISE_SCALE", &mGpioRiseScale);
 }
 
 static std::string trim(const std::string &str, const std::string &whitespace = " \t") {
@@ -281,12 +205,11 @@ class HwCal : public Vibrator::HwCal {
 };
 
 HwCal::HwCal() {
-    std::ifstream cal_data{CALIBRATION_FILEPATH};
-    if (!cal_data) {
-        ALOGE("Failed to open %s (%d): %s", CALIBRATION_FILEPATH, errno, strerror(errno));
-    }
+    std::ifstream calfile;
 
-    for (std::string line; std::getline(cal_data, line);) {
+    fileFromEnv("CALIBRATION_FILEPATH", &calfile);
+
+    for (std::string line; std::getline(calfile, line);) {
         if (line.empty() || line[0] == '#') {
             continue;
         }
