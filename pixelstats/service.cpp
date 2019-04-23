@@ -28,15 +28,18 @@ using android::hardware::google::pixel::DropDetect;
 using android::hardware::google::pixel::SysfsCollector;
 using android::hardware::google::pixel::UeventListener;
 
+#define MAXIM_DIR(filename) "/sys/class/power_supply/maxfg/" #filename
 #define UFSHC_PATH(filename) "/sys/devices/platform/soc/1d84000.ufshc/" #filename
 const struct SysfsCollector::SysfsPaths sysfs_paths = {
     .SlowioReadCntPath = UFSHC_PATH(slowio_read_cnt),
     .SlowioWriteCntPath = UFSHC_PATH(slowio_write_cnt),
     .SlowioUnmapCntPath = UFSHC_PATH(slowio_unmap_cnt),
     .SlowioSyncCntPath = UFSHC_PATH(slowio_sync_cnt),
-    .CycleCountBinsPath = "/sys/class/power_supply/maxfg/cycle_counts_bins",
+    .CycleCountBinsPath = "/sys/class/power_supply/battery/cycle_counts",
     .ImpedancePath = "/sys/class/misc/msm_cirrus_playback/resistance_left_right",
-    .CodecPath = "",  // b/117976641
+    .CodecPath = "",  // b/126295204
+    .BatteryCapacityCC = MAXIM_DIR(delta_cc_sum),
+    .BatteryCapacityVFSOC = MAXIM_DIR(delta_vfsoc_sum),
 };
 
 const char *const kAudioUevent = "/kernel/q6audio/q6voice_uevent";
@@ -44,7 +47,6 @@ const char *const kAudioUevent = "/kernel/q6audio/q6voice_uevent";
 int main() {
     LOG(INFO) << "starting PixelStats";
 
-    // b/118713028 Expect failure until drop detect nanoapp is enabled
     sp<DropDetect> dropDetector = DropDetect::start();
     if (!dropDetector) {
         LOG(ERROR) << "Unable to launch drop detection";
