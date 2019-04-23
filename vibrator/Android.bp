@@ -36,7 +36,10 @@ cc_defaults {
 cc_library {
     name: "android.hardware.vibrator@1.3-impl.coral",
     defaults: ["android.hardware.vibrator@1.3-defaults.coral"],
-    srcs: ["Vibrator.cpp"],
+    srcs: [
+        "Hardware.cpp",
+        "Vibrator.cpp",
+    ],
 }
 
 cc_binary {
