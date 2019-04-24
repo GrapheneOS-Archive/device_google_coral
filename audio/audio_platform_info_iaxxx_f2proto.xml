@@ -80,23 +80,15 @@
         <device name="SND_DEVICE_IN_CAMCORDER_SELFIE_PORTRAIT" acdb_id="66"/>
     </acdb_ids>
     <external_specific_dev>
-        <!-- availiable overwrite external snd device
-            SND_DEVICE_OUT_USB_HEADSET
-            SND_DEVICE_OUT_USB_HEADPHONES
-            SND_DEVICE_OUT_VOICE_USB_HEADPHONES
-            SND_DEVICE_OUT_VOICE_USB_HEADSET
-            SND_DEVICE_OUT_VOICE_TTY_FULL_USB
-            SND_DEVICE_OUT_VOICE_TTY_VCO_USB
-
-            SND_DEVICE_IN_USB_HEADSET_MIC
-            SND_DEVICE_IN_USB_HEADSET_MIC_AEC
-            SND_DEVICE_IN_VOICE_USB_HEADSET_MIC
-            SND_DEVICE_IN_UNPROCESSED_USB_HEADSET_MIC
-            SND_DEVICE_IN_VOICE_RECOG_USB_HEADSET_MIC
-        -->
         <!-- condor -->
         <ext_device name="SND_DEVICE_OUT_VOICE_USB_HEADSET" usbid="18d1:5034" acdb_id="56" />
         <ext_device name="SND_DEVICE_IN_VOICE_USB_HEADSET_MIC" usbid="18d1:5034" acdb_id="55" />
+        <!-- condor_Sprint -->
+        <ext_device name="SND_DEVICE_OUT_VOICE_USB_HEADSET" usbid="18d1:5038" acdb_id="53" />
+        <ext_device name="SND_DEVICE_IN_VOICE_USB_HEADSET_MIC" usbid="18d1:5038" acdb_id="94" />
+        <!-- condor_Spirent-->
+        <ext_device name="SND_DEVICE_OUT_VOICE_USB_HEADSET" usbid="18d1:5036" acdb_id="76" />
+        <ext_device name="SND_DEVICE_IN_VOICE_USB_HEADSET_MIC" usbid="18d1:5036" acdb_id="75" />
 
     </external_specific_dev>
     <bit_width_configs>
@@ -150,7 +142,6 @@
        <device name="SND_DEVICE_OUT_VOICE_HANDSET" operator="Sprint" mixer_path="voice-handset" acdb_id="80"/>
        <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" operator="Sprint" mixer_path="voice-speaker-dmic-ef" acdb_id="81"/>
        <device name="SND_DEVICE_OUT_VOICE_SPEAKER_PROTECTED" operator="Sprint" mixer_path="voice-speaker" acdb_id="82"/>
-       <device name="SND_DEVICE_OUT_VOICE_HAC_HANDSET" operator="Sprint" mixer_path="voice-hac-handset" acdb_id="53"/>
     </operator_specific>
 
 
