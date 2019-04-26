@@ -192,7 +192,6 @@ TARGET_USES_HARDWARE_QCOM_BOOTCTRL := true
 DEVICE_MANIFEST_FILE := device/google/coral/manifest.xml
 DEVICE_MATRIX_FILE := device/google/coral/compatibility_matrix.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := device/google/coral/device_framework_matrix.xml
-DEVICE_FRAMEWORK_MANIFEST_FILE := device/google/coral/framework_manifest.xml
 
 # Use mke2fs to create ext4 images
 TARGET_USES_MKE2FS := true
