@@ -186,12 +186,14 @@ class VibratorTest : public Test, public WithParamInterface<EffectTuple> {
         EXPECT_CALL(*mMockApi, setGpioFallScale(_)).Times(times);
         EXPECT_CALL(*mMockApi, setGpioRiseIndex(_)).Times(times);
         EXPECT_CALL(*mMockApi, setGpioRiseScale(_)).Times(times);
+        EXPECT_CALL(*mMockApi, debug(_)).Times(times);
 
         EXPECT_CALL(*mMockCal, destructor()).Times(times);
         EXPECT_CALL(*mMockCal, getF0(_)).Times(times);
         EXPECT_CALL(*mMockCal, getRedc(_)).Times(times);
         EXPECT_CALL(*mMockCal, getQ(_)).Times(times);
         EXPECT_CALL(*mMockCal, getVolLevels(_)).Times(times);
+        EXPECT_CALL(*mMockApi, debug(_)).Times(times);
     }
 
   protected:
