@@ -45,7 +45,6 @@ BOARD_KERNEL_CMDLINE += service_locator.enable=1
 BOARD_KERNEL_CMDLINE += androidboot.memcg=1 cgroup.memory=nokmem
 BOARD_KERNEL_CMDLINE += usbcore.autosuspend=7
 BOARD_KERNEL_CMDLINE += androidboot.usbcontroller=a600000.dwc3 swiotlb=2048
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive # STOPSHIP b/113232677
 BOARD_KERNEL_CMDLINE += androidboot.boot_devices=soc/1d84000.ufshc
 
 BOARD_KERNEL_BASE        := 0x00000000
@@ -193,7 +192,6 @@ TARGET_USES_HARDWARE_QCOM_BOOTCTRL := true
 DEVICE_MANIFEST_FILE := device/google/coral/manifest.xml
 DEVICE_MATRIX_FILE := device/google/coral/compatibility_matrix.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := device/google/coral/device_framework_matrix.xml
-DEVICE_FRAMEWORK_MANIFEST_FILE := device/google/coral/framework_manifest.xml
 
 # Use mke2fs to create ext4 images
 TARGET_USES_MKE2FS := true
