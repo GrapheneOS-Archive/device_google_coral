@@ -305,7 +305,9 @@
     <ctl name="MultiMedia16 Mixer QUAT_TDM_TX_0" value="0" />
     <ctl name="QUAT_TDM_TX_0 Channels" value="One" />
     <ctl name="QUAT_TDM_TX_0 Format" value="S32_LE" />
+    <ctl name="QUAT_TDM_RX_0 Channels" value="One"/>
     <ctl name="QUAT_TDM_RX_0 Format" value="S32_LE" />
+    <ctl name="QUAT_TDM_RX_0 Data Format" value="LPCM" />
     <!-- iaxxx tdm end -->
     <!-- iaxxx codec -->
     <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_NONE" />
@@ -705,6 +707,9 @@
     <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia16" value="0"/>
     <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia30" value="0"/>
     <ctl name="TERT_TDM_RX_1 Audio Mixer MultiMedia31" value="0"/>
+    <ctl name="QUAT_TDM_RX_0 Audio Mixer MultiMedia1" value="0"/>
+    <ctl name="QUAT_TDM_RX_0 Audio Mixer MultiMedia2" value="0"/>
+    <ctl name="QUAT_TDM_RX_0 Audio Mixer MultiMedia4" value="0"/>
 
     <!-- Headphone Default mode - uLP -->
     <ctl name="RX HPH Mode" value="CLS_H_ULP"/>
@@ -843,8 +848,13 @@
         <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia1" value="1"/>
     </path>
 
+    <path name="deep-buffer-playback downlink-audio">
+        <ctl name="QUAT_TDM_RX_0 Audio Mixer MultiMedia1" value="1"/>
+    </path>
+
     <path name="deep-buffer-playback speaker">
         <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia1" value="1"/>
+        <path name="deep-buffer-playback downlink-audio"/>
     </path>
 
     <path name="deep-buffer-playback speaker-safe">
@@ -926,8 +936,13 @@
         <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia2" value="1" />
     </path>
 
+    <path name="hifi-playback downlink-audio">
+        <ctl name="QUAT_TDM_RX_0 Audio Mixer MultiMedia2" value="1" />
+    </path>
+
     <path name="hifi-playback speaker">
         <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia2" value="1" />
+        <path name="hifi-playback downlink-audio" />
     </path>
 
     <path name="hifi-playback handset">
@@ -1165,8 +1180,13 @@
         <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia4" value="1"/>
     </path>
 
+    <path name="compress-offload-playback downlink-audio">
+        <ctl name="QUAT_TDM_RX_0 Audio Mixer MultiMedia4" value="1"/>
+    </path>
+
     <path name="compress-offload-playback speaker">
         <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia4" value="1"/>
+        <path name="compress-offload-playback downlink-audio"/>
     </path>
 
     <path name="compress-offload-playback speaker-safe">
