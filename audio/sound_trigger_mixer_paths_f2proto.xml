@@ -1337,7 +1337,7 @@
     </path>
 
     <path name="ambient-route-with-bargein">
-        <ctl name="Plgin2Ip Ep0 Conf" value="plugin4Out0"/>
+        <ctl name="Plgin2Ip Ep0 Conf" value="RX12_ChanMgr"/>
         <path name="ambient-route"/>
     </path>
 
@@ -1389,22 +1389,21 @@
 
     <path name="downlink-audio-route">
         <ctl name="PCM PortA Setup" value="1" />
-        <ctl name="PCM PortA Start" value="0x7F" />
-        <ctl name="strm2 ASRC Mode" value="ASRC_ENABLE" />
-        <ctl name="strm2 Master Strm Id" value="STREAMID_2" />
-        <ctl name="strm2 Format FrLn" value="16K_10MS" />
-        <ctl name="strm2 Format Sr" value="RATE_16K" />
-        <ctl name="strm2 Format Enc" value="ENCODING_AFLOAT" />
-        <ctl name="strm2 Dir" value="0" />
-        <ctl name="strm2 inter strm delay" value="0" />
-        <ctl name="strm2 Port" value="PCM0" />
-        <ctl name="strm2 Port Enc" value="ENCODING_Q15" />
-        <ctl name="strm2 CH Mask En" value="0xc0" />
-        <ctl name="strm2 En" value="1" />
-        <ctl name="Plgin4Ip Ep0 Conf" value="RX6_ChanMgr" />
-        <ctl name="Plgin4Ip Ep1 Conf" value="RX7_ChanMgr" />
-        <ctl name="Plgin4En" value="Rx0Plgin4On" />
-        <ctl name="Plgin4Blk1En" value="1" />
+        <ctl name="PCM PortA Start" value="0x3F" />
+        <ctl name="strm6 ASRC Mode" value="ASRC_ENABLE" />
+        <ctl name="strm6 Master Strm Id" value="STREAMID_6" />
+        <ctl name="strm6 Format FrLn" value="16K_10MS" />
+        <ctl name="strm6 Format Sr" value="RATE_16K" />
+        <ctl name="strm6 Format Enc" value="ENCODING_AFLOAT" />
+        <ctl name="strm6 Dir" value="0" />
+        <ctl name="strm6 inter strm delay" value="0" />
+        <ctl name="strm6 Port" value="PCM0" />
+        <ctl name="strm6 Port Enc" value="ENCODING_Q15" />
+        <ctl name="strm6 CH Mask En" value="0x1000" />
+        <ctl name="strm6 En" value="1" />
+        <ctl name="Plgin3Ip Ep0 Conf" value="RX12_ChanMgr" />
+        <ctl name="Plgin3En" value="Rx0Plgin3On" />
+        <ctl name="Plgin3Blk1En" value="1" />
     </path>
 
 </mixer>
