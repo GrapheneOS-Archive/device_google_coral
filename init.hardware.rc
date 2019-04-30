@@ -423,6 +423,7 @@ on early-boot
 
     # FG cycle count read from dumpstate + backup restore from health HAL (and pixelstats)
     chown system system /sys/class/power_supply/maxfg/cycle_counts_bins
+    chown system system /sys/devices/platform/soc/soc:google,battery/power_supply/battery/cycle_counts
 
     # Permission for Pixelstats
     chown system system /sys/class/misc/msm_cirrus_playback/resistance_left_right
