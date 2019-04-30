@@ -29,36 +29,79 @@ namespace implementation {
 
 class Vibrator : public IVibrator {
   public:
+    // APIs for interfacing with the kernel driver.
     class HwApi {
       public:
         virtual ~HwApi() = default;
+        // Stores the LRA resonant frequency to be used for PWLE playback
+        // and click compensation.
         virtual bool setF0(uint32_t value) = 0;
+        // Stores the LRA series resistance to be used for click
+        // compensation.
         virtual bool setRedc(uint32_t value) = 0;
+        // Stores the LRA Q factor to be used for Q-dependent waveform
+        // selection.
         virtual bool setQ(uint32_t value) = 0;
+        // Activates/deactivates the vibrator for durations specified by
+        // setDuration().
         virtual bool setActivate(bool value) = 0;
+        // Specifies the vibration duration in milliseconds.
         virtual bool setDuration(uint32_t value) = 0;
+        // Reports the duration of the waveform selected by
+        // setEffectIndex(), measured in 48-kHz periods.
         virtual bool getEffectDuration(uint32_t *value) = 0;
+        // Selects the waveform associated with vibration calls from
+        // the Android vibrator HAL.
         virtual bool setEffectIndex(uint32_t value) = 0;
+        // Specifies an array of waveforms, delays, and repetition markers to
+        // generate complex waveforms.
         virtual bool setEffectQueue(std::string value) = 0;
+        // Reports whether setEffectScale() is supported.
         virtual bool hasEffectScale() = 0;
+        // Indicates the number of 0.125-dB steps of attenuation to apply to
+        // waveforms triggered in response to vibration calls from the
+        // Android vibrator HAL.
         virtual bool setEffectScale(uint32_t value) = 0;
+        // Indicates the number of 0.125-dB steps of attenuation to apply to
+        // any output waveform (additive to all other set*Scale()
+        // controls).
         virtual bool setGlobalScale(uint32_t value) = 0;
+        // Specifies the active state of the vibrator
+        // (true = enabled, false= disabled).
         virtual bool setState(bool value) = 0;
+        // Reports whether getAspEnable()/setAspEnable() is supported.
         virtual bool hasAspEnable() = 0;
+        // Enables/disables ASP playback.
         virtual bool getAspEnable(bool *value) = 0;
+        // Reports enabled/disabled state of ASP playback.
         virtual bool setAspEnable(bool value) = 0;
+        // Selects the waveform associated with a GPIO1 falling edge.
         virtual bool setGpioFallIndex(uint32_t value) = 0;
+        // Indicates the number of 0.125-dB steps of attenuation to apply to
+        // waveforms triggered in response to a GPIO1 falling edge.
         virtual bool setGpioFallScale(uint32_t value) = 0;
+        // Selects the waveform associated with a GPIO1 rising edge.
         virtual bool setGpioRiseIndex(uint32_t value) = 0;
+        // Indicates the number of 0.125-dB steps of attenuation to apply to
+        // waveforms triggered in response to a GPIO1 rising edge.
         virtual bool setGpioRiseScale(uint32_t value) = 0;
     };
 
+    // APIs for obtaining calibration/configuration data from persistent memory.
     class HwCal {
       public:
         virtual ~HwCal() = default;
+        // Obtains the LRA resonant frequency to be used for PWLE playback
+        // and click compensation.
         virtual bool getF0(uint32_t *value) = 0;
+        // Obtains the LRA series resistance to be used for click
+        // compensation.
         virtual bool getRedc(uint32_t *value) = 0;
+        // Obtains the LRA Q factor to be used for Q-dependent waveform
+        // selection.
         virtual bool getQ(uint32_t *value) = 0;
+        // Obtains the discreet voltage levels to be applied for the various
+        // waveforms, in units of 1%.
         virtual bool getVolLevels(std::array<uint32_t, 6> *value) = 0;
     };
 

@@ -536,9 +536,11 @@ on property:sys.boot_completed=1
     chmod 644 /sys/kernel/debug/ufshcd0/stats/io_stats
     chmod 644 /sys/kernel/debug/ufshcd0/stats/req_stats
 
-    # HardwareInfo needs to be able to read display info
+    # HardwareInfo files
     chmod 444 /sys/devices/platform/soc/soc:qcom,dsi-display-primary/panel_info/panel0/serial_number
     chmod 444 /sys/devices/platform/soc/soc:qcom,dsi-display-primary/panel_info/panel0/panel_vendor_name
+    chmod 644 /sys/kernel/debug/regmap/1-0036/registers
+    chmod 644 /sys/kernel/debug/regmap/1-000b/registers
 
     # Maxim FG dump for dumpstate
     chown system system /sys/kernel/debug/regmap/1-0036/registers
@@ -550,6 +552,17 @@ on property:sys.boot_completed=1
     chown system system /sys/kernel/debug/google_battery/ssoc_uicurve
     chown system system /sys/kernel/debug/google_charger/pps_op_ua
     chown system system /sys/kernel/debug/google_charger/pps_out_uv
+
+    # Create pixel-trace.
+    # At this moment, only mm_event is available. If others want to put more,
+    # it should get hard review from pixel-perf-team.
+    mkdir /sys/kernel/debug/tracing/instances/pixel-trace 0755 system system
+    chown system system /sys/kernel/debug/tracing/instances/pixel-trace/trace
+    chmod 0660 /sys/kernel/debug/tracing/instances/pixel-trace/trace
+    chown system system /sys/kernel/debug/tracing/instances/pixel-trace/tracing_on
+    chmod 0660 /sys/kernel/debug/tracing/instances/pixel-trace/tracing_on
+    write /sys/kernel/debug/tracing/instances/pixel-trace/buffer_size_kb 64
+    write /sys/kernel/debug/tracing/instances/pixel-trace/events/mm_event/enable 1
 
 service vendor.per_mgr /vendor/bin/pm-service
     class core
@@ -808,6 +821,19 @@ service vendor.sec_nvm /vendor/bin/sec_nvm
     class core
     user system
     group system
+
+# turns off tracing right before bugreporting to keep more traces
+on property:init.svc.dumpstatez=running
+    write /d/tracing/instances/pixel-trace/tracing_on 0
+
+on property:init.svc.dumpstatez=stopped
+    write /d/tracing/instances/pixel-trace/tracing_on 1
+
+on property:init.svc.bugreport=running
+    write /d/tracing/instances/pixel-trace/tracing_on 0
+
+on property:init.svc.bugreport=stopped
+    write /d/tracing/instances/pixel-trace/tracing_on 1
 
 # bugreport is triggered by holding down volume down, volume up and power
 service bugreport /system/bin/dumpstate -d -p -B -z \
