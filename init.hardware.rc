@@ -190,8 +190,6 @@ on post-fs
     # load IPA FWs
     # This must be started when vendor.sys.listeners.registered is true
     write /dev/ipa 1
-    start vendor.spdaemon
-    start vendor.sec_nvm
 
 on late-fs
     # Start services for bootanim
@@ -815,17 +813,6 @@ service loc_launcher /vendor/bin/loc_launcher
     class late_start
     user gps
     group gps
-
-service vendor.spdaemon /vendor/bin/spdaemon
-    class core
-    user system
-    group system
-    shutdown critical
-
-service vendor.sec_nvm /vendor/bin/sec_nvm
-    class core
-    user system
-    group system
 
 # turns off tracing right before bugreporting to keep more traces
 on property:init.svc.dumpstatez=running
