@@ -518,7 +518,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <interface>
             <name>IDevice</name>
             <instance>darwinn</instance>
-            <instance>default</instance>
         </interface>
     </hal>
     <!-- keymaster -->
