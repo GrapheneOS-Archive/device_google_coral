@@ -243,12 +243,9 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <hal format="hidl">
         <name>android.hardware.gnss</name>
         <transport>hwbinder</transport>
-        <version>2.0</version>
-        <interface>
-            <name>IGnss</name>
-            <instance>default</instance>
-        </interface>
-      </hal>
+        <fqname>@1.1::IGnss/default</fqname>
+        <fqname>@2.0::IGnss/default</fqname>
+    </hal>
     <!-- iwlan -->
     <hal format="hidl">
         <name>vendor.qti.hardware.data.iwlan</name>
@@ -263,13 +260,13 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <!-- qcrilhook -->
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.qcrilhook</name>
-           <transport>hwbinder</transport>
-           <version>1.0</version>
-           <interface>
-               <name>IQtiOemHook</name>
-               <instance>oemhook0</instance>
-               <instance>oemhook1</instance>
-           </interface>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IQtiOemHook</name>
+            <instance>oemhook0</instance>
+            <instance>oemhook1</instance>
+        </interface>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.ims</name>
