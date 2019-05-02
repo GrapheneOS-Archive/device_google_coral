@@ -1282,7 +1282,7 @@
         <ctl name="PCM PortE Setup" value="1"/>
         <ctl name="PCM PortE Start" value="0x1FF"/>
         <ctl name="strm4 ASRC Mode" value="ASRC_ENABLE"/>
-        <ctl name="strm4 Master Strm Id" value="STREAMID_4"/>
+        <ctl name="strm4 Master Strm Id" value="STREAMID_0"/>
         <ctl name="strm4 Format FrLn" value="16K_10MS"/>
         <ctl name="strm4 Format Sr" value="RATE_16K" />
         <ctl name="strm4 Format Enc" value="ENCODING_AFLOAT"/>
