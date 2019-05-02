@@ -1281,7 +1281,7 @@
     <path name="bargein-route">
     <!-- use aec mic -->
         <ctl name="PCM PortE Setup" value="1"/>
-        <ctl name="PCM PortE Start" value="0x1FFF"/>
+        <ctl name="PCM PortE Start" value="0x1FF"/>
         <ctl name="strm4 ASRC Mode" value="ASRC_ENABLE"/>
         <ctl name="strm4 Master Strm Id" value="STREAMID_4"/>
         <ctl name="strm4 Format FrLn" value="16K_10MS"/>
@@ -1291,11 +1291,11 @@
         <ctl name="strm4 inter strm delay" value="0"/>
         <ctl name="strm4 Port" value="PCM4"/>
         <ctl name="strm4 Port Enc" value="ENCODING_Q15"/>
-        <ctl name="strm4 CH Mask En" value="0xFF0"/>
+        <ctl name="strm4 CH Mask En" value="0xF0"/>
         <ctl name="strm4 En" value="1"/>
         <ctl name="Plgin4Ip Ep0 Conf" value="RX0_ChanMgr"/>
         <ctl name="Plgin4Ip Ep1 Conf" value="RX4_ChanMgr"/>
-        <ctl name="Plgin4Ip Ep2 Conf" value="RX7_ChanMgr"/>
+        <ctl name="Plgin4Ip Ep2 Conf" value="RX6_ChanMgr"/>
         <ctl name="Plgin4En" value="Rx0Plgin4On"/>
         <ctl name="Plgin4Blk1En" value="1"/>
     </path>
