@@ -1149,12 +1149,14 @@
     <ctl name="Plgin15En" value="Off"/>
 
     <ctl name="Port ApllCLK Src" value="IAXXX_SRC_SYSCLK" />
-    <ctl name="SSP Core Boot" value="0"/>
+    <ctl name="SSP Core Boot" value="CoreMemOff"/>
+    <ctl name="HMD Core Boot" value="CoreMemOff"/>
+    <ctl name="DMX Core Boot" value="CoreMemOff"/>
 
     <path name="port-c">
     <!-- Port-C PDM4 -->
         <ctl name="Route Status" value="Active"/>
-        <ctl name="SSP Core Boot" value="1"/>
+        <ctl name="SSP Core Boot" value="CoreMemOn"/>
         <ctl name="CDC0 MicBias" value="1"/>
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
         <ctl name="Pdm CDC Setup" value="1"/>
@@ -1182,7 +1184,7 @@
     <path name="port-b">
     <!-- Port-B PDM7 -->
         <ctl name="Route Status" value="Active"/>
-        <ctl name="SSP Core Boot" value="1"/>
+        <ctl name="SSP Core Boot" value="CoreMemOn"/>
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
         <ctl name="Pdm CDC Setup" value="1"/>
         <ctl name="Pdm PortB Setup" value="1"/>
@@ -1209,7 +1211,7 @@
     <path name="port-d">
     <!-- Port-D PDM3 -->
         <ctl name="Route Status" value="Active"/>
-        <ctl name="SSP Core Boot" value="1"/>
+        <ctl name="SSP Core Boot" value="CoreMemOn"/>
         <ctl name="PortB MicBias" value="1"/>
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
         <ctl name="Pdm CDC Setup" value="1"/>
@@ -1237,7 +1239,7 @@
     <path name="port-cdc">
     <!-- Port-CDC PDM1 -->
         <ctl name="Route Status" value="Active"/>
-        <ctl name="SSP Core Boot" value="1"/>
+        <ctl name="SSP Core Boot" value="CoreMemOn"/>
         <ctl name="PortC MicBias" value="1"/>
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
         <ctl name="Pdm CDC Setup" value="1"/>
