@@ -1150,6 +1150,8 @@
 
     <ctl name="Port ApllCLK Src" value="IAXXX_SRC_SYSCLK" />
     <ctl name="SSP Core Boot" value="CoreMemOff"/>
+    <ctl name="HMD Core Boot" value="CoreMemOff"/>
+    <ctl name="DMX Core Boot" value="CoreMemOff"/>
 
     <path name="port-c">
     <!-- Port-C PDM4 -->
