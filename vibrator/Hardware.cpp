@@ -29,13 +29,40 @@ namespace V1_3 {
 namespace implementation {
 
 template <typename T>
-static void fileFromEnv(const char *env, T *stream) {
+static void fileFromEnv(const char *env, T *outStream, std::string *outName = nullptr) {
     auto file = std::getenv(env);
 
-    stream->open(file);
-    if (!*stream) {
+    if (file == nullptr) {
+        ALOGE("Failed get env %s", env);
+        return;
+    }
+
+    if (outName != nullptr) {
+        *outName = std::string(file);
+    }
+
+    outStream->open(file);
+    if (!*outStream) {
         ALOGE("Failed to open %s:%s (%d): %s", env, file, errno, strerror(errno));
     }
+}
+
+static auto pathsFromEnv(const char *env) {
+    std::map<std::string, std::ifstream> ret;
+    auto value = std::getenv(env);
+
+    if (value == nullptr) {
+        return ret;
+    }
+
+    std::istringstream paths{value};
+    std::string path;
+
+    while (paths >> path) {
+        ret[path].open(path);
+    }
+
+    return ret;
 }
 
 static std::string trim(const std::string &str, const std::string &whitespace = " \t") {
@@ -50,24 +77,79 @@ static std::string trim(const std::string &str, const std::string &whitespace = 
     return str.substr(str_begin, str_range);
 }
 
+template <typename T>
+static Enable_If_Iterable<T, true> unpack(std::istream &stream, T *value) {
+    for (auto &entry : *value) {
+        stream >> entry;
+    }
+}
+
+template <typename T>
+static Enable_If_Iterable<T, false> unpack(std::istream &stream, T *value) {
+    stream >> *value;
+}
+
 HwApi::HwApi() {
     // ostreams below are required
-    fileFromEnv("F0_FILEPATH", &mF0);
-    fileFromEnv("REDC_FILEPATH", &mRedc);
-    fileFromEnv("Q_FILEPATH", &mQ);
-    fileFromEnv("ACTIVATE_PATH", &mActivate);
-    fileFromEnv("DURATION_PATH", &mDuration);
-    fileFromEnv("STATE_PATH", &mState);
-    fileFromEnv("EFFECT_DURATION_PATH", &mEffectDuration);
-    fileFromEnv("EFFECT_INDEX_PATH", &mEffectIndex);
-    fileFromEnv("EFFECT_QUEUE_PATH", &mEffectQueue);
-    fileFromEnv("EFFECT_SCALE_PATH", &mEffectScale);
-    fileFromEnv("GLOBAL_SCALE_PATH", &mGlobalScale);
-    fileFromEnv("ASP_ENABLE_PATH", &mAspEnable);
-    fileFromEnv("GPIO_FALL_INDEX", &mGpioFallIndex);
-    fileFromEnv("GPIO_FALL_SCALE", &mGpioFallScale);
-    fileFromEnv("GPIO_RISE_INDEX", &mGpioRiseIndex);
-    fileFromEnv("GPIO_RISE_SCALE", &mGpioRiseScale);
+    fileFromEnv("F0_FILEPATH", &mF0, &mNames[&mF0]);
+    fileFromEnv("REDC_FILEPATH", &mRedc, &mNames[&mRedc]);
+    fileFromEnv("Q_FILEPATH", &mQ, &mNames[&mQ]);
+    fileFromEnv("ACTIVATE_PATH", &mActivate, &mNames[&mActivate]);
+    fileFromEnv("DURATION_PATH", &mDuration, &mNames[&mDuration]);
+    fileFromEnv("STATE_PATH", &mState, &mNames[&mState]);
+    fileFromEnv("EFFECT_DURATION_PATH", &mEffectDuration, &mNames[&mEffectDuration]);
+    fileFromEnv("EFFECT_INDEX_PATH", &mEffectIndex, &mNames[&mEffectIndex]);
+    fileFromEnv("EFFECT_QUEUE_PATH", &mEffectQueue, &mNames[&mEffectQueue]);
+    fileFromEnv("EFFECT_SCALE_PATH", &mEffectScale, &mNames[&mEffectScale]);
+    fileFromEnv("GLOBAL_SCALE_PATH", &mGlobalScale, &mNames[&mGlobalScale]);
+    fileFromEnv("ASP_ENABLE_PATH", &mAspEnable, &mNames[&mAspEnable]);
+    fileFromEnv("GPIO_FALL_INDEX", &mGpioFallIndex, &mNames[&mGpioFallIndex]);
+    fileFromEnv("GPIO_FALL_SCALE", &mGpioFallScale, &mNames[&mGpioFallScale]);
+    fileFromEnv("GPIO_RISE_INDEX", &mGpioRiseIndex, &mNames[&mGpioRiseIndex]);
+    fileFromEnv("GPIO_RISE_SCALE", &mGpioRiseScale, &mNames[&mGpioRiseScale]);
+}
+
+template <typename T>
+bool HwApi::has(T &stream) {
+    return !!stream;
+}
+
+template <typename T, typename U>
+bool HwApi::get(T *value, U &stream) {
+    bool ret;
+    stream.seekg(0);
+    stream >> *value;
+    if (!(ret = !!stream)) {
+        ALOGE("Failed to read %s (%d): %s", mNames[&stream].c_str(), errno, strerror(errno));
+    }
+    stream.clear();
+    return ret;
+}
+
+template <typename T, typename U>
+bool HwApi::set(const T &value, U &stream) {
+    bool ret;
+    stream << value << std::endl;
+    if (!(ret = !!stream)) {
+        ALOGE("Failed to write %s (%d): %s", mNames[&stream].c_str(), errno, strerror(errno));
+        stream.clear();
+    }
+    return ret;
+}
+
+void HwApi::debug(int fd) {
+    dprintf(fd, "Kernel:\n");
+
+    for (auto &entry : pathsFromEnv("HWAPI_DEBUG_PATHS")) {
+        auto &path = entry.first;
+        auto &stream = entry.second;
+        std::string line;
+
+        dprintf(fd, "  %s:\n", path.c_str());
+        while (std::getline(stream, line)) {
+            dprintf(fd, "    %s\n", line.c_str());
+        }
+    }
 }
 
 HwCal::HwCal() {
@@ -84,6 +166,37 @@ HwCal::HwCal() {
         if (std::getline(is_line, key, ':') && std::getline(is_line, value)) {
             mCalData[trim(key)] = trim(value);
         }
+    }
+}
+
+template <typename T>
+bool HwCal::get(const char *key, T *value) {
+    auto it = mCalData.find(key);
+    if (it == mCalData.end()) {
+        ALOGE("Missing %s config!", key);
+        return false;
+    }
+    std::stringstream stream{it->second};
+    unpack(stream, value);
+    if (!stream || !stream.eof()) {
+        ALOGE("Invalid %s config!", key);
+        return false;
+    }
+    return true;
+}
+
+void HwCal::debug(int fd) {
+    std::ifstream stream;
+    std::string path;
+    std::string line;
+
+    dprintf(fd, "Persist:\n");
+
+    fileFromEnv("CALIBRATION_FILEPATH", &stream, &path);
+
+    dprintf(fd, "  %s:\n", path.c_str());
+    while (std::getline(stream, line)) {
+        dprintf(fd, "    %s\n", line.c_str());
     }
 }
 
