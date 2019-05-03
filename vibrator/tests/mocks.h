@@ -40,6 +40,7 @@ class MockApi : public ::android::hardware::vibrator::V1_3::implementation::Vibr
     MOCK_METHOD1(setGpioFallScale, bool(uint32_t value));
     MOCK_METHOD1(setGpioRiseIndex, bool(uint32_t value));
     MOCK_METHOD1(setGpioRiseScale, bool(uint32_t value));
+    MOCK_METHOD1(debug, void(int fd));
 
     ~MockApi() override { destructor(); };
 };
@@ -51,6 +52,7 @@ class MockCal : public ::android::hardware::vibrator::V1_3::implementation::Vibr
     MOCK_METHOD1(getRedc, bool(uint32_t *value));
     MOCK_METHOD1(getQ, bool(uint32_t *value));
     MOCK_METHOD1(getVolLevels, bool(std::array<uint32_t, 6> *value));
+    MOCK_METHOD1(debug, void(int fd));
 
     ~MockCal() override { destructor(); };
 };

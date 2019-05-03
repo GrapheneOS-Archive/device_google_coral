@@ -21,3 +21,18 @@ service vendor.vibrator-1-3 /vendor/bin/hw/android.hardware.vibrator@1.3-service
     setenv GPIO_FALL_SCALE /sys/class/leds/vibrator/device/gpio1_fall_dig_scale
     setenv GPIO_RISE_INDEX /sys/class/leds/vibrator/device/gpio1_rise_index
     setenv GPIO_RISE_SCALE /sys/class/leds/vibrator/device/gpio1_rise_dig_scale
+
+    setenv HWAPI_DEBUG_PATHS "
+        /sys/class/leds/vibrator/device/asp_enable
+        /sys/class/leds/vibrator/device/f0_stored
+        /sys/class/leds/vibrator/device/fw_rev
+        /sys/class/leds/vibrator/device/gpio1_fall_dig_scale
+        /sys/class/leds/vibrator/device/gpio1_fall_index
+        /sys/class/leds/vibrator/device/gpio1_rise_dig_scale
+        /sys/class/leds/vibrator/device/gpio1_rise_index
+        /sys/class/leds/vibrator/device/heartbeat
+        /sys/class/leds/vibrator/device/num_waves
+        /sys/class/leds/vibrator/device/q_stored
+        /sys/class/leds/vibrator/device/redc_stored
+        /sys/class/leds/vibrator/state
+        "
