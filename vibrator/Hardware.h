@@ -16,8 +16,6 @@
 #ifndef ANDROID_HARDWARE_VIBRATOR_HARDWARE_H
 #define ANDROID_HARDWARE_VIBRATOR_HARDWARE_H
 
-#include <log/log.h>
-
 #include "Vibrator.h"
 #include "utils.h"
 
@@ -49,29 +47,18 @@ class HwApi : public Vibrator::HwApi {
     bool setGpioFallScale(uint32_t value) override { return set(value, mGpioFallScale); }
     bool setGpioRiseIndex(uint32_t value) override { return set(value, mGpioRiseIndex); }
     bool setGpioRiseScale(uint32_t value) override { return set(value, mGpioRiseScale); }
+    void debug(int fd) override;
 
   private:
-    bool has(std::ostream &stream) { return !!stream; }
     template <typename T>
-    bool get(T *value, std::istream &stream) {
-        bool ret;
-        stream.seekg(0);
-        stream >> *value;
-        ret = !!stream;
-        stream.clear();
-        return ret;
-    }
-    template <typename T>
-    bool set(const T &value, std::ostream &stream) {
-        bool ret;
-        stream << value << std::endl;
-        if (!(ret = !!stream)) {
-            stream.clear();
-        }
-        return ret;
-    }
+    bool has(T &stream);
+    template <typename T, typename U>
+    bool get(T *value, U &stream);
+    template <typename T, typename U>
+    bool set(const T &value, U &stream);
 
   private:
+    std::map<void *, std::string> mNames;
     std::ofstream mF0;
     std::ofstream mRedc;
     std::ofstream mQ;
@@ -128,35 +115,11 @@ class HwCal : public Vibrator::HwCal {
         *value = V_LEVELS_DEFAULT;
         return true;
     }
+    void debug(int fd) override;
 
   private:
     template <typename T>
-    static Enable_If_Iterable<T, true> unpack(std::istream &stream, T *value) {
-        for (auto &entry : *value) {
-            stream >> entry;
-        }
-    }
-
-    template <typename T>
-    static Enable_If_Iterable<T, false> unpack(std::istream &stream, T *value) {
-        stream >> *value;
-    }
-
-    template <typename T>
-    bool get(const char *key, T *value) {
-        auto it = mCalData.find(key);
-        if (it == mCalData.end()) {
-            ALOGE("Missing %s config!", key);
-            return false;
-        }
-        std::stringstream stream{it->second};
-        unpack(stream, value);
-        if (!stream || !stream.eof()) {
-            ALOGE("Invalid %s config!", key);
-            return false;
-        }
-        return true;
-    }
+    bool get(const char *key, T *value);
 
   private:
     std::map<std::string, std::string> mCalData;

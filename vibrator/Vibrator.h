@@ -85,6 +85,8 @@ class Vibrator : public IVibrator {
         // Indicates the number of 0.125-dB steps of attenuation to apply to
         // waveforms triggered in response to a GPIO1 rising edge.
         virtual bool setGpioRiseScale(uint32_t value) = 0;
+        // Emit diagnostic information to the given file.
+        virtual void debug(int fd) = 0;
     };
 
     // APIs for obtaining calibration/configuration data from persistent memory.
@@ -103,6 +105,8 @@ class Vibrator : public IVibrator {
         // Obtains the discreet voltage levels to be applied for the various
         // waveforms, in units of 1%.
         virtual bool getVolLevels(std::array<uint32_t, 6> *value) = 0;
+        // Emit diagnostic information to the given file.
+        virtual void debug(int fd) = 0;
     };
 
   public:
@@ -127,6 +131,9 @@ class Vibrator : public IVibrator {
     Return<void> perform_1_2(V1_2::Effect effect, EffectStrength strength,
                              perform_cb _hidl_cb) override;
     Return<void> perform_1_3(Effect effect, EffectStrength strength, perform_cb _hidl_cb) override;
+
+    // Methods from ::android.hidl.base::V1_0::IBase follow.
+    Return<void> debug(const hidl_handle &handle, const hidl_vec<hidl_string> &options) override;
 
   private:
     Return<Status> on(uint32_t timeoutMs, uint32_t effectIndex);
