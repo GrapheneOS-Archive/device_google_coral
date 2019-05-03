@@ -1149,12 +1149,12 @@
     <ctl name="Plgin15En" value="Off"/>
 
     <ctl name="Port ApllCLK Src" value="IAXXX_SRC_SYSCLK" />
-    <ctl name="SSP Core Boot" value="0"/>
+    <ctl name="SSP Core Boot" value="CoreMemOff"/>
 
     <path name="port-c">
     <!-- Port-C PDM4 -->
         <ctl name="Route Status" value="Active"/>
-        <ctl name="SSP Core Boot" value="1"/>
+        <ctl name="SSP Core Boot" value="CoreMemOn"/>
         <ctl name="PortC MicBias" value="1"/>
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
         <ctl name="Pdm CDC Setup" value="1"/>
@@ -1182,7 +1182,7 @@
     <path name="port-b">
     <!-- Port-B PDM6 -->
         <ctl name="Route Status" value="Active"/>
-        <ctl name="SSP Core Boot" value="1"/>
+        <ctl name="SSP Core Boot" value="CoreMemOn"/>
         <ctl name="PortB MicBias" value="1"/>
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
         <ctl name="Pdm CDC Setup" value="1"/>
@@ -1210,7 +1210,7 @@
     <path name="port-d">
     <!-- Port-D PDM3 -->
         <ctl name="Route Status" value="Active"/>
-        <ctl name="SSP Core Boot" value="1"/>
+        <ctl name="SSP Core Boot" value="CoreMemOn"/>
         <ctl name="CDC0 MicBias" value="1"/>
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
         <ctl name="Pdm CDC Setup" value="1"/>
@@ -1238,7 +1238,7 @@
     <path name="port-cdc">
     <!-- Port-CDC PDM1 -->
         <ctl name="Route Status" value="Active"/>
-        <ctl name="SSP Core Boot" value="1"/>
+        <ctl name="SSP Core Boot" value="CoreMemOn"/>
         <ctl name="CDC0 MicBias" value="1"/>
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
         <ctl name="Pdm CDC Setup" value="1"/>
@@ -1404,6 +1404,60 @@
         <ctl name="Plgin3Ip Ep0 Conf" value="RX12_ChanMgr" />
         <ctl name="Plgin3En" value="Rx0Plgin3On" />
         <ctl name="Plgin3Blk1En" value="1" />
+    </path>
+
+    <path name="pwr-dwn-all-non-ctrl-proc-mem">
+        <ctl name="SSP Core Boot" value="CoreMemOff"/>
+        <ctl name="HMD Core Boot" value="CoreMemOff"/>
+        <ctl name="DMX Core Boot" value="CoreMemOff"/>
+    </path>
+
+    <path name="pwr-up-ssp-proc-mem">
+        <ctl name="SSP Core Boot" value="CoreMemOn"/>
+    </path>
+
+    <path name="pwr-up-dmx-proc-mem">
+        <ctl name="DMX Core Boot" value="CoreMemOn"/>
+    </path>
+
+    <path name="pwr-up-hmd-proc-mem">
+        <ctl name="HMD Core Boot" value="CoreMemOn"/>
+    </path>
+
+    <path name="pwr-dwn-ssp-proc-mem">
+        <ctl name="SSP Core Boot" value="CoreMemOff"/>
+    </path>
+
+    <path name="pwr-dwn-dmx-proc-mem">
+        <ctl name="DMX Core Boot" value="CoreMemOff"/>
+    </path>
+
+    <path name="pwr-dwn-hmd-proc-mem">
+        <ctl name="HMD Core Boot" value="CoreMemOff"/>
+    </path>
+
+    <path name="pwr-dwn-ssp-proc-mem-in-retn">
+        <ctl name="SSP Core Boot" value="CoreOffMemRetnOn"/>
+    </path>
+
+    <path name="pwr-dwn-dmx-proc-mem-in-retn">
+        <ctl name="DMX Core Boot" value="CoreOffMemRetnOn"/>
+    </path>
+
+    <path name="pwr-dwn-hmd-proc-mem-in-retn">
+        <ctl name="HMD Core Boot" value="CoreOffMemRetnOn"/>
+    </path>
+
+    <path name="pwr-on-ssp-proc-mem-out-off-retn">
+        <ctl name="SSP Core Boot" value="CoreOnMemOutOffRetn"/>
+    </path>
+
+    <path name="pwr-on-dmx-proc-mem-out-off-retn">
+        <ctl name="DMX Core Boot" value="CoreOnMemOutOffRetn"/>
+    </path>
+
+    <path name="pwr-on-hmd-proc-mem-out-off-retn">
+        <ctl name="HMD Core Boot" value="CoreOnMemOutOffRetn"/>
     </path>
 
 </mixer>
