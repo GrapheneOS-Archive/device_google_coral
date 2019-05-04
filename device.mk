@@ -403,8 +403,7 @@ PRODUCT_PACKAGES += \
     libqomx_core \
     libmmjpeg_interface \
     libmmcamera_interface \
-    libcameradepthcalibrator \
-    lib_profiler
+    libcameradepthcalibrator
 
 PRODUCT_PACKAGES += \
     sensors.$(PRODUCT_HARDWARE) \
