@@ -127,6 +127,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.cp_system_other_odex=1
 
+AB_OTA_UPDATER := true
+
 AB_OTA_PARTITIONS += \
     boot \
     system \
@@ -392,10 +394,8 @@ PRODUCT_PACKAGES += \
     media_codecs_performance_c2.xml
 
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-impl-google \
     android.hardware.camera.provider@2.4-service-google \
-    camera.device@3.2-impl \
     camera.msmnile \
     libgooglecamerahal \
     libgooglecamerahwl_impl \
@@ -410,7 +410,6 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@2.0-impl \
     android.hardware.sensors@2.0-service \
     android.hardware.sensors@2.0-service.rc
-
 
 PRODUCT_PACKAGES += \
     fs_config_dirs \

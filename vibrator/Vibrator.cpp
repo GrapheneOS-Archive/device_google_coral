@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "VibratorService"
+#define LOG_TAG "android.hardware.vibrator@1.3-service.coral"
 
 #include <log/log.h>
 
@@ -193,6 +193,39 @@ bool Vibrator::isUnderExternalControl() {
     bool isAspEnabled;
     mHwApi->getAspEnable(&isAspEnabled);
     return isAspEnabled;
+}
+
+// Methods from ::android.hidl.base::V1_0::IBase follow.
+
+Return<void> Vibrator::debug(const hidl_handle &handle,
+                             const hidl_vec<hidl_string> & /* options */) {
+    if (handle == nullptr || handle->numFds < 1 || handle->data[0] < 0) {
+        ALOGE("Called debug() with invalid fd.");
+        return Void();
+    }
+
+    int fd = handle->data[0];
+
+    dprintf(fd, "HIDL:\n");
+
+    dprintf(fd, "  Voltage Levels:");
+    for (auto v : mVolLevels) {
+        dprintf(fd, " %" PRIu32, v);
+    }
+    dprintf(fd, "\n");
+
+    dprintf(fd, "  Effect Duration: %" PRIu32 "\n", mSimpleEffectDuration);
+
+    dprintf(fd, "\n");
+
+    mHwApi->debug(fd);
+
+    dprintf(fd, "\n");
+
+    mHwCal->debug(fd);
+
+    fsync(fd);
+    return Void();
 }
 
 template <typename T>
