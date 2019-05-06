@@ -17,6 +17,9 @@
 */
 -->
 <device name="Android">
+    <!-- All values are in mA except as noted -->
+    <item name="battery.capacity">2800</item>
+
     <!-- Cellular modem related values.-->
     <!-- TBD for power measurements BUG: 123524121.-->
     <item name="modem.controller.sleep">0</item>
