@@ -245,7 +245,8 @@ PRODUCT_PACKAGES += \
     oslo_data_injection_test \
     odsp_api_test \
     crash_event_logger \
-    dump_debug_info
+    dump_debug_info \
+    get_pwr_stats
 endif
 
 # graphics
