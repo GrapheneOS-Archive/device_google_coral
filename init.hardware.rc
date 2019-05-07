@@ -387,10 +387,6 @@ on early-boot
     chown system system /dev/vd6281
     chmod 0660 /dev/vd6281
 
-    # Permission for Athletico
-    chown system system /dev/sensor_tunnel
-    chmod 0660 /dev/sensor_tunnel
-
     # Permission for Dot and Flood
     chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/led_laser_enable
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/led_laser_enable
@@ -566,6 +562,10 @@ on property:sys.boot_completed=1
     chmod 0660 /sys/kernel/debug/tracing/instances/pixel-trace/tracing_on
     write /sys/kernel/debug/tracing/instances/pixel-trace/buffer_size_kb 64
     write /sys/kernel/debug/tracing/instances/pixel-trace/events/mm_event/enable 1
+
+    # Permission for Athletico
+    chown system system /dev/sensor_tunnel
+    chmod 0660 /dev/sensor_tunnel
 
 service vendor.per_mgr /vendor/bin/pm-service
     class core
