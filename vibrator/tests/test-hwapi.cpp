@@ -42,13 +42,19 @@ class HwApiTest : public Test {
 
   public:
     void SetUp() override {
-        for (auto name : FILE_NAMES) {
-            setenv(name, mFileMap[std::string(name)].path, true);
+        for (auto n : FILE_NAMES) {
+            auto name = std::string(n);
+            auto path = std::string(mFilesDir.path) + "/" + name;
+            std::ofstream touch{path};
+            setenv(name.c_str(), path.c_str(), true);
+            mFileMap[name] = path;
         }
         mHwApi = std::make_unique<HwApi>();
 
-        for (auto name : FILE_NAMES) {
-            setenv(name, mDirMap[std::string(name)].path, true);
+        for (auto n : FILE_NAMES) {
+            auto name = std::string(n);
+            auto path = std::string(mEmptyDir.path) + "/" + name;
+            setenv(name.c_str(), path.c_str(), true);
         }
         mNoApi = std::make_unique<HwApi>();
     }
@@ -65,7 +71,7 @@ class HwApiTest : public Test {
     // Set actual file content for an input test.
     template <typename T>
     void updateContent(const std::string &name, const T &value) {
-        std::ofstream(mFileMap[name].path) << value << std::endl;
+        std::ofstream(mFileMap[name]) << value << std::endl;
     }
 
     template <typename T>
@@ -77,7 +83,7 @@ class HwApiTest : public Test {
     // Compare all file contents against expected contents.
     void verifyContents() {
         for (auto &a : mFileMap) {
-            std::ifstream file{a.second.path};
+            std::ifstream file{a.second};
             std::string expect = mExpectedContent[a.first].str();
             std::string actual = std::string(std::istreambuf_iterator<char>(file),
                                              std::istreambuf_iterator<char>());
@@ -88,8 +94,9 @@ class HwApiTest : public Test {
   protected:
     std::unique_ptr<Vibrator::HwApi> mHwApi;
     std::unique_ptr<Vibrator::HwApi> mNoApi;
-    std::map<std::string, TemporaryFile> mFileMap;
-    std::map<std::string, TemporaryDir> mDirMap;
+    std::map<std::string, std::string> mFileMap;
+    TemporaryDir mFilesDir;
+    TemporaryDir mEmptyDir;
     std::map<std::string, std::stringstream> mExpectedContent;
 };
 

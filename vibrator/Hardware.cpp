@@ -31,6 +31,7 @@ namespace implementation {
 template <typename T>
 static void fileFromEnv(const char *env, T *outStream, std::string *outName = nullptr) {
     auto file = std::getenv(env);
+    auto mode = std::is_base_of_v<std::ostream, T> ? std::ios_base::out : std::ios_base::in;
 
     if (file == nullptr) {
         ALOGE("Failed get env %s", env);
@@ -41,7 +42,8 @@ static void fileFromEnv(const char *env, T *outStream, std::string *outName = nu
         *outName = std::string(file);
     }
 
-    outStream->open(file);
+    // Force 'in' mode to prevent file creation
+    outStream->open(file, mode | std::ios_base::in);
     if (!*outStream) {
         ALOGE("Failed to open %s:%s (%d): %s", env, file, errno, strerror(errno));
     }
