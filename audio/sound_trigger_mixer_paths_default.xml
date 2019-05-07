@@ -1388,6 +1388,25 @@
         <path name="buffer-audio-route" />
     </path>
 
+    <path name="music-buffer-route">
+        <ctl name="Plgin3En" value="Rx0Plgin3On" />
+        <ctl name="Plgin3Blk1En" value="1" />
+    </path>
+
+    <path name="music-buffer-with-bargein">
+        <ctl name="Plgin3Ip Ep0 Conf" value="RX12_ChanMgr" />
+        <path name="music-buffer-route" />
+    </path>
+
+    <path name="music-buffer-without-bargein">
+        <ctl name="Plgin3Ip Ep0 Conf" value="RX0_ChanMgr" />
+        <path name="music-buffer-route" />
+    </path>
+
+    <path name="music-audio-route">
+        <path name="music-buffer-without-bargein" />
+    </path>
+
     <path name="downlink-audio-route">
         <ctl name="PCM PortA Setup" value="1" />
         <ctl name="PCM PortA Start" value="0x3F" />
@@ -1402,9 +1421,7 @@
         <ctl name="strm6 Port Enc" value="ENCODING_Q15" />
         <ctl name="strm6 CH Mask En" value="0x1000" />
         <ctl name="strm6 En" value="1" />
-        <ctl name="Plgin3Ip Ep0 Conf" value="RX12_ChanMgr" />
-        <ctl name="Plgin3En" value="Rx0Plgin3On" />
-        <ctl name="Plgin3Blk1En" value="1" />
+        <path name="music-buffer-with-bargein" />
     </path>
 
 </mixer>
