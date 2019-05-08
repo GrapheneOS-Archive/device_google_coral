@@ -48,6 +48,8 @@
 
 #define MODEM_EFS_DUMP_PROPERTY "vendor.sys.modem.diag.efsdump"
 
+#define HW_VERSION_PROPERTY "ro.boot.hardware.revision"
+
 using android::os::dumpstate::CommandOptions;
 using android::os::dumpstate::DumpFileToFd;
 using android::os::dumpstate::PropertiesHelper;
@@ -394,8 +396,16 @@ Return<void> DumpstateDevice::dumpstateBoard(const hidl_handle& handle) {
     RunCommandToFd(fd, "PMIC Votables", {"/vendor/bin/sh", "-c", "cat /sys/kernel/debug/pmic-votable/*/status"});
     DumpFileToFd(fd, "Charger Stats", "/sys/class/power_supply/battery/charge_details");
     DumpFileToFd(fd, "Maxim FG History", "/dev/maxfg_history");
-    RunCommandToFd(fd, "Maxim FG registers", {"/vendor/bin/sh", "-c", "cat /d/regmap/*-0036/registers"});
-    RunCommandToFd(fd, "Maxim FG NV RAM", {"/vendor/bin/sh", "-c", "cat /d/regmap/*-000b/registers"});
+
+    std::string hwVersion = android::base::GetProperty(HW_VERSION_PROPERTY, "");
+    if (hwVersion == "PROTO1.0" || hwVersion == "PROTO1.1" || hwVersion == "EVT1.0") {
+        RunCommandToFd(fd, "Maxim FG registers", {"/vendor/bin/sh", "-c", "cat /d/regmap/1-0036/registers"});
+        RunCommandToFd(fd, "Maxim FG NV RAM", {"/vendor/bin/sh", "-c", "cat /d/regmap/1-000b/registers"});
+    } else {
+        RunCommandToFd(fd, "Maxim FG registers", {"/vendor/bin/sh", "-c", "cat /d/regmap/2-0036/registers"});
+        RunCommandToFd(fd, "Maxim FG NV RAM", {"/vendor/bin/sh", "-c", "cat /d/regmap/2-000b/registers"});
+    }
+
     RunCommandToFd(fd, "Google Charger", {"/vendor/bin/sh", "-c", "cd /d/google_charger/; for f in `ls pps_*` ; do echo \"$f: `cat $f`\" ; done"});
     RunCommandToFd(fd, "Google Battery", {"/vendor/bin/sh", "-c", "cd /d/google_battery/; for f in `ls ssoc_*` ; do echo \"$f: `cat $f`\" ; done"});
     DumpFileToFd(fd, "WLC VER", "/sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/version");
