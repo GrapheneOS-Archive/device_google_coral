@@ -345,7 +345,7 @@
     <ctl name="strm8 Port Enc" value="ENCODING_OPAQUE"/>
     <ctl name="strm8 Dir" value="0"/>
     <ctl name="strm8 CH Mask En" value="0"/>
-    <ctl name="strm8 Master Strm Id" value="STREAMID_0"/>
+    <ctl name="strm8 Master Strm Id" value="STREAMID_NONE"/>
     <ctl name="strm8 inter strm delay" value="0"/>
 
     <ctl name="strm9 En" value="0"/>
