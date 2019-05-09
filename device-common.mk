@@ -22,6 +22,11 @@ include device/google/coral/device.mk
 # Set Vendor SPL to match platform
 VENDOR_SECURITY_PATCH = $(PLATFORM_SECURITY_PATCH)
 
+PRODUCT_PROPERTY_OVERRIDES += audio.adm.buffering.ms=3
+PRODUCT_PROPERTY_OVERRIDES += vendor.audio.adm.buffering.ms=3
+PRODUCT_PROPERTY_OVERRIDES += audio_hal.period_multiplier=2
+PRODUCT_PROPERTY_OVERRIDES += af.fast_track_multiplier=1
+
 # Enable AAudio MMAP/NOIRQ data path.
 # 1 is AAUDIO_POLICY_NEVER  means only use Legacy path.
 # 2 is AAUDIO_POLICY_AUTO   means try MMAP then fallback to Legacy path.
@@ -54,6 +59,10 @@ persist.bluetooth.a2dp_offload.disabled=false
 PRODUCT_PROPERTY_OVERRIDES += \
 persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac
 
+# Enable AAC frame ctl for A2DP sinks
+PRODUCT_PROPERTY_OVERRIDES += \
+persist.vendor.bt.aac_frm_ctl.enabled=true
+
 # Set lmkd options
 PRODUCT_PRODUCT_PROPERTIES += \
 	ro.config.low_ram = false \
@@ -78,6 +87,14 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.use_smart_90_for_video=
 # MIDI feature
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml
+
+# Audio low latency feature
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml
+
+# Pro audio feature
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.audio.pro.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.pro.xml
 
 # Dmabuf dump tool for bug reports
 PRODUCT_PACKAGES += \
