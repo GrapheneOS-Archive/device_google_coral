@@ -99,10 +99,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <name>IComponentStore</name>
             <instance>default</instance>
         </interface>
-        <interface>
-            <name>IConfigurable</name>
-            <instance>default</instance>
-        </interface>
     </hal>
     <!-- /video Codec2 hal -->
     <!-- video omx hal -->
