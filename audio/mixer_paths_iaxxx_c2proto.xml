@@ -352,7 +352,6 @@
     <ctl name="PortC MicBias" value="0" />
     <ctl name="CDC0 MicBias" value="0" />
     <ctl name="CDC1 MicBias" value="0" />
-    <ctl name="SSP Core Boot" value="CoreMemOff" />
 
     <!-- input gain -->
     <ctl name="Rx0Chan GnRmp" value="STEP_0" />
@@ -1843,7 +1842,6 @@
     <!-- Port C, non Phone -->
     <path name="iaxxx-port-c">
         <ctl name="Route Status" value="Active" />
-        <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortC MicBias" value="1" />
@@ -1873,7 +1871,6 @@
     <!-- Port B, No one use -->
     <path name="iaxxx-port-b">
         <ctl name="Route Status" value="Active" />
-        <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortB MicBias" value="1" />
@@ -1903,7 +1900,6 @@
     <!-- Port D, No one use -->
     <path name="iaxxx-port-d">
         <ctl name="Route Status" value="Active" />
-        <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="CDC0 MicBias" value="1" />
@@ -1933,7 +1929,6 @@
     <!-- Port CDC_PDM1, No one use -->
     <path name="iaxxx-port-cdcpdm1">
         <ctl name="Route Status" value="Active" />
-        <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="CDC0 MicBias" value="1" />
@@ -1996,7 +1991,6 @@
     <!-- CH1: DMIC1, CH2: DMIC2, VR -->
     <path name="iaxxx-port-cb">
         <ctl name="Route Status" value="Active" />
-        <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
 
@@ -2055,7 +2049,6 @@
     <!-- CH1: DMIC1, CH2: DMIC2 (Low Latency Passthough) -->
     <path name="iaxxx-port-cb-ll">
         <ctl name="Route Status" value="Active" />
-        <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortC MicBias" value="1" />
@@ -2090,7 +2083,6 @@
     <!-- CH1: DMIC1, CH2: DMIC3, Phone -->
     <path name="iaxxx-port-c-cdcpdm1">
         <ctl name="Route Status" value="Active" />
-        <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortC MicBias" value="1" />
@@ -2148,7 +2140,6 @@
     <!-- CH1: DMIC3, CH2: DMIC1 (Low Latency Passthough) -->
     <path name="iaxxx-port-cdcpdm1-c-ll">
         <ctl name="Route Status" value="Active" />
-        <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortC MicBias" value="1" />
@@ -2182,7 +2173,6 @@
     <!-- CH1: Flicker Sensor, CH2: DMIC2 -->
     <path name="iaxxx-port-db">
         <ctl name="Route Status" value="Active" />
-        <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortB MicBias" value="1" />
@@ -2240,7 +2230,6 @@
     <!-- CH1: Flicker Sensor, CH2: DMIC2, CH3: DMIC1 -->
     <path name="iaxxx-port-dbc">
         <ctl name="Route Status" value="Active" />
-        <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortB MicBias" value="1" />
@@ -2318,7 +2307,6 @@
     <!-- CH1: DMIC3, CH2: DMIC2, no one use -->
     <path name="iaxxx-port-cdcpdm1-b">
         <ctl name="Route Status" value="Active" />
-        <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortB MicBias" value="1" />
@@ -2377,7 +2365,6 @@
     <!-- CH1: DMIC3, CH2: DMIC2, CH3: DMIC1, non Phone -->
     <path name="iaxxx-port-cdcpdm1-bc">
         <ctl name="Route Status" value="Active" />
-        <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortB MicBias" value="1" />
@@ -2456,7 +2443,6 @@
     <!-- CH1: DMIC3, CH2: DMIC1, CH3: DMIC2, Phone -->
     <path name="iaxxx-port-cdcpdm1-cb">
         <ctl name="Route Status" value="Active" />
-        <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortB MicBias" value="1" />
@@ -2535,7 +2521,6 @@
     <!-- CH1: DMIC3, CH2: DMIC1, CH3: DMIC2 (Low Latency Passthough) -->
     <path name="iaxxx-port-cdcpdm1-cb-ll">
         <ctl name="Route Status" value="Active" />
-        <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortB MicBias" value="1" />
