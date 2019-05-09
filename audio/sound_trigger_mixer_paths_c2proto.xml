@@ -1339,7 +1339,7 @@
     </path>
 
     <path name="ambient-route-with-bargein">
-        <ctl name="Plgin2Ip Ep0 Conf" value="RX12_ChanMgr"/>
+        <ctl name="Plgin2Ip Ep0 Conf" value="RX0_ChanMgr"/>
         <path name="ambient-route"/>
     </path>
 
@@ -1395,7 +1395,7 @@
     </path>
 
     <path name="music-buffer-with-bargein">
-        <ctl name="Plgin3Ip Ep0 Conf" value="RX12_ChanMgr" />
+        <ctl name="Plgin3Ip Ep0 Conf" value="RX0_ChanMgr" />
         <path name="music-buffer-route" />
     </path>
 
@@ -1408,8 +1408,10 @@
         <path name="music-buffer-without-bargein" />
     </path>
 
+    <!-- Ignore Downlink Audio route to temporary disable feature-->
     <path name="downlink-audio-route">
-        <ctl name="PCM PortA Setup" value="1" />
+        <path name="music-buffer-without-bargein" />
+        <!--ctl name="PCM PortA Setup" value="1" />
         <ctl name="PCM PortA Start" value="0x3F" />
         <ctl name="strm6 ASRC Mode" value="ASRC_ENABLE" />
         <ctl name="strm6 Master Strm Id" value="STREAMID_6" />
@@ -1422,7 +1424,7 @@
         <ctl name="strm6 Port Enc" value="ENCODING_Q15" />
         <ctl name="strm6 CH Mask En" value="0x1000" />
         <ctl name="strm6 En" value="1" />
-        <path name="music-buffer-with-bargein" />
+        <path name="music-buffer-with-bargein" /-->
     </path>
 
     <path name="pwr-dwn-all-non-ctrl-proc-mem">

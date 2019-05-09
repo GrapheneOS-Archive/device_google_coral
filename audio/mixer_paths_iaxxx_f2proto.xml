@@ -826,7 +826,6 @@
 
     <path name="deep-buffer-playback speaker">
         <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia1" value="1"/>
-        <path name="deep-buffer-playback downlink-audio"/>
     </path>
 
     <path name="deep-buffer-playback speaker-safe">
@@ -914,7 +913,6 @@
 
     <path name="hifi-playback speaker">
         <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia2" value="1" />
-        <path name="hifi-playback downlink-audio" />
     </path>
 
     <path name="hifi-playback handset">
@@ -1158,7 +1156,6 @@
 
     <path name="compress-offload-playback speaker">
         <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia4" value="1"/>
-        <path name="compress-offload-playback downlink-audio"/>
     </path>
 
     <path name="compress-offload-playback speaker-safe">
