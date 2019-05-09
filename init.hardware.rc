@@ -865,3 +865,13 @@ on property:persist.vendor.charge.stop.level=*
 
 on property:persist.vendor.charge.start.level=*
     write /sys/devices/platform/soc/soc:google,charger/charge_start_level ${persist.vendor.charge.start.level}
+
+# Athletico ramdump monitor
+service vendor.crash_event_logger /vendor/bin/crash_event_logger -m
+    class main
+    user audio
+    group audio system
+    disabled
+
+on property:persist.vendor.sys.ssr.enable_ramdumps=1
+    start vendor.crash_event_logger
