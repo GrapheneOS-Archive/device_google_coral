@@ -378,6 +378,7 @@ PRODUCT_PACKAGES += \
 # Enable Codec 2.0
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.media.codec2=2 \
+    debug.stagefright.ccodec=4 \
 
 PRODUCT_PACKAGES += \
     libqcodec2 \
