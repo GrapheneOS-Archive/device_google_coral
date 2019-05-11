@@ -20,6 +20,8 @@ limitations under the License.
 -->
 
 <MediaCodecs>
+    <!-- TODO: remove dependence on this file -->
+    <Include href="media_codecs_performance_c2.xml" />
     <Encoders>
         <MediaCodec name="OMX.qcom.video.encoder.avc" type="video/avc" update="true">
             <Limit name="measured-frame-rate-320x240" range="238-238" />
