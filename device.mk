@@ -25,7 +25,10 @@ PRODUCT_SOONG_NAMESPACES += \
     device/google/coral \
     hardware/qcom/sm8150 \
     hardware/qcom/sm8150/display \
+    vendor/google/airbrush/floral \
+    vendor/google/biometrics/face \
     vendor/google/camera \
+    vendor/google/darwinn \
     vendor/qcom/sm8150 \
     vendor/google/interfaces
 
