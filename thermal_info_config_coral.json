@@ -289,22 +289,6 @@
             ],
             "VrThreshold":"NAN",
             "Multiplier":0.001
-        },
-        {
-            "Name":"bcl-virt-extreme",
-            "Type":"BCL_VOLTAGE",
-            "HotThreshold":[
-                "NAN",
-                "NAN",
-                "NAN",
-                "NAN",
-                3,
-                "NAN",
-                "NAN"
-            ],
-            "VrThreshold":"NAN",
-            "Multiplier":1,
-            "Monitor":true
         }
     ],
     "CoolingDevices":[
