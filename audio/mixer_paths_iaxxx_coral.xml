@@ -262,6 +262,7 @@
     <!-- HFP end -->
     <!-- echo reference -->
     <ctl name="AUDIO_REF_EC_UL1 MUX" value="None"/>
+    <ctl name="AUDIO_REF_EC_UL10 MUX" value="None"/>
     <!-- usb headset -->
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia1" value="0"/>
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia2" value="0"/>
@@ -428,8 +429,8 @@
     <ctl name="strm8 Format FrLn" value="NONE" />
     <ctl name="strm8 Format Enc" value="ENCODING_OPAQUE" />
     <ctl name="strm8 ASRC Mode" value="ASRC_ENABLE" />
-    <ctl name="strm8 Master Strm Id" value="STREAMID_8" />
-    <ctl name="strm8 inter strm delay" value="3000" />
+    <ctl name="strm8 Master Strm Id" value="STREAMID_NONE" />
+    <ctl name="strm8 inter strm delay" value="0" />
     <ctl name="strm8 Dir" value="0" />
     <ctl name="strm8 Port" value="NONE" />
     <ctl name="strm8 Port Enc" value="ENCODING_OPAQUE" />
@@ -854,7 +855,6 @@
 
     <path name="deep-buffer-playback speaker">
         <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia1" value="1"/>
-        <path name="deep-buffer-playback downlink-audio"/>
     </path>
 
     <path name="deep-buffer-playback speaker-safe">
@@ -942,7 +942,6 @@
 
     <path name="hifi-playback speaker">
         <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia2" value="1" />
-        <path name="hifi-playback downlink-audio" />
     </path>
 
     <path name="hifi-playback handset">
@@ -1186,7 +1185,6 @@
 
     <path name="compress-offload-playback speaker">
         <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia4" value="1"/>
-        <path name="compress-offload-playback downlink-audio"/>
     </path>
 
     <path name="compress-offload-playback speaker-safe">
@@ -3746,6 +3744,84 @@
     </path>
 
     <path name ="voice-music-tx">
+    </path>
+
+    <path name="incall_music_uplink">
+        <ctl name="Incall_Music Audio Mixer MultiMedia9" value="1" />
+    </path>
+
+    <path name="incall_music_uplink speaker">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink handset">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink handset-hac">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink display-port">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink bt-sco">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink bt-sco-wb">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink speaker-and-display-port">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink afe-proxy">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink usb-headphones">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink usb-headset">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink speaker-and-usb-headphones">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink headphones">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink speaker-and-headphones">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink speaker-and-bt-sco">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink voice-tty-hco-handset">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink speaker-and-bt-a2dp">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink bt-a2dp">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="voice-rx">
+    </path>
+
+    <path name="voice-tx">
     </path>
 
 </mixer>

@@ -345,7 +345,7 @@
     <ctl name="strm8 Port Enc" value="ENCODING_OPAQUE"/>
     <ctl name="strm8 Dir" value="0"/>
     <ctl name="strm8 CH Mask En" value="0"/>
-    <ctl name="strm8 Master Strm Id" value="STREAMID_0"/>
+    <ctl name="strm8 Master Strm Id" value="STREAMID_NONE"/>
     <ctl name="strm8 inter strm delay" value="0"/>
 
     <ctl name="strm9 En" value="0"/>
@@ -460,485 +460,117 @@
     <ctl name="strm15 Master Strm Id" value="STREAMID_0"/>
     <ctl name="strm15 inter strm delay" value="0"/>
 
-    <ctl name="Plgin0Create0" value="0"/>
-    <ctl name="Plgin0Create1" value="0"/>
-    <ctl name="Plgin0Create2" value="0"/>
-    <ctl name="Plgin0Reset0" value="0"/>
-    <ctl name="Plgin0Reset1" value="0"/>
-    <ctl name="Plgin0Reset2" value="0"/>
-    <ctl name="Plgin0Origin Plugin Idx" value="none"/>
-    <ctl name="Plgin0Pkg ID" value="none"/>
-    <ctl name="Plgin0inst priority" value="pri1"/>
-    <ctl name="Plgin0Blk0 Param Id" value="-1"/>
-    <ctl name="Plgin0Blk1 Param Id" value="-1"/>
-    <ctl name="Plgin0Blk2 Param Id" value="-1"/>
     <ctl name="Plgin0Ip Ep0 Conf" value="UNKNOWN"/>
     <ctl name="Plgin0Ip Ep1 Conf" value="UNKNOWN"/>
     <ctl name="Plgin0Ip Ep2 Conf" value="UNKNOWN"/>
     <ctl name="Plgin0Ip Ep3 Conf" value="UNKNOWN"/>
     <ctl name="Plgin0Ip Ep4 Conf" value="UNKNOWN"/>
     <ctl name="Plgin0Ip Ep5 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin0Ip Ep6 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin0Ip Ep7 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin0Ip Ep8 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin0Ip Ep9 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin0Ip Ep10 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin0Ip Ep11 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin0Ip Ep12 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin0Ip Ep13 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin0Ip Ep14 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin0Ip Ep15 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin0Cr Conf" value="none"/>
 
-    <ctl name="Plgin1Create0" value="0"/>
-    <ctl name="Plgin1Create1" value="0"/>
-    <ctl name="Plgin1Create2" value="0"/>
-    <ctl name="Plgin1Reset0" value="0"/>
-    <ctl name="Plgin1Reset1" value="0"/>
-    <ctl name="Plgin1Reset2" value="0"/>
-    <ctl name="Plgin1Origin Plugin Idx" value="none"/>
-    <ctl name="Plgin1Pkg ID" value="none"/>
-    <ctl name="Plgin1inst priority" value="pri1"/>
-    <ctl name="Plgin1Blk0 Param Id" value="-1"/>
-    <ctl name="Plgin1Blk1 Param Id" value="-1"/>
-    <ctl name="Plgin1Blk2 Param Id" value="-1"/>
     <ctl name="Plgin1Ip Ep0 Conf" value="UNKNOWN"/>
     <ctl name="Plgin1Ip Ep1 Conf" value="UNKNOWN"/>
     <ctl name="Plgin1Ip Ep2 Conf" value="UNKNOWN"/>
     <ctl name="Plgin1Ip Ep3 Conf" value="UNKNOWN"/>
     <ctl name="Plgin1Ip Ep4 Conf" value="UNKNOWN"/>
     <ctl name="Plgin1Ip Ep5 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin1Ip Ep6 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin1Ip Ep7 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin1Ip Ep8 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin1Ip Ep9 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin1Ip Ep10 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin1Ip Ep11 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin1Ip Ep12 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin1Ip Ep13 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin1Ip Ep14 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin1Ip Ep15 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin1Cr Conf" value="none"/>
 
-    <ctl name="Plgin2Create0" value="0"/>
-    <ctl name="Plgin2Create1" value="0"/>
-    <ctl name="Plgin2Create2" value="0"/>
-    <ctl name="Plgin2Reset0" value="0"/>
-    <ctl name="Plgin2Reset1" value="0"/>
-    <ctl name="Plgin2Reset2" value="0"/>
-    <ctl name="Plgin2Origin Plugin Idx" value="none"/>
-    <ctl name="Plgin2Pkg ID" value="none"/>
-    <ctl name="Plgin2inst priority" value="pri1"/>
-    <ctl name="Plgin2Blk0 Param Id" value="-1"/>
-    <ctl name="Plgin2Blk1 Param Id" value="-1"/>
-    <ctl name="Plgin2Blk2 Param Id" value="-1"/>
     <ctl name="Plgin2Ip Ep0 Conf" value="UNKNOWN"/>
     <ctl name="Plgin2Ip Ep1 Conf" value="UNKNOWN"/>
     <ctl name="Plgin2Ip Ep2 Conf" value="UNKNOWN"/>
     <ctl name="Plgin2Ip Ep3 Conf" value="UNKNOWN"/>
     <ctl name="Plgin2Ip Ep4 Conf" value="UNKNOWN"/>
     <ctl name="Plgin2Ip Ep5 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin2Ip Ep6 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin2Ip Ep7 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin2Ip Ep8 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin2Ip Ep9 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin2Ip Ep10 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin2Ip Ep11 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin2Ip Ep12 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin2Ip Ep13 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin2Ip Ep14 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin2Ip Ep15 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin2Cr Conf" value="none"/>
 
-    <ctl name="Plgin3Create0" value="0"/>
-    <ctl name="Plgin3Create1" value="0"/>
-    <ctl name="Plgin3Create2" value="0"/>
-    <ctl name="Plgin3Reset0" value="0"/>
-    <ctl name="Plgin3Reset1" value="0"/>
-    <ctl name="Plgin3Reset2" value="0"/>
-    <ctl name="Plgin3Origin Plugin Idx" value="none"/>
-    <ctl name="Plgin3Pkg ID" value="none"/>
-    <ctl name="Plgin3inst priority" value="pri1"/>
-    <ctl name="Plgin3Blk0 Param Id" value="-1"/>
-    <ctl name="Plgin3Blk1 Param Id" value="-1"/>
-    <ctl name="Plgin3Blk2 Param Id" value="-1"/>
     <ctl name="Plgin3Ip Ep0 Conf" value="UNKNOWN"/>
     <ctl name="Plgin3Ip Ep1 Conf" value="UNKNOWN"/>
     <ctl name="Plgin3Ip Ep2 Conf" value="UNKNOWN"/>
     <ctl name="Plgin3Ip Ep3 Conf" value="UNKNOWN"/>
     <ctl name="Plgin3Ip Ep4 Conf" value="UNKNOWN"/>
     <ctl name="Plgin3Ip Ep5 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin3Ip Ep6 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin3Ip Ep7 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin3Ip Ep8 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin3Ip Ep9 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin3Ip Ep10 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin3Ip Ep11 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin3Ip Ep12 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin3Ip Ep13 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin3Ip Ep14 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin3Ip Ep15 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin3Cr Conf" value="none"/>
 
-    <ctl name="Plgin4Create0" value="0"/>
-    <ctl name="Plgin4Create1" value="0"/>
-    <ctl name="Plgin4Create2" value="0"/>
-    <ctl name="Plgin4Reset0" value="0"/>
-    <ctl name="Plgin4Reset1" value="0"/>
-    <ctl name="Plgin4Reset2" value="0"/>
-    <ctl name="Plgin4Origin Plugin Idx" value="none"/>
-    <ctl name="Plgin4Pkg ID" value="none"/>
-    <ctl name="Plgin4inst priority" value="pri1"/>
-    <ctl name="Plgin4Blk0 Param Id" value="-1"/>
-    <ctl name="Plgin4Blk1 Param Id" value="-1"/>
-    <ctl name="Plgin4Blk2 Param Id" value="-1"/>
     <ctl name="Plgin4Ip Ep0 Conf" value="UNKNOWN"/>
     <ctl name="Plgin4Ip Ep1 Conf" value="UNKNOWN"/>
     <ctl name="Plgin4Ip Ep2 Conf" value="UNKNOWN"/>
     <ctl name="Plgin4Ip Ep3 Conf" value="UNKNOWN"/>
     <ctl name="Plgin4Ip Ep4 Conf" value="UNKNOWN"/>
     <ctl name="Plgin4Ip Ep5 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin4Ip Ep6 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin4Ip Ep7 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin4Ip Ep8 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin4Ip Ep9 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin4Ip Ep10 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin4Ip Ep11 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin4Ip Ep12 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin4Ip Ep13 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin4Ip Ep14 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin4Ip Ep15 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin4Cr Conf" value="none"/>
 
-    <ctl name="Plgin5Create0" value="0"/>
-    <ctl name="Plgin5Create1" value="0"/>
-    <ctl name="Plgin5Create2" value="0"/>
-    <ctl name="Plgin5Reset0" value="0"/>
-    <ctl name="Plgin5Reset1" value="0"/>
-    <ctl name="Plgin5Reset2" value="0"/>
-    <ctl name="Plgin5Origin Plugin Idx" value="none"/>
-    <ctl name="Plgin5Pkg ID" value="none"/>
-    <ctl name="Plgin5inst priority" value="pri1"/>
-    <ctl name="Plgin5Blk0 Param Id" value="-1"/>
-    <ctl name="Plgin5Blk1 Param Id" value="-1"/>
-    <ctl name="Plgin5Blk2 Param Id" value="-1"/>
     <ctl name="Plgin5Ip Ep0 Conf" value="UNKNOWN"/>
     <ctl name="Plgin5Ip Ep1 Conf" value="UNKNOWN"/>
     <ctl name="Plgin5Ip Ep2 Conf" value="UNKNOWN"/>
     <ctl name="Plgin5Ip Ep3 Conf" value="UNKNOWN"/>
     <ctl name="Plgin5Ip Ep4 Conf" value="UNKNOWN"/>
     <ctl name="Plgin5Ip Ep5 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin5Ip Ep6 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin5Ip Ep7 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin5Ip Ep8 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin5Ip Ep9 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin5Ip Ep10 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin5Ip Ep11 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin5Ip Ep12 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin5Ip Ep13 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin5Ip Ep14 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin5Ip Ep15 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin5Cr Conf" value="none"/>
 
-    <ctl name="Plgin6Create0" value="0"/>
-    <ctl name="Plgin6Create1" value="0"/>
-    <ctl name="Plgin6Create2" value="0"/>
-    <ctl name="Plgin6Reset0" value="0"/>
-    <ctl name="Plgin6Reset1" value="0"/>
-    <ctl name="Plgin6Reset2" value="0"/>
-    <ctl name="Plgin6Origin Plugin Idx" value="none"/>
-    <ctl name="Plgin6Pkg ID" value="none"/>
-    <ctl name="Plgin6inst priority" value="pri1"/>
-    <ctl name="Plgin6Blk0 Param Id" value="-1"/>
-    <ctl name="Plgin6Blk1 Param Id" value="-1"/>
-    <ctl name="Plgin6Blk2 Param Id" value="-1"/>
     <ctl name="Plgin6Ip Ep0 Conf" value="UNKNOWN"/>
     <ctl name="Plgin6Ip Ep1 Conf" value="UNKNOWN"/>
     <ctl name="Plgin6Ip Ep2 Conf" value="UNKNOWN"/>
     <ctl name="Plgin6Ip Ep3 Conf" value="UNKNOWN"/>
     <ctl name="Plgin6Ip Ep4 Conf" value="UNKNOWN"/>
     <ctl name="Plgin6Ip Ep5 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin6Ip Ep6 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin6Ip Ep7 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin6Ip Ep8 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin6Ip Ep9 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin6Ip Ep10 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin6Ip Ep11 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin6Ip Ep12 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin6Ip Ep13 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin6Ip Ep14 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin6Ip Ep15 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin6Cr Conf" value="none"/>
 
-    <ctl name="Plgin7Create0" value="0"/>
-    <ctl name="Plgin7Create1" value="0"/>
-    <ctl name="Plgin7Create2" value="0"/>
-    <ctl name="Plgin7Reset0" value="0"/>
-    <ctl name="Plgin7Reset1" value="0"/>
-    <ctl name="Plgin7Reset2" value="0"/>
-    <ctl name="Plgin7Origin Plugin Idx" value="none"/>
-    <ctl name="Plgin7Pkg ID" value="none"/>
-    <ctl name="Plgin7inst priority" value="pri1"/>
-    <ctl name="Plgin7Blk0 Param Id" value="-1"/>
-    <ctl name="Plgin7Blk1 Param Id" value="-1"/>
-    <ctl name="Plgin7Blk2 Param Id" value="-1"/>
     <ctl name="Plgin7Ip Ep0 Conf" value="UNKNOWN"/>
     <ctl name="Plgin7Ip Ep1 Conf" value="UNKNOWN"/>
     <ctl name="Plgin7Ip Ep2 Conf" value="UNKNOWN"/>
     <ctl name="Plgin7Ip Ep3 Conf" value="UNKNOWN"/>
     <ctl name="Plgin7Ip Ep4 Conf" value="UNKNOWN"/>
     <ctl name="Plgin7Ip Ep5 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin7Ip Ep6 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin7Ip Ep7 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin7Ip Ep8 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin7Ip Ep9 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin7Ip Ep10 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin7Ip Ep11 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin7Ip Ep12 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin7Ip Ep13 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin7Ip Ep14 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin7Ip Ep15 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin7Cr Conf" value="none"/>
 
-    <ctl name="Plgin8Create0" value="0"/>
-    <ctl name="Plgin8Create1" value="0"/>
-    <ctl name="Plgin8Create2" value="0"/>
-    <ctl name="Plgin8Reset0" value="0"/>
-    <ctl name="Plgin8Reset1" value="0"/>
-    <ctl name="Plgin8Reset2" value="0"/>
-    <ctl name="Plgin8Origin Plugin Idx" value="none"/>
-    <ctl name="Plgin8Pkg ID" value="none"/>
-    <ctl name="Plgin8inst priority" value="pri1"/>
-    <ctl name="Plgin8Blk0 Param Id" value="-1"/>
-    <ctl name="Plgin8Blk1 Param Id" value="-1"/>
-    <ctl name="Plgin8Blk2 Param Id" value="-1"/>
     <ctl name="Plgin8Ip Ep0 Conf" value="UNKNOWN"/>
     <ctl name="Plgin8Ip Ep1 Conf" value="UNKNOWN"/>
     <ctl name="Plgin8Ip Ep2 Conf" value="UNKNOWN"/>
     <ctl name="Plgin8Ip Ep3 Conf" value="UNKNOWN"/>
     <ctl name="Plgin8Ip Ep4 Conf" value="UNKNOWN"/>
     <ctl name="Plgin8Ip Ep5 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin8Ip Ep6 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin8Ip Ep7 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin8Ip Ep8 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin8Ip Ep9 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin8Ip Ep10 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin8Ip Ep11 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin8Ip Ep12 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin8Ip Ep13 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin8Ip Ep14 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin8Ip Ep15 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin8Cr Conf" value="none"/>
 
-    <ctl name="Plgin9Create0" value="0"/>
-    <ctl name="Plgin9Create1" value="0"/>
-    <ctl name="Plgin9Create2" value="0"/>
-    <ctl name="Plgin9Reset0" value="0"/>
-    <ctl name="Plgin9Reset1" value="0"/>
-    <ctl name="Plgin9Reset2" value="0"/>
-    <ctl name="Plgin9Origin Plugin Idx" value="none"/>
-    <ctl name="Plgin9Pkg ID" value="none"/>
-    <ctl name="Plgin9inst priority" value="pri1"/>
-    <ctl name="Plgin9Blk0 Param Id" value="-1"/>
-    <ctl name="Plgin9Blk1 Param Id" value="-1"/>
-    <ctl name="Plgin9Blk2 Param Id" value="-1"/>
     <ctl name="Plgin9Ip Ep0 Conf" value="UNKNOWN"/>
     <ctl name="Plgin9Ip Ep1 Conf" value="UNKNOWN"/>
     <ctl name="Plgin9Ip Ep2 Conf" value="UNKNOWN"/>
     <ctl name="Plgin9Ip Ep3 Conf" value="UNKNOWN"/>
     <ctl name="Plgin9Ip Ep4 Conf" value="UNKNOWN"/>
     <ctl name="Plgin9Ip Ep5 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin9Ip Ep6 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin9Ip Ep7 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin9Ip Ep8 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin9Ip Ep9 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin9Ip Ep10 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin9Ip Ep11 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin9Ip Ep12 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin9Ip Ep13 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin9Ip Ep14 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin9Ip Ep15 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin9Cr Conf" value="none"/>
 
-    <ctl name="Plgin10Create0" value="0"/>
-    <ctl name="Plgin10Create1" value="0"/>
-    <ctl name="Plgin10Create2" value="0"/>
-    <ctl name="Plgin10Reset0" value="0"/>
-    <ctl name="Plgin10Reset1" value="0"/>
-    <ctl name="Plgin10Reset2" value="0"/>
-    <ctl name="Plgin10Origin Plugin Idx" value="none"/>
-    <ctl name="Plgin10Pkg ID" value="none"/>
-    <ctl name="Plgin10inst priority" value="pri1"/>
-    <ctl name="Plgin10Blk0 Param Id" value="-1"/>
-    <ctl name="Plgin10Blk1 Param Id" value="-1"/>
-    <ctl name="Plgin10Blk2 Param Id" value="-1"/>
     <ctl name="Plgin10Ip Ep0 Conf" value="UNKNOWN"/>
     <ctl name="Plgin10Ip Ep1 Conf" value="UNKNOWN"/>
     <ctl name="Plgin10Ip Ep2 Conf" value="UNKNOWN"/>
     <ctl name="Plgin10Ip Ep3 Conf" value="UNKNOWN"/>
     <ctl name="Plgin10Ip Ep4 Conf" value="UNKNOWN"/>
     <ctl name="Plgin10Ip Ep5 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin10Ip Ep6 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin10Ip Ep7 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin10Ip Ep8 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin10Ip Ep9 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin10Ip Ep10 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin10Ip Ep11 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin10Ip Ep12 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin10Ip Ep13 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin10Ip Ep14 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin10Ip Ep15 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin10Cr Conf" value="none"/>
 
-    <ctl name="Plgin11Create0" value="0"/>
-    <ctl name="Plgin11Create1" value="0"/>
-    <ctl name="Plgin11Create2" value="0"/>
-    <ctl name="Plgin11Reset0" value="0"/>
-    <ctl name="Plgin11Reset1" value="0"/>
-    <ctl name="Plgin11Reset2" value="0"/>
-    <ctl name="Plgin11Origin Plugin Idx" value="none"/>
-    <ctl name="Plgin11Pkg ID" value="none"/>
-    <ctl name="Plgin11inst priority" value="pri1"/>
-    <ctl name="Plgin11Blk0 Param Id" value="-1"/>
-    <ctl name="Plgin11Blk1 Param Id" value="-1"/>
-    <ctl name="Plgin11Blk2 Param Id" value="-1"/>
     <ctl name="Plgin11Ip Ep0 Conf" value="UNKNOWN"/>
     <ctl name="Plgin11Ip Ep1 Conf" value="UNKNOWN"/>
     <ctl name="Plgin11Ip Ep2 Conf" value="UNKNOWN"/>
     <ctl name="Plgin11Ip Ep3 Conf" value="UNKNOWN"/>
     <ctl name="Plgin11Ip Ep4 Conf" value="UNKNOWN"/>
     <ctl name="Plgin11Ip Ep5 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin11Ip Ep6 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin11Ip Ep7 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin11Ip Ep8 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin11Ip Ep9 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin11Ip Ep10 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin11Ip Ep11 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin11Ip Ep12 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin11Ip Ep13 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin11Ip Ep14 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin11Ip Ep15 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin11Cr Conf" value="none"/>
 
-    <ctl name="Plgin12Create0" value="0"/>
-    <ctl name="Plgin12Create1" value="0"/>
-    <ctl name="Plgin12Create2" value="0"/>
-    <ctl name="Plgin12Reset0" value="0"/>
-    <ctl name="Plgin12Reset1" value="0"/>
-    <ctl name="Plgin12Reset2" value="0"/>
-    <ctl name="Plgin12Origin Plugin Idx" value="none"/>
-    <ctl name="Plgin12Pkg ID" value="none"/>
-    <ctl name="Plgin12inst priority" value="pri1"/>
-    <ctl name="Plgin12Blk0 Param Id" value="-1"/>
-    <ctl name="Plgin12Blk1 Param Id" value="-1"/>
-    <ctl name="Plgin12Blk2 Param Id" value="-1"/>
     <ctl name="Plgin12Ip Ep0 Conf" value="UNKNOWN"/>
     <ctl name="Plgin12Ip Ep1 Conf" value="UNKNOWN"/>
     <ctl name="Plgin12Ip Ep2 Conf" value="UNKNOWN"/>
     <ctl name="Plgin12Ip Ep3 Conf" value="UNKNOWN"/>
     <ctl name="Plgin12Ip Ep4 Conf" value="UNKNOWN"/>
     <ctl name="Plgin12Ip Ep5 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin12Ip Ep6 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin12Ip Ep7 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin12Ip Ep8 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin12Ip Ep9 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin12Ip Ep10 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin12Ip Ep11 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin12Ip Ep12 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin12Ip Ep13 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin12Ip Ep14 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin12Ip Ep15 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin12Cr Conf" value="none"/>
 
-    <ctl name="Plgin13Create0" value="0"/>
-    <ctl name="Plgin13Create1" value="0"/>
-    <ctl name="Plgin13Create2" value="0"/>
-    <ctl name="Plgin13Reset0" value="0"/>
-    <ctl name="Plgin13Reset1" value="0"/>
-    <ctl name="Plgin13Reset2" value="0"/>
-    <ctl name="Plgin13Origin Plugin Idx" value="none"/>
-    <ctl name="Plgin13Pkg ID" value="none"/>
-    <ctl name="Plgin13inst priority" value="pri1"/>
-    <ctl name="Plgin13Blk0 Param Id" value="-1"/>
-    <ctl name="Plgin13Blk1 Param Id" value="-1"/>
-    <ctl name="Plgin13Blk2 Param Id" value="-1"/>
     <ctl name="Plgin13Ip Ep0 Conf" value="UNKNOWN"/>
     <ctl name="Plgin13Ip Ep1 Conf" value="UNKNOWN"/>
     <ctl name="Plgin13Ip Ep2 Conf" value="UNKNOWN"/>
     <ctl name="Plgin13Ip Ep3 Conf" value="UNKNOWN"/>
     <ctl name="Plgin13Ip Ep4 Conf" value="UNKNOWN"/>
     <ctl name="Plgin13Ip Ep5 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin13Ip Ep6 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin13Ip Ep7 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin13Ip Ep8 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin13Ip Ep9 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin13Ip Ep10 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin13Ip Ep11 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin13Ip Ep12 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin13Ip Ep13 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin13Ip Ep14 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin13Ip Ep15 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin13Cr Conf" value="none"/>
 
-    <ctl name="Plgin14Create0" value="0"/>
-    <ctl name="Plgin14Create1" value="0"/>
-    <ctl name="Plgin14Create2" value="0"/>
-    <ctl name="Plgin14Reset0" value="0"/>
-    <ctl name="Plgin14Reset1" value="0"/>
-    <ctl name="Plgin14Reset2" value="0"/>
-    <ctl name="Plgin14Origin Plugin Idx" value="none"/>
-    <ctl name="Plgin14Pkg ID" value="none"/>
-    <ctl name="Plgin14inst priority" value="pri1"/>
-    <ctl name="Plgin14Blk0 Param Id" value="-1"/>
-    <ctl name="Plgin14Blk1 Param Id" value="-1"/>
-    <ctl name="Plgin14Blk2 Param Id" value="-1"/>
     <ctl name="Plgin14Ip Ep0 Conf" value="UNKNOWN"/>
     <ctl name="Plgin14Ip Ep1 Conf" value="UNKNOWN"/>
     <ctl name="Plgin14Ip Ep2 Conf" value="UNKNOWN"/>
     <ctl name="Plgin14Ip Ep3 Conf" value="UNKNOWN"/>
     <ctl name="Plgin14Ip Ep4 Conf" value="UNKNOWN"/>
     <ctl name="Plgin14Ip Ep5 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin14Ip Ep6 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin14Ip Ep7 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin14Ip Ep8 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin14Ip Ep9 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin14Ip Ep10 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin14Ip Ep11 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin14Ip Ep12 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin14Ip Ep13 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin14Ip Ep14 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin14Ip Ep15 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin14Cr Conf" value="none"/>
 
-    <ctl name="Plgin15Create0" value="0"/>
-    <ctl name="Plgin15Create1" value="0"/>
-    <ctl name="Plgin15Create2" value="0"/>
-    <ctl name="Plgin15Reset0" value="0"/>
-    <ctl name="Plgin15Reset1" value="0"/>
-    <ctl name="Plgin15Reset2" value="0"/>
-    <ctl name="Plgin15Origin Plugin Idx" value="none"/>
-    <ctl name="Plgin15Pkg ID" value="none"/>
-    <ctl name="Plgin15inst priority" value="pri1"/>
-    <ctl name="Plgin15Blk0 Param Id" value="-1"/>
-    <ctl name="Plgin15Blk1 Param Id" value="-1"/>
-    <ctl name="Plgin15Blk2 Param Id" value="-1"/>
     <ctl name="Plgin15Ip Ep0 Conf" value="UNKNOWN"/>
     <ctl name="Plgin15Ip Ep1 Conf" value="UNKNOWN"/>
     <ctl name="Plgin15Ip Ep2 Conf" value="UNKNOWN"/>
     <ctl name="Plgin15Ip Ep3 Conf" value="UNKNOWN"/>
     <ctl name="Plgin15Ip Ep4 Conf" value="UNKNOWN"/>
     <ctl name="Plgin15Ip Ep5 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin15Ip Ep6 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin15Ip Ep7 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin15Ip Ep8 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin15Ip Ep9 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin15Ip Ep10 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin15Ip Ep11 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin15Ip Ep12 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin15Ip Ep13 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin15Ip Ep14 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin15Ip Ep15 Conf" value="UNKNOWN"/>
-    <ctl name="Plgin15Cr Conf" value="none"/>
 
     <ctl name="Plgin0Blk0En" value="0"/>
     <ctl name="Plgin0Blk1En" value="0"/>
@@ -1284,7 +916,7 @@
         <ctl name="PCM PortE Setup" value="1"/>
         <ctl name="PCM PortE Start" value="0x1FF"/>
         <ctl name="strm4 ASRC Mode" value="ASRC_ENABLE"/>
-        <ctl name="strm4 Master Strm Id" value="STREAMID_4"/>
+        <ctl name="strm4 Master Strm Id" value="STREAMID_0"/>
         <ctl name="strm4 Format FrLn" value="16K_10MS"/>
         <ctl name="strm4 Format Sr" value="RATE_16K" />
         <ctl name="strm4 Format Enc" value="ENCODING_AFLOAT"/>
@@ -1338,7 +970,7 @@
     </path>
 
     <path name="ambient-route-with-bargein">
-        <ctl name="Plgin2Ip Ep0 Conf" value="RX12_ChanMgr"/>
+        <ctl name="Plgin2Ip Ep0 Conf" value="RX0_ChanMgr"/>
         <path name="ambient-route"/>
     </path>
 
@@ -1394,7 +1026,7 @@
     </path>
 
     <path name="music-buffer-with-bargein">
-        <ctl name="Plgin3Ip Ep0 Conf" value="RX12_ChanMgr" />
+        <ctl name="Plgin3Ip Ep0 Conf" value="RX0_ChanMgr" />
         <path name="music-buffer-route" />
     </path>
 
@@ -1407,8 +1039,10 @@
         <path name="music-buffer-without-bargein" />
     </path>
 
+    <!-- Ignore Downlink Audio route to temporary disable feature-->
     <path name="downlink-audio-route">
-        <ctl name="PCM PortA Setup" value="1" />
+        <path name="music-buffer-without-bargein" />
+        <!--ctl name="PCM PortA Setup" value="1" />
         <ctl name="PCM PortA Start" value="0x3F" />
         <ctl name="strm6 ASRC Mode" value="ASRC_ENABLE" />
         <ctl name="strm6 Master Strm Id" value="STREAMID_6" />
@@ -1421,7 +1055,7 @@
         <ctl name="strm6 Port Enc" value="ENCODING_Q15" />
         <ctl name="strm6 CH Mask En" value="0x1000" />
         <ctl name="strm6 En" value="1" />
-        <path name="music-buffer-with-bargein" />
+        <path name="music-buffer-with-bargein" /-->
     </path>
 
     <path name="pwr-dwn-all-non-ctrl-proc-mem">

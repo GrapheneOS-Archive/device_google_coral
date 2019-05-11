@@ -64,6 +64,8 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/wcd-spi-ac-client    0660   system     audio
 /dev/iaxxx-odsp-celldrv   0660   system     audio
 /dev/tunnel0              0660   system     audio
+/dev/crashdump            0660   system     audio
+/dev/regdump              0660   system     audio
 
 /dev/msm_qcelp            0660   system     audio
 /dev/msm_evrc             0660   system     audio

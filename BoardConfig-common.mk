@@ -62,6 +62,16 @@ TARGET_NO_KERNEL := false
 BOARD_USES_RECOVERY_AS_BOOT := true
 BOARD_USES_METADATA_PARTITION := true
 
+AB_OTA_UPDATER := true
+
+AB_OTA_PARTITIONS += \
+    boot \
+    system \
+    vbmeta \
+    dtbo \
+    product \
+    vbmeta_system
+
 # Partitions (listed in the file) to be wiped under recovery.
 TARGET_RECOVERY_WIPE := device/google/coral/recovery.wipe
 TARGET_RECOVERY_FSTAB := device/google/coral/fstab.hardware
@@ -183,6 +193,8 @@ SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
 TARGET_USES_DISPLAY_RENDER_INTENTS := true
 TARGET_USES_COLOR_METADATA := true
 TARGET_USES_DRM_PP := true
+TARGET_HAS_WIDE_COLOR_DISPLAY := true
+TARGET_HAS_HDR_DISPLAY := true
 
 # Misc
 TARGET_USES_HARDWARE_QCOM_BOOTCTRL := true
