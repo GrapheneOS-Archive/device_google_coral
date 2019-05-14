@@ -162,6 +162,31 @@ int main(int /* argc */, char** /* argv */) {
 
     service->addStateResidencyDataProvider(airSdp);
 
+    // Add NFC power entity
+    StateResidencyConfig nfcStateConfig = {
+        .entryCountSupported = true,
+        .entryCountPrefix = "Cumulative count:",
+        .totalTimeSupported = true,
+        .totalTimePrefix = "Cumulative duration msec:",
+        .lastEntrySupported = true,
+        .lastEntryPrefix = "Last entry timestamp msec:"
+    };
+    std::vector<std::pair<std::string, std::string>> nfcStateHeaders = {
+        std::make_pair("Idle", "Idle mode:"),
+        std::make_pair("Active", "Active mode:"),
+        std::make_pair("Active-RW", "Active Reader/Writer mode:"),
+    };
+
+    sp<GenericStateResidencyDataProvider> nfcSdp =
+            new GenericStateResidencyDataProvider(
+                    "/sys/devices/platform/soc/a84000.i2c/i2c-2/2-0008/power_stats");
+
+    uint32_t nfcId = service->addPowerEntity("NFC", PowerEntityType::SUBSYSTEM);
+    nfcSdp->addEntity(nfcId,
+        PowerEntityConfig(generateGenericStateResidencyConfigs(nfcStateConfig, nfcStateHeaders)));
+
+    service->addStateResidencyDataProvider(nfcSdp);
+
     // Add Power Entities that require the Aidl data provider
     sp<AidlStateResidencyDataProvider> aidlSdp = new AidlStateResidencyDataProvider();
     uint32_t citadelId = service->addPowerEntity("Citadel", PowerEntityType::SUBSYSTEM);
