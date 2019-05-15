@@ -92,3 +92,6 @@ $(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/permissions/android.hard
 # Remove default android.hardware.graphics.composer@2.3-service
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/bin/hw/android.hardware.graphics.composer@2.3-service)
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/init/android.hardware.graphics.composer@2.3-service.rc)
+
+# Remove obsolete android.hardware.boot@1.0-impl-wrapper.recovery.so
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/recovery/root/system/lib64/hw/android.hardware.boot@1.0-impl-wrapper.recovery.so)
