@@ -530,6 +530,10 @@ PRODUCT_PACKAGES += \
     cplay
 endif
 
+ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+PRODUCT_PACKAGES += chre_test_client
+endif
+
 # Audio hal xmls
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/mixer_paths_iaxxx_jaws.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_iaxxx_jaws.xml \
