@@ -92,3 +92,7 @@ $(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/permissions/android.hard
 # Remove default android.hardware.graphics.composer@2.3-service
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/bin/hw/android.hardware.graphics.composer@2.3-service)
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/init/android.hardware.graphics.composer@2.3-service.rc)
+
+# Remove generic atrace HAL
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/init/android.hardware.atrace@1.0-service.rc)
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/vintf/manifest/android.hardware.atrace@1.0-service.xml)
