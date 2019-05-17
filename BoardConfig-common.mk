@@ -196,10 +196,6 @@ TARGET_USES_DRM_PP := true
 TARGET_HAS_WIDE_COLOR_DISPLAY := true
 TARGET_HAS_HDR_DISPLAY := true
 
-# Misc
-TARGET_USES_HARDWARE_QCOM_BOOTCTRL := true
-
-
 # Vendor Interface Manifest
 DEVICE_MANIFEST_FILE := device/google/coral/manifest.xml
 DEVICE_MATRIX_FILE := device/google/coral/compatibility_matrix.xml
