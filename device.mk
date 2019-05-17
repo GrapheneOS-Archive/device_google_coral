@@ -833,6 +833,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.power.stats@1.0-service.pixel
 
+PRODUCT_PACKAGES_DEBUG += \
+    pwrstats_util
+
 # Recovery
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.recovery.device.rc:recovery/root/init.recovery.coral.rc \
