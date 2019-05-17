@@ -194,6 +194,9 @@
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_NS" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC_NS" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_STEREO" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
+        <device name="SND_DEVICE_IN_SPEAKER_QMIC_AEC" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
+        <device name="SND_DEVICE_IN_SPEAKER_QMIC_NS" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
+        <device name="SND_DEVICE_IN_SPEAKER_QMIC_AEC_NS" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
         <device name="SND_DEVICE_IN_CAMCORDER_LANDSCAPE" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
         <device name="SND_DEVICE_IN_CAMCORDER_INVERT_LANDSCAPE" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
         <device name="SND_DEVICE_IN_CAMCORDER_PORTRAIT" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
@@ -205,10 +208,16 @@
         <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
         <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
         <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC_HFP" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
+        <device name="SND_DEVICE_IN_THREE_MIC" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
+        <device name="SND_DEVICE_IN_QUAD_MIC" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
+        <device name="SND_DEVICE_IN_HANDSET_TMIC_FLUENCE_PRO" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
         <device name="SND_DEVICE_IN_HANDSET_TMIC" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
         <device name="SND_DEVICE_IN_HANDSET_QMIC" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
         <device name="SND_DEVICE_IN_HANDSET_TMIC_AEC" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
+        <device name="SND_DEVICE_IN_HANDSET_TMIC_NS" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
+        <device name="SND_DEVICE_IN_HANDSET_TMIC_AEC_NS" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
         <device name="SND_DEVICE_IN_HANDSET_QMIC_AEC" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
+        <device name="SND_DEVICE_IN_HANDSET_GENERIC_QMIC" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_MIC" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_STEREO_MIC" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
         <device name="SND_DEVICE_IN_UNPROCESSED_THREE_MIC" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
@@ -220,6 +229,8 @@
         <device name="SND_DEVICE_IN_VOICE_REC_MIC_AEC_NS" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
         <device name="SND_DEVICE_IN_VOICE_REC_DMIC_STEREO" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
         <device name="SND_DEVICE_IN_VOICE_REC_DMIC_FLUENCE" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
+        <device name="SND_DEVICE_IN_VOICE_REC_TMIC" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
+        <device name="SND_DEVICE_IN_VOICE_REC_QMIC_FLUENCE" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
         <device name="SND_DEVICE_IN_VOICE_HEARING_AID" backend="handset-mic" interface="QUAT_TDM_TX_0"/>
     </backend_names>
     <app_types>
