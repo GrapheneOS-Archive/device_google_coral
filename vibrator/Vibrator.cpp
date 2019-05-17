@@ -42,6 +42,8 @@ namespace implementation {
 using Status = ::android::hardware::vibrator::V1_0::Status;
 using EffectStrength = ::android::hardware::vibrator::V1_0::EffectStrength;
 
+static constexpr uint32_t BASE_CONTINUOUS_EFFECT_OFFSET = 32768;
+
 static constexpr uint32_t WAVEFORM_SIMPLE_EFFECT_INDEX = 2;
 
 static constexpr uint32_t WAVEFORM_TEXTURE_TICK_EFFECT_LEVEL = 0;
@@ -55,6 +57,8 @@ static constexpr uint32_t WAVEFORM_HEAVY_CLICK_EFFECT_LEVEL = 3;
 static constexpr uint32_t WAVEFORM_DOUBLE_CLICK_SILENCE_MS = 100;
 
 static constexpr uint32_t WAVEFORM_LONG_VIBRATION_EFFECT_INDEX = 0;
+static constexpr uint32_t WAVEFORM_LONG_VIBRATION_THRESHOLD_MS = 50;
+static constexpr uint32_t WAVEFORM_SHORT_VIBRATION_EFFECT_INDEX = 3 + BASE_CONTINUOUS_EFFECT_OFFSET;
 
 static constexpr uint32_t WAVEFORM_TRIGGER_QUEUE_INDEX = 65534;
 
@@ -118,11 +122,14 @@ Return<Status> Vibrator::on(uint32_t timeoutMs, uint32_t effectIndex) {
 
 // Methods from ::android::hardware::vibrator::V1_1::IVibrator follow.
 Return<Status> Vibrator::on(uint32_t timeoutMs) {
+    const uint32_t index = timeoutMs < WAVEFORM_LONG_VIBRATION_THRESHOLD_MS
+                               ? WAVEFORM_SHORT_VIBRATION_EFFECT_INDEX
+                               : WAVEFORM_LONG_VIBRATION_EFFECT_INDEX;
     if (MAX_COLD_START_LATENCY_MS <= UINT32_MAX - timeoutMs) {
         timeoutMs += MAX_COLD_START_LATENCY_MS;
     }
     setGlobalAmplitude(true);
-    return on(timeoutMs, WAVEFORM_LONG_VIBRATION_EFFECT_INDEX);
+    return on(timeoutMs, index);
 }
 
 Return<Status> Vibrator::off() {
