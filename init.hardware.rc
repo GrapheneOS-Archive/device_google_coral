@@ -878,3 +878,12 @@ service vendor.crash_event_logger /vendor/bin/crash_event_logger -m
 
 on property:persist.vendor.sys.ssr.enable_ramdumps=1
     start vendor.crash_event_logger
+
+# Write the dark theme magic (`theme-dark`, or 0x7468656d652d6461726b in hex string) to /misc
+# partition. Offset 0 in vendor space is effectively offset 2048 in /misc partition.
+service vendor.darkboot /vendor/bin/misc_writer --vendor-space-offset 0 --hex-string 0x7468656d652d6461726b
+    disabled
+    oneshot
+
+on property:persist.sys.device_provisioned=1
+    start vendor.darkboot

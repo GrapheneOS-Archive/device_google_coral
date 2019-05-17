@@ -900,3 +900,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
     PRODUCT_PROPERTY_OVERRIDES += persist.vendor.iwlan.logging.logcat=true
 endif
+
+# Write flags to the vendor space in /misc partition.
+PRODUCT_PACKAGES += \
+    misc_writer
