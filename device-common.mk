@@ -17,6 +17,9 @@
 # define hardware platform
 PRODUCT_PLATFORM := sm8150
 
+# Enable updating of APEXes
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
 include device/google/coral/device.mk
 
 # Set Vendor SPL to match platform
