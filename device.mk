@@ -530,6 +530,10 @@ PRODUCT_PACKAGES += \
     cplay
 endif
 
+ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+PRODUCT_PACKAGES += chre_test_client
+endif
+
 # Audio hal xmls
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/mixer_paths_iaxxx_jaws.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_iaxxx_jaws.xml \
@@ -813,9 +817,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf
 
-# default atrace HAL
+# pixel atrace HAL
 PRODUCT_PACKAGES += \
-    android.hardware.atrace@1.0-service
+    android.hardware.atrace@1.0-service.pixel
 
 # Reliability reporting
 PRODUCT_PACKAGES += \
@@ -843,6 +847,9 @@ PRODUCT_COPY_FILES += \
 # powerstats HAL
 PRODUCT_PACKAGES += \
     android.hardware.power.stats@1.0-service.pixel
+
+PRODUCT_PACKAGES_DEBUG += \
+    pwrstats_util
 
 # Recovery
 PRODUCT_COPY_FILES += \
