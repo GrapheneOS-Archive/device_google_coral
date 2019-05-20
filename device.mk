@@ -375,6 +375,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.media.codec2=2 \
     debug.stagefright.ccodec=4 \
 
+# Enable ECO service
+QC2_HAVE_ECO_SERVICE := true
+
 PRODUCT_PACKAGES += \
     libqcodec2 \
     vendor.qti.media.c2@1.0-service \
