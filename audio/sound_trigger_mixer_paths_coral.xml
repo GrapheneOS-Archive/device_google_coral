@@ -786,18 +786,18 @@
     <ctl name="DMX Core Boot" value="CoreMemOff"/>
 
     <path name="port-c">
-    <!-- Port-C PDM4 -->
+    <!-- Port-C PDM4, DMIC3 -->
         <ctl name="Route Status" value="Active"/>
         <ctl name="SSP Core Boot" value="CoreMemOn"/>
         <ctl name="CDC0 MicBias" value="1"/>
-        <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
+        <!--ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/-->
         <ctl name="Pdm CDC Setup" value="1"/>
         <ctl name="Pdm PortC Setup" value="1"/>
         <ctl name="Pdm PortC CDC DMic4 En" value="1"/>
         <ctl name="PDM Hos" value="0x10"/>
         <ctl name="PDM CDC0 Start" value="0x10"/>
         <ctl name="Rx0Chan GnRmp" value="STEP_2000"/>
-        <ctl name="Rx0Ch EpGain" value="40"/>
+        <ctl name="Rx0Ch EpGain" value="20"/>
         <ctl name="Rx0Chan Gain En" value="1"/>
         <ctl name="strm0 ASRC Mode" value="REDBOX_2-1"/>
         <ctl name="strm0 Master Strm Id" value="STREAMID_0"/>
@@ -805,6 +805,7 @@
         <ctl name="strm0 Format Sr" value="RATE_16K"/>
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT"/>
         <ctl name="strm0 Dir" value="0"/>
+        <ctl name="strm0 DC block en" value="1" />
         <ctl name="strm0 inter strm delay" value="0"/>
         <ctl name="strm0 Port" value="PDMI4"/>
         <ctl name="strm0 Port Enc" value="ENCODING_Q23"/>
@@ -814,7 +815,7 @@
     </path>
 
     <path name="port-b">
-    <!-- Port-B PDM7 -->
+    <!-- Port-B PDM7, Flicker -->
         <ctl name="Route Status" value="Active"/>
         <ctl name="SSP Core Boot" value="CoreMemOn"/>
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
@@ -824,7 +825,7 @@
         <ctl name="PDM Hos" value="0x80"/>
         <ctl name="PDM CDC0 Start" value="0x80"/>
         <ctl name="Rx0Chan GnRmp" value="STEP_2000"/>
-        <ctl name="Rx0Ch EpGain" value="40"/>
+        <ctl name="Rx0Ch EpGain" value="20"/>
         <ctl name="Rx0Chan Gain En" value="1"/>
         <ctl name="strm0 ASRC Mode" value="REDBOX_2-1"/>
         <ctl name="strm0 Master Strm Id" value="STREAMID_0"/>
@@ -832,6 +833,7 @@
         <ctl name="strm0 Format Sr" value="RATE_16K"/>
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT"/>
         <ctl name="strm0 Dir" value="0"/>
+        <!-- ctl name="strm0 DC block en" value="1" /-->
         <ctl name="strm0 inter strm delay" value="0"/>
         <ctl name="strm0 Port" value="PDMI7"/>
         <ctl name="strm0 Port Enc" value="ENCODING_Q23"/>
@@ -841,17 +843,17 @@
     </path>
 
     <path name="port-d">
-    <!-- Port-D PDM3 -->
+    <!-- Port-D PDM3, DMIC2 -->
         <ctl name="Route Status" value="Active"/>
         <ctl name="SSP Core Boot" value="CoreMemOn"/>
         <ctl name="PortB MicBias" value="1"/>
-        <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
+        <!--ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/-->
         <ctl name="Pdm CDC Setup" value="1"/>
         <ctl name="Pdm CDC1 Setup" value="1"/>
         <ctl name="Pdm CDC1 CDC DMic3 En" value="1"/>
         <ctl name="PDM Hos" value="0x8"/>
         <ctl name="PDM CDC0 Start" value="0x8"/>
-        <ctl name="Rx0Ch EpGain" value="40"/>
+        <ctl name="Rx0Ch EpGain" value="20"/>
         <ctl name="Rx0Chan GnRmp" value="STEP_2000"/>
         <ctl name="Rx0Chan Gain En" value="1"/>
         <ctl name="strm0 ASRC Mode" value="REDBOX_2-1"/>
@@ -860,6 +862,7 @@
         <ctl name="strm0 Format Sr" value="RATE_16K"/>
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT"/>
         <ctl name="strm0 Dir" value="0"/>
+        <ctl name="strm0 DC block en" value="1" />
         <ctl name="strm0 inter strm delay" value="0"/>
         <ctl name="strm0 Port" value="PDMI3"/>
         <ctl name="strm0 Port Enc" value="ENCODING_Q23"/>
@@ -869,17 +872,17 @@
     </path>
 
     <path name="port-cdc">
-    <!-- Port-CDC PDM1 -->
+    <!-- Port-CDC PDM1, DMIC1 -->
         <ctl name="Route Status" value="Active"/>
         <ctl name="SSP Core Boot" value="CoreMemOn"/>
         <ctl name="PortC MicBias" value="1"/>
-        <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
+        <!--ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/-->
         <ctl name="Pdm CDC Setup" value="1"/>
         <ctl name="Pdm CDC1 Setup" value="1"/>
         <ctl name="Pdm CDC0 CDC DMic1 En" value="1"/>
         <ctl name="PDM Hos" value="0x2"/>
         <ctl name="PDM CDC0 Start" value="0x2"/>
-        <ctl name="Rx0Ch EpGain" value="40"/>
+        <ctl name="Rx0Ch EpGain" value="20"/>
         <ctl name="Rx0Chan GnRmp" value="STEP_2000"/>
         <ctl name="Rx0Chan Gain En" value="1"/>
         <ctl name="strm0 ASRC Mode" value="REDBOX_2-1"/>
@@ -888,6 +891,7 @@
         <ctl name="strm0 Format Sr" value="RATE_16K"/>
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT"/>
         <ctl name="strm0 Dir" value="0"/>
+        <ctl name="strm0 DC block en" value="1" />
         <ctl name="strm0 inter strm delay" value="0"/>
         <ctl name="strm0 Port" value="PDMI1"/>
         <ctl name="strm0 Port Enc" value="ENCODING_Q23"/>
@@ -921,6 +925,7 @@
         <ctl name="strm4 Format Sr" value="RATE_16K" />
         <ctl name="strm4 Format Enc" value="ENCODING_AFLOAT"/>
         <ctl name="strm4 Dir" value="0"/>
+        <!--ctl name="strm4 DC block en" value="1" /-->
         <ctl name="strm4 inter strm delay" value="0"/>
         <ctl name="strm4 Port" value="PCM4"/>
         <ctl name="strm4 Port Enc" value="ENCODING_Q15"/>
@@ -933,18 +938,28 @@
         <ctl name="Plgin4Blk1En" value="1"/>
     </path>
 
+    <!-- Hotword detect with bargein, mic in HPM(S=-37dBFS)-->
     <path name="mic-route-external-clock">
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
         <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_32K" />
-        <path name="mic1-route" />
+        <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
+        <path name="mic3-route" />
+        <ctl name="Rx0Ch EpGain" value="0"/>
+        <ctl name="Rx0Chan GnRmp" value="STEP_2000"/>
+        <ctl name="Rx0Chan Gain En" value="1"/>
     </path>
 
+    <!-- Normal hotword detect use, mic in LPM(S=-21dBFS)-->
     <path name="mic-route-internal-clock">
         <ctl name="Port ApllCLK Src" value="IAXXX_INT_OSC" />
         <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_32K" />
+        <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_0P_768MHZ"/>
         <path name="mic1-route" />
+        <ctl name="Rx0Ch EpGain" value="6"/>
+        <ctl name="Rx0Chan GnRmp" value="STEP_2000"/>
+        <ctl name="Rx0Chan Gain En" value="1"/>
     </path>
 
     <path name="hotword-route">
