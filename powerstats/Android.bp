@@ -16,7 +16,11 @@ cc_binary {
     name: "android.hardware.power.stats@1.0-service.pixel",
     relative_install_path: "hw",
     init_rc: ["android.hardware.power.stats@1.0-service.pixel.rc"],
-    srcs: ["service.cpp", "RailDataProvider.cpp"],
+    srcs: [
+        "service.cpp",
+        "RailDataProvider.cpp",
+        "GpuStateResidencyDataProvider.cpp",
+    ],
     cflags: [
         "-Wall",
         "-Werror",
