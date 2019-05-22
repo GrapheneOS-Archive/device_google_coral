@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
+#define ATRACE_TAG (ATRACE_TAG_VIBRATOR | ATRACE_TAG_HAL)
 #define LOG_TAG "android.hardware.vibrator@1.3-service.coral"
 
-#include <log/log.h>
+#include "Vibrator.h"
 
-#include <cutils/properties.h>
 #include <hardware/hardware.h>
 #include <hardware/vibrator.h>
-
-#include "Vibrator.h"
+#include <log/log.h>
+#include <utils/Trace.h>
 
 #include <cinttypes>
 #include <cmath>
@@ -122,6 +122,7 @@ Return<Status> Vibrator::on(uint32_t timeoutMs, uint32_t effectIndex) {
 
 // Methods from ::android::hardware::vibrator::V1_1::IVibrator follow.
 Return<Status> Vibrator::on(uint32_t timeoutMs) {
+    ATRACE_NAME("Vibrator::on");
     const uint32_t index = timeoutMs < WAVEFORM_LONG_VIBRATION_THRESHOLD_MS
                                ? WAVEFORM_SHORT_VIBRATION_EFFECT_INDEX
                                : WAVEFORM_LONG_VIBRATION_EFFECT_INDEX;
@@ -133,6 +134,7 @@ Return<Status> Vibrator::on(uint32_t timeoutMs) {
 }
 
 Return<Status> Vibrator::off() {
+    ATRACE_NAME("Vibrator::off");
     setGlobalAmplitude(false);
     if (!mHwApi->setActivate(0)) {
         ALOGE("Failed to turn vibrator off (%d): %s", errno, strerror(errno));
@@ -142,10 +144,12 @@ Return<Status> Vibrator::off() {
 }
 
 Return<bool> Vibrator::supportsAmplitudeControl() {
+    ATRACE_NAME("Vibrator::supportsAmplitudeControl");
     return !isUnderExternalControl() && mHwApi->hasEffectScale();
 }
 
 Return<Status> Vibrator::setAmplitude(uint8_t amplitude) {
+    ATRACE_NAME("Vibrator::setAmplitude");
     if (!amplitude) {
         return Status::BAD_VALUE;
     }
@@ -183,10 +187,12 @@ Return<Status> Vibrator::setGlobalAmplitude(bool set) {
 // Methods from ::android::hardware::vibrator::V1_3::IVibrator follow.
 
 Return<bool> Vibrator::supportsExternalControl() {
+    ATRACE_NAME("Vibrator::supportsExternalControl");
     return (mHwApi->hasAspEnable() ? true : false);
 }
 
 Return<Status> Vibrator::setExternalControl(bool enabled) {
+    ATRACE_NAME("Vibrator::setExternalControl");
     setGlobalAmplitude(enabled);
 
     if (!mHwApi->setAspEnable(enabled)) {
@@ -237,6 +243,7 @@ Return<void> Vibrator::debug(const hidl_handle &handle,
 
 template <typename T>
 Return<void> Vibrator::performWrapper(T effect, EffectStrength strength, perform_cb _hidl_cb) {
+    ATRACE_NAME("Vibrator::performWrapper");
     auto validRange = hidl_enum_range<T>();
     if (effect < *validRange.begin() || effect > *std::prev(validRange.end())) {
         _hidl_cb(Status::UNSUPPORTED_OPERATION, 0);
