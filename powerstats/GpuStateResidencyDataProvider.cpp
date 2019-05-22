@@ -52,8 +52,8 @@ bool GpuStateResidencyDataProvider::getTotalTime(const std::string &path, uint64
 
 bool GpuStateResidencyDataProvider::getResults(
     std::unordered_map<uint32_t, PowerEntityStateResidencyResult> &results) {
-    uint64_t totalActiveTimeMs = 0;
-    if (!getTotalTime("/sys/class/kgsl/kgsl-3d0/gpu_clock_stats", totalActiveTimeMs)) {
+    uint64_t totalActiveTimeUs = 0;
+    if (!getTotalTime("/sys/class/kgsl/kgsl-3d0/gpu_clock_stats", totalActiveTimeUs)) {
         LOG(ERROR) << __func__ << "Failed to get results for GPU:Active";
         return false;
     }
@@ -69,7 +69,7 @@ bool GpuStateResidencyDataProvider::getResults(
     PowerEntityStateResidencyResult result = {
         .powerEntityId = mPowerEntityId,
         .stateResidencyData = {
-            {.powerEntityStateId = mActiveId, .totalTimeInStateMs = totalActiveTimeMs},
+            {.powerEntityStateId = mActiveId, .totalTimeInStateMs = totalActiveTimeUs / 1000},
             /* (TODO (b/117228832): enable this)
             {.powerEntityStateId = mSuspendId, .totalTimeInStateMs = totalSuspendTimeMs},
             */
