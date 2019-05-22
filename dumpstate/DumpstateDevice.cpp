@@ -305,6 +305,12 @@ static void DumpTouch(int fd) {
     }
 }
 
+static void DumpDisplay(int fd) {
+    DumpFileToFd(fd, "PANEL VENDOR NAME", "/sys/class/panel_info/panel0/panel_vendor_name");
+    DumpFileToFd(fd, "PANEL SN", "/sys/class/panel_info/panel0/serial_number");
+    DumpFileToFd(fd, "PANEL EXTRA INFO", "/sys/class/panel_info/panel0/panel_extinfo");
+}
+
 static void DumpF2FS(int fd) {
     DumpFileToFd(fd, "F2FS", "/sys/kernel/debug/f2fs/status");
     DumpFileToFd(fd, "F2FS - fragmentation", "/proc/fs/f2fs/dm-3/segment_info");
@@ -355,6 +361,7 @@ Return<void> DumpstateDevice::dumpstateBoard(const hidl_handle& handle) {
     DumpFileToFd(fd, "CPU present", "/sys/devices/system/cpu/present");
     DumpFileToFd(fd, "CPU online", "/sys/devices/system/cpu/online");
     DumpTouch(fd);
+    DumpDisplay(fd);
 
     DumpF2FS(fd);
     DumpUFS(fd);
