@@ -21,34 +21,31 @@
     <item name="battery.capacity">2800</item>
 
     <!-- Cellular modem related values.-->
-    <!-- TBD for power measurements BUG: 123524121.-->
     <item name="modem.controller.sleep">0</item>
-    <item name="modem.controller.idle">0</item>
-    <item name="modem.controller.rx">0</item>
+    <item name="modem.controller.idle">99</item>
+    <item name="modem.controller.rx">129</item>
     <array name="modem.controller.tx"> <!-- Strength 0 to 4 -->
-      <value>0</value>
-      <value>0</value>
-      <value>0</value>
-      <value>0</value>
-      <value>0</value>
+      <value>136</value>
+      <value>189</value>
+      <value>261</value>
+      <value>321</value>
+      <value>421</value>
     </array>
     <item name="modem.controller.voltage">3700</item>
 
     <!-- GPS related values.-->
-    <!-- TBD for power measurements BUG: 123524121.-->
     <array name="gps.signalqualitybased"> <!-- Strength 0 to 1 -->
-      <value>0</value>
-      <value>0</value>
+      <value>26</value>
+      <value>8</value>
     </array>
     <item name="gps.voltage">3700</item>
 
     <!-- Idle Receive current for wifi radio in mA.-->
-    <!-- TBD for power measurements BUG: 123524121.-->
-    <item name="wifi.controller.idle">0</item>
+    <item name="wifi.controller.idle">76</item>
     <!-- Rx current for wifi radio in mA.-->
-    <item name="wifi.controller.rx">0</item>
+    <item name="wifi.controller.rx">125</item>
     <!-- Tx current for wifi radio in mA-->
-    <item name="wifi.controller.tx">0</item>
+    <item name="wifi.controller.tx">349</item>
     <!-- Operating volatage for wifi radio in mV.-->
     <item name="wifi.controller.voltage">3700</item>
 </device>
