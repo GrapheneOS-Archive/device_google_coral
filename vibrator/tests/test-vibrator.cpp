@@ -142,7 +142,6 @@ class VibratorTest : public Test, public WithParamInterface<EffectTuple> {
 
     void createVibrator(std::unique_ptr<MockApi> mockapi, std::unique_ptr<MockCal> mockcal,
                         bool relaxed = true) {
-        std::vector<uint32_t> vlevels{std::begin(V_LEVELS), std::end(V_LEVELS)};
         if (relaxed) {
             relaxMock(true);
         }
@@ -193,7 +192,7 @@ class VibratorTest : public Test, public WithParamInterface<EffectTuple> {
         EXPECT_CALL(*mMockCal, getRedc(_)).Times(times);
         EXPECT_CALL(*mMockCal, getQ(_)).Times(times);
         EXPECT_CALL(*mMockCal, getVolLevels(_)).Times(times);
-        EXPECT_CALL(*mMockApi, debug(_)).Times(times);
+        EXPECT_CALL(*mMockCal, debug(_)).Times(times);
     }
 
   protected:
@@ -202,7 +201,7 @@ class VibratorTest : public Test, public WithParamInterface<EffectTuple> {
     sp<IVibrator> mVibrator;
 };
 
-TEST_F(VibratorTest, HwApi) {
+TEST_F(VibratorTest, Constructor) {
     std::unique_ptr<MockApi> mockapi;
     std::unique_ptr<MockCal> mockcal;
     uint32_t f0Val = std::rand();

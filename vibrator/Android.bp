@@ -55,7 +55,6 @@ cc_test {
     name: "PtsVibratorHalFloralTestSuite",
     defaults: ["android.hardware.vibrator@1.3-defaults.coral"],
     srcs: [
-        "tests/main.cpp",
         "tests/test-hwapi.cpp",
         "tests/test-hwcal.cpp",
         "tests/test-vibrator.cpp",
