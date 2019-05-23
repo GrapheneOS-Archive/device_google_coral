@@ -386,6 +386,7 @@
     <ctl name="strm0 DC block en" value="0" />
     <ctl name="strm0 inter strm delay" value="0" />
     <ctl name="strm0 Xfer Mode" value="SSP" />
+    <ctl name="strm0 Low Latency IpStr Id" value="STREAMID_NONE" />
     <!-- iaxxx pdm port c -->
     <ctl name="strm0 Port" value="NONE" />
     <ctl name="strm0 Port Enc" value="ENCODING_OPAQUE" />
@@ -2013,6 +2014,7 @@
         <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
         <ctl name="strm0 CH Mask En" value="5" />
         <ctl name="strm0 Xfer Mode" value="SSP_Low_Lat_PT" />
+        <ctl name="strm0 Low Latency IpStr Id" value="STREAMID_8" />
         <ctl name="strm0 En" value="1" />
     </path>
 
@@ -2107,6 +2109,7 @@
         <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
         <ctl name="strm0 CH Mask En" value="9" />
         <ctl name="strm0 Xfer Mode" value="SSP_Low_Lat_PT" />
+        <ctl name="strm0 Low Latency IpStr Id" value="STREAMID_8" />
         <ctl name="strm0 En" value="1" />
     </path>
 
@@ -2497,6 +2500,7 @@
         <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
         <ctl name="strm0 CH Mask En" value="13" />
         <ctl name="strm0 Xfer Mode" value="SSP_Low_Lat_PT" />
+        <ctl name="strm0 Low Latency IpStr Id" value="STREAMID_8" />
         <ctl name="strm0 En" value="1" />
     </path>
 
@@ -3237,9 +3241,9 @@
         <ctl name="Rx0Chan GnRmp" value="STEP_600" />
         <ctl name="Rx0Chan Gain En" value="1" />
 
-        <ctl name="Rx1Ch EpGain" value="13" />
-        <ctl name="Rx1Chan GnRmp" value="STEP_600" />
-        <ctl name="Rx1Chan Gain En" value="1" />
+        <ctl name="Rx3Ch EpGain" value="13" />
+        <ctl name="Rx3Chan GnRmp" value="STEP_600" />
+        <ctl name="Rx3Chan Gain En" value="1" />
     </path>
 
     <path name="dmic-endfire-liquid">
@@ -3255,44 +3259,44 @@
         <path name="speaker-dmic-endfire"/>
     </path>
 
-    <!-- Phone RCV TX Dual-mic 1st MIC D:13 dB, 2nd MIC:13 dB -->
+    <!-- Phone RCV TX Dual-mic 1st MIC D:13 dB, 3rd MIC:13 dB -->
     <path name="voice-dmic-ef-tmus">
         <path name="handset-dmic-endfire"/>
         <ctl name="Rx0Ch EpGain" value="13" />
         <ctl name="Rx0Chan GnRmp" value="STEP_600" />
         <ctl name="Rx0Chan Gain En" value="1" />
 
-        <ctl name="Rx1Ch EpGain" value="13" />
-        <ctl name="Rx1Chan GnRmp" value="STEP_600" />
-        <ctl name="Rx1Chan Gain En" value="1" />
+        <ctl name="Rx3Ch EpGain" value="13" />
+        <ctl name="Rx3Chan GnRmp" value="STEP_600" />
+        <ctl name="Rx3Chan Gain En" value="1" />
     </path>
 
-    <!-- Phone RCV TX Dual-mic 1st MIC D:13 dB, 2nd MIC:13 dB -->
+    <!-- Phone RCV TX Dual-mic 1st MIC D:13 dB, 3rd MIC:13 dB -->
     <path name="voice-dmic-ef">
         <path name="handset-dmic-endfire"/>
         <ctl name="Rx0Ch EpGain" value="13" />
         <ctl name="Rx0Chan GnRmp" value="STEP_600" />
         <ctl name="Rx0Chan Gain En" value="1" />
 
-        <ctl name="Rx1Ch EpGain" value="13" />
-        <ctl name="Rx1Chan GnRmp" value="STEP_600" />
-        <ctl name="Rx1Chan Gain En" value="1" />
+        <ctl name="Rx3Ch EpGain" value="13" />
+        <ctl name="Rx3Chan GnRmp" value="STEP_600" />
+        <ctl name="Rx3Chan Gain En" value="1" />
     </path>
 
     <!-- Phone SPK TX 3rd:DEC8 16dB, 2nd:DEC6 16dB, 1st:DEC5 16dB,-->
     <path name="voice-speaker-dmic-ef">
-        <path name="triple-mic"/>
-        <ctl name="Rx0Ch EpGain" value="13" />
+        <path name="triple-mic-ll"/>
+        <ctl name="Rx0Ch EpGain" value="16" />
         <ctl name="Rx0Chan GnRmp" value="STEP_600" />
         <ctl name="Rx0Chan Gain En" value="1" />
-
-        <ctl name="Rx1Ch EpGain" value="16" />
-        <ctl name="Rx1Chan GnRmp" value="STEP_600" />
-        <ctl name="Rx1Chan Gain En" value="1" />
 
         <ctl name="Rx2Ch EpGain" value="16" />
         <ctl name="Rx2Chan GnRmp" value="STEP_600" />
         <ctl name="Rx2Chan Gain En" value="1" />
+
+        <ctl name="Rx3Ch EpGain" value="16" />
+        <ctl name="Rx3Chan GnRmp" value="STEP_600" />
+        <ctl name="Rx3Chan Gain En" value="1" />
     </path>
 
     <path name="hearing-aid-mic">

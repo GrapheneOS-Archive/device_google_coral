@@ -67,7 +67,7 @@ class Vibrator : public IVibrator {
         // controls).
         virtual bool setGlobalScale(uint32_t value) = 0;
         // Specifies the active state of the vibrator
-        // (true = enabled, false= disabled).
+        // (true = enabled, false = disabled).
         virtual bool setState(bool value) = 0;
         // Reports whether getAspEnable()/setAspEnable() is supported.
         virtual bool hasAspEnable() = 0;
