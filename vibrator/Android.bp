@@ -33,39 +33,10 @@ cc_defaults {
     proprietary: true,
 }
 
-cc_library {
-    name: "android.hardware.vibrator@1.3-impl.coral",
+cc_defaults {
+    name: "PtsVibratorHalFloralDefaults",
     defaults: ["android.hardware.vibrator@1.3-defaults.coral"],
-    srcs: [
-        "Hardware.cpp",
-        "Vibrator.cpp",
-    ],
-}
-
-cc_binary {
-    name: "android.hardware.vibrator@1.3-service.coral",
-    defaults: ["android.hardware.vibrator@1.3-defaults.coral"],
-    init_rc: ["android.hardware.vibrator@1.3-service.coral.rc"],
-    vintf_fragments: ["android.hardware.vibrator@1.3-service.coral.xml"],
-    srcs: ["service.cpp"],
     static_libs: ["android.hardware.vibrator@1.3-impl.coral"],
-}
-
-cc_test {
-    name: "PtsVibratorHalFloralTestSuite",
-    defaults: ["android.hardware.vibrator@1.3-defaults.coral"],
-    srcs: [
-        "tests/test-hwapi.cpp",
-        "tests/test-hwcal.cpp",
-        "tests/test-vibrator.cpp",
-    ],
-    static_libs: [
-        "android.hardware.vibrator@1.3-impl.coral",
-        "libgmock",
-    ],
-    shared_libs: [
-        "libbase",
-    ],
     test_suites: [
         "general-tests",
         "pts",
@@ -78,4 +49,23 @@ cc_test {
             suffix: "64",
         },
     },
+}
+
+cc_library {
+    name: "android.hardware.vibrator@1.3-impl.coral",
+    defaults: ["android.hardware.vibrator@1.3-defaults.coral"],
+    srcs: [
+        "Hardware.cpp",
+        "Vibrator.cpp",
+    ],
+    export_include_dirs: ["."],
+}
+
+cc_binary {
+    name: "android.hardware.vibrator@1.3-service.coral",
+    defaults: ["android.hardware.vibrator@1.3-defaults.coral"],
+    init_rc: ["android.hardware.vibrator@1.3-service.coral.rc"],
+    vintf_fragments: ["android.hardware.vibrator@1.3-service.coral.xml"],
+    srcs: ["service.cpp"],
+    static_libs: ["android.hardware.vibrator@1.3-impl.coral"],
 }
