@@ -3271,16 +3271,16 @@
 
     <!-- Phone SPK TX 3rd:DEC8 16dB, 2nd:DEC6 16dB, 1st:DEC5 16dB,-->
     <path name="voice-speaker-dmic-ef">
-        <path name="triple-mic-ll"/>
-        <ctl name="Rx0Ch EpGain" value="16" />
+        <path name="triple-mic"/>
+        <ctl name="Rx0Ch EpGain" value="13" />
         <ctl name="Rx0Chan GnRmp" value="STEP_600" />
         <ctl name="Rx0Chan Gain En" value="1" />
 
-        <ctl name="Rx2Ch EpGain" value="16" />
+        <ctl name="Rx2Ch EpGain" value="13" />
         <ctl name="Rx2Chan GnRmp" value="STEP_600" />
         <ctl name="Rx2Chan Gain En" value="1" />
 
-        <ctl name="Rx3Ch EpGain" value="16" />
+        <ctl name="Rx3Ch EpGain" value="13" />
         <ctl name="Rx3Chan GnRmp" value="STEP_600" />
         <ctl name="Rx3Chan Gain En" value="1" />
     </path>
