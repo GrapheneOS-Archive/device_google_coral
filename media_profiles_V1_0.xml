@@ -225,13 +225,13 @@
                    channels="1" />
         </EncoderProfile>
 
-        <!-- highspeed_low: 1920 x 1080 120fps 42.0 Mbps -->
+        <!-- highspeed_low: 1920 x 1080 240fps 63.0 Mbps -->
         <EncoderProfile quality="highspeedlow" fileFormat="mp4" duration="30">
             <Video codec="h264"
-                   bitRate="42000000"
+                   bitRate="63000000"
                    width="1920"
                    height="1080"
-                   frameRate="120" />
+                   frameRate="240" />
             <!-- audio setting is ignored -->
             <Audio codec="aac"
                    bitRate="96000"
@@ -439,20 +439,6 @@
                    channels="1" />
         </EncoderProfile>
 
-        <!-- highspeed_480p: 720 x 480 120fps -->
-        <EncoderProfile quality="highspeed480p" fileFormat="mp4" duration="30">
-            <Video codec="h264"
-                   bitRate="24000000"
-                   width="720"
-                   height="480"
-                   frameRate="120" />
-            <!-- audio setting is ignored -->
-            <Audio codec="aac"
-                   bitRate="96000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-
         <ImageEncoding quality="95" />
         <ImageEncoding quality="80" />
         <ImageEncoding quality="70" />
@@ -472,6 +458,20 @@
                    width="640"
                    height="480"
                    frameRate="30" />
+            <Audio codec="aac"
+                   bitRate="96000"
+                   sampleRate="48000"
+                   channels="1" />
+        </EncoderProfile>
+
+        <!-- timelapse_480p: 640 x 480 30fps -->
+        <EncoderProfile quality="timelapse480p" fileFormat="mp4" duration="30">
+            <Video codec="h264"
+                   bitRate="6000000"
+                   width="640"
+                   height="480"
+                   frameRate="30" />
+            <!-- audio setting is ignored -->
             <Audio codec="aac"
                    bitRate="96000"
                    sampleRate="48000"
