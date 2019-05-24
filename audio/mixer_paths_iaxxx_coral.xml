@@ -314,7 +314,7 @@
     <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_NONE" />
     <ctl name="Port ApllCLK Src" value="IAXXX_SRC_SYSCLK" />
     <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_NONE" />
-    <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_NONE" />
+    <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
     <ctl name="Route Status" value="InActive" />
     <!-- PDM Port mapping : Jaws
          Dmic1 : PortC
@@ -1774,7 +1774,6 @@
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
-        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="CDC0 MicBias" value="1" />
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
@@ -1805,7 +1804,6 @@
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
-        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="Pdm CDC Setup" value="1" />
@@ -1834,7 +1832,6 @@
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
-        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortB MicBias" value="1" />
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
@@ -1866,7 +1863,6 @@
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
-        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortC MicBias" value="1" />
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
@@ -1930,7 +1926,6 @@
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
-        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortC MicBias" value="1" />
         <ctl name="PortB MicBias" value="1" />
@@ -1987,7 +1982,6 @@
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
-        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortC MicBias" value="1" />
         <ctl name="PortB MicBias" value="1" />
@@ -2023,7 +2017,6 @@
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
-        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortC MicBias" value="1" />
         <ctl name="CDC0 MicBias" value="1" />
@@ -2082,7 +2075,6 @@
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
-        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortC MicBias" value="1" />
         <ctl name="CDC0 MicBias" value="1" />
@@ -2118,7 +2110,6 @@
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
-        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortB MicBias" value="1" />
 
@@ -2176,7 +2167,6 @@
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
-        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PortB MicBias" value="1" />
         <ctl name="PortC MicBias" value="1" />
@@ -2253,7 +2243,6 @@
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
-        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="CDC0 MicBias" value="1" />
         <ctl name="PortB MicBias" value="1" />
@@ -2312,7 +2301,6 @@
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
-        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="CDC0 MicBias" value="1" />
         <ctl name="PortB MicBias" value="1" />
@@ -2391,7 +2379,6 @@
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
-        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="CDC0 MicBias" value="1" />
         <ctl name="PortC MicBias" value="1" />
@@ -2470,7 +2457,6 @@
         <ctl name="Route Status" value="Active" />
         <ctl name="SSP Core Boot" value="CoreMemOn" />
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
-        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="CDC0 MicBias" value="1" />
         <ctl name="PortC MicBias" value="1" />
