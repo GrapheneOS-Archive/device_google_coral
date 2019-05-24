@@ -24,6 +24,7 @@
 #include <healthd/healthd.h>
 #include <hidl/HidlTransportSupport.h>
 #include <pixelhealth/BatteryMetricsLogger.h>
+#include "pixelhealth/BatteryThermalControl.h"
 #include <pixelhealth/CycleCountBackupRestore.h>
 #include <pixelhealth/DeviceHealth.h>
 #include <pixelhealth/LowBatteryShutdownMetrics.h>
@@ -39,6 +40,7 @@ using android::hardware::health::V2_0::DiskStats;
 using android::hardware::health::V2_0::StorageAttribute;
 using android::hardware::health::V2_0::StorageInfo;
 using hardware::google::pixel::health::BatteryMetricsLogger;
+using hardware::google::pixel::health::BatteryThermalControl;
 using hardware::google::pixel::health::CycleCountBackupRestore;
 using hardware::google::pixel::health::DeviceHealth;
 using hardware::google::pixel::health::LowBatteryShutdownMetrics;
@@ -50,6 +52,8 @@ constexpr char kVoltageAvg[] {FG_DIR "/voltage_avg"};
 constexpr char kCycleCountsBins[] {FG_DIR "/cycle_counts"};
 constexpr char kGaugeSerial[] {FG_DIR "/serial_number"};
 
+static BatteryThermalControl battThermalControl(
+    "sys/devices/virtual/thermal/tz-by-name/soc/mode");
 static BatteryMetricsLogger battMetricsLogger(kBatteryResistance, kBatteryOCV);
 static LowBatteryShutdownMetrics shutdownMetrics(kVoltageAvg);
 static CycleCountBackupRestore ccBackupRestore(
@@ -104,6 +108,7 @@ void healthd_board_init(struct healthd_config *hc) {
 
 int healthd_board_battery_update(struct android::BatteryProperties *props) {
   deviceHealth.update(props);
+  battThermalControl.updateThermalState(props);
   battMetricsLogger.logBatteryProperties(props);
   shutdownMetrics.logShutdownVoltage(props);
   ccBackupRestore.Backup(props->batteryLevel);
