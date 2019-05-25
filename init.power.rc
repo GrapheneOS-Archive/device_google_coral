@@ -100,9 +100,6 @@ on property:sys.boot_completed=1
     write /sys/class/drm/card0/device/idle_encoder_mask 1
     write /sys/class/drm/card0/device/idle_timeout_ms 100
 
-    # Switch display mode to 60hz when idle
-    write /sys/devices/platform/soc/soc:qcom,dsi-display-primary/idle_mode @60
-
     chown system system /sys/class/devfreq/soc:qcom,l3-cdsp/userspace/set_freq
 
     #Enable PowerHAL hint processing
