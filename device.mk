@@ -717,12 +717,6 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapgrowthlimit=256m
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/hidl/android.hidl.base@1.0.so-32:system/lib/android.hidl.base@1.0.so \
-    $(LOCAL_PATH)/hidl/android.hidl.base@1.0.so-64:system/lib64/android.hidl.base@1.0.so \
-    $(LOCAL_PATH)/hidl/android.hidl.base@1.0.so-32:vendor/lib/android.hidl.base@1.0.so \
-    $(LOCAL_PATH)/hidl/android.hidl.base@1.0.so-64:vendor/lib64/android.hidl.base@1.0.so \
-
 PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml
@@ -895,3 +889,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Disable SPU usage
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.gatekeeper.disable_spu = true
+
+# Enable iwlan service logging for debug
+ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+    PRODUCT_PROPERTY_OVERRIDES += persist.vendor.iwlan.logging.logcat=true
+endif
+
+# Write flags to the vendor space in /misc partition.
+PRODUCT_PACKAGES += \
+    misc_writer

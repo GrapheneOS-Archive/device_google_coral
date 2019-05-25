@@ -1302,14 +1302,12 @@
 
     <path name="mic-route-external-clock">
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
-        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_32K" />
         <path name="mic1-route" />
     </path>
 
     <path name="mic-route-internal-clock">
         <ctl name="Port ApllCLK Src" value="IAXXX_INT_OSC" />
-        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_32K" />
         <path name="mic1-route" />
     </path>
