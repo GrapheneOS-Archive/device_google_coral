@@ -942,7 +942,6 @@
     <!-- Hotword detect with bargein, mic in HPM(S=-37dBFS)-->
     <path name="mic-route-external-clock">
         <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
-        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_32K" />
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
         <path name="mic3-route" />
@@ -954,7 +953,6 @@
     <!-- Normal hotword detect use, mic in LPM(S=-21dBFS)-->
     <path name="mic-route-internal-clock">
         <ctl name="Port ApllCLK Src" value="IAXXX_INT_OSC" />
-        <ctl name="Port ApllCLK" value="IAXXX_ACLK_FREQ_24576" />
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_32K" />
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_0P_768MHZ"/>
         <path name="mic1-route" />

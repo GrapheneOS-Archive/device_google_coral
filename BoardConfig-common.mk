@@ -77,9 +77,11 @@ TARGET_RECOVERY_WIPE := device/google/coral/recovery.wipe
 TARGET_RECOVERY_FSTAB := device/google/coral/fstab.hardware
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_RECOVERY_UI_LIB := \
-  librecovery_ui_coral \
-  libnos_citadel_for_recovery \
-  libnos_for_recovery
+    librecovery_ui_coral \
+    libnos_citadel_for_recovery \
+    libnos_for_recovery \
+    libbootloader_message \
+    libfstab
 
 # Enable chain partition for system.
 BOARD_AVB_VBMETA_SYSTEM := system
