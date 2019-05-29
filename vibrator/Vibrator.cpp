@@ -400,6 +400,7 @@ Return<void> Vibrator::performEffect(Effect effect, EffectStrength strength, per
         if (status != Status::OK) {
             goto exit;
         }
+        setEffectAmplitude(VOLTAGE_SCALE_MAX, VOLTAGE_SCALE_MAX);
         effectIndex = WAVEFORM_TRIGGER_QUEUE_INDEX;
     } else {
         setEffectAmplitude(volLevel, VOLTAGE_SCALE_MAX);
