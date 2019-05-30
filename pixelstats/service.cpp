@@ -37,7 +37,8 @@ const struct SysfsCollector::SysfsPaths sysfs_paths = {
     .SlowioSyncCntPath = UFSHC_PATH(slowio_sync_cnt),
     .CycleCountBinsPath = "/sys/class/power_supply/battery/cycle_counts",
     .ImpedancePath = "/sys/class/misc/msm_cirrus_playback/resistance_left_right",
-    .CodecPath = "",  // b/126295204
+    .CodecPath =     "/sys/class/iaxxx-dev/iaxxx_misc/codec_state",
+    .SpeechDspPath = "/sys/class/iaxxx-dev/iaxxx_misc/wdsp_stat",
     .BatteryCapacityCC = MAXIM_DIR(delta_cc_sum),
     .BatteryCapacityVFSOC = MAXIM_DIR(delta_vfsoc_sum),
 };
