@@ -133,6 +133,17 @@ on init && property:vendor.skip.init=0
     # Enable suspend clock reporting
     write /sys/kernel/debug/clk/debug_suspend 1
 
+    # Wireless charging
+    setprop vendor.google.wlc.i2c_dir /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061
+    chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/rxdata
+    chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/txdata
+    chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/rxlen
+    chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/txlen
+    chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/ccreset
+    chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/status
+    chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/version
+
+
 on late-init
     setprop vendor.thermal.config thermal_info_config.json
     chown system system /sys/devices/virtual/thermal/tz-by-name/sdm-therm-monitor/trip_point_0_temp
