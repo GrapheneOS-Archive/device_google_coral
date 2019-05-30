@@ -1,0 +1,16 @@
+cc_test {
+    name: "PtsVibratorHalFloralTestSuite",
+    defaults: ["PtsVibratorHalFloralDefaults"],
+    srcs: [
+        "test-hwapi.cpp",
+        "test-hwcal.cpp",
+        "test-vibrator.cpp",
+    ],
+    static_libs: [
+        "libc++fs",
+        "libgmock",
+    ],
+    shared_libs: [
+        "libbase",
+    ],
+}
