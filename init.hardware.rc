@@ -580,6 +580,8 @@ on property:sys.boot_completed=1
     # Permission for Athletico
     chown system system /dev/sensor_tunnel
     chmod 0660 /dev/sensor_tunnel
+    chown system system /dev/iaxxx-module-celldrv
+    chmod 0660 /dev/iaxxx-module-celldrv
 
 service vendor.per_mgr /vendor/bin/pm-service
     class core
