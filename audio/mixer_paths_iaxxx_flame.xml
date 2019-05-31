@@ -2114,7 +2114,7 @@
 
         <ctl name="strm0 ASRC Mode" value="REDBOX_2-1" />
         <ctl name="strm0 Master Strm Id" value="STREAMID_0" />
-        <ctl name="strm0 Format FrLn" value="8K_20MS" />
+        <ctl name="strm0 Format FrLn" value="48K_10MS" />
         <ctl name="strm0 Format Sr" value="RATE_48K" />
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm0 Dir" value="0" />
@@ -2127,7 +2127,7 @@
 
         <ctl name="strm1 ASRC Mode" value="REDBOX_2-1" />
         <ctl name="strm1 Master Strm Id" value="STREAMID_0" />
-        <ctl name="strm1 Format FrLn" value="8K_20MS" />
+        <ctl name="strm1 Format FrLn" value="48K_10MS" />
         <ctl name="strm1 Format Sr" value="RATE_48K" />
         <ctl name="strm1 Format Enc" value="ENCODING_AFLOAT" />
         <ctl name="strm1 Dir" value="0" />
@@ -2603,7 +2603,7 @@
     <!-- Port CDCPDM1+C, Phone -->
     <path name="iaxxx-dmic13">
         <path name="iaxxx-port-cdcpdm1-c" />
-        <ctl name="strm8 Format FrLn" value="8K_20MS" />
+        <ctl name="strm8 Format FrLn" value="48K_10MS" />
         <path name="iaxxx-port-a" />
         <ctl name="strm8 CH Mask En" value="3" />
         <ctl name="strm8 En" value="1" />
@@ -2847,7 +2847,7 @@
 
     <!-- Phone SPK TX 3rd: 4dB, 2nd: 4dB, 1st: 4dB,-->
     <path name="speaker-mic">
-        <path name="triple-mic"/>
+        <path name="iaxxx-dmic321"/>
         <ctl name="Rx0Ch EpGain" value="4" />
         <ctl name="Rx0Chan GnRmp" value="STEP_600" />
         <ctl name="Rx0Chan Gain En" value="1" />
@@ -3310,11 +3310,22 @@
     </path>
 
     <path name="handset-stereo-dmic-ef">
-        <path name="handset-dmic-endfire"/>
+        <path name="iaxxx-dmic13"/>
     </path>
 
     <path name="speaker-stereo-dmic-ef">
-        <path name="speaker-dmic-endfire"/>
+        <path name="iaxxx-dmic321"/>
+        <ctl name="Rx0Ch EpGain" value="16" />
+        <ctl name="Rx0Chan GnRmp" value="STEP_600" />
+        <ctl name="Rx0Chan Gain En" value="1" />
+
+        <ctl name="Rx1Ch EpGain" value="16" />
+        <ctl name="Rx1Chan GnRmp" value="STEP_600" />
+        <ctl name="Rx1Chan Gain En" value="1" />
+
+        <ctl name="Rx2Ch EpGain" value="16" />
+        <ctl name="Rx2Chan GnRmp" value="STEP_600" />
+        <ctl name="Rx2Chan Gain En" value="1" />
     </path>
 
     <!-- Phone RCV TX Dual-mic 1st MIC D:13 dB, 3rd MIC:13 dB -->
