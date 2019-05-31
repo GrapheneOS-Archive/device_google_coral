@@ -891,7 +891,7 @@
         <ctl name="strm0 Format Sr" value="RATE_16K"/>
         <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT"/>
         <ctl name="strm0 Dir" value="0"/>
-        <ctl name="strm0 DC block en" value="1" />
+        <ctl name="strm0 DC block en" value="1"/>
         <ctl name="strm0 inter strm delay" value="0"/>
         <ctl name="strm0 Port" value="PDMI1"/>
         <ctl name="strm0 Port Enc" value="ENCODING_Q23"/>
@@ -917,6 +917,15 @@
 
     <path name="bargein-route">
     <!-- use aec mic -->
+        <ctl name="Plgin4Ip Ep0 Conf" value="plugin6Out0"/>
+        <ctl name="Plgin4Ip Ep1 Conf" value="plugin7Out0"/>
+        <ctl name="Plgin4Ip Ep2 Conf" value="plugin7Out1"/>
+        <ctl name="Plgin4En" value="Rx0Plgin4On"/>
+        <ctl name="Plgin4Blk1En" value="1"/>
+    </path>
+
+    <path name="bargein-amp-ref">
+    <!-- use aec mic -->
         <ctl name="PCM PortE Setup" value="1"/>
         <ctl name="PCM PortE Start" value="0x1FF"/>
         <ctl name="strm4 ASRC Mode" value="ASRC_ENABLE"/>
@@ -931,11 +940,23 @@
         <ctl name="strm4 Port Enc" value="ENCODING_Q15"/>
         <ctl name="strm4 CH Mask En" value="0xF0"/>
         <ctl name="strm4 En" value="1"/>
-        <ctl name="Plgin4Ip Ep0 Conf" value="RX0_ChanMgr"/>
-        <ctl name="Plgin4Ip Ep1 Conf" value="RX4_ChanMgr"/>
-        <ctl name="Plgin4Ip Ep2 Conf" value="RX6_ChanMgr"/>
-        <ctl name="Plgin4En" value="Rx0Plgin4On"/>
-        <ctl name="Plgin4Blk1En" value="1"/>
+    </path>
+
+    <path name="bargein-amp-ref-48k">
+    <!-- use aec mic -->
+        <ctl name="PCM PortE Setup" value="1"/>
+        <ctl name="PCM PortE Start" value="0x1FF"/>
+        <ctl name="strm4 ASRC Mode" value="ASRC_ENABLE"/>
+        <ctl name="strm4 Master Strm Id" value="STREAMID_0"/>
+        <ctl name="strm4 Format FrLn" value="48K_10MS"/>
+        <ctl name="strm4 Format Sr" value="RATE_48K" />
+        <ctl name="strm4 Format Enc" value="ENCODING_AFLOAT"/>
+        <ctl name="strm4 Dir" value="0"/>
+        <ctl name="strm4 inter strm delay" value="0"/>
+        <ctl name="strm4 Port" value="PCM4"/>
+        <ctl name="strm4 Port Enc" value="ENCODING_Q15"/>
+        <ctl name="strm4 CH Mask En" value="0xF0"/>
+        <ctl name="strm4 En" value="1"/>
     </path>
 
     <!-- Hotword detect with bargein, mic in HPM(S=-37dBFS)-->
@@ -960,6 +981,21 @@
         <ctl name="Rx0Chan Gain En" value="1"/>
     </path>
 
+    <path name="src-route-mic">
+    <!-- bind src route on main-mic -->
+        <ctl name="Plgin6Ip Ep0 Conf" value="RX0_ChanMgr"/>
+        <ctl name="Plgin6En" value="Rx0Plgin6On"/>
+        <ctl name="Plgin6Blk1En" value="1"/>
+    </path>
+
+    <path name="src-route-amp-ref">
+    <!-- bind src route on main-mic -->
+        <ctl name="Plgin7Ip Ep0 Conf" value="RX4_ChanMgr"/>
+        <ctl name="Plgin7Ip Ep1 Conf" value="RX6_ChanMgr"/>
+        <ctl name="Plgin7En" value="Rx0Plgin7On"/>
+        <ctl name="Plgin7Blk1En" value="1"/>
+    </path>
+
     <path name="hotword-route">
     <!-- enable hotword route -->
         <ctl name="Plgin0En" value="Rx0Plgin0On"/>
@@ -972,7 +1008,7 @@
     </path>
 
     <path name="hotword-route-without-bargein">
-        <ctl name="Plgin0Ip Ep0 Conf" value="RX0_ChanMgr"/>
+        <ctl name="Plgin0Ip Ep0 Conf" value="plugin6Out0"/>
         <path name="hotword-route"/>
     </path>
 
@@ -983,12 +1019,12 @@
     </path>
 
     <path name="ambient-route-with-bargein">
-        <ctl name="Plgin2Ip Ep0 Conf" value="RX0_ChanMgr"/>
+        <ctl name="Plgin2Ip Ep0 Conf" value="plugin6Out0"/>
         <path name="ambient-route"/>
     </path>
 
     <path name="ambient-route-without-bargein">
-        <ctl name="Plgin2Ip Ep0 Conf" value="RX0_ChanMgr"/>
+        <ctl name="Plgin2Ip Ep0 Conf" value="plugin6Out0"/>
         <path name="ambient-route"/>
     </path>
 
@@ -1004,7 +1040,7 @@
     </path>
 
     <path name="chre-route-without-bargein">
-        <ctl name="Plgin5Ip Ep0 Conf" value="RX0_ChanMgr"/>
+        <ctl name="Plgin5Ip Ep0 Conf" value="plugin6Out0"/>
         <path name="chre-route"/>
     </path>
 
@@ -1029,7 +1065,7 @@
     </path>
 
     <path name="buffer-route-without-bargein">
-        <ctl name="Plgin1Ip Ep0 Conf" value="RX0_ChanMgr" />
+        <ctl name="Plgin1Ip Ep0 Conf" value="plugin6Out0" />
         <path name="buffer-audio-route" />
     </path>
 
@@ -1039,12 +1075,12 @@
     </path>
 
     <path name="music-buffer-with-bargein">
-        <ctl name="Plgin3Ip Ep0 Conf" value="RX0_ChanMgr" />
+        <ctl name="Plgin3Ip Ep0 Conf" value="plugin6Out0" />
         <path name="music-buffer-route" />
     </path>
 
     <path name="music-buffer-without-bargein">
-        <ctl name="Plgin3Ip Ep0 Conf" value="RX0_ChanMgr" />
+        <ctl name="Plgin3Ip Ep0 Conf" value="plugin6Out0" />
         <path name="music-buffer-route" />
     </path>
 
