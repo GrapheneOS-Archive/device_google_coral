@@ -40,7 +40,7 @@
         <!-- high: 3840 x 2160 30fps -->
         <EncoderProfile quality="high" fileFormat="mp4" duration="30">
             <Video codec="h264"
-                   bitRate="42000000"
+                   bitRate="48000000"
                    width="3840"
                    height="2160"
                    frameRate="30" />
@@ -131,7 +131,7 @@
         <!-- 2160p: 3840 x 2160 30fps -->
         <EncoderProfile quality="2160p" fileFormat="mp4" duration="30">
             <Video codec="h264"
-                   bitRate="42000000"
+                   bitRate="48000000"
                    width="3840"
                    height="2160"
                    frameRate="30" />
