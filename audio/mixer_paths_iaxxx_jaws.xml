@@ -1342,6 +1342,18 @@
         <path name="incall-rec-uplink"/>
     </path>
 
+    <path name="incall-rec-uplink headset-mic">
+        <path name="incall-rec-uplink" />
+    </path>
+
+    <path name="incall-rec-uplink handset-mic">
+        <path name="incall-rec-uplink" />
+    </path>
+
+    <path name="incall-rec-uplink speaker-mic">
+        <path name="incall-rec-uplink" />
+    </path>
+
     <path name="incall-rec-uplink usb-headset-mic">
         <path name="incall-rec-uplink"/>
     </path>
@@ -1360,6 +1372,18 @@
 
     <path name="incall-rec-uplink-compress bt-sco-wb">
         <path name="incall-rec-uplink-compress"/>
+    </path>
+
+    <path name="incall-rec-uplink-compress headset-mic">
+        <path name="incall-rec-uplink-compress" />
+    </path>
+
+    <path name="incall-rec-uplink-compress handset-mic">
+        <path name="incall-rec-uplink-compress" />
+    </path>
+
+    <path name="incall-rec-uplink-compress speaker-mic">
+        <path name="incall-rec-uplink-compress" />
     </path>
 
     <path name="incall-rec-uplink-compress usb-headset-mic">
@@ -1382,6 +1406,18 @@
         <path name="incall-rec-downlink"/>
     </path>
 
+    <path name="incall-rec-downlink headset-mic">
+        <path name="incall-rec-downlink" />
+    </path>
+
+    <path name="incall-rec-downlink handset-mic">
+        <path name="incall-rec-downlink" />
+    </path>
+
+    <path name="incall-rec-downlink speaker-mic">
+        <path name="incall-rec-downlink" />
+    </path>
+
     <path name="incall-rec-downlink usb-headset-mic">
         <path name="incall-rec-downlink"/>
     </path>
@@ -1400,6 +1436,18 @@
 
     <path name="incall-rec-downlink-compress bt-sco-wb">
         <path name="incall-rec-downlink-compress"/>
+    </path>
+
+    <path name="incall-rec-downlink-compress headset-mic">
+        <path name="incall-rec-downlink-compress" />
+    </path>
+
+    <path name="incall-rec-downlink-compress handset-mic">
+        <path name="incall-rec-downlink-compress" />
+    </path>
+
+    <path name="incall-rec-downlink-compress speaker-mic">
+        <path name="incall-rec-downlink-compress" />
     </path>
 
     <path name="incall-rec-downlink-compress usb-headset-mic">
@@ -1423,6 +1471,18 @@
         <path name="incall-rec-uplink-and-downlink"/>
     </path>
 
+    <path name="incall-rec-uplink-and-downlink headset-mic">
+        <path name="incall-rec-uplink-and-downlink" />
+    </path>
+
+    <path name="incall-rec-uplink-and-downlink handset-mic">
+        <path name="incall-rec-uplink-and-downlink" />
+    </path>
+
+    <path name="incall-rec-uplink-and-downlink speaker-mic">
+        <path name="incall-rec-uplink-and-downlink" />
+    </path>
+
     <path name="incall-rec-uplink-and-downlink usb-headset-mic">
         <path name="incall-rec-uplink-and-downlink"/>
     </path>
@@ -1442,6 +1502,18 @@
 
     <path name="incall-rec-uplink-and-downlink-compress bt-sco-wb">
         <path name="incall-rec-uplink-and-downlink-compress"/>
+    </path>
+
+    <path name="incall-rec-uplink-and-downlink-compress headset-mic">
+        <path name="incall-rec-uplink-and-downlink-compress" />
+    </path>
+
+    <path name="incall-rec-uplink-and-downlink-compress handset-mic">
+        <path name="incall-rec-uplink-and-downlink-compress" />
+    </path>
+
+    <path name="incall-rec-uplink-and-downlink-compress speaker-mic">
+        <path name="incall-rec-uplink-and-downlink-compress" />
     </path>
 
     <path name="incall-rec-uplink-and-downlink-compress usb-headset-mic">
