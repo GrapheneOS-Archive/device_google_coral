@@ -93,6 +93,8 @@ static Enable_If_Iterable<T, false> unpack(std::istream &stream, T *value) {
     stream >> *value;
 }
 
+#define RECORD(args...) record(__FUNCTION__, ##args)
+
 HwApi::HwApi() {
     // ostreams below are required
     fileFromEnv("F0_FILEPATH", &mF0, &mNames[&mF0]);
@@ -128,6 +130,7 @@ bool HwApi::get(T *value, U &stream) {
         ALOGE("Failed to read %s (%d): %s", mNames[&stream].c_str(), errno, strerror(errno));
     }
     stream.clear();
+    RECORD(*value, &stream);
     return ret;
 }
 
@@ -140,7 +143,14 @@ bool HwApi::set(const T &value, U &stream) {
         ALOGE("Failed to write %s (%d): %s", mNames[&stream].c_str(), errno, strerror(errno));
         stream.clear();
     }
+    RECORD(value, &stream);
     return ret;
+}
+
+template <typename T>
+void HwApi::record(const char *func, const T &value, void *stream) {
+    mRecords.emplace_back(std::make_unique<Record<T>>(func, value, stream));
+    mRecords.erase(mRecords.begin());
 }
 
 void HwApi::debug(int fd) {
@@ -156,6 +166,23 @@ void HwApi::debug(int fd) {
             dprintf(fd, "    %s\n", line.c_str());
         }
     }
+
+    dprintf(fd, "  Records:\n");
+    for (auto &r : mRecords) {
+        if (r == nullptr) {
+            continue;
+        }
+        dprintf(fd, "    %s\n", r->toString(mNames).c_str());
+    }
+}
+
+template <typename T>
+std::string HwApi::Record<T>::toString(const NamesMap &names) {
+    std::stringstream ret;
+
+    ret << mFunc << " '" << names.at(mStream) << "' = '" << mValue << "'";
+
+    return ret.str();
 }
 
 HwCal::HwCal() {
