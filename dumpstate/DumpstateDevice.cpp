@@ -441,9 +441,6 @@ Return<void> DumpstateDevice::dumpstateBoard(const hidl_handle& handle) {
         RunCommandToFd(fd, "Citadel SELFTEST", {"/vendor/bin/hw/citadel_updater", "--selftest"});
     }
 
-    // Dump various events in WiFi data path
-    DumpFileToFd(fd, "WLAN DP Trace", "/d/wlan/dpt_stats/dump_set_dpt_logs");
-
     // Keep this at the end as very long on not for humans
     DumpFileToFd(fd, "WLAN FW Log Symbol Table", "/vendor/firmware/Data.msc");
 
