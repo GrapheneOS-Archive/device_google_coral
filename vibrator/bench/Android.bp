@@ -13,17 +13,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-cc_test {
-    name: "PtsVibratorHalFloralTestSuite",
+cc_benchmark {
+    name: "PtsVibratorHalFloralBenchmark",
     defaults: ["PtsVibratorHalFloralDefaults"],
     srcs: [
-        "test-hwapi.cpp",
-        "test-hwcal.cpp",
-        "test-vibrator.cpp",
+        "benchmark.cpp",
     ],
     static_libs: [
         "libc++fs",
-        "libgmock",
     ],
     shared_libs: [
         "libbase",
