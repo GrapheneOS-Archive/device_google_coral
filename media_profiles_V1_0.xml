@@ -271,7 +271,6 @@
         <ImageEncoding quality="80" />
         <ImageEncoding quality="70" />
         <ImageDecoding memCap="20000000" />
-
     </CamcorderProfiles>
 
     <!-- ****************************************************************** -->
@@ -443,7 +442,6 @@
         <ImageEncoding quality="80" />
         <ImageEncoding quality="70" />
         <ImageDecoding memCap="20000000" />
-
     </CamcorderProfiles>
 
     <!-- ****************************************************************** -->
@@ -482,76 +480,6 @@
         <ImageEncoding quality="80" />
         <ImageEncoding quality="70" />
         <ImageDecoding memCap="20000000" />
-
-    </CamcorderProfiles>
-
-    <!-- ****************************************************************** -->
-    <!-- physical cameras (wide is 3, tele is 4, lead is 6, follower is 7)  -->
-    <!-- ****************************************************************** -->
-    <CamcorderProfiles cameraId="3">
-        <EncoderProfile quality="low" fileFormat="3gp" duration="60">
-            <Video codec="h264"
-                   bitRate="128000"
-                   width="176"
-                   height="144"
-                   frameRate="30" />
-            <Audio codec="amrnb"
-                   bitRate="12200"
-                   sampleRate="8000"
-                   channels="1" />
-        </EncoderProfile>
-    </CamcorderProfiles>
-    <CamcorderProfiles cameraId="4">
-        <EncoderProfile quality="low" fileFormat="3gp" duration="60">
-            <Video codec="h264"
-                   bitRate="128000"
-                   width="176"
-                   height="144"
-                   frameRate="30" />
-            <Audio codec="amrnb"
-                   bitRate="12200"
-                   sampleRate="8000"
-                   channels="1" />
-        </EncoderProfile>
-    </CamcorderProfiles>
-    <CamcorderProfiles cameraId="5">
-        <EncoderProfile quality="low" fileFormat="3gp" duration="60">
-            <Video codec="h264"
-                   bitRate="128000"
-                   width="176"
-                   height="144"
-                   frameRate="30" />
-            <Audio codec="amrnb"
-                   bitRate="12200"
-                   sampleRate="8000"
-                   channels="1" />
-        </EncoderProfile>
-    </CamcorderProfiles>
-    <CamcorderProfiles cameraId="6">
-        <EncoderProfile quality="low" fileFormat="3gp" duration="60">
-            <Video codec="h264"
-                   bitRate="128000"
-                   width="176"
-                   height="144"
-                   frameRate="30" />
-            <Audio codec="amrnb"
-                   bitRate="12200"
-                   sampleRate="8000"
-                   channels="1" />
-        </EncoderProfile>
-    </CamcorderProfiles>
-    <CamcorderProfiles cameraId="7">
-        <EncoderProfile quality="low" fileFormat="3gp" duration="60">
-            <Video codec="h264"
-                   bitRate="128000"
-                   width="176"
-                   height="144"
-                   frameRate="30" />
-            <Audio codec="amrnb"
-                   bitRate="12200"
-                   sampleRate="8000"
-                   channels="1" />
-        </EncoderProfile>
     </CamcorderProfiles>
 
     <EncoderOutputFileFormat name="3gp" />
