@@ -134,7 +134,6 @@ on init && property:vendor.skip.init=0
     write /sys/kernel/debug/clk/debug_suspend 1
 
     # Wireless charging
-    setprop vendor.google.wlc.i2c_dir /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061
     chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/rxdata
     chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/txdata
     chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/rxlen
