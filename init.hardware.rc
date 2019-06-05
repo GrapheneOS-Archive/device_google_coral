@@ -143,6 +143,9 @@ on init && property:vendor.skip.init=0
     chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/status
     chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/version
 
+    # Allow PAI targeting per hardware SKU
+    setprop ro.oem.key1 ${ro.boot.hardware.sku}
+
 
 on late-init
     setprop vendor.thermal.config thermal_info_config.json
