@@ -58,12 +58,6 @@
     </exception>
 
     <exception
-            package="com.google.intelligence.sense">
-        <!-- Record Audio -->
-        <permission name="android.permission.RECORD_AUDIO" fixed="false"/>
-    </exception>
-
-    <exception
             package="com.verizon.mips.services">
         <!-- Call -->
         <permission name="android.permission.PROCESS_OUTGOING_CALLS" fixed="false"/>
