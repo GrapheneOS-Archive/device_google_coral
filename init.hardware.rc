@@ -48,6 +48,9 @@ on early-fs
     start vold
 
 on init && property:vendor.skip.init=0
+    # Load display primaries
+    start init_native_display_primaries
+
     # Boot time fs tuning
     write /sys/block/sda/queue/iostats 0
     write /sys/block/sda/queue/scheduler cfq
@@ -134,7 +137,6 @@ on init && property:vendor.skip.init=0
     write /sys/kernel/debug/clk/debug_suspend 1
 
     # Wireless charging
-    setprop vendor.google.wlc.i2c_dir /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061
     chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/rxdata
     chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/txdata
     chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/rxlen
@@ -204,7 +206,6 @@ on post-fs
 
 on late-fs
     # Start services for bootanim
-    start init_native_display_primaries
     wait_for_prop vendor.display.native_display_primaries_ready 1
     setprop ro.surface_flinger.display_primary_red ${vendor.display.primary_red}
     setprop ro.surface_flinger.display_primary_green ${vendor.display.primary_green}
@@ -741,11 +742,6 @@ service modem_svc /vendor/bin/modem_svc -q
    group system
    capabilities NET_BIND_SERVICE
 
-service ipacm /vendor/bin/ipacm
-    class main
-    user radio
-    group radio inet
-
 service vendor.ss_ramdump /vendor/bin/subsystem_ramdump
     class main
     user root
@@ -891,3 +887,9 @@ service vendor.darkboot /vendor/bin/misc_writer --vendor-space-offset 0 --hex-st
 
 on property:persist.sys.device_provisioned=1
     start vendor.darkboot
+
+# For Japan radio builds, always enforce camera shutter sound
+# Since this property is read by the audio server in system service,
+# it should be written by the system init.
+on property:ro.boot.hardware.radio.subtype=1
+    setprop audio.camerasound.force true
