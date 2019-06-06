@@ -47,6 +47,7 @@ using hardware::google::pixel::health::LowBatteryShutdownMetrics;
 
 #define FG_DIR "/sys/class/power_supply/battery"
 constexpr char kBatteryResistance[] {FG_DIR "/resistance"};
+constexpr char kBatteryAvgResistance[] {FG_DIR "/resistance_avg"};
 constexpr char kBatteryOCV[] {FG_DIR "/voltage_ocv"};
 constexpr char kVoltageAvg[] {FG_DIR "/voltage_avg"};
 constexpr char kCycleCountsBins[] {FG_DIR "/cycle_counts"};
@@ -54,7 +55,8 @@ constexpr char kGaugeSerial[] {FG_DIR "/serial_number"};
 
 static BatteryThermalControl battThermalControl(
     "sys/devices/virtual/thermal/tz-by-name/soc/mode");
-static BatteryMetricsLogger battMetricsLogger(kBatteryResistance, kBatteryOCV);
+static BatteryMetricsLogger battMetricsLogger(
+    kBatteryResistance, kBatteryOCV, kBatteryAvgResistance);
 static LowBatteryShutdownMetrics shutdownMetrics(kVoltageAvg);
 static CycleCountBackupRestore ccBackupRestore(
     10, kCycleCountsBins, "/persist/battery/cycle_counts", kGaugeSerial);
