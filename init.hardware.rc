@@ -48,6 +48,9 @@ on early-fs
     start vold
 
 on init && property:vendor.skip.init=0
+    # Load display primaries
+    start init_native_display_primaries
+
     # Boot time fs tuning
     write /sys/block/sda/queue/iostats 0
     write /sys/block/sda/queue/scheduler cfq
@@ -134,7 +137,6 @@ on init && property:vendor.skip.init=0
     write /sys/kernel/debug/clk/debug_suspend 1
 
     # Wireless charging
-    setprop vendor.google.wlc.i2c_dir /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061
     chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/rxdata
     chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/txdata
     chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/rxlen
@@ -204,7 +206,6 @@ on post-fs
 
 on late-fs
     # Start services for bootanim
-    start init_native_display_primaries
     wait_for_prop vendor.display.native_display_primaries_ready 1
     setprop ro.surface_flinger.display_primary_red ${vendor.display.primary_red}
     setprop ro.surface_flinger.display_primary_green ${vendor.display.primary_green}
