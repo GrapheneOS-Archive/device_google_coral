@@ -182,8 +182,7 @@ int main(int /* argc */, char** /* argv */) {
     };
 
     sp<GenericStateResidencyDataProvider> nfcSdp =
-            new GenericStateResidencyDataProvider(
-                    "/sys/devices/platform/soc/a84000.i2c/i2c-2/2-0008/power_stats");
+            new GenericStateResidencyDataProvider("/sys/class/misc/st21nfc/device/power_stats");
 
     uint32_t nfcId = service->addPowerEntity("NFC", PowerEntityType::SUBSYSTEM);
     nfcSdp->addEntity(nfcId,
