@@ -887,3 +887,9 @@ service vendor.darkboot /vendor/bin/misc_writer --vendor-space-offset 0 --hex-st
 
 on property:persist.sys.device_provisioned=1
     start vendor.darkboot
+
+# For Japan radio builds, always enforce camera shutter sound
+# Since this property is read by the audio server in system service,
+# it should be written by the system init.
+on property:ro.boot.hardware.radio.subtype=1
+    setprop audio.camerasound.force true
