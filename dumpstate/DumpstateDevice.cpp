@@ -425,7 +425,6 @@ Return<void> DumpstateDevice::dumpstateBoard(const hidl_handle& handle) {
     // Slower dump put later in case stuck the rest of dump
     // Timeout after 3s as TZ log missing EOF
     RunCommandToFd(fd, "QSEE logs", {"/vendor/bin/sh", "-c", "/vendor/bin/timeout 3 cat /d/tzdbg/qsee_log"});
-    RunCommandToFd(fd, "TZ logs", {"/vendor/bin/sh", "-c", "/vendor/bin/timeout 3 cat /d/tzdbg/log"});
     RunCommandToFd(fd, "HYP logs", {"/vendor/bin/sh", "-c", "/vendor/bin/timeout 3 cat /d/tzdbg/hyp_log"});
     if (handle->numFds < 2) {
         ALOGE("no FD for modem\n");
