@@ -1063,6 +1063,7 @@
 
     <path name="audio-with-haptics-playback">
         <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia30" value="1"/>
+        <ctl name="TERT_TDM_RX_1 Audio Mixer MultiMedia31" value="1"/>
     </path>
 
     <path name="audio-with-haptics-playback handset">
