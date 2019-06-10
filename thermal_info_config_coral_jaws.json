@@ -226,6 +226,10 @@
             "Type":"CPU"
         },
         {
+            "Name":"thermal-cpufreq-7",
+            "Type":"CPU"
+        },
+        {
             "Name":"thermal-devfreq-0",
             "Type":"GPU"
         },
