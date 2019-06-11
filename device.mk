@@ -213,6 +213,21 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.vc_call_vol_steps=7 \
     ro.config.media_vol_steps=25 \
 
+# Audio Features
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.audio.feature.external_dsp.enable=true \
+    vendor.audio.feature.external_speaker.enable=true \
+    vendor.audio.feature.concurrent_capture.enable=false \
+    vendor.audio.feature.a2dp_offload.enable=true \
+    vendor.audio.feature.hfp.enable=true \
+    vendor.audio.feature.hwdep_cal.enable=true \
+    vendor.audio.feature.incall_music.enable=true \
+    vendor.audio.feature.maxx_audio.enable=true \
+    vendor.audio.feature.spkr_prot.enable=true \
+    vendor.audio.feature.usb_offload.enable=true \
+    vendor.audio.feature.audiozoom.enable=true \
+    vendor.audio.feature.snd_mon.enable=true \
+
 # MaxxAudio effect and add rotation monitor
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.audio.monitorRotation=true
@@ -516,6 +531,7 @@ PRODUCT_PACKAGES += \
     liba2dpoffload \
     btaudio_offload_if \
     libmaxxaudio \
+    libaudiozoom
 
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PACKAGES += \
@@ -557,7 +573,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/bluetooth_hearing_aid_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_hearing_aid_audio_policy_configuration.xml \
     $(LOCAL_PATH)/audio/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
     $(LOCAL_PATH)/audio/audio_io_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_io_policy.conf \
-    $(LOCAL_PATH)/audio/audio_configs_stock.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_configs_stock.xml \
     frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_in_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
