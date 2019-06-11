@@ -559,6 +559,8 @@ on property:sys.boot_completed=1
     chmod 444 /sys/devices/platform/soc/soc:qcom,dsi-display-primary/panel_info/panel0/panel_extinfo
     chmod 644 /sys/kernel/debug/regmap/1-0036/registers
     chmod 644 /sys/kernel/debug/regmap/1-000b/registers
+    chmod 644 /sys/kernel/debug/regmap/2-0036/registers
+    chmod 644 /sys/kernel/debug/regmap/2-000b/registers
 
     # Maxim FG dump for dumpstate
     chown system system /sys/kernel/debug/regmap/1-0036/registers
