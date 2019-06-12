@@ -41,7 +41,7 @@
         <device name="SND_DEVICE_OUT_SPEAKER_SAFE_AND_USB_HEADSET" acdb_id="514"/>
         <device name="SND_DEVICE_OUT_SPEAKER_PROTECTED" acdb_id="513"/>
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER_PROTECTED" acdb_id="14"/>
-        <device name="SND_DEVICE_OUT_VOICE_HEARING_AID" acdb_id="10"/>
+        <device name="SND_DEVICE_OUT_VOICE_HEARING_AID" acdb_id="202"/>
         <device name="SND_DEVICE_IN_HANDSET_DMIC_NS" acdb_id="110"/>
         <device name="SND_DEVICE_IN_SPEAKER_DMIC" acdb_id="19"/>
         <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC" acdb_id="115"/>
