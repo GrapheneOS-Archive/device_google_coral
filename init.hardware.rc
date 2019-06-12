@@ -49,7 +49,7 @@ on early-fs
 
 on init && property:vendor.skip.init=0
     # Load display primaries
-    start init_native_display_primaries
+    start color_init
 
     # Boot time fs tuning
     write /sys/block/sda/queue/iostats 0
@@ -793,13 +793,6 @@ service insmod_sh /vendor/bin/init.insmod.sh /vendor/etc/init.insmod.${ro.hardwa
     class main
     user root
     group root system
-    disabled
-    oneshot
-
-service init_native_display_primaries /vendor/bin/init.native_display_primaries.sh
-    class main
-    user system
-    group graphics
     disabled
     oneshot
 
