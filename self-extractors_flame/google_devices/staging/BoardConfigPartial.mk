@@ -13,3 +13,6 @@
 # limitations under the License.
 
 BOARD_PREBUILT_VENDORIMAGE := vendor/google_devices/flame/proprietary/vendor.img
+
+AB_OTA_PARTITIONS += \
+    vendor
