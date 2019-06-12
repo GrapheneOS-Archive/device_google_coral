@@ -386,6 +386,7 @@
     <ctl name="strm0 inter strm delay" value="0" />
     <ctl name="strm0 Xfer Mode" value="SSP" />
     <ctl name="strm0 Low Latency IpStr Id" value="STREAMID_NONE" />
+    <ctl name="strm0 Phy logical Ch Map" value="0" />
     <!-- iaxxx pdm port c -->
     <ctl name="strm0 Port" value="NONE" />
     <ctl name="strm0 Port Enc" value="ENCODING_OPAQUE" />
@@ -2074,6 +2075,7 @@
         <ctl name="strm0 CH Mask En" value="5" />
         <ctl name="strm0 Xfer Mode" value="SSP_Low_Lat_PT" />
         <ctl name="strm0 Low Latency IpStr Id" value="STREAMID_8" />
+        <ctl name="strm0 Phy logical Ch Map" value="0" />
         <ctl name="strm0 En" value="1" />
     </path>
 
@@ -2165,6 +2167,7 @@
         <ctl name="strm0 CH Mask En" value="9" />
         <ctl name="strm0 Xfer Mode" value="SSP_Low_Lat_PT" />
         <ctl name="strm0 Low Latency IpStr Id" value="STREAMID_8" />
+        <ctl name="strm0 Phy logical Ch Map" value="48" />
         <ctl name="strm0 En" value="1" />
     </path>
 
@@ -2544,6 +2547,47 @@
         <ctl name="strm0 CH Mask En" value="13" />
         <ctl name="strm0 Xfer Mode" value="SSP_Low_Lat_PT" />
         <ctl name="strm0 Low Latency IpStr Id" value="STREAMID_8" />
+        <ctl name="strm0 Phy logical Ch Map" value="0" />
+        <ctl name="strm0 En" value="1" />
+    </path>
+
+
+<!-- CH1: DMIC3, CH2: DMIC1, CH3: DMIC2 (Low Latency Passthough) -->
+    <path name="iaxxx-port-c-cdcpdm1-d-ll">
+        <ctl name="Route Status" value="Active" />
+        <ctl name="SSP Core Boot" value="CoreMemOn" />
+        <ctl name="Port ApllCLK Src" value="IAXXX_EXT_OSC" />
+        <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
+        <ctl name="CDC0 MicBias" value="1" />
+        <ctl name="PortC MicBias" value="1" />
+        <ctl name="PortB MicBias" value="1" />
+
+        <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
+        <ctl name="Pdm CDC Setup" value="1" />
+
+        <ctl name="Pdm PortC Setup" value="1" />
+        <ctl name="Pdm PortC CDC DMic4 En" value="1" />
+        <ctl name="Pdm CDC1 Setup" value="1" />
+        <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
+        <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
+
+        <ctl name="PDM Hos" value="2" />
+        <ctl name="PDM CDC0 Start" value="26" />
+
+        <ctl name="strm0 ASRC Mode" value="REDBOX_2-1" />
+        <ctl name="strm0 Master Strm Id" value="STREAMID_0" />
+        <ctl name="strm0 Format FrLn" value="8K_20MS" />
+        <ctl name="strm0 Format Sr" value="RATE_48K" />
+        <ctl name="strm0 Format Enc" value="ENCODING_AFLOAT" />
+        <ctl name="strm0 Dir" value="0" />
+        <!--ctl name="strm0 DC block en" value="1" /-->
+        <ctl name="strm0 inter strm delay" value="0" />
+        <ctl name="strm0 Port" value="PDMI1" />
+        <ctl name="strm0 Port Enc" value="ENCODING_Q23" />
+        <ctl name="strm0 CH Mask En" value="13" />
+        <ctl name="strm0 Xfer Mode" value="SSP_Low_Lat_PT" />
+        <ctl name="strm0 Low Latency IpStr Id" value="STREAMID_8" />
+        <ctl name="strm0 Phy logical Ch Map" value="515" />
         <ctl name="strm0 En" value="1" />
     </path>
 
@@ -2638,6 +2682,15 @@
     <!-- Port CDCPDM1+D+C for LowLatency -->
     <path name="iaxxx-dmic123-ll">
         <path name="iaxxx-port-cdcpdm1-dc-ll" />
+        <path name="iaxxx-port-a-ll" />
+        <ctl name="strm8 CH Mask En" value="7" />
+        <ctl name="strm8 En" value="1" />
+        <ctl name="QUAT_TDM_TX_0 Channels" value="Three" />
+    </path>
+
+    <!-- Port C+CDCPDM1+D for LowLatency -->
+    <path name="iaxxx-dmic312-ll">
+        <path name="iaxxx-port-c-cdcpdm1-d-ll" />
         <path name="iaxxx-port-a-ll" />
         <ctl name="strm8 CH Mask En" value="7" />
         <ctl name="strm8 En" value="1" />
@@ -3263,7 +3316,7 @@
 
     <!-- Phone SPK TX 3rd: 16dB, 1st: 16dB, 2nd: 16dB,-->
     <path name="speaker-dmic-endfire">
-        <path name="triple-mic"/>
+        <path name="iaxxx-dmic312-ll"/>
         <ctl name="Rx0Ch EpGain" value="16" />
         <ctl name="Rx0Chan GnRmp" value="STEP_600" />
         <ctl name="Rx0Chan Gain En" value="1" />
@@ -3339,7 +3392,7 @@
 
     <!-- Phone SPK TX 3rd:DEC8 16dB, 2nd:DEC6 16dB, 1st:DEC5 16dB,-->
     <path name="voice-speaker-dmic-ef">
-        <path name="triple-mic"/>
+        <path name="iaxxx-dmic312-ll"/>"/>
         <ctl name="Rx0Ch EpGain" value="13" />
         <ctl name="Rx0Chan GnRmp" value="STEP_600" />
         <ctl name="Rx0Chan Gain En" value="1" />
