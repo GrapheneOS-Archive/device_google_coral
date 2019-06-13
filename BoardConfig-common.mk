@@ -223,14 +223,15 @@ BOARD_VENDOR_KERNEL_MODULES += \
     $(wildcard device/google/coral-kernel/*.ko)
 endif
 
-BOARD_SUPER_PARTITION_SIZE := 8145338368
+BOARD_SUPER_PARTITION_SIZE := 9755951104
 BOARD_SUPER_PARTITION_GROUPS := google_dynamic_partitions
 BOARD_GOOGLE_DYNAMIC_PARTITIONS_PARTITION_LIST := \
     system \
     vendor \
     product
 
-BOARD_GOOGLE_DYNAMIC_PARTITIONS_SIZE := 4068474880
+# Limit slot partition size to have some space for future expansion
+BOARD_GOOGLE_DYNAMIC_PARTITIONS_SIZE := 4336910336
 
 # DTB
 ifeq (,$(filter-out coral_kasan flame_kasan, $(TARGET_PRODUCT)))
