@@ -713,7 +713,7 @@
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_32K" />
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_0P_768MHZ"/>
         <path name="mic1-route" />
-        <ctl name="Rx0Ch EpGain" value="6"/>
+        <ctl name="Rx0Ch EpGain" value="1"/>
         <ctl name="Rx0Chan GnRmp" value="STEP_2000"/>
         <ctl name="Rx0Chan Gain En" value="1"/>
     </path>
