@@ -256,6 +256,9 @@ on post-fs-data
     mkdir /data/vendor/camera 0770 system system
     mkdir /data/vendor/hardware/airbrush 0770 vendor_airbrush vendor_airbrush
     mkdir /data/vendor/hardware/airbrush/manager 0770 vendor_airbrush vendor_airbrush
+    mkdir /data/vendor/hal_neuralnetworks_darwinn 0770 system system
+    mkdir /data/vendor/hal_neuralnetworks_darwinn/hal_camera 0770 system system
+    mkdir /data/vendor/hal_neuralnetworks_darwinn/hal_camera/facessd 0770 system system
 
 on zygote-start
     # zygote is started in common init.rc
