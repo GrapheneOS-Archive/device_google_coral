@@ -1,0 +1,15 @@
+{
+  "presubmit": [
+    {
+      "name": "VibratorHalFloralTestSuite",
+      "keywords": [
+        "nextgen"
+      ]
+    }
+  ],
+  "postsubmit": [
+    {
+      "name": "VibratorHalFloralBenchmark"
+    }
+  ]
+}
