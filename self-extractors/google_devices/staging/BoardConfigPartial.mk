@@ -16,3 +16,8 @@ BOARD_PREBUILT_VENDORIMAGE := vendor/google_devices/coral/proprietary/vendor.img
 
 AB_OTA_PARTITIONS += \
     vendor
+
+-include vendor/google/tools/android-info.mk
+ifdef USE_ANDROID_INFO
+  TARGET_BOARD_INFO_FILE := vendor/google_devices/coral/android-info.txt
+endif
