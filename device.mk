@@ -904,10 +904,6 @@ PRODUCT_PACKAGES += $(HIDL_WRAPPER)
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.vendor.build.svn=1
 
-# Load unit-specific display native gamut
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/init.native_display_primaries.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.native_display_primaries.sh
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
