@@ -403,6 +403,9 @@ PRODUCT_PACKAGES += \
     vendor.qti.media.c2@1.0-service \
     media_codecs_c2.xml
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.qc2.venc.avgqp.enable=1
+
 # TODO: remove once we generate ours
 PRODUCT_PACKAGES += \
     media_codecs_performance_c2.xml
