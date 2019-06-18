@@ -58,4 +58,7 @@
         <item>0</item> <!-- 3: HIGH -->
         <item>0</item> <!-- 4: SUN -->
     </integer-array>
+
+    <!-- For how long the lock screen can be on before the display turns off. -->
+    <integer name="config_lockScreenDisplayTimeout">7000</integer>
 </resources>
