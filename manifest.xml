@@ -554,7 +554,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <hal format="hidl">
         <name>android.hardware.neuralnetworks</name>
         <transport>hwbinder</transport>
-        <fqname>@1.2::IDevice/darwinn</fqname>
+        <fqname>@1.2::IDevice/google-edgetpu</fqname>
         <fqname>@1.2::IDevice/qti-default</fqname>
         <fqname>@1.2::IDevice/qti-dsp</fqname>
         <fqname>@1.2::IDevice/qti-gpu</fqname>
