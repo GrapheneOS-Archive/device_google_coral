@@ -15,7 +15,6 @@
 #  blob(s) necessary for flame hardware
 PRODUCT_COPY_FILES := \
     vendor/qcom/flame/proprietary/com.qti.snapdragon.sdk.display.xml:system/etc/permissions/com.qti.snapdragon.sdk.display.xml \
-    vendor/qcom/flame/proprietary/com.qualcomm.qcrilmsgtunnel.xml:system/etc/permissions/com.qualcomm.qcrilmsgtunnel.xml \
     vendor/qcom/flame/proprietary/com.qti.snapdragon.sdk.display.jar:system/framework/com.qti.snapdragon.sdk.display.jar \
     vendor/qcom/flame/proprietary/com.qualcomm.qti.uceservice-V2.0-java.jar:system/framework/com.qualcomm.qti.uceservice-V2.0-java.jar \
     vendor/qcom/flame/proprietary/vendor.qti.hardware.alarm-V1.0-java.jar:system/framework/vendor.qti.hardware.alarm-V1.0-java.jar \
