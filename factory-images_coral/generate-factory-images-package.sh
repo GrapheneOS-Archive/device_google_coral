@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Copyright 2019 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,12 +14,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-BOARD_PREBUILT_VENDORIMAGE := vendor/google_devices/coral/proprietary/vendor.img
-
-AB_OTA_PARTITIONS += \
-    vendor
-
--include vendor/google/tools/android-info.mk
-ifdef USE_ANDROID_INFO
-  TARGET_BOARD_INFO_FILE := vendor/google_devices/coral/android-info.txt
-endif
+source ../../../common/clear-factory-images-variables.sh
+BUILD=5633534
+DEVICE=coral
+PRODUCT=coral
+VERSION=qd1a.190604.002
+SRCPREFIX=signed-
+BOOTLOADER=c2f2-0.2-5619770
+RADIO=g8150-00039-190530-b-5618404
+source ../../../common/generate-factory-images-common.sh
