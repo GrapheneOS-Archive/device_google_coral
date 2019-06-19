@@ -1285,8 +1285,20 @@
         <ctl name="MultiMedia1 Mixer QUAT_TDM_TX_0" value="1" />
     </path>
 
+    <path name="audio-record speaker-mic">
+        <ctl name="MultiMedia1 Mixer QUAT_TDM_TX_0" value="1" />
+    </path>
+
     <path name="audio-record usb-headset-mic">
         <ctl name="MultiMedia1 Mixer USB_AUDIO_TX" value="1"/>
+    </path>
+
+    <path name="hifi-record handset-mic">
+        <ctl name="MultiMedia2 Mixer QUAT_TDM_TX_0" value="1" />
+    </path>
+
+    <path name="hifi-record speaker-mic">
+        <ctl name="MultiMedia2 Mixer QUAT_TDM_TX_0" value="1" />
     </path>
 
     <path name="hifi-record usb-headset-mic">
@@ -1314,6 +1326,10 @@
         <ctl name="MultiMedia8 Mixer QUAT_TDM_TX_0" value="1"/>
     </path>
 
+    <path name="audio-record-compress speaker-mic">
+        <ctl name="MultiMedia8 Mixer QUAT_TDM_TX_0" value="1"/>
+    </path>
+
     <path name="audio-record-compress bt-sco">
         <ctl name="MultiMedia8 Mixer SLIM_7_TX" value="1"/>
     </path>
@@ -1332,6 +1348,10 @@
     </path>
 
     <path name="low-latency-record handset-mic">
+      <ctl name="MultiMedia8 Mixer QUAT_TDM_TX_0" value="1"/>
+    </path>
+
+    <path name="low-latency-record speaker-mic">
       <ctl name="MultiMedia8 Mixer QUAT_TDM_TX_0" value="1"/>
     </path>
 
