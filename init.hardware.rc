@@ -259,6 +259,7 @@ on post-fs-data
     mkdir /data/vendor/hal_neuralnetworks_darwinn 0770 system system
     mkdir /data/vendor/hal_neuralnetworks_darwinn/hal_camera 0770 system system
     mkdir /data/vendor/hal_neuralnetworks_darwinn/hal_camera/facessd 0770 system system
+    mkdir /data/vendor/hal_neuralnetworks_darwinn/hal_camera/ultradepth 0770 system system
 
 on zygote-start
     # zygote is started in common init.rc
@@ -874,12 +875,27 @@ on property:persist.vendor.sys.ssr.enable_ramdumps=1
 
 # Write the dark theme magic (`theme-dark`, or 0x7468656d652d6461726b in hex string) to /misc
 # partition. Offset 0 in vendor space is effectively offset 2048 in /misc partition.
-service vendor.darkboot /vendor/bin/misc_writer --vendor-space-offset 0 --hex-string 0x7468656d652d6461726b
+service vendor.theme_set /vendor/bin/misc_writer --vendor-space-offset 0 --hex-string 0x7468656d652d6461726b
     disabled
     oneshot
 
-on property:persist.sys.device_provisioned=1
-    start vendor.darkboot
+# Clear the 10-byte dark theme magic in /misc partition. Offset 0 in vendor space is effectively
+# offset 2048 in /misc partition.
+service vendor.theme_clear /vendor/bin/misc_writer --vendor-space-offset 0 --hex-string 0x00000000000000000000
+    disabled
+    oneshot
+
+# Set dark boot flag on dark mode (UiModeManager.MODE_NIGHT_YES == 2).
+on property:persist.sys.theme=2
+    start vendor.theme_set
+
+# Clear the dark boot flag on light mode (UiModeManager.MODE_NIGHT_NO == 1) or auto mode
+# (UiModeManager.MODE_NIGHT_AUTO == 0).
+on property:persist.sys.theme=1
+    start vendor.theme_clear
+
+on property:persist.sys.theme=0
+    start vendor.theme_clear
 
 # For Japan radio builds, always enforce camera shutter sound
 # Since this property is read by the audio server in system service,
