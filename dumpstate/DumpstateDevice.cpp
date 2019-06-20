@@ -443,6 +443,8 @@ Return<void> DumpstateDevice::dumpstateBoard(const hidl_handle& handle) {
     // Keep this at the end as very long on not for humans
     DumpFileToFd(fd, "WLAN FW Log Symbol Table", "/vendor/firmware/Data.msc");
 
+    // Report Knowles framework info
+    RunCommandToFd(fd, "KN version", {"/vendor/bin/sh", "-c", "for f in `ls -d /sys/devices/platform/soc/a8c000.spi/spi_master/spi5/spi5.0/iaxxx/*_version` ; do echo \"------ $f\\n`cat $f`\\n\" ; done"});
     return Void();
 }
 
