@@ -264,7 +264,8 @@ PRODUCT_PACKAGES += \
     odsp_api_test \
     crash_event_logger \
     dump_debug_info \
-    get_pwr_stats
+    get_pwr_stats \
+    crash_trigger_test
 endif
 
 # graphics
