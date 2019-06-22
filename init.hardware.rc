@@ -460,6 +460,17 @@ on early-boot
     # Permissions for reading display native color gamut
     chown system graphics /mnt/vendor/persist/display/native_gamut.csv
 
+    # Permission to report knowles framework info
+    chown system system /sys/devices/platform/soc/a8c000.spi/spi_master/spi5/spi5.0/iaxxx/fw_version
+    chown system system /sys/devices/platform/soc/a8c000.spi/spi_master/spi5/spi5.0/iaxxx/host_version
+    chown system system /sys/devices/platform/soc/a8c000.spi/spi_master/spi5/spi5.0/iaxxx/package_version
+    chown system system /sys/devices/platform/soc/a8c000.spi/spi_master/spi5/spi5.0/iaxxx/plugin_version
+
+    chmod 0444 /sys/devices/platform/soc/a8c000.spi/spi_master/spi5/spi5.0/iaxxx/file_version
+    chmod 0444 /sys/devices/platform/soc/a8c000.spi/spi_master/spi5/spi5.0/iaxxx/host_version
+    chmod 0444 /sys/devices/platform/soc/a8c000.spi/spi_master/spi5/spi5.0/iaxxx/package_version
+    chmod 0444 /sys/devices/platform/soc/a8c000.spi/spi_master/spi5/spi5.0/iaxxx/plugin_version
+
 on boot
     # This location is used by QCRIL to host UNIX domain
     # socket files used for internal IPC within QCRIL
@@ -531,6 +542,13 @@ on property:sys.boot_completed=1
     write /sys/block/dm-4/queue/read_ahead_kb 128
     write /sys/block/dm-5/queue/read_ahead_kb 128
     write /sys/block/dm-6/queue/read_ahead_kb 128
+
+    # F2FS tuning: issue discard commands up to 128MB
+    write /sys/block/dm-7/queue/discard_max_bytes 134217728
+
+    # Block layer tuning: discard chunk size up to 128MB
+    # Otherwise, contiguous discards can be merged
+    write /sys/block/sda/queue/discard_max_bytes 134217728
 
     # Enable ZRAM on boot_complete
     swapon_all /vendor/etc/fstab.${ro.boot.hardware.platform}
