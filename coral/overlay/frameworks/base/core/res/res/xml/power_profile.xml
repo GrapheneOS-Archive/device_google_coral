@@ -26,6 +26,23 @@
       <value>3</value> <!-- Cluster 1 has 3 cores (cpu4, cpu5, cpu6) -->
       <value>1</value> <!-- Cluster 2 has 1 cores (cpu7) -->
     </array>
+
+    <!-- Power consumption when CPU is suspended -->
+    <item name="cpu.suspend">5.6</item>
+    <!-- Additional power consumption when CPU is in a kernel idle loop -->
+    <item name="cpu.idle">5.4</item>
+
+    <!-- Additional power consumption by CPU excluding cluster and core when
+         running -->
+    <item name="cpu.active">18.2</item>
+
+    <!-- Additional power consumption by CPU cluster0 itself when running
+         excluding cores in it -->
+    <item name="cpu.cluster_power.cluster0">1.30</item>
+    <!-- Additional power consumption by CPU cluster1 itself when running
+         excluding cores in it -->
+    <item name="cpu.cluster_power.cluster1">5.29</item>
+
     <!-- Different CPU speeds as reported in
          /sys/devices/system/cpu/cpufreq/ploicy0/scaling_available_frequencies -->
     <array name="cpu.core_speeds.cluster0">
@@ -162,6 +179,28 @@
       <value>223.89</value> <!-- 2814 MHz CPU speed -->
     </array>
 
+    <!-- Additional power used when screen is ambient mode -->
+    <item name="ambient.on">32</item>
+
+    <!-- Additional power used when screen is turned on at minimum brightness -->
+    <item name="screen.on">98</item>
+    <!-- Additional power used when screen is at maximum brightness, compared to
+         screen at minimum brightness -->
+    <item name="screen.full">470</item>
+
+    <!-- Average power used by the camera flash module when on -->
+    <item name="camera.flashlight">240.47</item>
+    <!-- Average power use by the camera subsystem for a typical camera
+         application. Intended as a rough estimate for an application running a
+         preview and capturing approximately 10 full-resolution pictures per
+         minute. -->
+    <item name="camera.avg">900</item>
+
+    <!-- Additional power used when video is playing -->
+    <item name="video">25</item>
+    <!-- Additional power used when audio is playing -->
+    <item name="audio">75</item>
+
     <!-- Cellular modem related values.-->
     <item name="modem.controller.sleep">0</item>
     <item name="modem.controller.idle">99</item>
@@ -190,5 +229,14 @@
     <item name="wifi.controller.tx">349</item>
     <!-- Operating volatage for wifi radio in mV.-->
     <item name="wifi.controller.voltage">3700</item>
+
+    <!-- Idle current for bluetooth in mA.-->
+    <item name="bluetooth.controller.idle">0.01</item>
+    <!-- Rx current for bluetooth in mA.-->
+    <item name="bluetooth.controller.rx">9</item>
+    <!-- Tx current for bluetooth in mA-->
+    <item name="bluetooth.controller.tx">7</item>
+    <!-- Operating voltage for bluetooth in mV.-->
+    <item name="bluetooth.controller.voltage">3300</item>
 </device>
 
