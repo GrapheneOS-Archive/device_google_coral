@@ -31,6 +31,9 @@ PRODUCT_PACKAGES += \
     WallpaperPicker \
     WAPPushManager \
 
+# Don't build super.img.
+PRODUCT_BUILD_SUPER_PARTITION := false
+
 # b/113232673 STOPSHIP deal with Qualcomm stuff later
 # PRODUCT_RESTRICT_VENDOR_FILES := all
 

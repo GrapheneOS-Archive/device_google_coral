@@ -15,7 +15,6 @@
 #  blob(s) necessary for coral hardware
 PRODUCT_COPY_FILES := \
     vendor/qcom/coral/proprietary/com.qti.snapdragon.sdk.display.xml:system/etc/permissions/com.qti.snapdragon.sdk.display.xml \
-    vendor/qcom/coral/proprietary/com.qualcomm.qcrilmsgtunnel.xml:system/etc/permissions/com.qualcomm.qcrilmsgtunnel.xml \
     vendor/qcom/coral/proprietary/com.qti.snapdragon.sdk.display.jar:system/framework/com.qti.snapdragon.sdk.display.jar \
     vendor/qcom/coral/proprietary/com.qualcomm.qti.uceservice-V2.0-java.jar:system/framework/com.qualcomm.qti.uceservice-V2.0-java.jar \
     vendor/qcom/coral/proprietary/vendor.qti.hardware.alarm-V1.0-java.jar:system/framework/vendor.qti.hardware.alarm-V1.0-java.jar \
