@@ -279,6 +279,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.display.foss.config_path=/vendor/etc/FOSSConfig.xml \
     vendor.display.qdcm.mode_combine=1
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.display.defer_fps_frame_count=2
 
 # camera google face detection
 PRODUCT_PROPERTY_OVERRIDES += \
