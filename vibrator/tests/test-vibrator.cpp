@@ -426,9 +426,7 @@ TEST_P(VibratorTest, perform) {
         EXPECT_CALL(*mMockApi, setDuration(Ge(duration)))
             .InSequence(s3)
             .WillOnce(::testing::Return(true));
-        EXPECT_CALL(*mMockApi, setEffectScale(scale->second))
-            .InSequence(s4)
-            .WillOnce(::testing::Return(true));
+        EXPECT_CALL(*mMockApi, setEffectScale(0)).InSequence(s4).WillOnce(::testing::Return(true));
 
         EXPECT_CALL(*mMockApi, setActivate(true))
             .InSequence(s1, s2, s3, s4)
