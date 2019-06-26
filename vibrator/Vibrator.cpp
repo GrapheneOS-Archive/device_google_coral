@@ -65,8 +65,8 @@ static constexpr uint32_t WAVEFORM_TRIGGER_QUEUE_INDEX = 65534;
 static constexpr uint32_t VOLTAGE_GLOBAL_SCALE_LEVEL = 5;
 static constexpr uint8_t VOLTAGE_SCALE_MAX = 100;
 
-static constexpr int8_t MAX_COLD_START_LATENCY_MS = 6; // I2C Transaction + DSP Return-From-Standby
-static constexpr int8_t MAX_PAUSE_TIMING_ERROR_MS = 1; // ALERT Irq Handling
+static constexpr int8_t MAX_COLD_START_LATENCY_MS = 6;  // I2C Transaction + DSP Return-From-Standby
+static constexpr int8_t MAX_PAUSE_TIMING_ERROR_MS = 1;  // ALERT Irq Handling
 
 static constexpr float AMP_ATTENUATE_STEP_SIZE = 0.125f;
 static constexpr float EFFECT_FREQUENCY_KHZ = 48.0f;
@@ -102,9 +102,9 @@ Vibrator::Vibrator(std::unique_ptr<HwApi> hwapi, std::unique_ptr<HwCal> hwcal)
     mSimpleEffectDuration = std::ceil(effectDuration / EFFECT_FREQUENCY_KHZ);
 
     const uint32_t scaleFall =
-        amplitudeToScale(mVolLevels[WAVEFORM_CLICK_EFFECT_LEVEL], VOLTAGE_SCALE_MAX);
+            amplitudeToScale(mVolLevels[WAVEFORM_CLICK_EFFECT_LEVEL], VOLTAGE_SCALE_MAX);
     const uint32_t scaleRise =
-        amplitudeToScale(mVolLevels[WAVEFORM_HEAVY_CLICK_EFFECT_LEVEL], VOLTAGE_SCALE_MAX);
+            amplitudeToScale(mVolLevels[WAVEFORM_HEAVY_CLICK_EFFECT_LEVEL], VOLTAGE_SCALE_MAX);
 
     mHwApi->setGpioFallIndex(WAVEFORM_SIMPLE_EFFECT_INDEX);
     mHwApi->setGpioFallScale(scaleFall);
@@ -124,8 +124,8 @@ Return<Status> Vibrator::on(uint32_t timeoutMs, uint32_t effectIndex) {
 Return<Status> Vibrator::on(uint32_t timeoutMs) {
     ATRACE_NAME("Vibrator::on");
     const uint32_t index = timeoutMs < WAVEFORM_LONG_VIBRATION_THRESHOLD_MS
-                               ? WAVEFORM_SHORT_VIBRATION_EFFECT_INDEX
-                               : WAVEFORM_LONG_VIBRATION_EFFECT_INDEX;
+                                   ? WAVEFORM_SHORT_VIBRATION_EFFECT_INDEX
+                                   : WAVEFORM_LONG_VIBRATION_EFFECT_INDEX;
     if (MAX_COLD_START_LATENCY_MS <= UINT32_MAX - timeoutMs) {
         timeoutMs += MAX_COLD_START_LATENCY_MS;
     }

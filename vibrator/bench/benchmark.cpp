@@ -35,7 +35,7 @@ class VibratorBench : public benchmark::Fixture {
   public:
     void SetUp(::benchmark::State & /*state*/) override {
         mFileMap["EFFECT_DURATION_PATH"] =
-            std::filesystem::path(mFilesDir.path) / "EFFECT_DURATION_PATH";
+                std::filesystem::path(mFilesDir.path) / "EFFECT_DURATION_PATH";
         std::ofstream{mFileMap["EFFECT_DURATION_PATH"]} << ((uint32_t)std::rand() ?: 1)
                                                         << std::endl;
 
@@ -64,9 +64,7 @@ class VibratorBench : public benchmark::Fixture {
         mVibrator = new Vibrator(std::make_unique<HwApi>(), std::make_unique<HwCal>());
     }
 
-    static void DefaultArgs(benchmark::internal::Benchmark *b) {
-        b->Unit(benchmark::kMicrosecond);
-    }
+    static void DefaultArgs(benchmark::internal::Benchmark *b) { b->Unit(benchmark::kMicrosecond); }
 
     static void SupportedEffectArgs(benchmark::internal::Benchmark *b) {
         b->ArgNames({"Effect", "Strength"});
@@ -140,29 +138,25 @@ BENCHMARK_WRAPPER(VibratorBench, supportsExternalAmplitudeControl, {
     }
 });
 
-BENCHMARK_WRAPPER(VibratorBench, perform_1_3,
-                  {
-                      Effect effect = Effect(state.range(0));
-                      EffectStrength strength = EffectStrength(state.range(1));
-                      bool supported = true;
+BENCHMARK_WRAPPER(VibratorBench, perform_1_3, {
+    Effect effect = Effect(state.range(0));
+    EffectStrength strength = EffectStrength(state.range(1));
+    bool supported = true;
 
-                      mVibrator->perform_1_3(effect, strength,
-                                             [&](Status status, uint32_t /*lengthMs*/) {
-                                                 if (status == Status::UNSUPPORTED_OPERATION) {
-                                                     supported = false;
-                                                 }
-                                             });
+    mVibrator->perform_1_3(effect, strength, [&](Status status, uint32_t /*lengthMs*/) {
+        if (status == Status::UNSUPPORTED_OPERATION) {
+            supported = false;
+        }
+    });
 
-                      if (!supported) {
-                          return;
-                      }
+    if (!supported) {
+        return;
+    }
 
-                      for (auto _ : state) {
-                          mVibrator->perform_1_3(effect, strength,
-                                                 [](Status /*status*/, uint32_t /*lengthMs*/) {});
-                      }
-                  })
-    ->Apply(VibratorBench::SupportedEffectArgs);
+    for (auto _ : state) {
+        mVibrator->perform_1_3(effect, strength, [](Status /*status*/, uint32_t /*lengthMs*/) {});
+    }
+})->Apply(VibratorBench::SupportedEffectArgs);
 
 }  // namespace implementation
 }  // namespace V1_3

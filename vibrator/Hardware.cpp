@@ -116,34 +116,34 @@ HwApi::HwApi() {
 }
 
 template <typename T>
-bool HwApi::has(T &stream) {
+bool HwApi::has(const T &stream) {
     return !!stream;
 }
 
 template <typename T, typename U>
-bool HwApi::get(T *value, U &stream) {
+bool HwApi::get(T *value, U *stream) {
     ATRACE_NAME("HwApi::get");
     bool ret;
-    stream.seekg(0);
-    stream >> *value;
-    if (!(ret = !!stream)) {
-        ALOGE("Failed to read %s (%d): %s", mNames[&stream].c_str(), errno, strerror(errno));
+    stream->seekg(0);
+    *stream >> *value;
+    if (!(ret = !!*stream)) {
+        ALOGE("Failed to read %s (%d): %s", mNames[stream].c_str(), errno, strerror(errno));
     }
-    stream.clear();
-    RECORD(*value, &stream);
+    stream->clear();
+    RECORD(*value, stream);
     return ret;
 }
 
 template <typename T, typename U>
-bool HwApi::set(const T &value, U &stream) {
+bool HwApi::set(const T &value, U *stream) {
     ATRACE_NAME("HwApi::set");
     bool ret;
-    stream << value << std::endl;
-    if (!(ret = !!stream)) {
-        ALOGE("Failed to write %s (%d): %s", mNames[&stream].c_str(), errno, strerror(errno));
-        stream.clear();
+    *stream << value << std::endl;
+    if (!(ret = !!*stream)) {
+        ALOGE("Failed to write %s (%d): %s", mNames[stream].c_str(), errno, strerror(errno));
+        stream->clear();
     }
-    RECORD(value, &stream);
+    RECORD(value, stream);
     return ret;
 }
 

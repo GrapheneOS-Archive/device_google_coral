@@ -22,13 +22,13 @@
 
 #include "Hardware.h"
 
-using namespace ::testing;
-
 namespace android {
 namespace hardware {
 namespace vibrator {
 namespace V1_3 {
 namespace implementation {
+
+using ::testing::Test;
 
 class HwCalTest : public Test {
   protected:

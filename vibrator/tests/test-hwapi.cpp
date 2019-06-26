@@ -23,21 +23,24 @@
 
 #include "Hardware.h"
 
-using namespace ::testing;
-
 namespace android {
 namespace hardware {
 namespace vibrator {
 namespace V1_3 {
 namespace implementation {
 
+using ::testing::Test;
+using ::testing::TestParamInfo;
+using ::testing::ValuesIn;
+using ::testing::WithParamInterface;
+
 class HwApiTest : public Test {
   private:
     static constexpr const char *FILE_NAMES[]{
-        "F0_FILEPATH",       "REDC_FILEPATH",     "Q_FILEPATH",           "ACTIVATE_PATH",
-        "DURATION_PATH",     "STATE_PATH",        "EFFECT_DURATION_PATH", "EFFECT_INDEX_PATH",
-        "EFFECT_QUEUE_PATH", "EFFECT_SCALE_PATH", "GLOBAL_SCALE_PATH",    "ASP_ENABLE_PATH",
-        "GPIO_FALL_INDEX",   "GPIO_FALL_SCALE",   "GPIO_RISE_INDEX",      "GPIO_RISE_SCALE",
+            "F0_FILEPATH",       "REDC_FILEPATH",     "Q_FILEPATH",           "ACTIVATE_PATH",
+            "DURATION_PATH",     "STATE_PATH",        "EFFECT_DURATION_PATH", "EFFECT_INDEX_PATH",
+            "EFFECT_QUEUE_PATH", "EFFECT_SCALE_PATH", "GLOBAL_SCALE_PATH",    "ASP_ENABLE_PATH",
+            "GPIO_FALL_INDEX",   "GPIO_FALL_SCALE",   "GPIO_RISE_INDEX",      "GPIO_RISE_SCALE",
     };
 
   public:
@@ -101,13 +104,12 @@ class HwApiTest : public Test {
 };
 
 template <typename T>
-class HwApiTypedTest
-    : public HwApiTest,
-      public testing::WithParamInterface<std::tuple<std::string, std::function<T>>> {
+class HwApiTypedTest : public HwApiTest,
+                       public WithParamInterface<std::tuple<std::string, std::function<T>>> {
   public:
-    static auto PrintParam(const testing::TestParamInfo<typename HwApiTypedTest::ParamType> &info) {
+    static auto PrintParam(const TestParamInfo<typename HwApiTypedTest::ParamType> &info) {
         return std::get<0>(info.param);
-    };
+    }
     static auto MakeParam(std::string name, std::function<T> func) {
         return std::make_tuple(name, func);
     }
@@ -129,13 +131,13 @@ TEST_P(HasTest, success_returnsFalse) {
     EXPECT_FALSE(func(*mNoApi));
 }
 
-INSTANTIATE_TEST_CASE_P(HwApiTests, HasTest,
-                        ValuesIn({
-                            HasTest::MakeParam("EFFECT_SCALE_PATH",
-                                               &Vibrator::HwApi::hasEffectScale),
-                            HasTest::MakeParam("ASP_ENABLE_PATH", &Vibrator::HwApi::hasAspEnable),
-                        }),
-                        HasTest::PrintParam);
+INSTANTIATE_TEST_CASE_P(
+        HwApiTests, HasTest,
+        ValuesIn({
+                HasTest::MakeParam("EFFECT_SCALE_PATH", &Vibrator::HwApi::hasEffectScale),
+                HasTest::MakeParam("ASP_ENABLE_PATH", &Vibrator::HwApi::hasAspEnable),
+        }),
+        HasTest::PrintParam);
 
 using GetBoolTest = HwApiTypedTest<bool(Vibrator::HwApi &, bool *)>;
 
@@ -175,8 +177,8 @@ TEST_P(GetBoolTest, failure) {
 
 INSTANTIATE_TEST_CASE_P(HwApiTests, GetBoolTest,
                         ValuesIn({
-                            GetBoolTest::MakeParam("ASP_ENABLE_PATH",
-                                                   &Vibrator::HwApi::getAspEnable),
+                                GetBoolTest::MakeParam("ASP_ENABLE_PATH",
+                                                       &Vibrator::HwApi::getAspEnable),
                         }),
                         GetBoolTest::PrintParam);
 
@@ -205,8 +207,8 @@ TEST_P(GetUint32Test, failure) {
 
 INSTANTIATE_TEST_CASE_P(HwApiTests, GetUint32Test,
                         ValuesIn({
-                            GetUint32Test::MakeParam("EFFECT_DURATION_PATH",
-                                                     &Vibrator::HwApi::getEffectDuration),
+                                GetUint32Test::MakeParam("EFFECT_DURATION_PATH",
+                                                         &Vibrator::HwApi::getEffectDuration),
                         }),
                         GetUint32Test::PrintParam);
 
@@ -240,14 +242,14 @@ TEST_P(SetBoolTest, failure) {
     EXPECT_FALSE(func(*mNoApi, false));
 }
 
-INSTANTIATE_TEST_CASE_P(HwApiTests, SetBoolTest,
-                        ValuesIn({
-                            SetBoolTest::MakeParam("ACTIVATE_PATH", &Vibrator::HwApi::setActivate),
-                            SetBoolTest::MakeParam("STATE_PATH", &Vibrator::HwApi::setState),
-                            SetBoolTest::MakeParam("ASP_ENABLE_PATH",
-                                                   &Vibrator::HwApi::setAspEnable),
-                        }),
-                        SetBoolTest::PrintParam);
+INSTANTIATE_TEST_CASE_P(
+        HwApiTests, SetBoolTest,
+        ValuesIn({
+                SetBoolTest::MakeParam("ACTIVATE_PATH", &Vibrator::HwApi::setActivate),
+                SetBoolTest::MakeParam("STATE_PATH", &Vibrator::HwApi::setState),
+                SetBoolTest::MakeParam("ASP_ENABLE_PATH", &Vibrator::HwApi::setAspEnable),
+        }),
+        SetBoolTest::PrintParam);
 
 using SetUint32Test = HwApiTypedTest<bool(Vibrator::HwApi &, uint32_t)>;
 
@@ -271,21 +273,21 @@ TEST_P(SetUint32Test, failure) {
 }
 
 INSTANTIATE_TEST_CASE_P(
-    HwApiTests, SetUint32Test,
-    ValuesIn({
-        SetUint32Test::MakeParam("F0_FILEPATH", &Vibrator::HwApi::setF0),
-        SetUint32Test::MakeParam("REDC_FILEPATH", &Vibrator::HwApi::setRedc),
-        SetUint32Test::MakeParam("Q_FILEPATH", &Vibrator::HwApi::setQ),
-        SetUint32Test::MakeParam("DURATION_PATH", &Vibrator::HwApi::setDuration),
-        SetUint32Test::MakeParam("EFFECT_INDEX_PATH", &Vibrator::HwApi::setEffectIndex),
-        SetUint32Test::MakeParam("EFFECT_SCALE_PATH", &Vibrator::HwApi::setEffectScale),
-        SetUint32Test::MakeParam("GLOBAL_SCALE_PATH", &Vibrator::HwApi::setGlobalScale),
-        SetUint32Test::MakeParam("GPIO_FALL_INDEX", &Vibrator::HwApi::setGpioFallIndex),
-        SetUint32Test::MakeParam("GPIO_FALL_SCALE", &Vibrator::HwApi::setGpioFallScale),
-        SetUint32Test::MakeParam("GPIO_RISE_INDEX", &Vibrator::HwApi::setGpioRiseIndex),
-        SetUint32Test::MakeParam("GPIO_RISE_SCALE", &Vibrator::HwApi::setGpioRiseScale),
-    }),
-    SetUint32Test::PrintParam);
+        HwApiTests, SetUint32Test,
+        ValuesIn({
+                SetUint32Test::MakeParam("F0_FILEPATH", &Vibrator::HwApi::setF0),
+                SetUint32Test::MakeParam("REDC_FILEPATH", &Vibrator::HwApi::setRedc),
+                SetUint32Test::MakeParam("Q_FILEPATH", &Vibrator::HwApi::setQ),
+                SetUint32Test::MakeParam("DURATION_PATH", &Vibrator::HwApi::setDuration),
+                SetUint32Test::MakeParam("EFFECT_INDEX_PATH", &Vibrator::HwApi::setEffectIndex),
+                SetUint32Test::MakeParam("EFFECT_SCALE_PATH", &Vibrator::HwApi::setEffectScale),
+                SetUint32Test::MakeParam("GLOBAL_SCALE_PATH", &Vibrator::HwApi::setGlobalScale),
+                SetUint32Test::MakeParam("GPIO_FALL_INDEX", &Vibrator::HwApi::setGpioFallIndex),
+                SetUint32Test::MakeParam("GPIO_FALL_SCALE", &Vibrator::HwApi::setGpioFallScale),
+                SetUint32Test::MakeParam("GPIO_RISE_INDEX", &Vibrator::HwApi::setGpioRiseIndex),
+                SetUint32Test::MakeParam("GPIO_RISE_SCALE", &Vibrator::HwApi::setGpioRiseScale),
+        }),
+        SetUint32Test::PrintParam);
 
 using SetStringTest = HwApiTypedTest<bool(Vibrator::HwApi &, std::string)>;
 
@@ -310,8 +312,8 @@ TEST_P(SetStringTest, failure) {
 
 INSTANTIATE_TEST_CASE_P(HwApiTests, SetStringTest,
                         ValuesIn({
-                            SetStringTest::MakeParam("EFFECT_QUEUE_PATH",
-                                                     &Vibrator::HwApi::setEffectQueue),
+                                SetStringTest::MakeParam("EFFECT_QUEUE_PATH",
+                                                         &Vibrator::HwApi::setEffectQueue),
                         }),
                         SetStringTest::PrintParam);
 

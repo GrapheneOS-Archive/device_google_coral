@@ -51,34 +51,34 @@ class HwApi : public Vibrator::HwApi {
 
   public:
     HwApi();
-    bool setF0(uint32_t value) override { return set(value, mF0); }
-    bool setRedc(uint32_t value) override { return set(value, mRedc); }
-    bool setQ(uint32_t value) override { return set(value, mQ); }
-    bool setActivate(bool value) override { return set(value, mActivate); }
-    bool setDuration(uint32_t value) override { return set(value, mDuration); }
-    bool getEffectDuration(uint32_t *value) override { return get(value, mEffectDuration); }
-    bool setEffectIndex(uint32_t value) override { return set(value, mEffectIndex); }
-    bool setEffectQueue(std::string value) override { return set(value, mEffectQueue); }
+    bool setF0(uint32_t value) override { return set(value, &mF0); }
+    bool setRedc(uint32_t value) override { return set(value, &mRedc); }
+    bool setQ(uint32_t value) override { return set(value, &mQ); }
+    bool setActivate(bool value) override { return set(value, &mActivate); }
+    bool setDuration(uint32_t value) override { return set(value, &mDuration); }
+    bool getEffectDuration(uint32_t *value) override { return get(value, &mEffectDuration); }
+    bool setEffectIndex(uint32_t value) override { return set(value, &mEffectIndex); }
+    bool setEffectQueue(std::string value) override { return set(value, &mEffectQueue); }
     bool hasEffectScale() override { return has(mEffectScale); }
-    bool setEffectScale(uint32_t value) override { return set(value, mEffectScale); }
-    bool setGlobalScale(uint32_t value) override { return set(value, mGlobalScale); }
-    bool setState(bool value) override { return set(value, mState); }
+    bool setEffectScale(uint32_t value) override { return set(value, &mEffectScale); }
+    bool setGlobalScale(uint32_t value) override { return set(value, &mGlobalScale); }
+    bool setState(bool value) override { return set(value, &mState); }
     bool hasAspEnable() override { return has(mAspEnable); }
-    bool getAspEnable(bool *value) override { return get(value, mAspEnable); }
-    bool setAspEnable(bool value) override { return set(value, mAspEnable); }
-    bool setGpioFallIndex(uint32_t value) override { return set(value, mGpioFallIndex); }
-    bool setGpioFallScale(uint32_t value) override { return set(value, mGpioFallScale); }
-    bool setGpioRiseIndex(uint32_t value) override { return set(value, mGpioRiseIndex); }
-    bool setGpioRiseScale(uint32_t value) override { return set(value, mGpioRiseScale); }
+    bool getAspEnable(bool *value) override { return get(value, &mAspEnable); }
+    bool setAspEnable(bool value) override { return set(value, &mAspEnable); }
+    bool setGpioFallIndex(uint32_t value) override { return set(value, &mGpioFallIndex); }
+    bool setGpioFallScale(uint32_t value) override { return set(value, &mGpioFallScale); }
+    bool setGpioRiseIndex(uint32_t value) override { return set(value, &mGpioRiseIndex); }
+    bool setGpioRiseScale(uint32_t value) override { return set(value, &mGpioRiseScale); }
     void debug(int fd) override;
 
   private:
     template <typename T>
-    bool has(T &stream);
+    bool has(const T &stream);
     template <typename T, typename U>
-    bool get(T *value, U &stream);
+    bool get(T *value, U *stream);
     template <typename T, typename U>
-    bool set(const T &value, U &stream);
+    bool set(const T &value, U *stream);
     template <typename T>
     void record(const char *func, const T &value, void *stream);
 
