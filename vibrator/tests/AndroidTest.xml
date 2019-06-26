@@ -14,14 +14,14 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<configuration description="Runs VibratorHalFloralTestSuite.">
+<configuration description="Runs VibratorHalCs40l25TestSuite.">
     <option name="test-suite-tag" value="pts" />
     <target_preparer class="com.android.compatibility.common.tradefed.targetprep.FilePusher">
         <option name="cleanup" value="true" />
-        <option name="push" value="VibratorHalFloralTestSuite->/data/local/tmp/VibratorHalFloralTestSuite" />
+        <option name="push" value="VibratorHalCs40l25TestSuite->/data/local/tmp/VibratorHalCs40l25TestSuite" />
     </target_preparer>
     <test class="com.android.tradefed.testtype.GTest" >
-        <option name="module-name" value="VibratorHalFloralTestSuite" />
+        <option name="module-name" value="VibratorHalCs40l25TestSuite" />
         <option name="native-test-device-path" value="/data/local/tmp" />
     </test>
 </configuration>

@@ -1,7 +1,7 @@
 {
   "presubmit": [
     {
-      "name": "VibratorHalFloralTestSuite",
+      "name": "VibratorHalCs40l25TestSuite",
       "keywords": [
         "nextgen"
       ]
@@ -9,7 +9,7 @@
   ],
   "postsubmit": [
     {
-      "name": "VibratorHalFloralBenchmark"
+      "name": "VibratorHalCs40l25Benchmark"
     }
   ]
 }

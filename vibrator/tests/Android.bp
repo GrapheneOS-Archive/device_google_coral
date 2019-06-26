@@ -14,8 +14,8 @@
 // limitations under the License.
 
 cc_test {
-    name: "VibratorHalFloralTestSuite",
-    defaults: ["VibratorHalFloralTestDefaults"],
+    name: "VibratorHalCs40l25TestSuite",
+    defaults: ["VibratorHalCs40l25TestDefaults"],
     srcs: [
         "test-hwapi.cpp",
         "test-hwcal.cpp",

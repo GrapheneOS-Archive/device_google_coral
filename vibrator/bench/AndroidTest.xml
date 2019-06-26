@@ -18,10 +18,10 @@
     <option name="test-suite-tag" value="pts" />
     <target_preparer class="com.android.compatibility.common.tradefed.targetprep.FilePusher">
       <option name="cleanup" value="true" />
-      <option name="push" value="VibratorHalFloralBenchmark->/data/local/tmp/VibratorHalFloralBenchmark" />
+      <option name="push" value="VibratorHalCs40l25Benchmark->/data/local/tmp/VibratorHalCs40l25Benchmark" />
     </target_preparer>
     <test class="com.android.tradefed.testtype.GoogleBenchmarkTest" >
-        <option name="benchmark-module-name" value="VibratorHalFloralBenchmark" />
+        <option name="benchmark-module-name" value="VibratorHalCs40l25Benchmark" />
         <option name="native-benchmark-device-path" value="/data/local/tmp" />
     </test>
 </configuration>

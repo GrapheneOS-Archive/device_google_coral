@@ -14,7 +14,7 @@
 // limitations under the License.
 
 cc_defaults {
-    name: "android.hardware.vibrator@1.3-defaults.coral",
+    name: "android.hardware.vibrator@1.3-defaults.cs40l25",
     defaults: ["hidl_defaults"],
     relative_install_path: "hw",
     shared_libs: [
@@ -33,15 +33,15 @@ cc_defaults {
 }
 
 cc_defaults {
-    name: "VibratorHalFloralTestDefaults",
-    defaults: ["android.hardware.vibrator@1.3-defaults.coral"],
-    static_libs: ["android.hardware.vibrator@1.3-impl.coral"],
+    name: "VibratorHalCs40l25TestDefaults",
+    defaults: ["android.hardware.vibrator@1.3-defaults.cs40l25"],
+    static_libs: ["android.hardware.vibrator@1.3-impl.cs40l25"],
     test_suites: ["device-tests"],
 }
 
 cc_library {
-    name: "android.hardware.vibrator@1.3-impl.coral",
-    defaults: ["android.hardware.vibrator@1.3-defaults.coral"],
+    name: "android.hardware.vibrator@1.3-impl.cs40l25",
+    defaults: ["android.hardware.vibrator@1.3-defaults.cs40l25"],
     srcs: [
         "Hardware.cpp",
         "Vibrator.cpp",
@@ -51,11 +51,11 @@ cc_library {
 }
 
 cc_binary {
-    name: "android.hardware.vibrator@1.3-service.coral",
-    defaults: ["android.hardware.vibrator@1.3-defaults.coral"],
-    init_rc: ["android.hardware.vibrator@1.3-service.coral.rc"],
-    vintf_fragments: ["android.hardware.vibrator@1.3-service.coral.xml"],
+    name: "android.hardware.vibrator@1.3-service.cs40l25",
+    defaults: ["android.hardware.vibrator@1.3-defaults.cs40l25"],
+    init_rc: ["android.hardware.vibrator@1.3-service.cs40l25.rc"],
+    vintf_fragments: ["android.hardware.vibrator@1.3-service.cs40l25.xml"],
     srcs: ["service.cpp"],
-    static_libs: ["android.hardware.vibrator@1.3-impl.coral"],
+    static_libs: ["android.hardware.vibrator@1.3-impl.cs40l25"],
     proprietary: true,
 }
