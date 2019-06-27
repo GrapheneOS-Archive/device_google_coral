@@ -654,9 +654,9 @@
 
     <path name="bargein-route">
     <!-- use aec mic -->
-        <ctl name="Plgin4Ip Ep0 Conf" value="plugin6Out0"/>
-        <ctl name="Plgin4Ip Ep1 Conf" value="plugin7Out0"/>
-        <ctl name="Plgin4Ip Ep2 Conf" value="plugin7Out1"/>
+        <ctl name="Plgin4Ip Ep0 Conf" value="plugin7Out0"/>
+        <ctl name="Plgin4Ip Ep1 Conf" value="plugin7Out1"/>
+        <ctl name="Plgin4Ip Ep2 Conf" value="plugin6Out0"/>
         <ctl name="Plgin4En" value="Rx0Plgin4On"/>
         <ctl name="Plgin4Blk1En" value="1"/>
     </path>
