@@ -517,10 +517,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <instance>slot1</instance>
             <instance>slot2</instance>
         </interface>
-        <interface>
-            <name>ISap</name>
-            <instance>slot1</instance>
-        </interface>
+        <fqname>@1.2::ISap/slot1</fqname>
     </hal>
     <hal format="hidl">
       <name>android.hardware.radio.config</name>
