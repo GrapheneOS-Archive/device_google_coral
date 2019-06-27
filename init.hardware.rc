@@ -398,6 +398,8 @@ on early-boot
     chmod 0660 /sys/devices/platform/soc/ac4b000.qcom,cci/ac4b000.qcom,cci:st,rainbow@20/rainbow_write_byte
     chown system system /dev/vd6281
     chmod 0660 /dev/vd6281
+    chown system system /persist/camera/rals_fac_test
+    chmod 0660 /persist/camera/rals_fac_test
 
     # Permission for Dot and Flood
     chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/led_laser_enable

@@ -107,6 +107,8 @@ ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
       $(LOCAL_PATH)/init.hardware.chamber.rc.userdebug:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_PLATFORM).chamber.rc
   PRODUCT_COPY_FILES += \
       $(LOCAL_PATH)/init.hardware.wlc.rc.userdebug:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_PLATFORM).wlc.rc
+  PRODUCT_COPY_FILES += \
+      $(LOCAL_PATH)/init.hardware.userdebug.rc.userdebug:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_PLATFORM).userdebug.rc
 else
   PRODUCT_COPY_FILES += \
       $(LOCAL_PATH)/init.hardware.mpssrfs.rc.user:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(PRODUCT_PLATFORM).mpssrfs.rc
@@ -280,6 +282,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.display.foss.config_path=/vendor/etc/FOSSConfig.xml \
     vendor.display.qdcm.mode_combine=1
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.display.defer_fps_frame_count=2
 
 # camera google face detection
 PRODUCT_PROPERTY_OVERRIDES += \
