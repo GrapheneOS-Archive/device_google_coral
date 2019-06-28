@@ -1829,6 +1829,11 @@
         <path name="audio-playback-voip speaker"/>
     </path>
 
+    <path name="audio-playback-voip speaker-and-usb-headphones">
+        <path name="audio-playback-voip usb-headphones"/>
+        <path name="audio-playback-voip speaker"/>
+    </path>
+
     <!-- VoIP Tx settings -->
     <path name="audio-record-voip">
         <ctl name="MultiMedia10 Mixer QUAT_TDM_TX_0" value="1"/>
