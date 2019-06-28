@@ -124,8 +124,7 @@
     <config_params>
         <param key="input_mic_max_count" value="3"/>
         <param key="snd_card_name" value="sm8150-iaxxx-flame-snd-card"/>
-        <param key="operator_info" value="Sprint;310002"/>
-        <param key="operator_info" value="Sprint;310120"/>
+        <param key="operator_info" value="Sprint;310002;310120"/>
     </config_params>
 
     <gain_db_to_level_mapping>
