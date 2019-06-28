@@ -91,6 +91,9 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.protected_contents=true
 # The data space of wide color gamut composition preference is Dataspace::DISPLAY_P3
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.wcg_composition_dataspace=143261696
 
+# The data space of color space agnostic surfaces is STANDARD_DCI_P3 | TRANSFER_GAMMA2_2 | RANGE_FULL
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.color_space_agnostic_dataspace=151650304
+
 # MIDI feature
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml
