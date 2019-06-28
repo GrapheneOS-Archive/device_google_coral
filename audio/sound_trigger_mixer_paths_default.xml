@@ -532,7 +532,6 @@
         <ctl name="CDC0 MicBias" value="1"/>
         <!--ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/-->
         <ctl name="Pdm CDC Setup" value="1"/>
-        <ctl name="Pdm PortC Setup" value="1"/>
         <ctl name="Pdm PortC CDC DMic4 En" value="1"/>
         <ctl name="PDM Hos" value="0x10"/>
         <ctl name="PDM CDC0 Start" value="0x10"/>
@@ -559,7 +558,6 @@
         <ctl name="Route Status" value="Active"/>
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/>
         <ctl name="Pdm CDC Setup" value="1"/>
-        <ctl name="Pdm PortB Setup" value="1"/>
         <ctl name="Pdm PortB CDC DMic6 En" value="1"/>
         <ctl name="PDM Hos" value="0x80"/>
         <ctl name="PDM CDC0 Start" value="0x80"/>
@@ -587,7 +585,6 @@
         <ctl name="PortB MicBias" value="1"/>
         <!--ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/-->
         <ctl name="Pdm CDC Setup" value="1"/>
-        <ctl name="Pdm CDC1 Setup" value="1"/>
         <ctl name="Pdm CDC1 CDC DMic3 En" value="1"/>
         <ctl name="PDM Hos" value="0x8"/>
         <ctl name="PDM CDC0 Start" value="0x8"/>
@@ -615,7 +612,6 @@
         <ctl name="PortC MicBias" value="1"/>
         <!--ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ"/-->
         <ctl name="Pdm CDC Setup" value="1"/>
-        <ctl name="Pdm CDC1 Setup" value="1"/>
         <ctl name="Pdm CDC0 CDC DMic1 En" value="1"/>
         <ctl name="PDM Hos" value="0x2"/>
         <ctl name="PDM CDC0 Start" value="0x2"/>
