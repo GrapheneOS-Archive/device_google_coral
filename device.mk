@@ -285,6 +285,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.display.defer_fps_frame_count=2
 
+# b/136130155: disable client composition layers caching in hwc
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.display.comp_mask=65536
+
 # camera google face detection
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.googfd.enable=1
@@ -322,6 +326,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.rcs.supported=1 \
     vendor.rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so \
     ro.hardware.keystore_desede=true \
+    persist.vendor.radio.procedure_bytes=SKIP \
 
 # Disable snapshot timer
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -47,7 +47,7 @@
     <bool name="config_displayWhiteBalanceEnabledDefault">true</bool>
 
     <!-- Minimum color temperature, in Kelvin, supported by display white balance. -->
-    <integer name="config_displayWhiteBalanceColorTemperatureMin">5700</integer>
+    <integer name="config_displayWhiteBalanceColorTemperatureMin">6300</integer>
 
     <!-- Maximum color temperature, in Kelvin, supported by display white balance. -->
     <integer name="config_displayWhiteBalanceColorTemperatureMax">7450</integer>
@@ -96,9 +96,6 @@
          - If 100 <= Y < 1000, we require Y < (1 - 0.05) * X = 0.95X;
          - If 1000 <= Y, we require Y < (1 - 0) * X = X. -->
     <array name="config_displayWhiteBalanceBaseThresholds">
-        <item>5700</item>
-        <item>6000</item>
-        <item>6050</item>
         <item>6300</item>
         <item>6400</item>
         <item>6850</item>
@@ -110,9 +107,6 @@
          non-empty, the same length as config_displayWhiteBalanceBaseThresholds, and contain
          non-negative numbers. -->
     <array name="config_displayWhiteBalanceIncreaseThresholds">
-        <item>0.0085470</item>
-        <item>0.0082988</item>
-        <item>0.0080972</item>
         <item>0.0078740</item>
         <item>0.0075472</item>
         <item>0.0069930</item>
@@ -124,9 +118,6 @@
          non-empty, the same length as config_displayWhiteBalanceBaseThresholds, and contain
          non-negative numbers. -->
     <array name="config_displayWhiteBalanceDecreaseThresholds">
-        <item>0.0085470</item>
-        <item>0.0082988</item>
-        <item>0.0080972</item>
         <item>0.0078740</item>
         <item>0.0075472</item>
         <item>0.0069930</item>
@@ -158,9 +149,40 @@
     </array>
 
     <!-- See DisplayWhiteBalanceController.
-         The ambient color temperature (in cct) to which we fall back when the ambient brightness
-         drops beneath a certain threshold. -->
-    <item name="config_displayWhiteBalanceLowLightAmbientColorTemperature" format="float" type="dimen">5700.0</item>
+         The ambient color temperature (in cct) to which we interpolates towards to when the
+         ambient brightness is within the low light range, see
+         config_displayWhiteBalanceLowLightAmbientBrightnesses. -->
+    <item name="config_displayWhiteBalanceLowLightAmbientColorTemperature" format="float" type="dimen">6300.0</item>
+
+    <!-- See DisplayWhiteBalanceController.
+         A float array containing a list of ambient brightnesses, in Lux. This array,
+         together with config_displayWhiteBalanceHighLightAmbientBiases, is used to generate a
+         lookup table used in DisplayWhiteBalanceController. This lookup table is used to map
+         ambient brightness readings to a bias, where the bias is used to linearly interpolate
+         between ambient color temperature and
+         config_displayWhiteBalanceHighLightAmbientColorTemperature.
+         This table is optional. If used, this array must,
+         1) Contain at least two entries
+         2) Be the same length as config_displayWhiteBalanceHighLightAmbientBiases. -->
+    <array name ="config_displayWhiteBalanceHighLightAmbientBrightnesses">
+        <item>3000.0</item>
+        <item>5000.0</item>
+    </array>
+
+    <!-- See DisplayWhiteBalanceController.
+         An array containing a list of biases. See
+         config_displayWhiteBalanceHighLightAmbientBrightnesses for additional details.
+         This array must be in the range of [0.0, 1.0]. -->
+    <array name ="config_displayWhiteBalanceHighLightAmbientBiases">
+        <item>0.0</item>
+        <item>1.0</item>
+    </array>
+
+    <!-- See DisplayWhiteBalanceController.
+         The ambient color temperature (in cct) to which we interpolates towards to when the
+         ambient brightness is within the high light range, see
+         config_displayWhiteBalanceHighLightAmbientBrightnesses. -->
+    <item name="config_displayWhiteBalanceHighLightAmbientColorTemperature" format="float" type="dimen">6500.0</item>
 
     <!-- See DisplayWhiteBalanceController.
          A float array containing a list of ambient color temperatures, in Kelvin. This array,
@@ -171,11 +193,6 @@
          1) Contain at least two entries
          2) Be the same length as config_displayWhiteBalanceDisplayColorTemperatures. -->
     <array name="config_displayWhiteBalanceAmbientColorTemperatures">
-        <item>2700</item>
-        <item>3100</item>
-        <item>3700</item>
-        <item>4200</item>
-        <item>4800</item>
         <item>5300</item>
         <item>6000</item>
         <item>7000</item>
@@ -187,11 +204,6 @@
          config_displayWhiteBalanceAmbientColorTemperatures for additional details.
          The same restrictions apply to this array. -->
     <array name="config_displayWhiteBalanceDisplayColorTemperatures">
-        <item>5700</item>
-        <item>6000</item>
-        <item>6050</item>
-        <item>6300</item>
-        <item>6300</item>
         <item>6300</item>
         <item>6400</item>
         <item>6850</item>
