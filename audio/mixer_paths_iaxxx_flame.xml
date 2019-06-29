@@ -1879,7 +1879,6 @@
         <ctl name="CDC0 MicBias" value="1" />
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="Pdm CDC Setup" value="1" />
-        <ctl name="Pdm PortC Setup" value="1" />
         <ctl name="Pdm PortC CDC DMic4 En" value="1" />
         <ctl name="PDM Hos" value="16" />
         <ctl name="PDM CDC0 Start" value="16" />
@@ -1907,7 +1906,6 @@
         <ctl name="PDM Port AudCLK" value="IAXXX_AUD_PORT_96K" />
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="Pdm CDC Setup" value="1" />
-        <ctl name="Pdm PortB Setup" value="1" />
         <ctl name="Pdm PortB CDC DMic6 En" value="1" />
         <ctl name="PDM Hos" value="128" />
         <ctl name="PDM CDC0 Start" value="128" />
@@ -1935,7 +1933,6 @@
         <ctl name="PortB MicBias" value="1" />
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="Pdm CDC Setup" value="1" />
-        <ctl name="Pdm CDC1 Setup" value="1" />
         <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
         <ctl name="PDM Hos" value="8" />
         <ctl name="PDM CDC0 Start" value="8" />
@@ -1965,7 +1962,6 @@
         <ctl name="PortC MicBias" value="1" />
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="Pdm CDC Setup" value="1" />
-        <ctl name="Pdm CDC1 Setup" value="1" />
         <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
         <ctl name="PDM Hos" value="255" />
         <ctl name="PDM CDC0 Start" value="2" />
@@ -2030,7 +2026,6 @@
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="Pdm CDC Setup" value="1" />
 
-        <ctl name="Pdm CDC1 Setup" value="1" />
         <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
         <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
         <ctl name="PDM Hos" value="255" />
@@ -2085,7 +2080,6 @@
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="Pdm CDC Setup" value="1" />
 
-        <ctl name="Pdm CDC1 Setup" value="1" />
         <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
         <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
 
@@ -2120,9 +2114,7 @@
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="Pdm CDC Setup" value="1" />
 
-        <ctl name="Pdm CDC1 Setup" value="1" />
         <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
-        <ctl name="Pdm PortC Setup" value="1" />
         <ctl name="Pdm PortC CDC DMic4 En" value="1" />
 
         <ctl name="PDM Hos" value="18" />
@@ -2178,7 +2170,6 @@
         <ctl name="Pdm CDC Setup" value="1" />
 
         <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
-        <ctl name="Pdm PortC Setup" value="1" />
         <ctl name="Pdm PortC CDC DMic4 En" value="1" />
 
         <ctl name="PDM Hos" value="2" />
@@ -2211,10 +2202,7 @@
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="Pdm CDC Setup" value="1" />
 
-        <ctl name="Pdm PortB Setup" value="1" />
         <ctl name="Pdm PortB CDC DMic6 En" value="1" />
-
-        <ctl name="Pdm CDC1 Setup" value="1" />
         <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
 
         <ctl name="PDM Hos" value="136" />
@@ -2268,9 +2256,7 @@
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="Pdm CDC Setup" value="1" />
 
-        <ctl name="Pdm PortB Setup" value="1" />
         <ctl name="Pdm PortB CDC DMic6 En" value="1" />
-        <ctl name="Pdm CDC1 Setup" value="1" />
         <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
         <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
 
@@ -2343,9 +2329,7 @@
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="Pdm CDC Setup" value="1" />
 
-        <ctl name="Pdm PortC Setup" value="1" />
         <ctl name="Pdm PortC CDC DMic4 En" value="1" />
-        <ctl name="Pdm CDC1 Setup" value="1" />
         <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
 
         <ctl name="PDM Hos" value="24" />
@@ -2401,9 +2385,7 @@
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="Pdm CDC Setup" value="1" />
 
-        <ctl name="Pdm PortC Setup" value="1" />
         <ctl name="Pdm PortC CDC DMic4 En" value="1" />
-        <ctl name="Pdm CDC1 Setup" value="1" />
         <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
         <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
 
@@ -2478,9 +2460,7 @@
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="Pdm CDC Setup" value="1" />
 
-        <ctl name="Pdm PortC Setup" value="1" />
         <ctl name="Pdm PortC CDC DMic4 En" value="1" />
-        <ctl name="Pdm CDC1 Setup" value="1" />
         <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
         <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
 
@@ -2555,9 +2535,7 @@
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="Pdm CDC Setup" value="1" />
 
-        <ctl name="Pdm PortC Setup" value="1" />
         <ctl name="Pdm PortC CDC DMic4 En" value="1" />
-        <ctl name="Pdm CDC1 Setup" value="1" />
         <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
         <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
 
@@ -2595,9 +2573,7 @@
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="Pdm CDC Setup" value="1" />
 
-        <ctl name="Pdm PortC Setup" value="1" />
         <ctl name="Pdm PortC CDC DMic4 En" value="1" />
-        <ctl name="Pdm CDC1 Setup" value="1" />
         <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
         <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
 
