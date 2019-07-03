@@ -34,10 +34,10 @@ namespace pixel {
 namespace powerstats {
 
 OsloStateResidencyDataProvider::OsloStateResidencyDataProvider(uint32_t id)
-    : mPath("/dev/iaxxx-module-celldrv"), mPowerEntityId(id) {}
+        : mPath("/dev/iaxxx-module-celldrv"), mPowerEntityId(id) {}
 
 bool OsloStateResidencyDataProvider::getResults(
-    std::unordered_map<uint32_t, PowerEntityStateResidencyResult> &results) {
+        std::unordered_map<uint32_t, PowerEntityStateResidencyResult> &results) {
     android::base::unique_fd devNode(open(mPath.c_str(), O_RDWR));
     if (devNode.get() < 0) {
         PLOG(ERROR) << __func__ << ":Failed to open file " << mPath;

@@ -22,6 +22,7 @@ cc_binary {
         "RailDataProvider.cpp",
         "GpuStateResidencyDataProvider.cpp",
         "OsloStateResidencyDataProvider.cpp",
+        "IaxxxStateResidencyDataProvider.cpp",
     ],
     cflags: [
         "-Wall",
