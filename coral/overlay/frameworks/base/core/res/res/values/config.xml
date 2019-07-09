@@ -164,7 +164,15 @@
 
     <!-- Height of the status bar -->
     <dimen name="status_bar_height_portrait">28dp</dimen>
-    <!-- Not allow to switch to higher refresh rate when display brightness setting is
-         equal or less than this value -->
-    <integer name="config_brightnessThresholdOfPeakRefreshRate">16</integer>
+
+    <!-- Not allow to switch to higher refresh rate when (display, ambient) brightness falls into
+         the region defined by the two arrays -->
+    <integer-array name="config_brightnessThresholdsOfPeakRefreshRate">
+        <item>74</item> <!-- 77% UI brightness -->
+        <item>63</item> <!-- 73% UI brightness -->
+    </integer-array>
+    <integer-array name="config_ambientThresholdsOfPeakRefreshRate">
+        <item>67</item>
+        <item>200</item>
+    </integer-array>
 </resources>
