@@ -112,3 +112,11 @@ PRODUCT_COPY_FILES += \
 # Dmabuf dump tool for bug reports
 PRODUCT_PACKAGES += \
     dmabuf_dump
+
+# Display 90Hz blacklist
+# Apps that do not work well when the display refreshes at 90Hz. When these
+# apps are visible, the display's refresh rate gets fixed to 60Hz.
+# Increment high_refresh_rate_blacklist_length when adding new apps to this list!
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.window_manager.high_refresh_rate_blacklist_length = 1 \
+    ro.window_manager.high_refresh_rate_blacklist_entry1 = com.nianticlabs.pokemongo
