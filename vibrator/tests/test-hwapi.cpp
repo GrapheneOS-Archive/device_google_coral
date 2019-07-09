@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#define LOG_TAG "PtsVibratorHalFloralTestSuite"
+#define LOG_TAG "VibratorHalFloralTestSuite"
 
 #include <android-base/file.h>
 #include <gtest/gtest.h>

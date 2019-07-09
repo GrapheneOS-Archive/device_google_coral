@@ -33,21 +33,10 @@ cc_defaults {
 }
 
 cc_defaults {
-    name: "PtsVibratorHalFloralDefaults",
+    name: "VibratorHalFloralTestDefaults",
     defaults: ["android.hardware.vibrator@1.3-defaults.coral"],
     static_libs: ["android.hardware.vibrator@1.3-impl.coral"],
-    test_suites: [
-        "general-tests",
-        "pts",
-    ],
-    multilib: {
-        lib32: {
-            suffix: "32",
-        },
-        lib64: {
-            suffix: "64",
-        },
-    },
+    test_suites: ["device-tests"],
 }
 
 cc_library {
