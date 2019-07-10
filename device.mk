@@ -30,6 +30,10 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/google/camera \
     vendor/google/darwinn \
     vendor/qcom/sm8150 \
+    vendor/qcom/sm8150/codeaurora/telephony/ims \
+    vendor/qcom/sm8150/proprietary/qcril-data-hal/qdp \
+    vendor/qcom/sm8150/proprietary/qcril-data-hal/util \
+    vendor/qcom/sm8150/proprietary/qcril-data-hal/datamodule \
     vendor/google/interfaces
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -72,7 +76,7 @@ PRODUCT_VENDOR_KERNEL_HEADERS := device/google/coral-kernel/sm8150/kernel-header
 
 
 PRODUCT_CHARACTERISTICS := nosdcard
-PRODUCT_SHIPPING_API_LEVEL := 28
+PRODUCT_SHIPPING_API_LEVEL := 29
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -432,10 +436,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.qc2.venc.avgqp.enable=1
 
-# TODO: remove once we generate ours
-PRODUCT_PACKAGES += \
-    media_codecs_performance_c2.xml
-
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl-google \
     android.hardware.camera.provider@2.4-service-google \
@@ -682,6 +682,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
     $(LOCAL_PATH)/media_codecs_omx.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_omx.xml \
+    $(LOCAL_PATH)/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml \
