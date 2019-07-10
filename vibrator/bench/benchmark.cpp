@@ -69,6 +69,7 @@ class VibratorBench : public benchmark::Fixture {
     }
 
     static void SupportedEffectArgs(benchmark::internal::Benchmark *b) {
+        b->ArgNames({"Effect", "Strength"});
         for (const auto &effect : hidl_enum_range<Effect>()) {
             for (const auto &strength : hidl_enum_range<EffectStrength>()) {
                 b->Args({static_cast<long>(effect), static_cast<long>(strength)});

@@ -14,8 +14,8 @@
 // limitations under the License.
 
 cc_test {
-    name: "PtsVibratorHalFloralTestSuite",
-    defaults: ["PtsVibratorHalFloralDefaults"],
+    name: "VibratorHalFloralTestSuite",
+    defaults: ["VibratorHalFloralTestDefaults"],
     srcs: [
         "test-hwapi.cpp",
         "test-hwcal.cpp",
