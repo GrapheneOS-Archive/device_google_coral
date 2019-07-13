@@ -429,6 +429,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.media.codec2=2 \
     debug.stagefright.ccodec=4 \
 
+# Create input surface on the framework side
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.stagefright.c2inputsurface=-1 \
+
 # Enable ECO service
 QC2_HAVE_ECO_SERVICE := true
 
