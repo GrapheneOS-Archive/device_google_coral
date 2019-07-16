@@ -159,12 +159,22 @@
     <bool name="config_battery_percentage_setting_available">true</bool>
 
     <!-- Radius of the software rounded corners. -->
-    <dimen name="rounded_corner_radius_top">157px</dimen>
-    <dimen name="rounded_corner_radius_bottom">157px</dimen>
+    <dimen name="rounded_corner_radius">157px</dimen>
+
+    <!-- Adjustment for software rounded corners since corners aren't perfectly round. -->
+    <dimen name="rounded_corner_radius_adjustment">25px</dimen>
 
     <!-- Height of the status bar -->
     <dimen name="status_bar_height_portrait">28dp</dimen>
-    <!-- Not allow to switch to higher refresh rate when display brightness setting is
-         equal or less than this value -->
-    <integer name="config_brightnessThresholdOfPeakRefreshRate">16</integer>
+
+    <!-- Not allow to switch to higher refresh rate when (display, ambient) brightness falls into
+         the region defined by the two arrays -->
+    <integer-array name="config_brightnessThresholdsOfPeakRefreshRate">
+        <item>74</item> <!-- 77% UI brightness -->
+        <item>63</item> <!-- 73% UI brightness -->
+    </integer-array>
+    <integer-array name="config_ambientThresholdsOfPeakRefreshRate">
+        <item>67</item>
+        <item>200</item>
+    </integer-array>
 </resources>

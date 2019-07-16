@@ -161,10 +161,18 @@
     <!-- Radius of the software rounded corners. -->
     <dimen name="rounded_corner_radius">132px</dimen>
 
+    <!-- Adjustment for software rounded corners since corners aren't perfectly round. -->
+    <dimen name="rounded_corner_radius_adjustment">22px</dimen>
+
     <!-- Height of the status bar -->
     <dimen name="status_bar_height_portrait">30dp</dimen>
 
     <!-- Not allow to switch to higher refresh rate when display brightness setting is
          equal or less than this value -->
-    <integer name="config_brightnessThresholdOfPeakRefreshRate">16</integer>
+    <integer-array name="config_brightnessThresholdsOfPeakRefreshRate">
+        <item>16</item> <!-- 42% UI brightness -->
+    </integer-array>
+    <integer-array name="config_ambientThresholdsOfPeakRefreshRate">
+        <item>-1</item>
+    </integer-array>
 </resources>
