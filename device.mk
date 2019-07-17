@@ -906,10 +906,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.recovery.device.rc:recovery/root/init.recovery.coral.rc \
     $(LOCAL_PATH)/init.recovery.device.rc:recovery/root/init.recovery.flame.rc
 
-# Do not skip init trigger by default
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    vendor.skip.init=0
-
 # Oslo feature flag
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.vendor.aware_available=true
