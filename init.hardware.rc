@@ -43,11 +43,7 @@ on early-init
 on early-init && property:ro.boot.mode=charger
     setprop vendor.skip.init 1
 
-# We need vold early for metadata encryption
-on early-fs
-    start vold
-
-on init && property:vendor.skip.init=0
+on init
     # Load display primaries
     start color_init
 
@@ -146,6 +142,16 @@ on init && property:vendor.skip.init=0
     # Allow PAI targeting per hardware SKU
     setprop ro.oem.key1 ${ro.boot.hardware.sku}
 
+# b/134578585
+on charger
+    trigger fs
+    start system_suspend
+    start vendor.qrtr-ns
+    start irsc_util
+    start tftp_server
+    start rmt_storage
+    start modem_svc
+    start vendor.per_mgr
 
 on late-init
     setprop vendor.thermal.config thermal_info_config.json
