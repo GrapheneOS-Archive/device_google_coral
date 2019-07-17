@@ -599,6 +599,7 @@
          When these apps are visible, the display's refresh rate gets fixed to 60Hz. -->
     <string-array name="config_highRefreshRateBlacklist">
         <item>com.nianticlabs.pokemongo</item>
+        <item>com.waze</item>
     </string-array>
 
 </resources>
