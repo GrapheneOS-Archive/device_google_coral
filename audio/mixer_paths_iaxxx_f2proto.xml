@@ -1879,7 +1879,7 @@
         <ctl name="Pdm CDC Setup" value="1" />
         <ctl name="Pdm PortC Setup" value="1" />
         <ctl name="Pdm PortC CDC DMic4 En" value="1" />
-        <ctl name="PDM Hos" value="255" />
+        <ctl name="PDM Hos" value="16" />
         <ctl name="PDM CDC0 Start" value="16" />
         <ctl name="Rx0Ch EpGain" value="20" />
         <ctl name="Rx0Chan GnRmp" value="STEP_600" />
@@ -2035,7 +2035,7 @@
         <ctl name="Pdm PortB Setup" value="1" />
         <ctl name="Pdm PortB CDC DMic6 En" value="1" />
 
-        <ctl name="PDM Hos" value="255" />
+        <ctl name="PDM Hos" value="80" />
         <ctl name="PDM CDC0 Start" value="80" />
 
         <ctl name="Rx0Ch EpGain" value="20" />
@@ -2411,7 +2411,7 @@
         <ctl name="Pdm PortC Setup" value="1" />
         <ctl name="Pdm PortC CDC DMic4 En" value="1" />
 
-        <ctl name="PDM Hos" value="255" />
+        <ctl name="PDM Hos" value="82" />
         <ctl name="PDM CDC0 Start" value="82" />
 
         <ctl name="Rx0Ch EpGain" value="20" />
