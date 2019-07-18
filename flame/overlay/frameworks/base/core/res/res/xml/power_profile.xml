@@ -206,30 +206,30 @@
 
     <!-- Cellular modem related values.-->
     <item name="modem.controller.sleep">0</item>
-    <item name="modem.controller.idle">99</item>
-    <item name="modem.controller.rx">129</item>
+    <item name="modem.controller.idle">100</item>
+    <item name="modem.controller.rx">91</item>
     <array name="modem.controller.tx"> <!-- Strength 0 to 4 -->
-      <value>136</value>
-      <value>189</value>
-      <value>261</value>
-      <value>321</value>
-      <value>421</value>
+      <value>96</value>
+      <value>133</value>
+      <value>183</value>
+      <value>225</value>
+      <value>295</value>
     </array>
     <item name="modem.controller.voltage">3700</item>
 
     <!-- GPS related values.-->
     <array name="gps.signalqualitybased"> <!-- Strength 0 to 1 -->
-      <value>26</value>
-      <value>8</value>
+      <value>24</value>
+      <value>6</value>
     </array>
     <item name="gps.voltage">3700</item>
 
     <!-- Idle Receive current for wifi radio in mA.-->
-    <item name="wifi.controller.idle">76</item>
+    <item name="wifi.controller.idle">82</item>
     <!-- Rx current for wifi radio in mA.-->
     <item name="wifi.controller.rx">125</item>
     <!-- Tx current for wifi radio in mA-->
-    <item name="wifi.controller.tx">349</item>
+    <item name="wifi.controller.tx">351</item>
     <!-- Operating volatage for wifi radio in mV.-->
     <item name="wifi.controller.voltage">3700</item>
 
