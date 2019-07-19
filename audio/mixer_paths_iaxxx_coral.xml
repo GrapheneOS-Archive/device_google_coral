@@ -1963,7 +1963,7 @@
         <ctl name="PDM BCLK" value="IAXXX_PDM_CLK_3P_072MHZ" />
         <ctl name="Pdm CDC Setup" value="1" />
         <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
-        <ctl name="PDM Hos" value="255" />
+        <ctl name="PDM Hos" value="2" />
         <ctl name="PDM CDC0 Start" value="2" />
         <ctl name="Rx0Ch EpGain" value="20" />
         <ctl name="Rx0Chan GnRmp" value="STEP_600" />
@@ -2028,7 +2028,7 @@
 
         <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
         <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
-        <ctl name="PDM Hos" value="255" />
+        <ctl name="PDM Hos" value="10" />
         <ctl name="PDM CDC0 Start" value="10" />
 
         <ctl name="Rx0Ch EpGain" value="20" />
@@ -2389,7 +2389,7 @@
         <ctl name="Pdm CDC1 CDC DMic3 En" value="1" />
         <ctl name="Pdm CDC0 CDC DMic1 En" value="1" />
 
-        <ctl name="PDM Hos" value="255" />
+        <ctl name="PDM Hos" value="26" />
         <ctl name="PDM CDC0 Start" value="26" />
 
         <ctl name="Rx0Ch EpGain" value="20" />
