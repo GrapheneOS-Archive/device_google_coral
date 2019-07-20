@@ -303,8 +303,7 @@
                 "NAN"
             ],
             "VrThreshold":"NAN",
-            "Multiplier":1,
-            "Monitor":true
+            "Multiplier":1
         }
     ],
     "CoolingDevices":[
