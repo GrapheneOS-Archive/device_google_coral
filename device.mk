@@ -475,7 +475,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator HAL
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.3-service.cs40l25 \
+    android.hardware.vibrator@1.4-service.cs40l25 \
 
 # Thermal HAL
 PRODUCT_PACKAGES += \

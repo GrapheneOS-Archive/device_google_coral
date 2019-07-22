@@ -412,6 +412,7 @@ on early-boot
     chown system system /sys/class/leds/vibrator/device/standby_timeout
     chown system system /sys/class/leds/vibrator/device/vbatt_max
     chown system system /sys/class/leds/vibrator/device/vbatt_min
+    chown system system /sys/class/leds/vibrator/device/vibe_state
 
     # Permission for Rainbow sensor
     chown system system /sys/devices/platform/soc/ac4b000.qcom,cci/ac4b000.qcom,cci:st,rainbow@20/rainbow_enable
