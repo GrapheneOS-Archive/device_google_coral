@@ -171,10 +171,8 @@
          the region defined by the two arrays -->
     <integer-array name="config_brightnessThresholdsOfPeakRefreshRate">
         <item>74</item> <!-- 77% UI brightness -->
-        <item>63</item> <!-- 73% UI brightness -->
     </integer-array>
     <integer-array name="config_ambientThresholdsOfPeakRefreshRate">
-        <item>67</item>
-        <item>200</item>
+        <item>63</item>
     </integer-array>
 </resources>
