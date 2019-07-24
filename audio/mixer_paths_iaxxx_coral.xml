@@ -59,6 +59,7 @@
     <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia14" value="0"/>
     <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia15" value="0"/>
     <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia16" value="0"/>
+    <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia30" value="0"/>
     <ctl name="SLIMBUS_6_RX Port Mixer SLIM_0_TX" value="0"/>
     <ctl name="SLIMBUS_4_RX Audio Mixer MultiMedia1" value="0"/>
     <ctl name="SLIMBUS_4_RX Audio Mixer MultiMedia2" value="0"/>
@@ -169,6 +170,7 @@
     <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia14" value="0"/>
     <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia15" value="0"/>
     <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia16" value="0"/>
+    <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia30" value="0"/>
     <ctl name="MultiMedia1 Mixer USB_AUDIO_TX" value="0"/>
     <ctl name="MultiMedia2 Mixer USB_AUDIO_TX" value="0"/>
     <ctl name="MultiMedia5 Mixer USB_AUDIO_TX" value="0"/>
@@ -515,6 +517,7 @@
     <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia4" value="0"/>
     <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia5" value="0"/>
     <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia6" value="0"/>
+    <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia30" value="0"/>
     <ctl name="MultiMedia1 Mixer SLIM_7_TX" value="0"/>
     <!-- audio record compress-->
     <ctl name="MultiMedia8 Mixer SLIM_0_TX" value="0"/>
@@ -1080,6 +1083,68 @@
 
     <path name="audio-with-haptics-playback speaker-protected">
         <path name="audio-with-haptics-playback"/>
+    </path>
+
+    <path name="audio-with-haptics-playback usb-headphones">
+        <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia30" value="1" />
+    </path>
+
+    <path name="audio-with-haptics-playback usb-headset">
+        <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia30" value="1" />
+        <ctl name="TERT_TDM_RX_1 Audio Mixer MultiMedia31" value="1"/>
+    </path>
+
+    <path name="audio-with-haptics-playback speaker-and-usb-headphones">
+        <path name="audio-with-haptics-playback usb-headphones"/>
+        <path name="audio-with-haptics-playback speaker"/>
+    </path>
+
+    <path name="audio-with-haptics-playback speaker-safe-and-usb-headphones">
+        <path name="audio-with-haptics-playback usb-headphones"/>
+        <path name="audio-with-haptics-playback speaker-safe"/>
+    </path>
+
+    <path name="audio-with-haptics-playback bt-sco">
+        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia30" value="1"/>
+    </path>
+
+    <path name="audio-with-haptics-playback bt-sco-wb">
+        <path name="audio-with-haptics-playback bt-sco"/>
+    </path>
+
+    <path name="audio-with-haptics-playback bt-a2dp">
+        <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia30" value="1"/>
+        <ctl name="TERT_TDM_RX_1 Audio Mixer MultiMedia31" value="1"/>
+    </path>
+
+    <path name="audio-with-haptics-playback speaker-and-bt-a2dp">
+        <path name="audio-with-haptics-playback bt-a2dp"/>
+        <path name="audio-with-haptics-playback speaker"/>
+    </path>
+
+    <path name="audio-with-haptics-playback speaker-safe-and-bt-a2dp">
+        <path name="audio-with-haptics-playback bt-a2dp"/>
+        <path name="audio-with-haptics-playback speaker-safe"/>
+    </path>
+
+    <path name="audio-with-haptics-playback speaker-and-bt-sco">
+        <path name="audio-with-haptics-playback bt-sco"/>
+        <path name="audio-with-haptics-playback speaker"/>
+    </path>
+
+    <path name="audio-with-haptics-playback speaker-safe-and-bt-sco">
+        <path name="audio-with-haptics-playback bt-sco"/>
+        <path name="audio-with-haptics-playback speaker-safe"/>
+    </path>
+
+    <path name="audio-with-haptics-playback speaker-and-bt-sco-wb">
+        <path name="audio-with-haptics-playback bt-sco-wb"/>
+        <path name="audio-with-haptics-playback speaker"/>
+    </path>
+
+    <path name="audio-with-haptics-playback speaker-safe-and-bt-sco-wb">
+        <path name="audio-with-haptics-playback bt-sco-wb"/>
+        <path name="audio-with-haptics-playback speaker-safe"/>
     </path>
 
     <path name="audio-ull-playback">
