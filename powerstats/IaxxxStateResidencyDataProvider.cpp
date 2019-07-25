@@ -35,9 +35,10 @@ namespace powerstats {
 IaxxxStateResidencyDataProvider::IaxxxStateResidencyDataProvider(uint32_t id)
     : mPath("/dev/iaxxx-module-celldrv"),
       mPowerEntityId(id),
-      mStateNames{"MPLL_3MHz",  "MPLL_5MHz",   "MPLL_6MHz",  "MPLL_8MHz",
-                  "MPLL_10MHz", "MPLL_15MHz",  "MPLL_30MHz", "MPLL_60MHz",
-                  "MPLL_80MHz", "MPLL_120MHz", "Sleep"} {}
+      mStateNames{"MPLL_3MHz",  "MPLL_5MHz",  "MPLL_6MHz",   "MPLL_8MHz",
+                  "MPLL_10MHz", "MPLL_15MHz", "MPLL_30MHz",  "MPLL_35MHz",
+                  "MPLL_40MHz", "MPLL_45MHz", "MPLL_50MHz",  "MPLL_55MHz",
+                  "MPLL_60MHz", "MPLL_80MHz", "MPLL_120MHz", "Sleep"} {}
 
 bool IaxxxStateResidencyDataProvider::getResults(
         std::unordered_map<uint32_t, PowerEntityStateResidencyResult> &results) {
