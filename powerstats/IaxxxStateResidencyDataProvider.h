@@ -39,7 +39,12 @@ class IaxxxStateResidencyDataProvider : public IStateResidencyDataProvider {
   private:
     const std::string mPath;
     const uint32_t mPowerEntityId;
-    const std::string mStateNames[NUM_MPLL_CLK_FREQ + 1];  // Each of the MPLL frequencies and sleep
+    static constexpr std::string_view mStateNames[] = {
+        "MPLL_3MHz",  "MPLL_5MHz",  "MPLL_6MHz",   "MPLL_8MHz",  "MPLL_10MHz", "MPLL_15MHz",
+        "MPLL_30MHz", "MPLL_35MHz", "MPLL_40MHz",  "MPLL_45MHz", "MPLL_50MHz", "MPLL_55MHz",
+        "MPLL_60MHz", "MPLL_80MHz", "MPLL_120MHz", "Sleep"};
+    static_assert(NUM_MPLL_CLK_FREQ + 1 == sizeof(mStateNames) / sizeof(*mStateNames),
+                  "mStateNames must have an entry for each of the MPLL frequencies and sleep");
 };
 
 }  // namespace powerstats
