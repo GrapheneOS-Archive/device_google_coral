@@ -33,11 +33,7 @@ namespace pixel {
 namespace powerstats {
 
 IaxxxStateResidencyDataProvider::IaxxxStateResidencyDataProvider(uint32_t id)
-    : mPath("/dev/iaxxx-module-celldrv"),
-      mPowerEntityId(id),
-      mStateNames{"MPLL_3MHz",  "MPLL_5MHz",   "MPLL_6MHz",  "MPLL_8MHz",
-                  "MPLL_10MHz", "MPLL_15MHz",  "MPLL_30MHz", "MPLL_60MHz",
-                  "MPLL_80MHz", "MPLL_120MHz", "Sleep"} {}
+    : mPath("/dev/iaxxx-module-celldrv"), mPowerEntityId(id) {}
 
 bool IaxxxStateResidencyDataProvider::getResults(
         std::unordered_map<uint32_t, PowerEntityStateResidencyResult> &results) {
@@ -84,8 +80,9 @@ std::vector<PowerEntityStateSpace> IaxxxStateResidencyDataProvider::getStateSpac
     hidl_vec<PowerEntityStateInfo> states;
     states.resize(NUM_MPLL_CLK_FREQ + 1);  // Each of the MPLL frequencies and sleep
     for (uint32_t stateId = MPLL_CLK_3000; stateId <= NUM_MPLL_CLK_FREQ; stateId++) {
-        states[stateId] = PowerEntityStateInfo{.powerEntityStateId = stateId,
-                                               .powerEntityStateName = mStateNames[stateId]};
+        states[stateId] = PowerEntityStateInfo{
+                .powerEntityStateId = stateId,
+                .powerEntityStateName = static_cast<std::string>(mStateNames[stateId])};
     }
     stateSpace[0].states = states;
 
