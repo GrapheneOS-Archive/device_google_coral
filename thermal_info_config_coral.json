@@ -289,21 +289,6 @@
             ],
             "VrThreshold":"NAN",
             "Multiplier":0.001
-        },
-        {
-            "Name":"bcl-virt-extreme",
-            "Type":"UNKNOWN",
-            "HotThreshold":[
-                "NAN",
-                "NAN",
-                3,
-                "NAN",
-                "NAN",
-                "NAN",
-                "NAN"
-            ],
-            "VrThreshold":"NAN",
-            "Multiplier":1
         }
     ],
     "CoolingDevices":[
