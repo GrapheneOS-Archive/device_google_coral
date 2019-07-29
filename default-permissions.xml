@@ -106,4 +106,9 @@
         <!-- Used to call ActivityTransition API for Smart OOS & Smart PNO -->
         <permission name="android.permission.ACTIVITY_RECOGNITION" fixed="false"/>
     </exception>
+
+    <exception package="com.google.android.wfcactivation">
+        <!-- SMS -->
+        <permission name="android.permission.RECEIVE_WAP_PUSH" fixed="false"/>
+    </exception>
 </exceptions>
