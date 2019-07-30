@@ -59,9 +59,9 @@
          use in its calculations. AWB will adapt this white point to the target ambient white
          point. The array must include a total of 3 float values (X, Y, Z) -->
     <string-array name="config_displayWhiteBalanceDisplayNominalWhite">
-        <!-- Nominal White X --> <item>0.95047</item>
-        <!-- Nominal White Y --> <item>1.00000</item>
-        <!-- Nominal White Z --> <item>1.08883</item>
+        <!-- Nominal White X --> <item>0.950000</item>
+        <!-- Nominal White Y --> <item>1.000000</item>
+        <!-- Nominal White Z --> <item>1.117485</item>
     </string-array>
 
     <!-- See DisplayWhiteBalanceThrottler.
