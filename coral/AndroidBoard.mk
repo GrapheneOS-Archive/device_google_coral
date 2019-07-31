@@ -20,15 +20,6 @@ INTERNAL_PERSISTIMAGE_FILES := \
             $(call word-colon,1,$(pair)):$(PRODUCT_OUT)/$(call word-colon,2,$(pair))))
 
 INSTALLED_PERSISTIMAGE_FILES := $(call copy-many-files,$(INTERNAL_PERSISTIMAGE_FILES))
-
-INSTALLED_PERSISTIMAGE_FILES += \
-    $(TARGET_OUT_PERSIST_IMG_PATH)/coresight/qdss.agent.sh \
-    $(TARGET_OUT_PERSIST_IMG_PATH)/coresight/qdss.config.sh \
-    $(TARGET_OUT_PERSIST_IMG_PATH)/coresight/qdss.functions.sh \
-    $(TARGET_OUT_PERSIST_IMG_PATH)/sensors/registry/registry/sensors_registry \
-    $(TARGET_OUT_PERSIST_IMG_PATH)/sensors/registry/sns_reg_version \
-    $(TARGET_OUT_PERSIST_IMG_PATH)/sensors/sensors_settings
-
 INSTALLED_PERSISTIMAGE_TARGET := $(PRODUCT_OUT)/persist.img
 
 $(INSTALLED_PERSISTIMAGE_TARGET): $(MKEXTUSERIMG) $(MAKE_EXT4FS) $(INSTALLED_PERSISTIMAGE_FILES)
