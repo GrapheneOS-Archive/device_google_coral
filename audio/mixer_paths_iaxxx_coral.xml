@@ -2941,9 +2941,7 @@
     </path>
 
     <path name="sidetone-handset">
-        <path name="sidetone-iir"/>
-        <ctl name="IIR0 INP0 Volume" value="54"/>
-        <ctl name="RX INT7 MIX2 INP" value="SRC0"/>
+        <ctl name="Voice Sidetone Enable" value="1"/>
     </path>
 
     <path name="afe-sidetone">
