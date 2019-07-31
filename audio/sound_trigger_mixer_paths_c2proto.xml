@@ -785,11 +785,11 @@
     <path name="oslo-route">
     <!-- enable oslo route -->
         <ctl name="sensor0 Ip Conf" value="plugin9Out1"/>
+        <ctl name="sensor0 En" value="1"/>
         <ctl name="Plgin8Ip Ep0 Conf" value="SensorOut0"/>
         <ctl name="Plgin9Ip Ep0 Conf" value="plugin8Out0"/>
         <ctl name="Plgin8Blk1En" value="1"/>
         <ctl name="Plgin9Blk1En" value="1"/>
-        <ctl name="sensor0 En" value="1"/>
     </path>
 
     <path name="buffer-audio-route">
