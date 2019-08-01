@@ -17,6 +17,7 @@
 
 #include <PowerStatsAggregator.h>
 #include <dataproviders/PowerEntityResidencyDataProvider.h>
+#include <dataproviders/RailEnergyDataProvider.h>
 #include "CstateResidencyDataProvider.h"
 
 int main(int argc, char** argv) {
@@ -24,6 +25,7 @@ int main(int argc, char** argv) {
     PowerStatsAggregator agg;
     agg.addDataProvider(std::make_unique<CstateResidencyDataProvider>());
     agg.addDataProvider(std::make_unique<PowerEntityResidencyDataProvider>());
+    agg.addDataProvider(std::make_unique<RailEnergyDataProvider>());
 
     run(argc, argv, agg);
     return 0;
