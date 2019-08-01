@@ -170,20 +170,20 @@
             "Type":"USB_PORT",
             "HotThreshold":[
                 "NAN",
+                "NAN",
+                "NAN",
+                "NAN",
+                "NAN",
                 "65.0",
-                "NAN",
-                "NAN",
-                "NAN",
-                "NAN",
                 "NAN"
             ],
             "HotHysteresis":[
                 0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
                 5.0,
-                0.0,
-                0.0,
-                0.0,
-                0.0,
                 0.0
             ],
             "VrThreshold":"NAN",
