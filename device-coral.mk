@@ -23,3 +23,6 @@ DEVICE_PACKAGE_OVERLAYS += device/google/coral/coral/overlay
 # Audio XMLs for coral
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_volumes_coral.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml
+
+# Due to NFC / Camera interference, disable NFC active transmit while back-facing cameras are active
+PRODUCT_PROPERTY_OVERRIDES += ro.camera.notify_nfc=2
