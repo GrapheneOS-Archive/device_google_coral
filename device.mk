@@ -846,6 +846,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.phase_offset_threshold_for_next_vsync_ns=6100000
 
+# Enable backpressure for GL comp
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.sf.enable_gl_backpressure=1
+
 # Enable EGL image tracking on SF for b/137514000
 PRODUCT_PROPERTY_OVERRIDES += debug.sf.enable_egl_image_tracker=1
 
