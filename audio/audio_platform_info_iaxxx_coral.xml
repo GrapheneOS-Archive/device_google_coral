@@ -81,13 +81,13 @@
     </acdb_ids>
     <snd_device_delay>
         <device_delay name="SND_DEVICE_IN_HANDSET_MIC" delay="40"/>
-        <device_delay name="SND_DEVICE_IN_CAMCORDER_MIC" delay="80"/>
-        <device_delay name="SND_DEVICE_IN_CAMCORDER_LANDSCAPE" delay="80"/>
-        <device_delay name="SND_DEVICE_IN_CAMCORDER_INVERT_LANDSCAPE" delay="80"/>
-        <device_delay name="SND_DEVICE_IN_CAMCORDER_PORTRAIT" delay="80"/>
-        <device_delay name="SND_DEVICE_IN_CAMCORDER_SELFIE_LANDSCAPE" delay="80"/>
-        <device_delay name="SND_DEVICE_IN_CAMCORDER_SELFIE_INVERT_LANDSCAPE" delay="80"/>
-        <device_delay name="SND_DEVICE_IN_CAMCORDER_SELFIE_PORTRAIT" delay="80"/>
+        <device_delay name="SND_DEVICE_IN_CAMCORDER_MIC" delay="60"/>
+        <device_delay name="SND_DEVICE_IN_CAMCORDER_LANDSCAPE" delay="60"/>
+        <device_delay name="SND_DEVICE_IN_CAMCORDER_INVERT_LANDSCAPE" delay="60"/>
+        <device_delay name="SND_DEVICE_IN_CAMCORDER_PORTRAIT" delay="60"/>
+        <device_delay name="SND_DEVICE_IN_CAMCORDER_SELFIE_LANDSCAPE" delay="60"/>
+        <device_delay name="SND_DEVICE_IN_CAMCORDER_SELFIE_INVERT_LANDSCAPE" delay="60"/>
+        <device_delay name="SND_DEVICE_IN_CAMCORDER_SELFIE_PORTRAIT" delay="60"/>
         <device_delay name="SND_DEVICE_IN_UNPROCESSED_MIC" delay="30"/>
         <device_delay name="SND_DEVICE_IN_UNPROCESSED_STEREO_MIC" delay="30"/>
         <device_delay name="SND_DEVICE_IN_UNPROCESSED_THREE_MIC" delay="30"/>
