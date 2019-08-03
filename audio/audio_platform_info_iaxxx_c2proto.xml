@@ -79,6 +79,19 @@
         <device name="SND_DEVICE_IN_CAMCORDER_SELFIE_INVERT_LANDSCAPE" acdb_id="65"/>
         <device name="SND_DEVICE_IN_CAMCORDER_SELFIE_PORTRAIT" acdb_id="66"/>
     </acdb_ids>
+    <snd_device_delay>
+        <device_delay name="SND_DEVICE_IN_HANDSET_MIC" delay="40"/>
+        <device_delay name="SND_DEVICE_IN_CAMCORDER_MIC" delay="60"/>
+        <device_delay name="SND_DEVICE_IN_CAMCORDER_LANDSCAPE" delay="60"/>
+        <device_delay name="SND_DEVICE_IN_CAMCORDER_INVERT_LANDSCAPE" delay="60"/>
+        <device_delay name="SND_DEVICE_IN_CAMCORDER_PORTRAIT" delay="60"/>
+        <device_delay name="SND_DEVICE_IN_CAMCORDER_SELFIE_LANDSCAPE" delay="60"/>
+        <device_delay name="SND_DEVICE_IN_CAMCORDER_SELFIE_INVERT_LANDSCAPE" delay="60"/>
+        <device_delay name="SND_DEVICE_IN_CAMCORDER_SELFIE_PORTRAIT" delay="60"/>
+        <device_delay name="SND_DEVICE_IN_UNPROCESSED_MIC" delay="30"/>
+        <device_delay name="SND_DEVICE_IN_UNPROCESSED_STEREO_MIC" delay="30"/>
+        <device_delay name="SND_DEVICE_IN_UNPROCESSED_THREE_MIC" delay="30"/>
+    </snd_device_delay>
     <external_specific_dev>
         <!-- condor -->
         <ext_device name="SND_DEVICE_OUT_VOICE_USB_HEADSET" usbid="18d1:5034" acdb_id="56" />
