@@ -429,6 +429,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.media.codec2=2 \
     debug.stagefright.ccodec=4 \
+    debug.stagefright.omx_default_rank=512 \
 
 # Create input surface on the framework side
 PRODUCT_PROPERTY_OVERRIDES += \
