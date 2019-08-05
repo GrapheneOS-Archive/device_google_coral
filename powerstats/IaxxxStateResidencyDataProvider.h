@@ -20,7 +20,7 @@
 
 #include <unordered_map>
 
-#include <linux/mfd/adnc/iaxxx-module.h>
+#include "iaxxx-module.h"
 
 namespace android {
 namespace hardware {
