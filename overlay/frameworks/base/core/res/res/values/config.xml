@@ -601,6 +601,7 @@
         <item>com.google.android.apps.maps</item>
         <item>com.nianticlabs.pokemongo</item>
         <item>com.waze</item>
+        <item>com.tencent.mm</item>
     </string-array>
 
 </resources>
