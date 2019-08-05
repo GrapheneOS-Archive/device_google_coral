@@ -1087,6 +1087,7 @@
 
     <path name="audio-with-haptics-playback usb-headphones">
         <ctl name="USB_AUDIO_RX Audio Mixer MultiMedia30" value="1" />
+        <ctl name="TERT_TDM_RX_1 Audio Mixer MultiMedia31" value="1"/>
     </path>
 
     <path name="audio-with-haptics-playback usb-headset">
@@ -1106,9 +1107,11 @@
 
     <path name="audio-with-haptics-playback bt-sco">
         <ctl name="SLIMBUS_7_RX Audio Mixer MultiMedia30" value="1"/>
+        <ctl name="TERT_TDM_RX_1 Audio Mixer MultiMedia31" value="1"/>
     </path>
 
     <path name="audio-with-haptics-playback bt-sco-wb">
+        <ctl name="BT SampleRate" value="KHZ_16"/>
         <path name="audio-with-haptics-playback bt-sco"/>
     </path>
 
