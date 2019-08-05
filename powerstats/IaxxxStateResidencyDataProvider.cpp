@@ -24,7 +24,7 @@
 
 #include <utility>
 
-#include <linux/mfd/adnc/iaxxx-module.h>
+#include "iaxxx-module.h"
 
 namespace android {
 namespace hardware {
