@@ -14,12 +14,7 @@
 // limitations under the License.
 cc_binary {
     name: "android.hardware.power.stats@1.0-service.pixel",
-    include_dirs: [
-        "hardware/knowles/athletico/sound_trigger_hal",
-    ],
-    header_libs: [
-        "device_kernel_headers",
-    ],
+    include_dirs: ["hardware/knowles/athletico/sound_trigger_hal"],
     relative_install_path: "hw",
     init_rc: ["android.hardware.power.stats@1.0-service.pixel.rc"],
     srcs: [
