@@ -24,7 +24,7 @@
 
 #include <utility>
 
-#include "iaxxx-module.h"
+#include <linux/mfd/adnc/iaxxx-module.h>
 #include "tests/oslo_iaxxx_sensor_control.h"
 
 namespace android {
