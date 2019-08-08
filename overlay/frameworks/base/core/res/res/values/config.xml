@@ -53,7 +53,7 @@
     <integer name="config_displayWhiteBalanceColorTemperatureMax">7450</integer>
 
     <!-- Default color temperature, in Kelvin, used by display white balance. -->
-    <integer name="config_displayWhiteBalanceColorTemperatureDefault">6500</integer>
+    <integer name="config_displayWhiteBalanceColorTemperatureDefault">6700</integer>
 
     <!-- The nominal white coordinates, in CIE1931 XYZ color space, for Display White Balance to
          use in its calculations. AWB will adapt this white point to the target ambient white
@@ -182,7 +182,7 @@
          The ambient color temperature (in cct) to which we interpolates towards to when the
          ambient brightness is within the high light range, see
          config_displayWhiteBalanceHighLightAmbientBrightnesses. -->
-    <item name="config_displayWhiteBalanceHighLightAmbientColorTemperature" format="float" type="dimen">6500.0</item>
+    <item name="config_displayWhiteBalanceHighLightAmbientColorTemperature" format="float" type="dimen">6700.0</item>
 
     <!-- See DisplayWhiteBalanceController.
          A float array containing a list of ambient color temperatures, in Kelvin. This array,
