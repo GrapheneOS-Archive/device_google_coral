@@ -99,3 +99,7 @@ $(call add-clean-step, rm -rf $(PRODUCT_OUT)/recovery/root/system/lib64/hw/andro
 # Remove generic atrace HAL
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/init/android.hardware.atrace@1.0-service.rc)
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/vintf/manifest/android.hardware.atrace@1.0-service.xml)
+
+# Vibrator HAL 1.3 renamed from 'coral' to 'cs40l25'
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/init/android.hardware.vibrator@1.3-service.coral.rc)
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/bin/hw/android.hardware.vibrator@1.3-service.coral)
