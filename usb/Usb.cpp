@@ -268,8 +268,8 @@ bool switchMode(const hidl_string &portName, const PortRole &newRole, struct Usb
         pthread_mutex_unlock(&usb->mPartnerLock);
     }
 
-    if (!roleSwitch)
-        switchToDrp(std::string(portName.c_str()));
+    // Back to DRP for the following Role Swaps (if any)
+    switchToDrp(std::string(portName.c_str()));
 
     return roleSwitch;
 }
