@@ -602,4 +602,7 @@
         <item>com.waze</item>
     </string-array>
 
+    <!-- Disable AOD by default -->
+    <bool name="config_dozeAlwaysOnEnabled">false</bool>
+
 </resources>
