@@ -170,10 +170,10 @@
     <!-- Not allow to switch to higher refresh rate when display brightness setting is
          equal or less than this value -->
     <integer-array name="config_brightnessThresholdsOfPeakRefreshRate">
-        <item>74</item> <!-- 77% UI brightness -->
+        <item>16</item> <!-- 42% UI brightness -->
     </integer-array>
     <integer-array name="config_ambientThresholdsOfPeakRefreshRate">
-        <item>63</item>
+        <item>-1</item>
     </integer-array>
 
     <!-- default refresh rate in the zone defined by birghtness and ambient thresholds -->
