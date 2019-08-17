@@ -217,11 +217,11 @@ PRODUCT_COPY_FILES += \
 
 # Audio fluence, ns, aec property, voice and media volume steps
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qc.sdk.audio.fluencetype=fluencepro \
-    persist.audio.fluence.voicecall=true \
-    persist.audio.fluence.speaker=true \
-    persist.audio.fluence.voicecomm=true \
-    persist.audio.fluence.voicerec=false \
+    ro.vendor.audio.sdk.fluencetype=fluencepro \
+    persist.vendor.audio.fluence.voicecall=true \
+    persist.vendor.audio.fluence.speaker=true \
+    persist.vendor.audio.fluence.voicecomm=true \
+    persist.vendor.audio.fluence.voicerec=false \
     ro.config.vc_call_vol_steps=7 \
     ro.config.media_vol_steps=25 \
 
@@ -415,6 +415,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.media.codec2=2 \
     debug.stagefright.ccodec=4 \
     debug.stagefright.omx_default_rank=512 \
+
+# Disable OMX
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.media.omx=0 \
 
 # Create input surface on the framework side
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -691,7 +695,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp_policy/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    audio.snd_card.open.retries=50
+    vendor.audio.snd_card.open.retries=50
 
 
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
