@@ -184,7 +184,7 @@ on fs
     mkdir /mnt/vendor/persist/rfs 0770 root system
     mkdir /mnt/vendor/persist/hlos_rfs 0770 root system
     mkdir /mnt/vendor/persist/secnvm 0770 system system
-    mkdir /mnt/vendor/persist/oslo 0770 system system
+    mkdir /mnt/vendor/persist/oslo 0755 system system
     mkdir /mnt/vendor/persist/touch 0770 system system
     chmod 0770 /mnt/vendor/persist/rfs
     chmod 0770 /mnt/vendor/persist/rfs/shared
@@ -353,10 +353,12 @@ on early-boot
     chown system system /mnt/vendor/persist/haptics/cs40l25a.cal
 
     # Set up oslo-related directories and permissions
-    chmod 770 /mnt/vendor/persist/oslo
+    chmod 755 /mnt/vendor/persist/oslo
     chmod 660 /mnt/vendor/persist/oslo/oslo.cal
+    chmod 644 /mnt/vendor/persist/oslo/tx_power.cal
     chown system system /mnt/vendor/persist/oslo
     chown system system /mnt/vendor/persist/oslo/oslo.cal
+    chown system system /mnt/vendor/persist/oslo/tx_power.cal
 
     # Set up touch directories and permissions
     chmod 770 /mnt/vendor/persist/touch
