@@ -14,6 +14,14 @@
 # limitations under the License.
 #
 
+on property:persist.vendor.display.enable_kernel_idle_timer=true
+    # Switch display mode to 60hz when idle
+    write /sys/devices/platform/soc/soc:qcom,dsi-display-primary/idle_mode "@60"
+
+on property:persist.vendor.display.enable_kernel_idle_timer=false
+    # Disable agressive idle mode switching
+    write /sys/devices/platform/soc/soc:qcom,dsi-display-primary/idle_mode "none"
+
 on property:vendor.setup.power=1
     # Enable EAS
     write /sys/kernel/debug/sched_features ENERGY_AWARE
@@ -111,8 +119,6 @@ on property:vendor.setup.power=1
     write /sys/class/drm/card0/device/idle_encoder_mask 1
     write /sys/class/drm/card0/device/idle_timeout_ms 100
 
-    # Switch display mode to 60hz when idle
-    write /sys/devices/platform/soc/soc:qcom,dsi-display-primary/idle_mode @60
 
     chown system system /sys/class/devfreq/soc:qcom,l3-cdsp/userspace/set_freq
 
