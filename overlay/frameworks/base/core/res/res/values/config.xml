@@ -40,6 +40,10 @@
     <!-- Enable Night display, which requires HWC 2.0. -->
     <bool name="config_nightDisplayAvailable">true</bool>
 
+    <!-- Default color temperature, in Kelvin, to tint the screen when Night display is
+         activated. -->
+    <integer name="config_nightDisplayColorTemperatureDefault">3339</integer>
+
     <!-- Boolean indicating whether display white balance is supported. -->
     <bool name="config_displayWhiteBalanceAvailable">true</bool>
 
@@ -475,8 +479,8 @@
         <item>"/system/framework/services.jar"</item>
         <item>"/system/framework/arm64/boot.oat"</item>
         <item>"/system/framework/arm64/boot-core-libart.oat"</item>
-        <item>"/apex/com.android.runtime/javalib/core-oj.jar"</item>
-        <item>"/apex/com.android.runtime/javalib/core-libart.jar"</item>
+        <item>"/apex/com.android.art/javalib/core-oj.jar"</item>
+        <item>"/apex/com.android.art/javalib/core-libart.jar"</item>
         <item>"/apex/com.android.media/javalib/updatable-media.jar"</item>
         <item>"/product/priv-app/SystemUIGoogle/SystemUIGoogle.apk"</item>
         <item>"/product/priv-app/SystemUIGoogle/oat/arm64/SystemUIGoogle.odex"</item>
@@ -495,8 +499,8 @@
         <item>"/system/framework/services.jar"</item>
         <item>"/system/framework/arm64/apex.oat"</item>
         <item>"/system/framework/arm64/apex-core-libart.oat"</item>
-        <item>"/apex/com.android.runtime/javalib/core-oj.jar"</item>
-        <item>"/apex/com.android.runtime/javalib/core-libart.jar"</item>
+        <item>"/apex/com.android.art/javalib/core-oj.jar"</item>
+        <item>"/apex/com.android.art/javalib/core-libart.jar"</item>
         <item>"/apex/com.android.media/javalib/updatable-media.jar"</item>
         <item>"/system/priv-app/SystemUIGoogle/SystemUIGoogle.apk"</item>
         <item>"/system/lib64/libsurfaceflinger.so"</item>

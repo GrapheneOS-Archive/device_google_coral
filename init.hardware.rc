@@ -870,6 +870,10 @@ on property:ro.boot.hardware.dsds=1
 on property:persist.radio.multisim.config=dsds
     start vendor.qcrild2
 
+# Stop 2nd qcrild when the property set to empty string
+on property:persist.radio.multisim.config=
+    stop vendor.qcrild2
+
 on property:sys.retaildemo.enabled=1
     setprop vendor.thermal.mode retail
     restart vendor.thermal-engine
