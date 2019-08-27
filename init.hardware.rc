@@ -621,7 +621,6 @@ on property:sys.boot_completed=1
     chmod 0660 /dev/iaxxx-module-celldrv
 
 service vendor.per_mgr /vendor/bin/pm-service
-    class core
     user system
     group system
     ioprio rt 4
@@ -631,6 +630,15 @@ service per_proxy /vendor/bin/pm-proxy
     user system
     group system
     disabled
+
+on property:persist.vendor.modem.esim.reset=done
+    start vendor.per_mgr
+
+on property:persist.vendor.modem.esim.reset=noneed
+    start vendor.per_mgr
+
+on property:sys.boot_completed=1
+    start vendor.per_mgr
 
 on property:init.svc.vendor.per_mgr=running
     start per_proxy
