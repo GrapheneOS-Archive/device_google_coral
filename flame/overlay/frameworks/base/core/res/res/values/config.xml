@@ -175,4 +175,7 @@
     <integer-array name="config_ambientThresholdsOfPeakRefreshRate">
         <item>63</item>
     </integer-array>
+
+    <!-- default refresh rate in the zone defined by birghtness and ambient thresholds -->
+    <integer name="config_defaultRefreshRateInZone">60</integer>
 </resources>
