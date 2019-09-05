@@ -114,3 +114,7 @@ PRODUCT_COPY_FILES += \
 # Dmabuf dump tool for bug reports
 PRODUCT_PACKAGES += \
     dmabuf_dump
+
+# Set thermal warm reset
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.thermal_warmreset = true \
