@@ -14,6 +14,7 @@
 
 #  blob(s) necessary for coral hardware
 PRODUCT_COPY_FILES := \
+    vendor/qcom/coral/proprietary/audio_effects.conf:system/etc/audio_effects.conf \
     vendor/qcom/coral/proprietary/com.qti.snapdragon.sdk.display.xml:system/etc/permissions/com.qti.snapdragon.sdk.display.xml \
     vendor/qcom/coral/proprietary/com.qti.snapdragon.sdk.display.jar:system/framework/com.qti.snapdragon.sdk.display.jar \
     vendor/qcom/coral/proprietary/com.qualcomm.qti.uceservice-V2.0-java.jar:system/framework/com.qualcomm.qti.uceservice-V2.0-java.jar \
