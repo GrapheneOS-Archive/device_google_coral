@@ -5,7 +5,6 @@
     ;;
   qcom)
     TO_EXTRACT="\
-            system/etc/audio_effects.conf \
             system/etc/permissions/com.qti.snapdragon.sdk.display.xml \
             system/framework/com.qti.snapdragon.sdk.display.jar \
             system/framework/com.qualcomm.qti.uceservice-V2.0-java.jar \
