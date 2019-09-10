@@ -34,6 +34,7 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/sm8150/proprietary/qcril-data-hal/qdp \
     vendor/qcom/sm8150/proprietary/qcril-data-hal/util \
     vendor/qcom/sm8150/proprietary/qcril-data-hal/datamodule \
+    vendor/qcom/sm8150/proprietary/qcril-hal \
     vendor/google/interfaces
 
 PRODUCT_PROPERTY_OVERRIDES += \
