@@ -14,7 +14,6 @@
 
 #  blob(s) necessary for flame hardware
 PRODUCT_COPY_FILES := \
-    vendor/qcom/coral/proprietary/audio_effects.conf:system/etc/audio_effects.conf \
     vendor/qcom/flame/proprietary/com.qti.snapdragon.sdk.display.xml:system/etc/permissions/com.qti.snapdragon.sdk.display.xml \
     vendor/qcom/flame/proprietary/com.qti.snapdragon.sdk.display.jar:system/framework/com.qti.snapdragon.sdk.display.jar \
     vendor/qcom/flame/proprietary/com.qualcomm.qti.uceservice-V2.0-java.jar:system/framework/com.qualcomm.qti.uceservice-V2.0-java.jar \
