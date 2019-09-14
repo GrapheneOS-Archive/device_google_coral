@@ -16,17 +16,21 @@
 #ifndef CSTATERESIDENCYDATAPROVIDER_H
 #define CSTATERESIDENCYDATAPROVIDER_H
 
+#include "PowerStatsCollector.h"
+
 /**
  * C-state residency data provider:
  * Provides C-state residency information for each of the CPUs and L3 cache.
  **/
 
-#include <PowerStatsAggregator.h>
-
-class CstateResidencyDataProvider : public IPowerStatsDataProvider {
+class CstateResidencyDataProvider : public IPowerStatProvider {
   public:
     CstateResidencyDataProvider() = default;
-    int get(std::unordered_map<std::string, uint64_t>* data) override;
+    PowerStatCase typeOf() const override;
+  private:
+    int getImpl(PowerStatistic* stat) const override;
+    int getImpl(const PowerStatistic& start, PowerStatistic* interval) const override;
+    void dumpImpl(const PowerStatistic& stat, std::ostream* output) const override;
 };
 
 #endif  // CSTATERESIDENCYDATAPROVIDER_H
