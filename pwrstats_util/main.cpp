@@ -15,18 +15,18 @@
  */
 #define LOG_TAG "pwrstats_util"
 
-#include <PowerStatsAggregator.h>
+#include <PowerStatsCollector.h>
 #include <dataproviders/PowerEntityResidencyDataProvider.h>
 #include <dataproviders/RailEnergyDataProvider.h>
 #include "CstateResidencyDataProvider.h"
 
 int main(int argc, char** argv) {
 
-    PowerStatsAggregator agg;
-    agg.addDataProvider(std::make_unique<CstateResidencyDataProvider>());
-    agg.addDataProvider(std::make_unique<PowerEntityResidencyDataProvider>());
-    agg.addDataProvider(std::make_unique<RailEnergyDataProvider>());
+    PowerStatsCollector collector;
+    collector.addDataProvider(std::make_unique<PowerEntityResidencyDataProvider>());
+    collector.addDataProvider(std::make_unique<RailEnergyDataProvider>());
+    collector.addDataProvider(std::make_unique<CstateResidencyDataProvider>());
 
-    run(argc, argv, agg);
+    run(argc, argv, collector);
     return 0;
 }
