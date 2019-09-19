@@ -926,6 +926,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
+# ZRAM writeback
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.zram.mark_idle_delay_mins=60 \
+    ro.zram.first_wb_delay_mins=180 \
+    ro.zram.periodic_wb_delay_hours=24
+
 # Disable SPU usage
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.gatekeeper.disable_spu = true
