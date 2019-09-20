@@ -647,10 +647,16 @@ service per_proxy /vendor/bin/pm-proxy
     group system
     disabled
 
-on property:persist.vendor.modem.esim.reset=done
+on property:persist.vendor.modem.esim.reset=done && property:persist.vendor.se.pixel_aram=skipped
     start vendor.per_mgr
 
-on property:persist.vendor.modem.esim.reset=noneed
+on property:persist.vendor.modem.esim.reset=done && property:persist.vendor.se.pixel_aram=removed
+    start vendor.per_mgr
+
+on property:persist.vendor.modem.esim.reset=noneed && property:persist.vendor.se.pixel_aram=skipped
+    start vendor.per_mgr
+
+on property:persist.vendor.modem.esim.reset=noneed && property:persist.vendor.se.pixel_aram=removed
     start vendor.per_mgr
 
 on property:sys.boot_completed=1
