@@ -37,8 +37,26 @@
             <Limit name="measured-frame-rate-1280x720" range="160-160" /> <!-- N=64 v97%=1.6 -->
             <Limit name="measured-frame-rate-1920x1080" range="84-84" /> <!-- N=62 v97%=1.7 -->
         </MediaCodec>
+        <MediaCodec name="OMX.qcom.video.encoder.hevc" type="video/hevc" update="true">
+            <Limit name="measured-frame-rate-320x240" range="466-466" /> <!-- N=64 v97%=1.2 -->
+            <Limit name="measured-frame-rate-720x480" range="285-285" /> <!-- N=64 v97%=1.4 -->
+            <Limit name="measured-frame-rate-1280x720" range="164-164" /> <!-- N=64 v97%=1.6 -->
+            <Limit name="measured-frame-rate-1920x1080" range="83-83" /> <!-- N=64 v97%=1.6 -->
+            <Limit name="measured-frame-rate-3840x2160" range="41-41" /> <!-- N=64 v97%=1.1 -->
+        </MediaCodec>
         <MediaCodec name="c2.android.hevc.encoder" type="video/hevc" update="true">
             <Limit name="measured-frame-rate-320x240" range="51-51" /> <!-- N=64 v97%=1.1 -->
+        </MediaCodec>
+        <MediaCodec name="c2.qti.hevc.encoder" type="video/hevc" update="true">
+            <Limit name="measured-frame-rate-320x240" range="500-504" /> <!-- N=64 v97%=1.1 -->
+            <Limit name="measured-frame-rate-720x480" range="292-292" /> <!-- N=64 v97%=1.4 -->
+            <Limit name="measured-frame-rate-1280x720" range="161-163" /> <!-- N=64 v97%=1.6 -->
+            <Limit name="measured-frame-rate-1920x1080" range="83-83" /> <!-- N=64 v97%=1.6 -->
+            <Limit name="measured-frame-rate-3840x2160" range="40-40" /> <!-- N=64 v97%=1.1 -->
+        </MediaCodec>
+        <!-- MANUALLY ENTERED -->
+        <MediaCodec name="c2.qti.hevc.encoder.cq" type="video/hevc" update="true">
+            <Limit name="measured-frame-rate-320x240" range="377-419" />
         </MediaCodec>
         <MediaCodec name="c2.android.mpeg4.encoder" type="video/mp4v-es" update="true">
             <Limit name="measured-frame-rate-176x144" range="692-695" /> <!-- N=64 v97%=1.5 -->
