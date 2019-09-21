@@ -178,6 +178,8 @@ on late-init
     chown system system /sys/devices/virtual/thermal/tz-by-name/usbc-therm-monitor/trip_point_0_temp
     chown system system /sys/devices/virtual/thermal/tz-by-name/usbc-therm-monitor/trip_point_0_hyst
     chown system system /sys/devices/virtual/thermal/tz-by-name/soc/mode
+    chown system system /sys/devices/virtual/thermal/tz-by-name/bcl-virt-monitor/trip_point_0_temp
+    chown system system /sys/devices/virtual/thermal/tz-by-name/bcl-virt-monitor/trip_point_0_hyst
 
 # Override thermal HAL config for JAWS board
 on fs && property:ro.revision="DEV1.0"
@@ -645,10 +647,16 @@ service per_proxy /vendor/bin/pm-proxy
     group system
     disabled
 
-on property:persist.vendor.modem.esim.reset=done
+on property:persist.vendor.modem.esim.reset=done && property:persist.vendor.se.pixel_aram=skipped
     start vendor.per_mgr
 
-on property:persist.vendor.modem.esim.reset=noneed
+on property:persist.vendor.modem.esim.reset=done && property:persist.vendor.se.pixel_aram=removed
+    start vendor.per_mgr
+
+on property:persist.vendor.modem.esim.reset=noneed && property:persist.vendor.se.pixel_aram=skipped
+    start vendor.per_mgr
+
+on property:persist.vendor.modem.esim.reset=noneed && property:persist.vendor.se.pixel_aram=removed
     start vendor.per_mgr
 
 on property:sys.boot_completed=1
