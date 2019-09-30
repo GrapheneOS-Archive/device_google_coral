@@ -23,6 +23,3 @@ DEVICE_PACKAGE_OVERLAYS += device/google/coral/coral/overlay
 # Audio XMLs for coral
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_volumes_coral.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml
-
-PRODUCT_PACKAGES += \
-    SettingsResOverlay_G020Q
