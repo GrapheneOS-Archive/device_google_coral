@@ -606,6 +606,7 @@
         <item>com.nianticlabs.pokemongo</item>
         <item>com.waze</item>
         <item>com.tencent.mm</item>
+        <item>com.google.android.documentsui</item>
     </string-array>
 
     <!-- Disable AOD by default -->
