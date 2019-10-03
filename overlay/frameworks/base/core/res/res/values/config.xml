@@ -541,6 +541,8 @@
           manually by the user. Off by default, since the expected haptic feedback may not be
           available on some devices. -->
     <bool name="config_enableHapticTextHandle">true</bool>
+    <!-- Enable Zram writeback feature to allow unused pages in zram be written to flash. -->
+    <bool name="config_zramWriteback">true</bool>
 
     <!-- True if the firmware supports connected MAC randomization -->
     <bool name="config_wifi_connected_mac_randomization_supported">true</bool>
@@ -604,6 +606,7 @@
         <item>com.nianticlabs.pokemongo</item>
         <item>com.waze</item>
         <item>com.tencent.mm</item>
+        <item>com.google.android.documentsui</item>
     </string-array>
 
     <!-- Disable AOD by default -->
