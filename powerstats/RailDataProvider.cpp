@@ -89,7 +89,7 @@ size_t RailDataProvider::parsePowerRails() {
   std::string railFileName;
   std::string spsFileName;
   uint32_t index = 0;
-  uint32_t samplingRate;
+  unsigned long samplingRate;
   for (const auto &path : mOdpm.devicePaths) {
     railFileName = path + "/enabled_rails";
     spsFileName = path + "/sampling_rate";
@@ -116,7 +116,7 @@ size_t RailDataProvider::parsePowerRails() {
                              .devicePath = path,
                              .index = index,
                              .subsysName = words[1],
-                             .samplingRate = samplingRate
+                             .samplingRate = static_cast<uint32_t>(samplingRate)
                            });
         index++;
       } else {
