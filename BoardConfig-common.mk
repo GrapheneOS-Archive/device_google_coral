@@ -122,6 +122,7 @@ QC_PROP_ROOT := vendor/qcom/sm8150/proprietary
 QC_PROP_PATH := $(QC_PROP_ROOT)
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BOARD_HAVE_QCOM_FM := false
+TARGET_USE_QTI_BT_SAR := true
 BOARD_USES_COMMON_BLUETOOTH_HAL := true
 
 # Camera
