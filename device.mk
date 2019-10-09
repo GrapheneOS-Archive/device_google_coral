@@ -321,7 +321,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.procedure_bytes=SKIP \
 
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.telephony.max.active.modems=2
+    ro.telephony.max.active.modems=2 \
+    persist.radio.reboot_on_modem_change=false
 
 # Disable snapshot timer
 PRODUCT_PROPERTY_OVERRIDES += \
