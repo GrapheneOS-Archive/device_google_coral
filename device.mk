@@ -752,8 +752,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     vndk-sp
 
-PRODUCT_ENFORCE_RRO_TARGETS := *
-
 # Override heap growth limit due to high display density on device
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapgrowthlimit=256m
@@ -921,7 +919,7 @@ PRODUCT_PACKAGES += $(HIDL_WRAPPER)
 
 # Increment the SVN for any official public releases
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.vendor.build.svn=6
+	ro.vendor.build.svn=7
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
