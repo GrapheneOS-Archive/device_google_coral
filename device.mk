@@ -471,13 +471,13 @@ PRODUCT_PACKAGES += \
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.0-impl-pixel-legacy \
-    android.hardware.boot@1.0-impl-pixel-legacy.recovery \
-    android.hardware.boot@1.0-service \
+    android.hardware.boot@1.1-impl-pixel-legacy \
+    android.hardware.boot@1.1-impl-pixel-legacy.recovery \
+    android.hardware.boot@1.1-service \
 
 # Vibrator HAL
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.3-service.cs40l25 \
+    android.hardware.vibrator@1.4-service.cs40l25 \
 
 # Thermal HAL
 PRODUCT_PACKAGES += \
