@@ -947,3 +947,7 @@ endif
 # Write flags to the vendor space in /misc partition.
 PRODUCT_PACKAGES += \
     misc_writer
+
+ifneq (,$(filter true,$(TARGET_VIRTUAL_AB)))
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota_retrofit.mk)
+endif
