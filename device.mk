@@ -34,6 +34,7 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/sm8150/proprietary/qcril-data-hal/qdp \
     vendor/qcom/sm8150/proprietary/qcril-data-hal/util \
     vendor/qcom/sm8150/proprietary/qcril-data-hal/datamodule \
+    vendor/qcom/sm8150/proprietary/qcril-hal \
     vendor/google/interfaces
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -238,6 +239,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.feature.usb_offload.enable=true \
     vendor.audio.feature.audiozoom.enable=true \
     vendor.audio.feature.snd_mon.enable=true \
+    vendor.audio.capture.enforce_legacy_copp_sr=true \
 
 # MaxxAudio effect and add rotation monitor
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -384,6 +386,10 @@ PRODUCT_PACKAGES += \
     SecureElement \
     android.hardware.nfc@1.2-service.st \
     android.hardware.secure_element@1.0-service.st
+
+PRODUCT_COPY_FILES += \
+    device/google/coral/nfc/com.google.hardware.pixel.japan.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_G020N/com.google.hardware.pixel.japan.xml \
+    device/google/coral/nfc/com.google.hardware.pixel.japan.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_G020Q/com.google.hardware.pixel.japan.xml
 
 PRODUCT_COPY_FILES += \
     device/google/coral/nfc/libnfc-hal-st.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-hal-st.conf \
@@ -918,7 +924,7 @@ PRODUCT_PACKAGES += $(HIDL_WRAPPER)
 
 # Increment the SVN for any official public releases
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.vendor.build.svn=2
+	ro.vendor.build.svn=6
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
