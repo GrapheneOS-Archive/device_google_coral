@@ -59,7 +59,7 @@ static BatteryMetricsLogger battMetricsLogger(
     kBatteryResistance, kBatteryOCV, kBatteryAvgResistance);
 static LowBatteryShutdownMetrics shutdownMetrics(kVoltageAvg);
 static CycleCountBackupRestore ccBackupRestore(
-    10, kCycleCountsBins, "/persist/battery/cycle_counts", kGaugeSerial);
+    10, kCycleCountsBins, "/mnt/vendor/persist/battery/cycle_counts", kGaugeSerial);
 static DeviceHealth deviceHealth;
 
 #define UFS_DIR "/sys/devices/platform/soc/1d84000.ufshc"
