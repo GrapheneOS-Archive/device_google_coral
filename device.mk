@@ -950,3 +950,7 @@ PRODUCT_PACKAGES += \
     misc_writer
 
 include hardware/google/pixel/common/pixel-common-device.mk
+
+ifneq (,$(filter true,$(TARGET_VIRTUAL_AB)))
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota_retrofit.mk)
+endif
