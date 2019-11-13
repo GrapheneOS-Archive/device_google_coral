@@ -46,7 +46,11 @@ bool OsloStateResidencyDataProvider::getResults(
 
     int err = 0;
     struct iaxxx_sensor_param sp = {
-        .inst_id = 0, .block_id = 0, .param_id = SENSOR_PARAM_DUMP_STATS, .param_val = 1};
+        .inst_id = 0,
+        .param_id = SENSOR_PARAM_DUMP_STATS,
+        .param_val = 1,
+        .block_id = 0,
+    };
 
     err = ioctl(devNode.get(), MODULE_SENSOR_SET_PARAM, (unsigned long)&sp);
     if (err) {
