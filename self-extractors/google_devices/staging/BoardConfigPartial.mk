@@ -14,8 +14,6 @@
 
 BOARD_PREBUILT_VENDORIMAGE := vendor/google_devices/coral/proprietary/vendor.img
 
-VENDOR_BLOBS_NOTICE := vendor/google_devices/coral/NOTICE
-
 AB_OTA_PARTITIONS += \
     vendor
 

@@ -14,8 +14,6 @@
 
 BOARD_PREBUILT_VENDORIMAGE := vendor/google_devices/flame/proprietary/vendor.img
 
-VENDOR_BLOBS_NOTICE := vendor/google_devices/flame/NOTICE
-
 AB_OTA_PARTITIONS += \
     vendor
 
