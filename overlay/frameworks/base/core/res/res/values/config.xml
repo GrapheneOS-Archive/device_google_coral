@@ -523,15 +523,6 @@
         <item>450.0</item>
     </array>
 
-    <!-- Display 90Hz blacklist. Apps that do not work well when the display refreshes at 90Hz.
-         When these apps are visible, the display's refresh rate gets fixed to 60Hz. -->
-    <string-array name="config_highRefreshRateBlacklist">
-        <item>com.google.android.apps.maps</item>
-        <item>com.nianticlabs.pokemongo</item>
-        <item>com.waze</item>
-        <item>com.google.android.documentsui</item>
-    </string-array>
-
     <!-- Disable AOD by default -->
     <bool name="config_dozeAlwaysOnEnabled">false</bool>
 
