@@ -22,3 +22,15 @@ on property:persist.vendor.disable.thermal.control=1
 
 on property:persist.vendor.disable.usb.overheat.mitigation=1
     write /sys/module/overheat_mitigation/parameters/enable 0
+
+on property:persist.vendor.log.thermal=1
+    start init-thermal-log-sh
+
+on property:persist.vendor.log.thermal=0
+    stop init-thermal-log-sh
+
+service init-thermal-log-sh /vendor/bin/init.thermal.logging.sh
+    class main
+    user root
+    group root system
+    disabled

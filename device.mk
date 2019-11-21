@@ -119,6 +119,8 @@ ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
       $(LOCAL_PATH)/init.hardware.wlc.rc.userdebug:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_PLATFORM).wlc.rc
   PRODUCT_COPY_FILES += \
       $(LOCAL_PATH)/init.hardware.userdebug.rc.userdebug:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.$(PRODUCT_PLATFORM).userdebug.rc
+  PRODUCT_COPY_FILES += \
+      $(LOCAL_PATH)/init.thermal.logging.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.thermal.logging.sh
 else
   PRODUCT_COPY_FILES += \
       $(LOCAL_PATH)/init.hardware.mpssrfs.rc.user:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(PRODUCT_PLATFORM).mpssrfs.rc
@@ -316,6 +318,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.relay_oprt_change=1 \
     persist.vendor.radio.no_wait_for_card=1 \
     persist.vendor.radio.sap_silent_pin=1 \
+    persist.vendor.radio.manual_nw_rej_ct=1 \
     persist.rcs.supported=1 \
     vendor.rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so \
     ro.hardware.keystore_desede=true \
