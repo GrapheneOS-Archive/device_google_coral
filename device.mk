@@ -334,6 +334,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.relay_oprt_change=1 \
     persist.vendor.radio.no_wait_for_card=1 \
     persist.vendor.radio.sap_silent_pin=1 \
+    persist.vendor.radio.manual_nw_rej_ct=1 \
     persist.rcs.supported=1 \
     vendor.rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so \
     ro.hardware.keystore_desede=true \
@@ -514,7 +515,7 @@ PRODUCT_PACKAGES += \
 
 # Wireless Charger HAL
 PRODUCT_PACKAGES += \
-    vendor.google.wireless_charger@1.0
+    vendor.google.wireless_charger@1.1
 
 ENABLE_VENDOR_RIL_SERVICE := true
 
@@ -939,7 +940,7 @@ PRODUCT_PACKAGES += $(HIDL_WRAPPER)
 
 # Increment the SVN for any official public releases
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.vendor.build.svn=11
+	ro.vendor.build.svn=12
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
