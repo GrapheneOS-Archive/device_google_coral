@@ -151,6 +151,9 @@ on init
     # Allow PAI targeting per hardware SKU
     setprop ro.oem.key1 ${ro.boot.hardware.sku}
 
+    # Property used by vintf for sku specific manifests
+    setprop ro.boot.product.hardware.sku ${ro.boot.hardware.sku}
+
 # b/134578585
 on charger
     trigger fs
@@ -184,7 +187,7 @@ on fs
     mkdir /mnt/vendor/persist/rfs 0770 root system
     mkdir /mnt/vendor/persist/hlos_rfs 0770 root system
     mkdir /mnt/vendor/persist/secnvm 0770 system system
-    mkdir /mnt/vendor/persist/oslo 0770 system system
+    mkdir /mnt/vendor/persist/oslo 0755 system system
     mkdir /mnt/vendor/persist/touch 0770 system system
     chmod 0770 /mnt/vendor/persist/rfs
     chmod 0770 /mnt/vendor/persist/rfs/shared
@@ -353,10 +356,12 @@ on early-boot
     chown system system /mnt/vendor/persist/haptics/cs40l25a.cal
 
     # Set up oslo-related directories and permissions
-    chmod 770 /mnt/vendor/persist/oslo
+    chmod 755 /mnt/vendor/persist/oslo
     chmod 660 /mnt/vendor/persist/oslo/oslo.cal
+    chmod 644 /mnt/vendor/persist/oslo/tx_power.cal
     chown system system /mnt/vendor/persist/oslo
     chown system system /mnt/vendor/persist/oslo/oslo.cal
+    chown system system /mnt/vendor/persist/oslo/tx_power.cal
 
     # Set up touch directories and permissions
     chmod 770 /mnt/vendor/persist/touch
@@ -559,6 +564,7 @@ on property:sys.boot_completed=1
     write /sys/block/sda/queue/discard_max_bytes 134217728
 
     # Enable ZRAM on boot_complete
+    rm /data/unencrypted/zram_swap
     swapon_all /vendor/etc/fstab.${ro.boot.hardware.platform}
     write /proc/sys/vm/swappiness 100
 
@@ -631,10 +637,16 @@ service per_proxy /vendor/bin/pm-proxy
     group system
     disabled
 
-on property:persist.vendor.modem.esim.reset=done
+on property:persist.vendor.modem.esim.reset=done && property:persist.vendor.se.pixel_aram=skipped
     start vendor.per_mgr
 
-on property:persist.vendor.modem.esim.reset=noneed
+on property:persist.vendor.modem.esim.reset=done && property:persist.vendor.se.pixel_aram=removed
+    start vendor.per_mgr
+
+on property:persist.vendor.modem.esim.reset=noneed && property:persist.vendor.se.pixel_aram=skipped
+    start vendor.per_mgr
+
+on property:persist.vendor.modem.esim.reset=noneed && property:persist.vendor.se.pixel_aram=removed
     start vendor.per_mgr
 
 on property:sys.boot_completed=1
