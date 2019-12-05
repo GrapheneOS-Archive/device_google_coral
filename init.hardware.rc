@@ -527,9 +527,6 @@ on property:sys.boot_completed=1
     write /sys/block/dm-6/queue/read_ahead_kb 128
     write /sys/block/dm-7/queue/read_ahead_kb 128
 
-    # F2FS tuning: issue discard commands up to 128MB
-    write /sys/block/dm-9/queue/discard_max_bytes 134217728
-
     # Back to default VM settings
     write /proc/sys/vm/dirty_expire_centisecs 3000
     write /proc/sys/vm/dirty_background_ratio 10
