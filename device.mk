@@ -479,10 +479,6 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.1-impl-pixel-legacy.recovery \
     android.hardware.boot@1.1-service \
 
-# Vibrator HAL
-PRODUCT_PACKAGES += \
-    android.hardware.vibrator-service.cs40l25 \
-
 # Thermal HAL
 PRODUCT_PACKAGES += \
     android.hardware.thermal@2.0-service.pixel \
@@ -954,6 +950,7 @@ PRODUCT_PACKAGES += \
     misc_writer
 
 include hardware/google/pixel/common/pixel-common-device.mk
+include hardware/google/pixel/vibrator/cs40l25/device.mk
 
 ifneq (,$(filter true,$(TARGET_VIRTUAL_AB)))
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota_retrofit.mk)
