@@ -161,6 +161,10 @@ on init
     # Property used by vintf for sku specific manifests
     setprop ro.boot.product.hardware.sku ${ro.boot.hardware.sku}
 
+    # Battery Defender
+    chown system system /sys/devices/platform/soc/soc:google,charger/charge_stop_level
+    chown system system /sys/devices/platform/soc/soc:google,charger/charge_start_level
+
 # b/134578585
 on charger
     trigger fs
@@ -884,12 +888,6 @@ on property:sys.retaildemo.enabled=1
 on property:sys.retaildemo.enabled=1
     setprop persist.vendor.charge.stop.level 35
     setprop persist.vendor.charge.start.level 30
-
-on property:persist.vendor.charge.stop.level=*
-    write /sys/devices/platform/soc/soc:google,charger/charge_stop_level ${persist.vendor.charge.stop.level}
-
-on property:persist.vendor.charge.start.level=*
-    write /sys/devices/platform/soc/soc:google,charger/charge_start_level ${persist.vendor.charge.start.level}
 
 # Athletico ramdump monitor
 service vendor.crash_event_logger /vendor/bin/crash_event_logger -m
