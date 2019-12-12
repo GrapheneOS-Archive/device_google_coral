@@ -280,7 +280,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.display.qdcm.mode_combine=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    vendor.display.defer_fps_frame_count=2
+    vendor.display.defer_fps_frame_count=2 \
+    vendor.display.primary_vsyncs_rate_change=2
 
 # camera google face detection
 PRODUCT_PROPERTY_OVERRIDES += \
