@@ -952,6 +952,4 @@ PRODUCT_PACKAGES += \
 include hardware/google/pixel/common/pixel-common-device.mk
 include hardware/google/pixel/vibrator/cs40l25/device.mk
 
-ifneq (,$(filter true,$(TARGET_VIRTUAL_AB)))
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota_retrofit.mk)
-endif
