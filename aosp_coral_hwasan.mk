@@ -1,5 +1,5 @@
 #
-# Copyright 2018 The Android Open Source Project
+# Copyright 2019 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,12 +14,10 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_coral.mk \
-    $(LOCAL_DIR)/aosp_flame.mk \
-    $(LOCAL_DIR)/aosp_coral_hwasan.mk \
-    $(LOCAL_DIR)/aosp_flame_hwasan.mk \
+$(call inherit-product, device/google/coral/aosp_coral.mk)
+PRODUCT_NAME := aosp_coral_hwasan
 
-COMMON_LUNCH_CHOICES := \
-    aosp_coral-userdebug \
-    aosp_flame-userdebug \
+# Add "hwaddress" as a global sanitizer if it's missing.
+ifeq ($(filter hwaddress,$(SANITIZE_TARGET)),)
+  SANITIZE_TARGET := $(strip $(SANITIZE_TARGET) hwaddress)
+endif
