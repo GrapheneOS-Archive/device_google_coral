@@ -70,6 +70,9 @@ $(call inherit-product, $(LOCAL_PATH)/utils.mk)
 # Installs gsi keys into ramdisk, to boot a GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
+# Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
+
 ifeq ($(wildcard vendor/google_devices/coral/proprietary/device-vendor-coral.mk),)
     BUILD_WITHOUT_VENDOR := true
 endif
@@ -447,6 +450,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl-google \
     android.hardware.camera.provider@2.4-service-google \
     camera.msmnile \
+    lib_multicam_dualfov_capture_session \
     libgooglecamerahwl_impl \
     libqomx_core \
     libmmjpeg_interface \
@@ -925,7 +929,7 @@ PRODUCT_PACKAGES += $(HIDL_WRAPPER)
 
 # Increment the SVN for any official public releases
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.vendor.build.svn=12
+	ro.vendor.build.svn=15
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
