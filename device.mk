@@ -955,6 +955,10 @@ endif
 PRODUCT_PACKAGES += \
     misc_writer
 
+# Resume on Reboot support
+PRODUCT_PACKAGES += \
+    android.hardware.rebootescrow-service.default
+
 include hardware/google/pixel/common/pixel-common-device.mk
 include hardware/google/pixel/vibrator/cs40l25/device.mk
 
