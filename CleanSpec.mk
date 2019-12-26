@@ -93,6 +93,10 @@ $(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/permissions/android.hard
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/bin/hw/android.hardware.graphics.composer@2.3-service)
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/init/android.hardware.graphics.composer@2.3-service.rc)
 
+# Remove android.hardware.graphics.composer@2.3-service-sm8150
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/bin/hw/android.hardware.graphics.composer@2.3-service-sm8150)
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/vendor/etc/init/android.hardware.graphics.composer@2.3-service-sm8150.rc)
+
 # Remove obsolete android.hardware.boot@1.0-impl-wrapper.recovery.so
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/recovery/root/system/lib64/hw/android.hardware.boot@1.0-impl-wrapper.recovery.so)
 
