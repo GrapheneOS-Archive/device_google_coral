@@ -342,7 +342,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PACKAGES += \
     hwcomposer.msmnile \
-    android.hardware.graphics.composer@2.3-service-sm8150 \
+    android.hardware.graphics.composer@2.4-service-sm8150 \
     gralloc.msmnile \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     vendor.qti.hardware.display.allocator-service
