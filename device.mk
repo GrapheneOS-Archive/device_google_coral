@@ -250,6 +250,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.feature.audiozoom.enable=true \
     vendor.audio.feature.snd_mon.enable=true \
     vendor.audio.capture.enforce_legacy_copp_sr=true \
+    persist.vendor.audio_hal.dsp_bit_width_enforce_mode=24 \
 
 # MaxxAudio effect and add rotation monitor
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -747,6 +748,17 @@ PRODUCT_PACKAGES += \
     android.hardware.dumpstate@1.0-service.coral
 
 # Citadel
+#
+# Set CITADEL_LAZY_PSK_SYNC to true on projects with faceauth, otherwise false.
+#
+#      EVT devices left the factory without being provisioned,
+#      and thus the shared authtoken key is yet to be established.
+#      Since faceauth HAT enforcement fails without the preshared
+#      authtoken, auto-sync it in the field for userdebug/eng.
+#      Please refer to b/135295587 for more detail.
+#
+CITADEL_LAZY_PSK_SYNC := true
+
 PRODUCT_PACKAGES += \
     citadeld \
     citadel_updater \
