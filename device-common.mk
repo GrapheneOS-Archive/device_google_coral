@@ -119,3 +119,5 @@ PRODUCT_PACKAGES += \
 # Set thermal warm reset
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.thermal_warmreset = true \
+
+PRODUCT_ENFORCE_PRODUCT_PARTITION_INTERFACE := true
