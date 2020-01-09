@@ -664,7 +664,8 @@ service sensors.qti /vendor/bin/sensors.qti
 service vendor.sscrpcd /vendor/bin/sscrpcd sensorspd
     class core
     user system
-    group system
+    group system wakelock
+    capabilities BLOCK_SUSPEND
 
 service vendor.adsprpcd /vendor/bin/adsprpcd
    class main
@@ -685,7 +686,8 @@ service vendor.cdsprpcd /vendor/bin/cdsprpcd
 service vendor.lowi /vendor/bin/sscrpcd
    class core
    user system
-   group system
+   group system wakelock
+   capabilities BLOCK_SUSPEND
 
 service vendor.imsqmidaemon /system/vendor/bin/imsqmidaemon
     class main
