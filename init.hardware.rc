@@ -53,6 +53,11 @@ on init
     write /sys/block/sda/queue/iosched/slice_idle 0
     write /sys/block/sda/queue/read_ahead_kb 2048
     write /sys/block/sda/queue/nr_requests 256
+    write /sys/block/sde/queue/iostats 0
+    write /sys/block/sde/queue/scheduler cfq
+    write /sys/block/sde/queue/iosched/slice_idle 0
+    write /sys/block/sde/queue/read_ahead_kb 2048
+    write /sys/block/sde/queue/nr_requests 256
     write /sys/block/sdf/queue/iostats 0
     write /sys/block/sdf/queue/scheduler cfq
     write /sys/block/sdf/queue/iosched/slice_idle 0
@@ -64,6 +69,7 @@ on init
     write /sys/block/dm-3/queue/read_ahead_kb 2048
     write /sys/block/dm-4/queue/read_ahead_kb 2048
     write /sys/block/dm-5/queue/read_ahead_kb 2048
+    write /sys/block/dm-6/queue/read_ahead_kb 2048
 
     # Disable UFS powersaving
     write /sys/devices/platform/soc/${ro.boot.bootdevice}/clkgate_enable 0
@@ -232,7 +238,7 @@ on late-fs
     start vendor.hwcomposer-2-3
     start vendor.configstore-hal
     start vendor.qti.hardware.display.allocator
-    start vendor.light-1-0
+    start vendor.light-1-1
 
     # Wait for keymaster HALs (TEE and StrongBox)
     exec_start wait_for_strongbox
@@ -241,9 +247,7 @@ on late-fs
     # Mount RW partitions which need run fsck
     mount_all /vendor/etc/fstab.${ro.boot.hardware.platform} --late
     # Boot time fs tune
-    write /sys/block/dm-3/queue/read_ahead_kb 2048
-    write /sys/block/dm-4/queue/read_ahead_kb 2048
-    write /sys/block/dm-6/queue/read_ahead_kb 2048
+    write /sys/block/dm-7/queue/read_ahead_kb 2048
 
     # Required for time_daemon
     mkdir /mnt/vendor/persist/time 0770 system system
@@ -432,6 +436,8 @@ on early-boot
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/led_laser_read_byte
     chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/itoc_cali_data_store
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/itoc_cali_data_store
+    chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/get_silego_state
+    chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/get_silego_state
     chown system system /dev/lm36011_flood
     chmod 0660 /dev/lm36011_flood
     chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/led_laser_enable
@@ -446,6 +452,8 @@ on early-boot
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/led_laser_read_byte
     chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/itoc_cali_data_store
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/itoc_cali_data_store
+    chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/get_silego_state
+    chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/get_silego_state
     chown system system /dev/lm36011_dot
     chmod 0660 /dev/lm36011_dot
 
@@ -544,6 +552,9 @@ on property:sys.boot_completed=1
     write /sys/block/sde/queue/read_ahead_kb 128
     write /sys/block/sde/queue/nr_requests 128
     write /sys/block/sde/queue/iostats 1
+    write /sys/block/sdf/queue/read_ahead_kb 128
+    write /sys/block/sdf/queue/nr_requests 128
+    write /sys/block/sdf/queue/iostats 1
     write /sys/block/dm-0/queue/read_ahead_kb 128
     write /sys/block/dm-1/queue/read_ahead_kb 128
     write /sys/block/dm-2/queue/read_ahead_kb 128
@@ -551,6 +562,7 @@ on property:sys.boot_completed=1
     write /sys/block/dm-4/queue/read_ahead_kb 128
     write /sys/block/dm-5/queue/read_ahead_kb 128
     write /sys/block/dm-6/queue/read_ahead_kb 128
+    write /sys/block/dm-7/queue/read_ahead_kb 128
 
     # F2FS tuning: issue discard commands up to 128MB
     write /sys/block/dm-7/queue/discard_max_bytes 134217728
@@ -578,7 +590,7 @@ on property:sys.boot_completed=1
     # Setup runtime blkio
     # value for group_idle is us
     write /dev/blkio/blkio.weight 1000
-    write /dev/blkio/background/blkio.weight 10
+    write /dev/blkio/background/blkio.weight 200
     write /dev/blkio/blkio.group_idle 2000
     write /dev/blkio/background/blkio.group_idle 0
 
@@ -864,6 +876,24 @@ service loc_launcher /vendor/bin/loc_launcher
     class late_start
     user gps
     group gps
+
+# Allow access to touch glove_mode sysfs node
+on property:vendor.all.modules.ready=1
+    chown system system /sys/class/spi_master/spi1/spi1.0/glove_mode
+
+# Toggle glove_mode according to touch_sensitivity_mode
+on property:persist.vendor.touch_sensitivity_mode=0 && property:sys.boot_completed=1
+    write /sys/class/spi_master/spi1/spi1.0/glove_mode 00
+
+on property:persist.vendor.touch_sensitivity_mode=1 && property:sys.boot_completed=1
+    write /sys/class/spi_master/spi1/spi1.0/glove_mode 01
+
+# Route touch_sensitivity_mode to persist
+on property:debug.touch_sensitivity_mode=0
+    setprop persist.vendor.touch_sensitivity_mode 0
+
+on property:debug.touch_sensitivity_mode=1
+    setprop persist.vendor.touch_sensitivity_mode 1
 
 # turns off tracing right before bugreporting to keep more traces
 on property:init.svc.dumpstatez=running
