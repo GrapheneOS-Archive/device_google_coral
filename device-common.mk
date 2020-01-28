@@ -120,4 +120,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.thermal_warmreset = true \
 
+# Enable Incremental on the device via kernel module
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.incremental.enable=module:/vendor/lib/modules/incrementalfs.ko
+
 PRODUCT_ENFORCE_PRODUCT_PARTITION_INTERFACE := true
