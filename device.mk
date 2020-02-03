@@ -32,6 +32,7 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/google/darwinn \
     vendor/qcom/sm8150 \
     vendor/qcom/sm8150/codeaurora/telephony/ims \
+    vendor/qcom/sm8150/proprietary/data/permissions \
     vendor/qcom/sm8150/proprietary/qcril-data-hal/qdp \
     vendor/qcom/sm8150/proprietary/qcril-data-hal/util \
     vendor/qcom/sm8150/proprietary/qcril-data-hal/datamodule \
