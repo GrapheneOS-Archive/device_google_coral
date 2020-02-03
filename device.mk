@@ -457,8 +457,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.qc2.venc.avgqp.enable=1
 
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4-impl-google \
-    android.hardware.camera.provider@2.4-service-google \
+    android.hardware.camera.provider@2.6-impl-google \
+    android.hardware.camera.provider@2.6-service-google \
     camera.msmnile \
     lib_multicam_dualfov_capture_session \
     libgooglecamerahwl_impl \
