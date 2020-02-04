@@ -32,6 +32,7 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/google/darwinn \
     vendor/qcom/sm8150 \
     vendor/qcom/sm8150/codeaurora/telephony/ims \
+    vendor/qcom/sm8150/proprietary/data/permissions \
     vendor/qcom/sm8150/proprietary/qcril-data-hal/qdp \
     vendor/qcom/sm8150/proprietary/qcril-data-hal/util \
     vendor/qcom/sm8150/proprietary/qcril-data-hal/datamodule \
@@ -456,8 +457,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.qc2.venc.avgqp.enable=1
 
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4-impl-google \
-    android.hardware.camera.provider@2.4-service-google \
+    android.hardware.camera.provider@2.6-impl-google \
+    android.hardware.camera.provider@2.6-service-google \
     camera.msmnile \
     lib_multicam_dualfov_capture_session \
     libgooglecamerahwl_impl \
