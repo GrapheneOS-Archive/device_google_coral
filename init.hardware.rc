@@ -172,6 +172,9 @@ on charger
     start modem_svc
     start vendor.per_mgr
 
+    # Health HAL
+    chown system system /sys/devices/virtual/thermal/tz-by-name/soc/mode
+
 on late-init
     setprop vendor.thermal.config thermal_info_config.json
     chown system system /sys/devices/virtual/thermal/tz-by-name/sdm-therm-monitor/trip_point_0_temp

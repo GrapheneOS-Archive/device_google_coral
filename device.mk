@@ -416,7 +416,8 @@ PRODUCT_PACKAGES += \
     android.hardware.usb@1.2-service.coral
 
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-service.coral
+    android.hardware.health@2.1-impl-coral \
+    android.hardware.health@2.1-service
 
 # Storage health HAL
 PRODUCT_PACKAGES += \
@@ -932,7 +933,7 @@ PRODUCT_PACKAGES += $(HIDL_WRAPPER)
 
 # Increment the SVN for any official public releases
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.vendor.build.svn=16
+	ro.vendor.build.svn=17
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
