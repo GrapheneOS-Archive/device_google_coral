@@ -37,6 +37,8 @@ PRODUCT_BUILD_SUPER_PARTITION := false
 # b/113232673 STOPSHIP deal with Qualcomm stuff later
 # PRODUCT_RESTRICT_VENDOR_FILES := all
 
+PRODUCT_PACKAGES += com.android.vndk.current.on_vendor
+
 PRODUCT_MANUFACTURER := Google
 PRODUCT_BRAND := Android
 PRODUCT_NAME := aosp_flame
