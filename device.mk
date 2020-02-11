@@ -374,6 +374,8 @@ PRODUCT_PACKAGES += \
 #Bluetooth SAR HAL
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.bluetooth_sar@1.0-impl
+PRODUCT_PACKAGES_DEBUG += \
+    bluetooth_sar_test
 
 # Bluetooth SoC
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -933,7 +935,7 @@ PRODUCT_PACKAGES += $(HIDL_WRAPPER)
 
 # Increment the SVN for any official public releases
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.vendor.build.svn=17
+	ro.vendor.build.svn=18
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
