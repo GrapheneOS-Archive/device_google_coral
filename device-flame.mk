@@ -29,7 +29,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth Tx power caps for flame
 PRODUCT_COPY_FILES += \
-    vendor/google/services/GoogleRil/native/qc/bluetooth_power_limits_flame.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits.csv
+    $(LOCAL_PATH)/bluetooth_power_limits_flame.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits.csv
 
 # Display config
 PRODUCT_COPY_FILES += \
