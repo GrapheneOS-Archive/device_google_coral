@@ -24,6 +24,7 @@
 #include <health/utils.h>
 #include <hal_conversion.h>
 
+#include <pixelhealth/BatteryDefender.h>
 #include <pixelhealth/BatteryMetricsLogger.h>
 #include "pixelhealth/BatteryThermalControl.h"
 #include <pixelhealth/CycleCountBackupRestore.h>
@@ -48,6 +49,7 @@ using android::hardware::health::V2_0::Result;
 using ::android::hardware::health::V2_1::IHealth;
 using android::hardware::health::InitHealthdConfig;
 
+using hardware::google::pixel::health::BatteryDefender;
 using hardware::google::pixel::health::BatteryMetricsLogger;
 using hardware::google::pixel::health::BatteryThermalControl;
 using hardware::google::pixel::health::CycleCountBackupRestore;
@@ -62,6 +64,7 @@ constexpr char kVoltageAvg[] {FG_DIR "/voltage_avg"};
 constexpr char kCycleCountsBins[] {FG_DIR "/cycle_counts"};
 constexpr char kGaugeSerial[] {FG_DIR "/serial_number"};
 
+static BatteryDefender battDefender;
 static BatteryThermalControl battThermalControl(
     "sys/devices/virtual/thermal/tz-by-name/soc/mode");
 static BatteryMetricsLogger battMetricsLogger(
@@ -113,6 +116,7 @@ void fill_ufs_storage_attribute(StorageAttribute *attr) {
 void private_healthd_board_init(struct healthd_config *hc) {
   hc->ignorePowerSupplyNames.push_back(android::String8(kTCPMPSYName));
   ccBackupRestore.Restore();
+  battDefender.update();
 }
 
 int private_healthd_board_battery_update(struct android::BatteryProperties *props) {
@@ -121,6 +125,7 @@ int private_healthd_board_battery_update(struct android::BatteryProperties *prop
   battMetricsLogger.logBatteryProperties(props);
   shutdownMetrics.logShutdownVoltage(props);
   ccBackupRestore.Backup(props->batteryLevel);
+  battDefender.update();
   return 0;
 }
 
