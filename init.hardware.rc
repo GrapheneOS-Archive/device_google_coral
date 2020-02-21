@@ -154,6 +154,7 @@ on init
     chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/ccreset
     chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/status
     chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/version
+    chown system system /sys/class/power_supply/wireless/capacity
 
     # Allow PAI targeting per hardware SKU
     setprop ro.oem.key1 ${ro.boot.hardware.sku}
