@@ -20,9 +20,6 @@ include device/google/coral/device-common.mk
 
 DEVICE_PACKAGE_OVERLAYS += device/google/coral/coral/overlay
 
-PRODUCT_PACKAGES += \
-    TelephonyOverlay2019Coral
-
 # Audio XMLs for coral
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_volumes_coral.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml
