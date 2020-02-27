@@ -219,6 +219,9 @@ BOARD_EXT4_SHARE_DUP_BLOCKS := true
 ifeq (,$(filter-out flame_kasan coral_kasan, $(TARGET_PRODUCT)))
 BOARD_VENDOR_KERNEL_MODULES += \
     $(wildcard device/google/coral-kernel/kasan/*.ko)
+else ifeq (,$(filter-out flame_hwasan coral_hwasan, $(TARGET_PRODUCT)))
+BOARD_VENDOR_KERNEL_MODULES += \
+    $(wildcard device/google/coral-kernel/khwasan/*.ko)
 else ifeq (,$(filter-out flame_kernel_debug_memory coral_kernel_debug_memory, $(TARGET_PRODUCT)))
 BOARD_VENDOR_KERNEL_MODULES += \
     $(wildcard device/google/coral-kernel/debug_memory/*.ko)

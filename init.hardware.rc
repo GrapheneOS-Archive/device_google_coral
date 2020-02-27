@@ -154,12 +154,17 @@ on init
     chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/ccreset
     chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/status
     chown system system /sys/devices/platform/soc/880000.i2c/i2c-1/1-0061/version
+    chown system system /sys/class/power_supply/wireless/capacity
 
     # Allow PAI targeting per hardware SKU
     setprop ro.oem.key1 ${ro.boot.hardware.sku}
 
     # Property used by vintf for sku specific manifests
     setprop ro.boot.product.hardware.sku ${ro.boot.hardware.sku}
+
+    # Battery Defender
+    chown system system /sys/devices/platform/soc/soc:google,charger/charge_stop_level
+    chown system system /sys/devices/platform/soc/soc:google,charger/charge_start_level
 
 # b/134578585
 on charger
@@ -409,6 +414,8 @@ on early-boot
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/led_laser_read_byte
     chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/itoc_cali_data_store
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/itoc_cali_data_store
+    chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/get_silego_state
+    chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-flood@64/get_silego_state
     chown system system /dev/lm36011_flood
     chmod 0660 /dev/lm36011_flood
     chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/led_laser_enable
@@ -423,6 +430,8 @@ on early-boot
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/led_laser_read_byte
     chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/itoc_cali_data_store
     chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/itoc_cali_data_store
+    chown system system /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/get_silego_state
+    chmod 0660 /sys/devices/platform/soc/ac4a000.qcom,cci/ac4a000.qcom,cci:qcom,cam-led-laser-dot@64/get_silego_state
     chown system system /dev/lm36011_dot
     chmod 0660 /dev/lm36011_dot
 
@@ -664,7 +673,8 @@ service sensors.qti /vendor/bin/sensors.qti
 service vendor.sscrpcd /vendor/bin/sscrpcd sensorspd
     class core
     user system
-    group system
+    group system wakelock
+    capabilities BLOCK_SUSPEND
 
 service vendor.adsprpcd /vendor/bin/adsprpcd
    class main
@@ -685,7 +695,8 @@ service vendor.cdsprpcd /vendor/bin/cdsprpcd
 service vendor.lowi /vendor/bin/sscrpcd
    class core
    user system
-   group system
+   group system wakelock
+   capabilities BLOCK_SUSPEND
 
 service vendor.imsqmidaemon /system/vendor/bin/imsqmidaemon
     class main
@@ -882,12 +893,6 @@ on property:sys.retaildemo.enabled=1
 on property:sys.retaildemo.enabled=1
     setprop persist.vendor.charge.stop.level 35
     setprop persist.vendor.charge.start.level 30
-
-on property:persist.vendor.charge.stop.level=*
-    write /sys/devices/platform/soc/soc:google,charger/charge_stop_level ${persist.vendor.charge.stop.level}
-
-on property:persist.vendor.charge.start.level=*
-    write /sys/devices/platform/soc/soc:google,charger/charge_start_level ${persist.vendor.charge.start.level}
 
 # Athletico ramdump monitor
 service vendor.crash_event_logger /vendor/bin/crash_event_logger -m

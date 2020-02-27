@@ -31,13 +31,25 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/google/camera \
     vendor/google/darwinn \
     vendor/qcom/sm8150 \
-    vendor/qcom/sm8150/codeaurora/telephony/ims \
     vendor/qcom/sm8150/proprietary/data/permissions \
-    vendor/qcom/sm8150/proprietary/qcril-data-hal/qdp \
-    vendor/qcom/sm8150/proprietary/qcril-data-hal/util \
-    vendor/qcom/sm8150/proprietary/qcril-data-hal/datamodule \
-    vendor/qcom/sm8150/proprietary/qcril-hal \
     vendor/google/interfaces
+
+# Single vendor RIL/Telephony/data with SM7250
+DEVICE_USES_SM7250_QCRIL_TELEPHONY := true
+
+ifeq ($(DEVICE_USES_SM7250_QCRIL_TELEPHONY), true)
+  PRODUCT_SOONG_NAMESPACES += \
+      vendor/qcom/sm7250/codeaurora/commonsys/telephony/ims/ims-ext-common \
+      vendor/qcom/sm7250/proprietary/qcril-data-hal \
+      vendor/qcom/sm7250/proprietary/qcril-hal
+else
+  $(warning DEVICE_USES_SM7250_QCRIL_TELEPHONY is disabled)
+
+  PRODUCT_SOONG_NAMESPACES += \
+      vendor/qcom/sm8150/codeaurora/telephony/ims \
+      vendor/qcom/sm8150/proprietary/qcril-data-hal \
+      vendor/qcom/sm8150/proprietary/qcril-hal
+endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true
@@ -220,6 +232,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.level-1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level.xml \
     frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute.xml \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml \
+    frameworks/native/data/etc/android.software.vulkan.deqp.level-2020-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml \
     frameworks/native/data/etc/android.hardware.telephony.carrierlock.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.carrierlock.xml \
     frameworks/native/data/etc/android.hardware.strongbox_keystore.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.strongbox_keystore.xml \
     frameworks/native/data/etc/android.hardware.nfc.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.uicc.xml \
@@ -252,6 +265,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.feature.usb_offload.enable=true \
     vendor.audio.feature.audiozoom.enable=true \
     vendor.audio.feature.snd_mon.enable=true \
+    vendor.audio.feature.multi_voice_session.enable=true \
     vendor.audio.capture.enforce_legacy_copp_sr=true \
     persist.vendor.audio_hal.dsp_bit_width_enforce_mode=24 \
 
@@ -374,6 +388,8 @@ PRODUCT_PACKAGES += \
 #Bluetooth SAR HAL
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.bluetooth_sar@1.0-impl
+PRODUCT_PACKAGES_DEBUG += \
+    bluetooth_sar_test
 
 # Bluetooth SoC
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -485,8 +501,7 @@ PRODUCT_PACKAGES += \
 
 # Context hub HAL
 PRODUCT_PACKAGES += \
-    android.hardware.contexthub@1.0-impl.generic \
-    android.hardware.contexthub@1.0-service
+    android.hardware.contexthub@1.1-service.generic
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
@@ -749,7 +764,7 @@ endif
 
 # Dumpstate HAL
 PRODUCT_PACKAGES += \
-    android.hardware.dumpstate@1.0-service.coral
+    android.hardware.dumpstate@1.1-service.coral
 
 # Citadel
 PRODUCT_PACKAGES += \
@@ -808,10 +823,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Enable modem logging for debug
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.sys.modem.diag.mdlog=true \
-    persist.vendor.sys.modem.diag.mdlog_br_num=5
+    persist.vendor.sys.modem.diag.mdlog=true
 else
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.sys.modem.diag.mdlog=false
 endif
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.sys.modem.diag.mdlog_br_num=5
 
 # Enable tcpdump_logger on userdebug and eng
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
@@ -933,7 +951,7 @@ PRODUCT_PACKAGES += $(HIDL_WRAPPER)
 
 # Increment the SVN for any official public releases
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.vendor.build.svn=17
+	ro.vendor.build.svn=18
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
@@ -960,6 +978,15 @@ PRODUCT_PACKAGES += \
 # Resume on Reboot support
 PRODUCT_PACKAGES += \
     android.hardware.rebootescrow-service.default
+
+# Vendor verbose logging default property
+ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.verbose_logging_enabled=true
+else
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.verbose_logging_enabled=false
+endif
 
 include hardware/google/pixel/common/pixel-common-device.mk
 include hardware/google/pixel/vibrator/cs40l25/device.mk

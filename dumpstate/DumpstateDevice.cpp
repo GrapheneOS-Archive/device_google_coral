@@ -51,6 +51,8 @@
 
 #define HW_VERSION_PROPERTY "ro.boot.hardware.revision"
 
+#define VENDOR_VERBOSE_LOGGING_ENABLED_PROPERTY "persist.vendor.verbose_logging_enabled"
+
 using android::os::dumpstate::CommandOptions;
 using android::os::dumpstate::DumpFileToFd;
 using android::os::dumpstate::PropertiesHelper;
@@ -59,7 +61,7 @@ using android::os::dumpstate::RunCommandToFd;
 namespace android {
 namespace hardware {
 namespace dumpstate {
-namespace V1_0 {
+namespace V1_1 {
 namespace implementation {
 
 #define DIAG_LOG_PREFIX "diag_log_"
@@ -132,13 +134,41 @@ void DumpstateDevice::dumpModem(int fd, int fdModem)
 
     RunCommandToFd(fd, "MKDIR MODEM LOG", {"/vendor/bin/mkdir", "-p", modemLogAllDir.c_str()}, CommandOptions::WithTimeout(2).Build());
 
+    const std::string diagLogDir = "/data/vendor/radio/diag_logs/logs";
+    const std::string diagPoweronLogPath = "/data/vendor/radio/diag_logs/logs/diag_poweron_log.qmdl";
+
+    bool diagLogEnabled = android::base::GetBoolProperty(DIAG_MDLOG_PERSIST_PROPERTY, false);
+
+    if (diagLogEnabled) {
+        bool diagLogStarted = android::base::GetBoolProperty( DIAG_MDLOG_STATUS_PROPERTY, false);
+
+        if (diagLogStarted) {
+            android::base::SetProperty(DIAG_MDLOG_PROPERTY, "false");
+            ALOGD("Stopping diag_mdlog...\n");
+            if (android::base::WaitForProperty(DIAG_MDLOG_STATUS_PROPERTY, "false", std::chrono::seconds(20))) {
+                ALOGD("diag_mdlog exited");
+            } else {
+                ALOGE("Waited mdlog timeout after 20 second");
+            }
+        } else {
+            ALOGD("diag_mdlog is not running");
+        }
+
+        dumpLogs(fd, diagLogDir, modemLogAllDir, android::base::GetIntProperty(DIAG_MDLOG_NUMBER_BUGREPORT, 100), DIAG_LOG_PREFIX);
+
+        if (diagLogStarted) {
+            ALOGD("Restarting diag_mdlog...");
+            android::base::SetProperty(DIAG_MDLOG_PROPERTY, "true");
+        }
+    }
+    RunCommandToFd(fd, "CP MODEM POWERON LOG", {"/vendor/bin/cp", diagPoweronLogPath.c_str(), modemLogAllDir.c_str()}, CommandOptions::WithTimeout(2).Build());
+
     if (!PropertiesHelper::IsUserBuild()) {
         RunCommandToFd(fd, "MODEM RFS INFO", {"/vendor/bin/find /data/vendor/rfs/mpss/OEMFI/"}, CommandOptions::WithTimeout(2).Build());
         RunCommandToFd(fd, "MODEM DIAG SYSTEM PROPERTIES", {"/vendor/bin/getprop | grep vendor.sys.modem.diag"}, CommandOptions::WithTimeout(2).Build());
 
         android::base::SetProperty(MODEM_EFS_DUMP_PROPERTY, "true");
 
-        const std::string diagLogDir = "/data/vendor/radio/diag_logs/logs";
         const std::string tcpdumpLogDir = "/data/vendor/tcpdump_logger/logs";
         const std::string extendedLogDir = "/data/vendor/radio/extended_logs";
         const std::vector <std::string> rilAndNetmgrLogs
@@ -159,7 +189,6 @@ void DumpstateDevice::dumpModem(int fd, int fdModem)
                 "/data/vendor/radio/power_anomaly_data.txt",
                 "/data/vendor/radio/diag_logs/diag_trace.txt",
                 "/data/vendor/radio/diag_logs/diag_trace_old.txt",
-                "/data/vendor/radio/diag_logs/logs/diag_poweron_log.qmdl",
                 "/data/vendor/radio/metrics_data",
                 "/data/vendor/ssrlog/ssr_log.txt",
                 "/data/vendor/ssrlog/ssr_log_old.txt",
@@ -167,36 +196,8 @@ void DumpstateDevice::dumpModem(int fd, int fdModem)
                 "/sys/kernel/debug/ipa/ipa_statistics_msg"
             };
 
-        bool smlogEnabled = android::base::GetBoolProperty(MODEM_LOGGING_SWITCH, false) && !access("/vendor/bin/smlog_dump", X_OK);
-        bool diagLogEnabled = android::base::GetBoolProperty(DIAG_MDLOG_PERSIST_PROPERTY, false);
-        bool tcpdumpEnabled = android::base::GetBoolProperty(TCPDUMP_PERSIST_PROPERTY, false);
-
-        if (smlogEnabled) {
-            RunCommandToFd(fd, "SMLOG DUMP", {"smlog_dump", "-d", "-o", modemLogAllDir.c_str()}, CommandOptions::WithTimeout(10).Build());
-        } else if (diagLogEnabled) {
-            bool diagLogStarted = android::base::GetBoolProperty( DIAG_MDLOG_STATUS_PROPERTY, false);
-
-            if (diagLogStarted) {
-                android::base::SetProperty(DIAG_MDLOG_PROPERTY, "false");
-                ALOGD("Stopping diag_mdlog...\n");
-                if (android::base::WaitForProperty(DIAG_MDLOG_STATUS_PROPERTY, "false", std::chrono::seconds(20))) {
-                    ALOGD("diag_mdlog exited");
-                } else {
-                    ALOGE("Waited mdlog timeout after 20 second");
-                }
-            } else {
-                ALOGD("diag_mdlog is not running");
-            }
-
-            dumpLogs(fd, diagLogDir, modemLogAllDir, android::base::GetIntProperty(DIAG_MDLOG_NUMBER_BUGREPORT, 100), DIAG_LOG_PREFIX);
-
-            if (diagLogStarted) {
-                ALOGD("Restarting diag_mdlog...");
-                android::base::SetProperty(DIAG_MDLOG_PROPERTY, "true");
-            }
-        }
-
-        if (tcpdumpEnabled) {
+       bool tcpdumpEnabled = android::base::GetBoolProperty(TCPDUMP_PERSIST_PROPERTY, false);
+       if (tcpdumpEnabled) {
             dumpLogs(fd, tcpdumpLogDir, modemLogAllDir, android::base::GetIntProperty(TCPDUMP_NUMBER_BUGREPORT, 5), TCPDUMP_LOG_PREFIX);
         }
 
@@ -377,6 +378,18 @@ static void DumpPower(int fd) {
 
 // Methods from ::android::hardware::dumpstate::V1_0::IDumpstateDevice follow.
 Return<void> DumpstateDevice::dumpstateBoard(const hidl_handle& handle) {
+    // Ignore return value, just return an empty status.
+    dumpstateBoard_1_1(handle, DumpstateMode::DEFAULT, 30 * 1000 /* timeoutMillis */);
+    return Void();
+}
+
+// Methods from ::android::hardware::dumpstate::V1_1::IDumpstateDevice follow.
+Return<DumpstateStatus> DumpstateDevice::dumpstateBoard_1_1(const hidl_handle& handle,
+                                                            const DumpstateMode mode,
+                                                            const uint64_t timeoutMillis) {
+    // Unused arguments.
+    (void) timeoutMillis;
+
     // Exit when dump is completed since this is a lazy HAL.
     addPostCommandTask([]() {
         exit(0);
@@ -384,13 +397,22 @@ Return<void> DumpstateDevice::dumpstateBoard(const hidl_handle& handle) {
 
     if (handle == nullptr || handle->numFds < 1) {
         ALOGE("no FDs\n");
-        return Void();
+        return DumpstateStatus::ILLEGAL_ARGUMENT;
     }
 
     int fd = handle->data[0];
     if (fd < 0) {
         ALOGE("invalid FD: %d\n", handle->data[0]);
-        return Void();
+        return DumpstateStatus::ILLEGAL_ARGUMENT;
+    }
+
+    if (mode == DumpstateMode::WEAR) {
+        // We aren't a Wear device.
+        ALOGE("Unsupported mode: %d\n", mode);
+        return DumpstateStatus::UNSUPPORTED_MODE;
+    } else if (mode < DumpstateMode::FULL || mode > DumpstateMode::DEFAULT) {
+        ALOGE("Invalid mode: %d\n", mode);
+        return DumpstateStatus::ILLEGAL_ARGUMENT;
     }
 
     RunCommandToFd(fd, "Notify modem", {"/vendor/bin/modem_svc", "-s"}, CommandOptions::WithTimeout(1).Build());
@@ -485,11 +507,21 @@ Return<void> DumpstateDevice::dumpstateBoard(const hidl_handle& handle) {
 
     // Report Knowles framework info
     RunCommandToFd(fd, "KN version", {"/vendor/bin/sh", "-c", "for f in `ls -d /sys/devices/platform/soc/a8c000.spi/spi_master/spi5/spi5.0/iaxxx/*_version` ; do echo \"------ $f\\n`cat $f`\\n\" ; done"});
+
+    return DumpstateStatus::OK;
+}
+
+Return<void> DumpstateDevice::setVerboseLoggingEnabled(const bool enable) {
+    android::base::SetProperty(VENDOR_VERBOSE_LOGGING_ENABLED_PROPERTY, enable ? "true" : "false");
     return Void();
 }
 
+Return<bool> DumpstateDevice::getVerboseLoggingEnabled() {
+    return android::base::GetBoolProperty(VENDOR_VERBOSE_LOGGING_ENABLED_PROPERTY, false);
+}
+
 }  // namespace implementation
-}  // namespace V1_0
+}  // namespace V1_1
 }  // namespace dumpstate
 }  // namespace hardware
 }  // namespace android
