@@ -902,10 +902,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.atrace@1.0-service.pixel
 
-# Reliability reporting
-PRODUCT_PACKAGES += \
-    pixelstats-vendor
-
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # fastbootd
@@ -996,5 +992,6 @@ endif
 
 include hardware/google/pixel/common/pixel-common-device.mk
 include hardware/google/pixel/vibrator/cs40l25/device.mk
+include hardware/google/pixel/pixelstats/device.mk
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota_retrofit.mk)
