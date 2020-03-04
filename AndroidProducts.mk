@@ -16,7 +16,7 @@
 
 #
 # In memory of David L. Gerg, a Googler from Munich, Germany, and a passionate
-# Android and Pixel fan who suddenly and unexpectedly passed way to early in
+# Android and Pixel fan who suddenly and unexpectedly passed way too early in
 # February 2020. We miss you David, R.I.P.
 #
 
