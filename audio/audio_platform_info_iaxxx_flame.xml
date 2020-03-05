@@ -81,9 +81,7 @@
     </acdb_ids>
 
     <audio_input_source_delay>
-        <audio_source_delay name="AUDIO_SOURCE_MIC" delay="40"/>
-        <audio_source_delay name="AUDIO_SOURCE_CAMCORDER" delay="60"/>
-        <audio_source_delay name="AUDIO_SOURCE_UNPROCESSED" delay="30"/>
+        <audio_source_delay name="AUDIO_SOURCE_CAMCORDER" delay="20"/>
     </audio_input_source_delay>
 
     <external_specific_dev>
