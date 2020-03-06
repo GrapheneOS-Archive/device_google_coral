@@ -41,6 +41,8 @@ const struct SysfsCollector::SysfsPaths sysfs_paths = {
     .SpeechDspPath = "/sys/class/iaxxx-dev/iaxxx_misc/wdsp_stat",
     .BatteryCapacityCC = MAXIM_DIR(delta_cc_sum),
     .BatteryCapacityVFSOC = MAXIM_DIR(delta_vfsoc_sum),
+    .ZramMmStatPath = "/sys/block/zram0/mm_stat",
+    .ZramBdStatPath = "/sys/block/zram0/bd_stat",
 };
 
 const char *const kAudioUevent = "/kernel/q6audio/q6voice_uevent";
