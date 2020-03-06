@@ -487,7 +487,6 @@ on boot
     setprop wifi.interface wlan0
 
     chown system system /sys/kernel/hbtp/display_pwr
-    start rmt_storage
     start rfs_access
 
     # default country code
