@@ -27,7 +27,7 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/qcom/sm8150 \
     hardware/qcom/sm8150/display \
     vendor/google/airbrush/floral \
-    vendor/google/biometrics/face \
+    vendor/google/biometrics/face/florence \
     vendor/google/camera \
     vendor/google/darwinn \
     vendor/qcom/sm8150 \
