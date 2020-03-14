@@ -9,7 +9,6 @@
     </hal>
     <hal format="hidl">
         <name>vendor.qti.data.factory</name>
-        <transport>hwbinder</transport>
         <version>2.1</version>
         <interface>
             <name>IFactory</name>
@@ -19,7 +18,6 @@
     <!-- iwlan -->
     <hal format="hidl">
         <name>vendor.qti.hardware.data.iwlan</name>
-        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>IIWlan</name>
@@ -43,7 +41,6 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>android.hardware.radio</name>
-        <transport>hwbinder</transport>
         <version>1.2</version>
         <interface>
             <name>ISap</name>
@@ -195,7 +192,6 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.ims.callinfo</name>
-        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>IService</name>
@@ -220,7 +216,6 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.google.wifi_ext</name>
-        <transport>hwbinder</transport>
         <version>1.1</version>
         <interface>
             <name>IWifiExt</name>
@@ -229,7 +224,6 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.cacert</name>
-        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>IService</name>
@@ -238,7 +232,6 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.data.connection</name>
-        <transport>hwbinder</transport>
         <version>1.1</version>
         <interface>
             <name>IDataConnection</name>
@@ -248,7 +241,6 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.qteeconnector</name>
-        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>IAppConnector</name>
@@ -261,7 +253,6 @@
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.qtiradio</name>
-        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>IQtiRadio</name>
@@ -271,7 +262,6 @@
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.qtiradio</name>
-        <transport>hwbinder</transport>
         <version>2.3</version>
         <interface>
             <name>IQtiRadio</name>
@@ -279,5 +269,12 @@
             <instance>slot2</instance>
         </interface>
     </hal>
-
+    <hal>
+        <name>vendor.google.radioext</name>
+        <version>1.2</version>
+        <interface>
+            <name>IRadioExt</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
 </compatibility-matrix>
