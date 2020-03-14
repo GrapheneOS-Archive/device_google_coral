@@ -126,4 +126,9 @@ PRODUCT_PRODUCT_PROPERTIES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.incremental.enable=module:/vendor/lib/modules/incrementalfs.ko
 
+# Enable blurs, hidden under dev option
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.surface_flinger.supports_background_blur=1 \
+    persist.sys.sf.disable_blurs=1
+
 PRODUCT_ENFORCE_PRODUCT_PARTITION_INTERFACE := true
