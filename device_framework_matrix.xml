@@ -279,12 +279,5 @@
             <instance>slot2</instance>
         </interface>
     </hal>
-    <hal>
-        <name>vendor.google.radioext</name>
-        <version>1.2</version>
-        <interface>
-            <name>IRadioExt</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
+
 </compatibility-matrix>
