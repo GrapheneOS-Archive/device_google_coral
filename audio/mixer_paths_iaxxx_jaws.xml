@@ -3195,6 +3195,10 @@
         <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia16" value="1"/>
     </path>
 
+    <path name="mmap-playback handset">
+        <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia16" value="1"/>
+    </path>
+
     <path name="mmap-playback speaker">
         <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia16" value="1"/>
     </path>
