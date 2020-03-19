@@ -3303,6 +3303,10 @@
         <ctl name="Rx2Chan Gain En" value="1" />
     </path>
 
+    <path name="camcorder-mic-invert">
+        <path name="camcorder-mic"/>
+    </path>
+
     <path name="bt-sco-headset">
     </path>
 
@@ -3747,6 +3751,10 @@
     </path>
 
     <path name="mmap-playback">
+        <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia16" value="1"/>
+    </path>
+
+    <path name="mmap-playback handset">
         <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia16" value="1"/>
     </path>
 
