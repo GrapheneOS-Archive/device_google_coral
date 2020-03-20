@@ -903,10 +903,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.atrace@1.0-service.pixel
 
-# Reliability reporting
-PRODUCT_PACKAGES += \
-    pixelstats-vendor
-
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # fastbootd
@@ -952,7 +948,7 @@ PRODUCT_PACKAGES += $(HIDL_WRAPPER)
 
 # Increment the SVN for any official public releases
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.vendor.build.svn=18
+	ro.vendor.build.svn=19
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
@@ -997,5 +993,6 @@ endif
 
 include hardware/google/pixel/common/pixel-common-device.mk
 include hardware/google/pixel/vibrator/cs40l25/device.mk
+include hardware/google/pixel/pixelstats/device.mk
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota_retrofit.mk)
