@@ -71,7 +71,6 @@ on init
 
     # Disable UFS powersaving
     write /sys/devices/platform/soc/${ro.boot.bootdevice}/clkgate_enable 0
-    write /sys/devices/platform/soc/${ro.boot.bootdevice}/hibern8_on_idle_enable 0
 
     # Disable powersaving
     write /sys/module/lpm_levels/parameters/sleep_disabled 1
@@ -248,6 +247,7 @@ on late-fs
     chown system system /sys/class/backlight/panel0-backlight/max_brightness
     chown system system /sys/class/backlight/panel0-backlight/vr_mode
     chown system system /sys/class/backlight/panel0-backlight/hbm_mode
+    start vendor.power-hal-aidl
     start surfaceflinger
     start bootanim
     start vendor.hwcomposer-2-4
