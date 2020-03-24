@@ -513,13 +513,8 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.1-impl-pixel-legacy.recovery \
     android.hardware.boot@1.1-service \
 
-# Thermal HAL
-PRODUCT_PACKAGES += \
-    android.hardware.thermal@2.0-service.pixel \
-
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PACKAGES += \
-    thermal_logd \
     mm_logd
 endif
 
@@ -988,6 +983,7 @@ include hardware/google/pixel/common/pixel-common-device.mk
 include hardware/google/pixel/vibrator/cs40l25/device.mk
 include hardware/google/pixel/pixelstats/device.mk
 include hardware/google/pixel/mm/device_legacy.mk
+include hardware/google/pixel/thermal/device.mk
 
 # power HAL
 -include hardware/google/pixel/power-libperfmgr/aidl/device.mk
