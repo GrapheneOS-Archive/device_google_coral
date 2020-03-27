@@ -12,6 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+PRODUCT_SOONG_NAMESPACES += \
+    vendor/qcom/coral/proprietary \
+
+PRODUCT_PACKAGES += \
+    libadsprpc_system \
+    libcdsprpc_system \
+    libdiag_system \
+    libdisplayconfig \
+    libmdsprpc_system \
+    libmmosal \
+    libOpenCL_system \
+    libqmi_cci_system \
+    libsdsprpc_system \
+
 #  blob(s) necessary for coral hardware
 PRODUCT_COPY_FILES := \
     vendor/qcom/coral/proprietary/com.qti.snapdragon.sdk.display.xml:system_ext/etc/permissions/com.qti.snapdragon.sdk.display.xml \
@@ -22,24 +36,4 @@ PRODUCT_COPY_FILES := \
     vendor/qcom/coral/proprietary/vendor.qti.hardware.factory-V1.0-java.jar:system_ext/framework/vendor.qti.hardware.factory-V1.0-java.jar \
     vendor/qcom/coral/proprietary/vendor.qti.ims.callinfo-V1.0-java.jar:system_ext/framework/vendor.qti.ims.callinfo-V1.0-java.jar \
     vendor/qcom/coral/proprietary/vendor.qti.voiceprint-V1.0-java.jar:system_ext/framework/vendor.qti.voiceprint-V1.0-java.jar \
-    vendor/qcom/coral/proprietary/lib64/libadsprpc_system.so:system_ext/lib64/libadsprpc_system.so \
-    vendor/qcom/coral/proprietary/lib64/libcdsprpc_system.so:system_ext/lib64/libcdsprpc_system.so \
-    vendor/qcom/coral/proprietary/lib64/libDiagService.so:system_ext/lib64/libDiagService.so \
-    vendor/qcom/coral/proprietary/lib64/libdiag_system.so:system_ext/lib64/libdiag_system.so \
-    vendor/qcom/coral/proprietary/lib64/libdisplayconfig.so:system_ext/lib64/libdisplayconfig.so \
-    vendor/qcom/coral/proprietary/lib64/libmdsprpc_system.so:system_ext/lib64/libmdsprpc_system.so \
-    vendor/qcom/coral/proprietary/lib64/libmmosal.so:system_ext/lib64/libmmosal.so \
-    vendor/qcom/coral/proprietary/lib64/libOpenCL_system.so:system_ext/lib64/libOpenCL_system.so \
-    vendor/qcom/coral/proprietary/lib64/libqmi_cci_system.so:system_ext/lib64/libqmi_cci_system.so \
-    vendor/qcom/coral/proprietary/lib64/libsdsprpc_system.so:system_ext/lib64/libsdsprpc_system.so \
-    vendor/qcom/coral/proprietary/libadsprpc_system.so:system_ext/lib/libadsprpc_system.so \
-    vendor/qcom/coral/proprietary/libcdsprpc_system.so:system_ext/lib/libcdsprpc_system.so \
-    vendor/qcom/coral/proprietary/libDiagService.so:system_ext/lib/libDiagService.so \
-    vendor/qcom/coral/proprietary/libdiag_system.so:system_ext/lib/libdiag_system.so \
-    vendor/qcom/coral/proprietary/libdisplayconfig.so:system_ext/lib/libdisplayconfig.so \
-    vendor/qcom/coral/proprietary/libmdsprpc_system.so:system_ext/lib/libmdsprpc_system.so \
-    vendor/qcom/coral/proprietary/libmmosal.so:system_ext/lib/libmmosal.so \
-    vendor/qcom/coral/proprietary/libOpenCL_system.so:system_ext/lib/libOpenCL_system.so \
-    vendor/qcom/coral/proprietary/libqmi_cci_system.so:system_ext/lib/libqmi_cci_system.so \
-    vendor/qcom/coral/proprietary/libsdsprpc_system.so:system_ext/lib/libsdsprpc_system.so \
 
