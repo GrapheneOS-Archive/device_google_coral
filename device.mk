@@ -893,10 +893,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
-# power HAL
-PRODUCT_PACKAGES += \
-    android.hardware.power-service.pixel-libperfmgr
-
 # GPS configuration file
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf
@@ -996,5 +992,8 @@ endif
 include hardware/google/pixel/common/pixel-common-device.mk
 include hardware/google/pixel/vibrator/cs40l25/device.mk
 include hardware/google/pixel/pixelstats/device.mk
+
+# power HAL
+-include hardware/google/pixel/power-libperfmgr/aidl/device.mk
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota_retrofit.mk)
