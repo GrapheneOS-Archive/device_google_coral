@@ -15,11 +15,17 @@
 PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/flame/proprietary \
 
+# AOSP packages required by the blobs
+PRODUCT_PACKAGES := \
+    ims \
+    QtiTelephonyService
+
 PRODUCT_PACKAGES += \
     libadsprpc_system \
     libcdsprpc_system \
     libdiag_system \
     libdisplayconfig \
+    libimsmedia_jni \
     libmdsprpc_system \
     libmmosal \
     libOpenCL_system \
@@ -28,9 +34,11 @@ PRODUCT_PACKAGES += \
 
 #  blob(s) necessary for flame hardware
 PRODUCT_COPY_FILES := \
-    vendor/qcom/flame/proprietary/com.qti.snapdragon.sdk.display.xml:system_ext/etc/permissions/com.qti.snapdragon.sdk.display.xml \
     vendor/qcom/flame/proprietary/com.qti.snapdragon.sdk.display.jar:system_ext/framework/com.qti.snapdragon.sdk.display.jar \
+    vendor/qcom/flame/proprietary/com.qti.snapdragon.sdk.display.xml:system_ext/etc/permissions/com.qti.snapdragon.sdk.display.xml \
     vendor/qcom/flame/proprietary/com.qualcomm.qti.uceservice-V2.0-java.jar:system_ext/framework/com.qualcomm.qti.uceservice-V2.0-java.jar \
+    vendor/qcom/flame/proprietary/qcrilhook.jar:system_ext/framework/qcrilhook.jar \
+    vendor/qcom/flame/proprietary/qcrilhook.xml:system_ext/etc/permissions/qcrilhook.xml \
     vendor/qcom/flame/proprietary/vendor.qti.hardware.alarm-V1.0-java.jar:system_ext/framework/vendor.qti.hardware.alarm-V1.0-java.jar \
     vendor/qcom/flame/proprietary/vendor.qti.hardware.data.latency-V1.0-java.jar:system_ext/framework/vendor.qti.hardware.data.latency-V1.0-java.jar \
     vendor/qcom/flame/proprietary/vendor.qti.hardware.factory-V1.0-java.jar:system_ext/framework/vendor.qti.hardware.factory-V1.0-java.jar \
