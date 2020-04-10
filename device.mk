@@ -182,6 +182,9 @@ PRODUCT_PACKAGES += \
     f2fs_io \
     check_f2fs
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.crypto.volume.filenames_mode=aes-256-cts
+
 # Userdata Checkpointing OTA GC
 PRODUCT_PACKAGES += \
     checkpoint_gc
