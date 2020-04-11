@@ -43,6 +43,7 @@ cc_prebuilt_library_shared {
     },
     compile_multilib: "both",
     system_ext_specific: true,
+    owner: "qcom",
     strip: {
         none: true,
     },
@@ -76,6 +77,7 @@ cc_prebuilt_library_shared {
     },
     compile_multilib: "both",
     system_ext_specific: true,
+    owner: "qcom",
     strip: {
         none: true,
     },
@@ -109,6 +111,7 @@ cc_prebuilt_library_shared {
     },
     compile_multilib: "both",
     system_ext_specific: true,
+    owner: "qcom",
     strip: {
         none: true,
     },
@@ -146,10 +149,55 @@ cc_prebuilt_library_shared {
     },
     compile_multilib: "both",
     system_ext_specific: true,
+    owner: "qcom",
     strip: {
         none: true,
     },
     check_elf_files: false,
+}
+
+cc_prebuilt_library_shared {
+    name: "libimsmedia_jni",
+    arch: {
+        arm: {
+            srcs: ["libimsmedia_jni.so"],
+            shared_libs: [
+                "libnativehelper",
+                "libcutils",
+                "libutils",
+                "libgui",
+                "libbinder",
+                "liblog",
+                "libandroid",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+        arm64: {
+            srcs: ["lib64/libimsmedia_jni.so"],
+            shared_libs: [
+                "libnativehelper",
+                "libcutils",
+                "libutils",
+                "libgui",
+                "libbinder",
+                "liblog",
+                "libandroid",
+                "libc++",
+                "libc",
+                "libm",
+                "libdl",
+            ],
+        },
+    },
+    compile_multilib: "both",
+    system_ext_specific: true,
+    owner: "qcom",
+    strip: {
+        none: true,
+    },
 }
 
 cc_prebuilt_library_shared {
@@ -180,6 +228,7 @@ cc_prebuilt_library_shared {
     },
     compile_multilib: "both",
     system_ext_specific: true,
+    owner: "qcom",
     strip: {
         none: true,
     },
@@ -215,6 +264,7 @@ cc_prebuilt_library_shared {
     },
     compile_multilib: "both",
     system_ext_specific: true,
+    owner: "qcom",
     strip: {
         none: true,
     },
@@ -250,6 +300,7 @@ cc_prebuilt_library_shared {
     },
     compile_multilib: "both",
     system_ext_specific: true,
+    owner: "qcom",
     strip: {
         none: true,
     },
@@ -287,6 +338,7 @@ cc_prebuilt_library_shared {
     },
     compile_multilib: "both",
     system_ext_specific: true,
+    owner: "qcom",
     strip: {
         none: true,
     },
@@ -321,6 +373,7 @@ cc_prebuilt_library_shared {
     },
     compile_multilib: "both",
     system_ext_specific: true,
+    owner: "qcom",
     strip: {
         none: true,
     },
