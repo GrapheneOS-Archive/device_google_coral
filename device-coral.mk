@@ -35,3 +35,9 @@ PRODUCT_COPY_FILES += \
 # Hint expensive blurs for device with larger display
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.sf.blurs_are_expensive=1
+
+# Settings overlay packages for regulatory_info
+PRODUCT_PACKAGES += \
+    SettingsOverlayG020J \
+    SettingsOverlayG020P \
+    SettingsOverlayG020Q \

@@ -33,3 +33,10 @@ PRODUCT_COPY_FILES += \
     device/google/coral/displayconfig/display_19261132550654593.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/displayconfig/display_19261132550654593.xml
 
 PRODUCT_PRODUCT_PROPERTIES += ro.com.google.ime.height_ratio=1.2
+
+# Settings overlay packages for regulatory_info
+PRODUCT_PACKAGES += \
+    SettingsOverlayG020I \
+    SettingsOverlayG020I_VN \
+    SettingsOverlayG020M \
+    SettingsOverlayG020N \
