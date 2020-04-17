@@ -49,6 +49,7 @@ const struct SysfsCollector::SysfsPaths sysfs_paths = {
 };
 
 const char *const kAudioUevent = "/kernel/q6audio/q6voice_uevent";
+const char *const kSSOCDetailsPath = "/sys/class/power_supply/battery/ssoc_details";
 
 int main() {
     LOG(INFO) << "starting PixelStats";
@@ -59,7 +60,7 @@ int main() {
         return 1;
     }
 
-    UeventListener ueventListener(kAudioUevent);
+    UeventListener ueventListener(kAudioUevent, kSSOCDetailsPath);
     std::thread listenThread(&UeventListener::ListenForever, &ueventListener);
     listenThread.detach();
 
