@@ -1121,33 +1121,33 @@
     </path>
 
     <path name="audio-with-haptics-playback speaker-and-bt-a2dp">
-        <path name="audio-with-haptics-playback bt-a2dp"/>
         <path name="audio-with-haptics-playback speaker"/>
+        <path name="audio-with-haptics-playback bt-a2dp"/>
     </path>
 
     <path name="audio-with-haptics-playback speaker-safe-and-bt-a2dp">
-        <path name="audio-with-haptics-playback bt-a2dp"/>
         <path name="audio-with-haptics-playback speaker-safe"/>
+        <path name="audio-with-haptics-playback bt-a2dp"/>
     </path>
 
     <path name="audio-with-haptics-playback speaker-and-bt-sco">
-        <path name="audio-with-haptics-playback bt-sco"/>
         <path name="audio-with-haptics-playback speaker"/>
+        <path name="audio-with-haptics-playback bt-sco"/>
     </path>
 
     <path name="audio-with-haptics-playback speaker-safe-and-bt-sco">
-        <path name="audio-with-haptics-playback bt-sco"/>
         <path name="audio-with-haptics-playback speaker-safe"/>
+        <path name="audio-with-haptics-playback bt-sco"/>
     </path>
 
     <path name="audio-with-haptics-playback speaker-and-bt-sco-wb">
-        <path name="audio-with-haptics-playback bt-sco-wb"/>
         <path name="audio-with-haptics-playback speaker"/>
+        <path name="audio-with-haptics-playback bt-sco-wb"/>
     </path>
 
     <path name="audio-with-haptics-playback speaker-safe-and-bt-sco-wb">
-        <path name="audio-with-haptics-playback bt-sco-wb"/>
         <path name="audio-with-haptics-playback speaker-safe"/>
+        <path name="audio-with-haptics-playback bt-sco-wb"/>
     </path>
 
     <path name="audio-ull-playback">
