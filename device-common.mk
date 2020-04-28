@@ -123,7 +123,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.thermal_warmreset = true \
 
 # Enable Incremental on the device via kernel module
-PRODUCT_PRODUCT_PROPERTIES += \
+PRODUCT_PROPERTY_OVERRIDES += \
     ro.incremental.enable=module:/vendor/lib/modules/incrementalfs.ko
 
 # Enable blurs
