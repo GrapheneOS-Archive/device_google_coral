@@ -32,10 +32,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/google/coral/displayconfig/display_19260504575090817.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/displayconfig/display_19260504575090817.xml
 
-# Hint expensive blurs for device with larger display
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.sf.blurs_are_expensive=1
-
 # Settings overlay packages for regulatory_info
 PRODUCT_PACKAGES += \
     SettingsOverlayG020J \
