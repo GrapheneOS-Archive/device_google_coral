@@ -24,14 +24,17 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/interfaces \
     hardware/google/pixel \
     device/google/coral \
-    hardware/qcom/sm8150 \
     hardware/qcom/sm8150/display \
+    hardware/qcom/sm8150/data/ipacfg-mgr \
+    hardware/qcom/sm8150/gps \
     vendor/google/airbrush/floral \
     vendor/google/biometrics/face \
     vendor/google/camera \
     vendor/google/darwinn \
     vendor/qcom/sm8150 \
     vendor/qcom/sm8150/proprietary/data/permissions \
+    vendor/qcom/sm8150/proprietary/gps \
+    vendor/qcom/sm8150/codeaurora/location \
     vendor/google/interfaces
 
 # Include sensors soong namespace
