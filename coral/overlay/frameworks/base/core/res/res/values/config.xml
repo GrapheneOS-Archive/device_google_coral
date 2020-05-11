@@ -164,8 +164,11 @@
          Equivalent to 98/255 (default for this device)    -->
     <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.38188976378</item>
 
-    <!-- The default peak refresh rate for a given device. Change this value if you want to allow
-         for higher refresh rates to be automatically used out of the box -->
+    <!-- The default refresh rate. Pixel 4 manages this using the peak refresh rate setting, so set
+         this value to 0 so it has no effect. -->
+    <integer name="config_defaultRefreshRate">0</integer>
+
+    <!-- The default peak refresh rate. -->
     <integer name="config_defaultPeakRefreshRate">90</integer>
 
     <!-- Shutdown if the battery temperature exceeds (this value * 0.1) Celsius. -->
