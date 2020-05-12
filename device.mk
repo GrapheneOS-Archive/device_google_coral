@@ -366,9 +366,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hardware.keystore_desede=true \
     persist.vendor.radio.procedure_bytes=SKIP \
 
+# Enable reboot free DSDS
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.telephony.max.active.modems=2 \
     persist.radio.reboot_on_modem_change=false
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    telephony.active_modems.max_count=2
 
 # Disable snapshot timer
 PRODUCT_PROPERTY_OVERRIDES += \
