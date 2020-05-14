@@ -998,6 +998,10 @@ PRODUCT_PRODUCT_PROPERTIES += \
     persist.sys.disable_rescue=true
 endif
 
+# Set support one-handed mode
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.support_one_handed_mode = true
+
 include hardware/google/pixel/common/pixel-common-device.mk
 include hardware/google/pixel/vibrator/cs40l25/device.mk
 include hardware/google/pixel/pixelstats/device.mk
