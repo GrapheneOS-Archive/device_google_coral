@@ -959,7 +959,7 @@ PRODUCT_PACKAGES += $(HIDL_WRAPPER)
 
 # Increment the SVN for any official public releases
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.vendor.build.svn=21
+	ro.vendor.build.svn=22
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
@@ -997,6 +997,10 @@ ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PRODUCT_PROPERTIES += \
     persist.sys.disable_rescue=true
 endif
+
+# Set support one-handed mode
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.support_one_handed_mode = true
 
 include hardware/google/pixel/common/pixel-common-device.mk
 include hardware/google/pixel/vibrator/cs40l25/device.mk
