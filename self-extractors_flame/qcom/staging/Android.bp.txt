@@ -25,6 +25,7 @@ cc_prebuilt_library_shared {
                 "libcutils",
                 "libc++",
                 "libc",
+                "libion",
                 "libm",
                 "libdl",
             ],
@@ -36,6 +37,7 @@ cc_prebuilt_library_shared {
                 "libcutils",
                 "libc++",
                 "libc",
+                "libion",
                 "libm",
                 "libdl",
             ],
@@ -59,6 +61,7 @@ cc_prebuilt_library_shared {
                 "libcutils",
                 "libc++",
                 "libc",
+                "libion",
                 "libm",
                 "libdl",
             ],
@@ -70,6 +73,7 @@ cc_prebuilt_library_shared {
                 "libcutils",
                 "libc++",
                 "libc",
+                "libion",
                 "libm",
                 "libdl",
             ],
@@ -115,45 +119,6 @@ cc_prebuilt_library_shared {
     strip: {
         none: true,
     },
-}
-
-cc_prebuilt_library_shared {
-    name: "libdisplayconfig",
-    arch: {
-        arm: {
-            srcs: ["libdisplayconfig.so"],
-            shared_libs: [
-                "libhidlbase",
-                "libutils",
-                // "vendor.display.config@1.0",
-                // "vendor.display.config@1.4",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-        arm64: {
-            srcs: ["lib64/libdisplayconfig.so"],
-            shared_libs: [
-                "libhidlbase",
-                "libutils",
-                // "vendor.display.config@1.0",
-                // "vendor.display.config@1.4",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "both",
-    system_ext_specific: true,
-    owner: "qcom",
-    strip: {
-        none: true,
-    },
-    check_elf_files: false,
 }
 
 cc_prebuilt_library_shared {
@@ -210,6 +175,7 @@ cc_prebuilt_library_shared {
                 "libcutils",
                 "libc++",
                 "libc",
+                "libion",
                 "libm",
                 "libdl",
             ],
@@ -221,6 +187,7 @@ cc_prebuilt_library_shared {
                 "libcutils",
                 "libc++",
                 "libc",
+                "libion",
                 "libm",
                 "libdl",
             ],
@@ -271,81 +238,6 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "libOpenCL_system",
-    arch: {
-        arm: {
-            srcs: ["libOpenCL_system.so"],
-            shared_libs: [
-                "libcutils",
-                "liblog",
-                "libvndksupport",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-        arm64: {
-            srcs: ["lib64/libOpenCL_system.so"],
-            shared_libs: [
-                "libcutils",
-                "liblog",
-                "libvndksupport",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "both",
-    system_ext_specific: true,
-    owner: "qcom",
-    strip: {
-        none: true,
-    },
-}
-
-cc_prebuilt_library_shared {
-    name: "libqmi_cci_system",
-    arch: {
-        arm: {
-            srcs: ["libqmi_cci_system.so"],
-            shared_libs: [
-                "libcutils",
-                "libutils",
-                // "libqmi_encdec_system",
-                "liblog",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-        arm64: {
-            srcs: ["lib64/libqmi_cci_system.so"],
-            shared_libs: [
-                "libcutils",
-                "libutils",
-                // "libqmi_encdec_system",
-                "liblog",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "both",
-    system_ext_specific: true,
-    owner: "qcom",
-    strip: {
-        none: true,
-    },
-    check_elf_files: false,
-}
-
-cc_prebuilt_library_shared {
     name: "libsdsprpc_system",
     arch: {
         arm: {
@@ -355,6 +247,7 @@ cc_prebuilt_library_shared {
                 "libcutils",
                 "libc++",
                 "libc",
+                "libion",
                 "libm",
                 "libdl",
             ],
@@ -366,6 +259,7 @@ cc_prebuilt_library_shared {
                 "libcutils",
                 "libc++",
                 "libc",
+                "libion",
                 "libm",
                 "libdl",
             ],
