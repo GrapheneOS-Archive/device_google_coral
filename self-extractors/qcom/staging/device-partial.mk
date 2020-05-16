@@ -24,12 +24,9 @@ PRODUCT_PACKAGES += \
     libadsprpc_system \
     libcdsprpc_system \
     libdiag_system \
-    libdisplayconfig \
     libimsmedia_jni \
     libmdsprpc_system \
     libmmosal \
-    libOpenCL_system \
-    libqmi_cci_system \
     libsdsprpc_system \
 
 #  blob(s) necessary for coral hardware
@@ -41,7 +38,6 @@ PRODUCT_COPY_FILES := \
     vendor/qcom/coral/proprietary/qcrilhook.xml:system_ext/etc/permissions/qcrilhook.xml \
     vendor/qcom/coral/proprietary/vendor.qti.hardware.alarm-V1.0-java.jar:system_ext/framework/vendor.qti.hardware.alarm-V1.0-java.jar \
     vendor/qcom/coral/proprietary/vendor.qti.hardware.data.latency-V1.0-java.jar:system_ext/framework/vendor.qti.hardware.data.latency-V1.0-java.jar \
-    vendor/qcom/coral/proprietary/vendor.qti.hardware.factory-V1.0-java.jar:system_ext/framework/vendor.qti.hardware.factory-V1.0-java.jar \
     vendor/qcom/coral/proprietary/vendor.qti.ims.callinfo-V1.0-java.jar:system_ext/framework/vendor.qti.ims.callinfo-V1.0-java.jar \
     vendor/qcom/coral/proprietary/vendor.qti.voiceprint-V1.0-java.jar:system_ext/framework/vendor.qti.voiceprint-V1.0-java.jar \
 
