@@ -32,6 +32,7 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/google/camera \
     vendor/google/darwinn \
     vendor/qcom/sm8150 \
+    vendor/qcom/sm8150/proprietary/commonsys/telephony-apps/DataStatusNotification \
     vendor/qcom/sm8150/proprietary/data/permissions \
     vendor/qcom/sm8150/proprietary/gps \
     vendor/qcom/sm8150/codeaurora/location \
