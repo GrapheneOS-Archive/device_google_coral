@@ -10,9 +10,14 @@
             system_ext/app/QtiTelephonyService/QtiTelephonyService.apk \
             system_ext/etc/permissions/com.qti.snapdragon.sdk.display.xml \
             system_ext/etc/permissions/qcrilhook.xml \
+            system_ext/etc/permissions/qti_telephony_hidl_wrapper.xml \
+            system_ext/etc/permissions/qti_telephony_utils.xml \
+            system_ext/etc/permissions/com.qualcomm.qcrilmsgtunnel.xml \
             system_ext/framework/com.qti.snapdragon.sdk.display.jar \
             system_ext/framework/com.qualcomm.qti.uceservice-V2.0-java.jar \
             system_ext/framework/qcrilhook.jar \
+            system_ext/framework/qti-telephony-utils.jar \
+            system_ext/framework/qti-telephony-hidl-wrapper.jar \
             system_ext/framework/vendor.qti.hardware.alarm-V1.0-java.jar \
             system_ext/framework/vendor.qti.hardware.data.latency-V1.0-java.jar \
             system_ext/framework/vendor.qti.ims.callinfo-V1.0-java.jar \
@@ -32,6 +37,7 @@
             system_ext/lib/libmmosal.so \
             system_ext/lib/libsdsprpc_system.so \
             system_ext/priv-app/ims/ims.apk \
+            system_ext/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk \
             "
     ;;
 

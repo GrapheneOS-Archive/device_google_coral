@@ -18,6 +18,7 @@ PRODUCT_SOONG_NAMESPACES += \
 # AOSP packages required by the blobs
 PRODUCT_PACKAGES := \
     ims \
+    qcrilmsgtunnel \
     QtiTelephonyService
 
 PRODUCT_PACKAGES += \
@@ -35,7 +36,12 @@ PRODUCT_COPY_FILES := \
     vendor/qcom/flame/proprietary/com.qti.snapdragon.sdk.display.xml:system_ext/etc/permissions/com.qti.snapdragon.sdk.display.xml \
     vendor/qcom/flame/proprietary/com.qualcomm.qti.uceservice-V2.0-java.jar:system_ext/framework/com.qualcomm.qti.uceservice-V2.0-java.jar \
     vendor/qcom/flame/proprietary/qcrilhook.jar:system_ext/framework/qcrilhook.jar \
+    vendor/qcom/flame/proprietary/qti-telephony-utils.jar:system_ext/framework/qti-telephony-utils.jar \
+    vendor/qcom/flame/proprietary/qti-telephony-hidl-wrapper.jar:system_ext/framework/qti-telephony-hidl-wrapper.jar \
     vendor/qcom/flame/proprietary/qcrilhook.xml:system_ext/etc/permissions/qcrilhook.xml \
+    vendor/qcom/flame/proprietary/qti_telephony_hidl_wrapper.xml:system_ext/etc/permissions/qti_telephony_hidl_wrapper.xml \
+    vendor/qcom/coral/proprietary/com.qualcomm.qcrilmsgtunnel.xml:system_ext/etc/permissions/com.qualcomm.qcrilmsgtunnel.xml \
+    vendor/qcom/flame/proprietary/qti_telephony_utils.xml:system_ext/etc/permissions/qti_telephony_utils.xml \
     vendor/qcom/flame/proprietary/vendor.qti.hardware.alarm-V1.0-java.jar:system_ext/framework/vendor.qti.hardware.alarm-V1.0-java.jar \
     vendor/qcom/flame/proprietary/vendor.qti.hardware.data.latency-V1.0-java.jar:system_ext/framework/vendor.qti.hardware.data.latency-V1.0-java.jar \
     vendor/qcom/flame/proprietary/vendor.qti.ims.callinfo-V1.0-java.jar:system_ext/framework/vendor.qti.ims.callinfo-V1.0-java.jar \
