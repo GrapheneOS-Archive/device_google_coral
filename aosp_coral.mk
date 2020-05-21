@@ -21,17 +21,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/mainline_system.mk)
 
 # Enable mainline checking
-PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := relaxed
+PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := strict
 
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_WHITELIST += \
     root/init.zygote64_32.rc \
-
-# TODO(b/140912362): Move these libraries to system_ext
-PRODUCT_ARTIFACT_PATH_REQUIREMENT_WHITELIST += \
-    system/lib/vendor.display.config@1.7.so \
-    system/lib/vendor.display.config@1.8.so \
-    system/lib64/vendor.display.config@1.7.so \
-    system/lib64/vendor.display.config@1.8.so \
 
 #
 # All components inherited here go to product image
