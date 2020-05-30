@@ -23,6 +23,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 # Enable userspace reboot
 $(call inherit-product, $(SRC_TARGET_DIR)/product/userspace_reboot.mk)
 
+include build/make/target/product/iorap_large_memory_config.mk
 include device/google/coral/device.mk
 
 # Set Vendor SPL to match platform
