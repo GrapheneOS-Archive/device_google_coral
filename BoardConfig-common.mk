@@ -108,6 +108,7 @@ BOARD_BOOTIMAGE_PARTITION_SIZE := 0x04000000
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 BOARD_ROOT_EXTRA_SYMLINKS := /mnt/vendor/persist:/persist
+BOARD_ROOT_EXTRA_SYMLINKS += /mnt/vendor/ramdump:/ramdump
 
 include device/google/coral-sepolicy/coral-sepolicy.mk
 
