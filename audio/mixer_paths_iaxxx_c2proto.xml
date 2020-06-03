@@ -3299,6 +3299,10 @@
         <ctl name="Rx2Chan Gain En" value="1" />
     </path>
 
+    <path name="camcorder-mic-invert">
+        <path name="camcorder-mic"/>
+    </path>
+
     <path name="bt-sco-headset">
     </path>
 

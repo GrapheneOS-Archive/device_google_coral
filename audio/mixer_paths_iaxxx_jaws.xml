@@ -2803,6 +2803,10 @@
         <ctl name="DEC5 Volume" value="84"/>
     </path>
 
+    <path name="camcorder-mic-invert">
+        <path name="camcorder-mic"/>
+    </path>
+
     <path name="bt-sco-headset">
     </path>
 
