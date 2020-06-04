@@ -71,4 +71,4 @@ PRODUCT_MANUFACTURER := Google
 PRODUCT_BRAND := Android
 PRODUCT_NAME := aosp_flame
 PRODUCT_DEVICE := flame
-PRODUCT_MODEL := AOSP on flame
+PRODUCT_MODEL := Pixel 4
