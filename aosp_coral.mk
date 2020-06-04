@@ -41,7 +41,7 @@ PRODUCT_MANUFACTURER := Google
 PRODUCT_BRAND := Android
 PRODUCT_NAME := aosp_coral
 PRODUCT_DEVICE := coral
-PRODUCT_MODEL := AOSP on coral
+PRODUCT_MODEL := Pixel 4 XL
 
 PRODUCT_COPY_FILES += \
     device/sample/etc/apns-full-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml \
