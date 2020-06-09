@@ -982,7 +982,7 @@ endif
 
 # Resume on Reboot support
 PRODUCT_PACKAGES += \
-    android.hardware.rebootescrow-service.default
+    android.hardware.rebootescrow-service.citadel
 
 # Vendor verbose logging default property
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
