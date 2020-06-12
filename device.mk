@@ -758,7 +758,7 @@ endif
 
 # Subsystem silent restart
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.sys.ssr.restart_level=modem,slpi,adsp
+    persist.vendor.sys.ssr.restart_level=modem,slpi
 
 # setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
