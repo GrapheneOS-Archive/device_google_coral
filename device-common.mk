@@ -85,7 +85,7 @@ PRODUCT_PROPERTY_OVERRIDES += vendor.audio.mic_break=true
 # Enable APK Verity, which depends on fs-verity support in kernel.
 PRODUCT_PROPERTY_OVERRIDES += ro.apk_verity.mode=2
 
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += vendor.display.enable_kernel_idle_timer=true
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += graphics.display.kernel_idle_timer.enabled=true
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.use_color_management=true
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.has_wide_color_display=true
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.has_HDR_display=true
