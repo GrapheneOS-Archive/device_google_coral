@@ -493,10 +493,14 @@ PRODUCT_PACKAGES += \
     vendor.qti.media.c2@1.0-service \
     media_codecs_c2.xml \
     codec2.vendor.ext.policy \
-    codec2.vendor.base.policy 
+    codec2.vendor.base.policy
 
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.qc2.venc.avgqp.enable=1
+
+# To reach target bitrate in CBR mode for IMS VT Call
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.ims.mm_minqp=1
 
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.6-impl-google \
