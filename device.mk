@@ -31,6 +31,8 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/google/biometrics/face/florence \
     vendor/google/camera \
     vendor/google/darwinn \
+    vendor/google_devices/common/proprietary/confirmatioui_hal \
+    vendor/google_nos/host/android \
     vendor/qcom/sm8150 \
     vendor/qcom/sm8150/proprietary/commonsys/telephony-apps/DataStatusNotification \
     vendor/qcom/sm8150/proprietary/gps \
