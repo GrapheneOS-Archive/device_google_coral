@@ -5,7 +5,12 @@
       "Path": "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq",
       "Values": [
         "9999999",
-        "1113600"
+        "1113600",
+        "844800",
+        "1036800",
+        "1209600",
+        "1382400",
+        "1555200"
       ],
       "DefaultIndex": 0,
       "ResetOnInit": true
@@ -15,9 +20,10 @@
       "Path": "/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq",
       "Values": [
         "9999999",
-        "1113600",
-        "576000"
+        "576000",
+        "1113600"
       ],
+      "DefaultIndex": 1,
       "ResetOnInit": true
     },
     {
@@ -43,9 +49,10 @@
         "9999999",
         "1497600",
         "1401600",
-        "1286400",
-        "0"
+        "0",
+        "1286400"
       ],
+      "DefaultIndex": 3,
       "ResetOnInit": true
     },
     {
@@ -70,9 +77,10 @@
         "9999999",
         "1497600",
         "1401600",
-        "1286400",
-        "0"
+        "0",
+        "1286400"
       ],
+      "DefaultIndex": 3,
       "ResetOnInit": true
     },
     {
@@ -918,6 +926,48 @@
       "Value": "1"
     },
     {
+      "PowerHint": "LOW_POWER_LITTLE_CLUSTER_50",
+      "Node": "CPULittleClusterMaxFreq",
+      "Duration": 3600000,
+      "Value": "844800"
+    },
+    {
+      "PowerHint": "LOW_POWER_LITTLE_CLUSTER_50",
+      "Node": "CPULittleClusterMinFreq",
+      "Duration": 3600000,
+      "Value": "576000"
+    },
+    {
+      "PowerHint": "LOW_POWER_LITTLE_CLUSTER_60",
+      "Node": "CPULittleClusterMaxFreq",
+      "Duration": 3600000,
+      "Value": "1036800"
+    },
+    {
+      "PowerHint": "LOW_POWER_LITTLE_CLUSTER_60",
+      "Node": "CPULittleClusterMinFreq",
+      "Duration": 3600000,
+      "Value": "576000"
+    },
+    {
+      "PowerHint": "LOW_POWER_LITTLE_CLUSTER_70",
+      "Node": "CPULittleClusterMaxFreq",
+      "Duration": 3600000,
+      "Value": "1209600"
+    },
+    {
+      "PowerHint": "LOW_POWER_LITTLE_CLUSTER_80",
+      "Node": "CPULittleClusterMaxFreq",
+      "Duration": 3600000,
+      "Value": "1382400"
+    },
+    {
+      "PowerHint": "LOW_POWER_LITTLE_CLUSTER_90",
+      "Node": "CPULittleClusterMaxFreq",
+      "Duration": 3600000,
+      "Value": "1555200"
+    },
+    {
       "PowerHint": "LOW_POWER_CPU_50",
       "Node": "CPUBigClusterMaxFreq",
       "Duration": 3600000,
@@ -925,9 +975,21 @@
     },
     {
       "PowerHint": "LOW_POWER_CPU_50",
+      "Node": "CPUBigClusterMinFreq",
+      "Duration": 3600000,
+      "Value": "0"
+    },
+    {
+      "PowerHint": "LOW_POWER_CPU_50",
       "Node": "CPUBigPlusClusterMaxFreq",
       "Duration": 3600000,
       "Value": "1401600"
+    },
+    {
+      "PowerHint": "LOW_POWER_CPU_50",
+      "Node": "CPUBigPlusClusterMinFreq",
+      "Duration": 3600000,
+      "Value": "0"
     },
     {
       "PowerHint": "LOW_POWER_CPU_60",
@@ -937,9 +999,21 @@
     },
     {
       "PowerHint": "LOW_POWER_CPU_60",
+      "Node": "CPUBigClusterMinFreq",
+      "Duration": 3600000,
+      "Value": "0"
+    },
+    {
+      "PowerHint": "LOW_POWER_CPU_60",
       "Node": "CPUBigPlusClusterMaxFreq",
       "Duration": 3600000,
       "Value": "1708800"
+    },
+    {
+      "PowerHint": "LOW_POWER_CPU_60",
+      "Node": "CPUBigPlusClusterMinFreq",
+      "Duration": 3600000,
+      "Value": "0"
     },
     {
       "PowerHint": "LOW_POWER_CPU_70",
