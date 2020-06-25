@@ -8,12 +8,10 @@
   qcom)
     TO_EXTRACT="\
             system_ext/app/QtiTelephonyService/QtiTelephonyService.apk \
-            system_ext/etc/permissions/com.qti.snapdragon.sdk.display.xml \
             system_ext/etc/permissions/qcrilhook.xml \
             system_ext/etc/permissions/qti_telephony_hidl_wrapper.xml \
             system_ext/etc/permissions/qti_telephony_utils.xml \
             system_ext/etc/permissions/com.qualcomm.qcrilmsgtunnel.xml \
-            system_ext/framework/com.qti.snapdragon.sdk.display.jar \
             system_ext/framework/com.qualcomm.qti.uceservice-V2.0-java.jar \
             system_ext/framework/qcrilhook.jar \
             system_ext/framework/qti-telephony-utils.jar \

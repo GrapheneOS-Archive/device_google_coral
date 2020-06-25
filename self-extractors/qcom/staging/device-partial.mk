@@ -32,8 +32,6 @@ PRODUCT_PACKAGES += \
 
 #  blob(s) necessary for coral hardware
 PRODUCT_COPY_FILES := \
-    vendor/qcom/coral/proprietary/com.qti.snapdragon.sdk.display.jar:system_ext/framework/com.qti.snapdragon.sdk.display.jar \
-    vendor/qcom/coral/proprietary/com.qti.snapdragon.sdk.display.xml:system_ext/etc/permissions/com.qti.snapdragon.sdk.display.xml \
     vendor/qcom/coral/proprietary/com.qualcomm.qti.uceservice-V2.0-java.jar:system_ext/framework/com.qualcomm.qti.uceservice-V2.0-java.jar \
     vendor/qcom/coral/proprietary/qcrilhook.jar:system_ext/framework/qcrilhook.jar \
     vendor/qcom/coral/proprietary/qti-telephony-utils.jar:system_ext/framework/qti-telephony-utils.jar \
