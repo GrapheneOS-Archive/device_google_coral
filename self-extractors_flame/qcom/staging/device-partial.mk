@@ -32,8 +32,6 @@ PRODUCT_PACKAGES += \
 
 #  blob(s) necessary for flame hardware
 PRODUCT_COPY_FILES := \
-    vendor/qcom/flame/proprietary/com.qti.snapdragon.sdk.display.jar:system_ext/framework/com.qti.snapdragon.sdk.display.jar \
-    vendor/qcom/flame/proprietary/com.qti.snapdragon.sdk.display.xml:system_ext/etc/permissions/com.qti.snapdragon.sdk.display.xml \
     vendor/qcom/flame/proprietary/com.qualcomm.qti.uceservice-V2.0-java.jar:system_ext/framework/com.qualcomm.qti.uceservice-V2.0-java.jar \
     vendor/qcom/flame/proprietary/qcrilhook.jar:system_ext/framework/qcrilhook.jar \
     vendor/qcom/flame/proprietary/qti-telephony-utils.jar:system_ext/framework/qti-telephony-utils.jar \
