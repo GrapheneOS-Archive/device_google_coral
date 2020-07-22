@@ -317,6 +317,9 @@ on zygote-start
     mkdir /dev/socket/wifihal 0770 wifi wifi
     chmod 2770 /dev/socket/wifihal
 
+    # Trigger WLAN driver load
+    write /sys/kernel/boot_wlan/boot_wlan 1
+
     # Create directory for audio delta files
     mkdir /data/vendor/audio 0770 audio audio
     mkdir /data/vendor/audio/acdbdata 0770 media audio
