@@ -74,7 +74,7 @@ static CycleCountBackupRestore ccBackupRestore(
     10, kCycleCountsBins, "/mnt/vendor/persist/battery/cycle_counts", kGaugeSerial);
 static DeviceHealth deviceHealth;
 
-#define UFS_DIR "/sys/devices/platform/soc/1d84000.ufshc"
+#define UFS_DIR "/dev/sys/block/bootdevice"
 constexpr char kUfsHealthEol[]{UFS_DIR "/health/eol"};
 constexpr char kUfsHealthLifetimeA[]{UFS_DIR "/health/lifetimeA"};
 constexpr char kUfsHealthLifetimeB[]{UFS_DIR "/health/lifetimeB"};

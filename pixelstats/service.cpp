@@ -29,8 +29,8 @@ using android::hardware::google::pixel::SysfsCollector;
 using android::hardware::google::pixel::UeventListener;
 
 #define MAXIM_DIR(filename) "/sys/class/power_supply/maxfg/" #filename
-#define UFSHC_PATH(filename) "/sys/devices/platform/soc/1d84000.ufshc/" #filename
-#define UFSHC_HEALTH_PATH(filename) "/sys/devices/platform/soc/1d84000.ufshc/health/" #filename
+#define UFSHC_PATH(filename) "/dev/sys/block/bootdevice/" #filename
+#define UFSHC_HEALTH_PATH(filename) "/dev/sys/block/bootdevice/health/" #filename
 const struct SysfsCollector::SysfsPaths sysfs_paths = {
     .SlowioReadCntPath = UFSHC_PATH(slowio_read_cnt),
     .SlowioWriteCntPath = UFSHC_PATH(slowio_write_cnt),
