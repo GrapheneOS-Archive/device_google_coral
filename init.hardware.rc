@@ -160,8 +160,6 @@ on init
     # Property used by vintf for sku specific manifests
     setprop ro.boot.product.hardware.sku ${ro.boot.hardware.sku}
 
-    chown wifi wifi /sys/kernel/boot_wlan/boot_wlan
-
 # b/134578585
 on charger
     trigger fs
