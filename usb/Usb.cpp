@@ -255,7 +255,7 @@ bool switchMode(const hidl_string &portName, const PortRole &newRole, struct Usb
             // There are no uevent signals which implies role swap timed out.
             if (err == ETIMEDOUT) {
                 ALOGI("uevents wait timedout");
-                // Sanity check.
+                // Partner check.
             } else if (!usb->mPartnerUp) {
                 goto wait_again;
                 // Role switch succeeded since usb->mPartnerUp is true.
