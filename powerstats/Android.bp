@@ -49,3 +49,28 @@ cc_binary {
     ],
     vendor: true,
 }
+
+cc_binary {
+    name: "android.hardware.powerstats-service.pixel",
+    init_rc: ["android.hardware.powerstats-service.pixel.rc"],
+    vintf_fragments: ["android.hardware.powerstats-service.pixel.xml"],
+    srcs: ["serviceaidl.cpp"],
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+    static_libs: [
+        "android.hardware.powerstats-impl.pixel",
+    ],
+    shared_libs: [
+        "libbase",
+        "libcutils",
+        "liblog",
+        "libutils",
+        "libbinder_ndk",
+        "android.hardware.powerstats-ndk_platform",
+    ],
+    relative_install_path: "hw",
+    vendor: true,
+    proprietary: true,
+}
