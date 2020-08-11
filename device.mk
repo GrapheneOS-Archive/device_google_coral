@@ -1007,7 +1007,15 @@ endif
 
 # Set support one-handed mode
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.support_one_handed_mode = true
+    ro.support_one_handed_mode=true
+
+# Set one_handed_mode screen translate offset percentage
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.debug.one_handed_offset_percentage=50
+
+# Set one_handed_mode translate animation duration milliseconds
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.debug.one_handed_translate_animation_duration=300
 
 include hardware/google/pixel/common/pixel-common-device.mk
 include hardware/google/pixel/vibrator/cs40l25/device.mk
