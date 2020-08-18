@@ -168,6 +168,10 @@ on init
     # Charge stats (write 0)
     chown system system /sys/class/power_supply/battery/charge_stats
 
+    # Report max frequency to unity tasks.
+    write /proc/sys/kernel/sched_lib_name "UnityMain,libunity.so"
+    write /proc/sys/kernel/sched_lib_mask_force 255
+
 # b/134578585
 on charger
     trigger fs
