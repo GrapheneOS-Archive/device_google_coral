@@ -165,6 +165,9 @@ on init
     chown system system /sys/devices/platform/soc/soc:google,charger/charge_stop_level
     chown system system /sys/devices/platform/soc/soc:google,charger/charge_start_level
 
+    # Charge stats (write 0)
+    chown system system /sys/class/power_supply/battery/charge_stats
+
 # b/134578585
 on charger
     trigger fs
