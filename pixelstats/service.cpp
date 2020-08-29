@@ -30,6 +30,7 @@ using android::hardware::google::pixel::UeventListener;
 
 #define MAXIM_DIR(filename) "/sys/class/power_supply/maxfg/" #filename
 #define UFSHC_PATH(filename) "/sys/devices/platform/soc/1d84000.ufshc/" #filename
+#define UFSHC_HEALTH_PATH(filename) "/sys/devices/platform/soc/1d84000.ufshc/health/" #filename
 const struct SysfsCollector::SysfsPaths sysfs_paths = {
     .SlowioReadCntPath = UFSHC_PATH(slowio_read_cnt),
     .SlowioWriteCntPath = UFSHC_PATH(slowio_write_cnt),
@@ -41,9 +42,14 @@ const struct SysfsCollector::SysfsPaths sysfs_paths = {
     .SpeechDspPath = "/sys/class/iaxxx-dev/iaxxx_misc/wdsp_stat",
     .BatteryCapacityCC = MAXIM_DIR(delta_cc_sum),
     .BatteryCapacityVFSOC = MAXIM_DIR(delta_vfsoc_sum),
+    .UFSLifetimeA = UFSHC_HEALTH_PATH(lifetimeA),
+    .UFSLifetimeB = UFSHC_HEALTH_PATH(lifetimeB),
+    .UFSLifetimeC = UFSHC_HEALTH_PATH(lifetimeC),
+    .F2fsStatsPath = "/sys/fs/f2fs/",
 };
 
 const char *const kAudioUevent = "/kernel/q6audio/q6voice_uevent";
+const char *const kSSOCDetailsPath = "/sys/class/power_supply/battery/ssoc_details";
 
 int main() {
     LOG(INFO) << "starting PixelStats";
@@ -54,7 +60,7 @@ int main() {
         return 1;
     }
 
-    UeventListener ueventListener(kAudioUevent);
+    UeventListener ueventListener(kAudioUevent, kSSOCDetailsPath);
     std::thread listenThread(&UeventListener::ListenForever, &ueventListener);
     listenThread.detach();
 

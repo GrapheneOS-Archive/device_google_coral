@@ -20,23 +20,50 @@ PRODUCT_VENDOR_MOVE_ENABLED := true
 
 PRODUCT_SOONG_NAMESPACES += \
     hardware/google/av \
+    hardware/google/camera \
     hardware/google/interfaces \
     hardware/google/pixel \
     device/google/coral \
-    hardware/qcom/sm8150 \
     hardware/qcom/sm8150/display \
+    hardware/qcom/sm8150/data/ipacfg-mgr \
+    hardware/qcom/sm8150/gps \
     vendor/google/airbrush/floral \
     vendor/google/biometrics/face \
     vendor/google/camera \
     vendor/google/darwinn \
     vendor/qcom/sm8150 \
-    vendor/qcom/sm8150/codeaurora/telephony/ims \
+    vendor/qcom/sm8150/proprietary/commonsys/telephony-apps/DataStatusNotification \
     vendor/qcom/sm8150/proprietary/data/permissions \
-    vendor/qcom/sm8150/proprietary/qcril-data-hal/qdp \
-    vendor/qcom/sm8150/proprietary/qcril-data-hal/util \
-    vendor/qcom/sm8150/proprietary/qcril-data-hal/datamodule \
-    vendor/qcom/sm8150/proprietary/qcril-hal \
+    vendor/qcom/sm8150/proprietary/gps \
+    vendor/qcom/sm8150/codeaurora/location \
     vendor/google/interfaces
+
+# Include sensors soong namespace
+PRODUCT_SOONG_NAMESPACES += \
+    vendor/qcom/sensors \
+    vendor/google/tools/sensors
+
+# Single vendor RIL/Telephony/data with SM7250
+DEVICE_USES_SM7250_QCRIL_TELEPHONY := true
+
+ifeq ($(DEVICE_USES_SM7250_QCRIL_TELEPHONY), true)
+  PRODUCT_SOONG_NAMESPACES += \
+      vendor/qcom/sm7250/codeaurora/commonsys/telephony/ims/ims-ext-common \
+      vendor/qcom/sm7250/codeaurora/dataservices/rmnetctl \
+      vendor/qcom/sm7250/proprietary/commonsys/qcrilOemHook \
+      vendor/qcom/sm7250/proprietary/commonsys/telephony-apps/ims \
+      vendor/qcom/sm7250/proprietary/commonsys/telephony-apps/QtiTelephonyService \
+      vendor/qcom/sm7250/proprietary/commonsys/telephony-apps/xdivert \
+      vendor/qcom/sm7250/proprietary/qcril-data-hal \
+      vendor/qcom/sm7250/proprietary/qcril-hal
+else
+  $(warning DEVICE_USES_SM7250_QCRIL_TELEPHONY is disabled)
+
+  PRODUCT_SOONG_NAMESPACES += \
+      vendor/qcom/sm8150/codeaurora/telephony/ims \
+      vendor/qcom/sm8150/proprietary/qcril-data-hal \
+      vendor/qcom/sm8150/proprietary/qcril-hal
+endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true
@@ -52,6 +79,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 PRODUCT_COPY_FILES += \
     device/google/coral/default-permissions.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/default-permissions/default-permissions.xml \
+    device/google/coral/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.software.verified_boot.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.software.verified_boot.xml
 
@@ -65,9 +93,6 @@ PRODUCT_PACKAGES += \
 TARGET_PRODUCT_PROP := $(LOCAL_PATH)/product.prop
 
 $(call inherit-product, $(LOCAL_PATH)/utils.mk)
-
-# Installs gsi keys into ramdisk, to boot a GSI with verified boot.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
 # Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
@@ -87,6 +112,9 @@ PRODUCT_VENDOR_KERNEL_HEADERS := device/google/coral-kernel/sm8150/kernel-header
 PRODUCT_CHARACTERISTICS := nosdcard
 PRODUCT_SHIPPING_API_LEVEL := 29
 
+# Enforce native interfaces of product partition as VNDK
+PRODUCT_PRODUCT_VNDK_VERSION := current
+
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 #
@@ -94,14 +122,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel \
     $(LOCAL_PATH)/fstab.hardware:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.$(PRODUCT_PLATFORM) \
     $(LOCAL_PATH)/fstab.hardware:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.$(PRODUCT_PLATFORM) \
-    $(LOCAL_PATH)/fstab.persist:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.persist \
     $(LOCAL_PATH)/init.hardware.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(PRODUCT_PLATFORM).rc \
     $(LOCAL_PATH)/init.power.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(PRODUCT_PLATFORM).power.rc \
     $(LOCAL_PATH)/init.radio.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.radio.sh \
     $(LOCAL_PATH)/init.hardware.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(PRODUCT_PLATFORM).usb.rc \
-    $(LOCAL_PATH)/init.insmod.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.insmod.sh \
     $(LOCAL_PATH)/init.sensors.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.sensors.sh \
-    $(LOCAL_PATH)/sensors.hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf \
     $(LOCAL_PATH)/thermal-engine-$(PRODUCT_HARDWARE)-normal_mode.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-$(PRODUCT_HARDWARE)-normal_mode.conf \
     $(LOCAL_PATH)/thermal-engine-$(PRODUCT_HARDWARE)-retail_mode.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-$(PRODUCT_HARDWARE)-retail_mode.conf \
     $(LOCAL_PATH)/ueventd.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc \
@@ -127,6 +152,12 @@ else
       $(LOCAL_PATH)/init.hardware.mpssrfs.rc.user:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(PRODUCT_PLATFORM).mpssrfs.rc
   PRODUCT_COPY_FILES += \
       $(LOCAL_PATH)/init.hardware.diag.rc.user:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(PRODUCT_PLATFORM).diag.rc
+endif
+
+# Enable CAT by default
+ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+  PRODUCT_COPY_FILES += \
+      $(LOCAL_PATH)/init.cat.rc.userdebug:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.cat.rc
 endif
 
 # A/B support
@@ -165,6 +196,9 @@ PRODUCT_PACKAGES += \
     f2fs_io \
     check_f2fs
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.crypto.volume.filenames_mode=aes-256-cts
+
 # Userdata Checkpointing OTA GC
 PRODUCT_PACKAGES += \
     checkpoint_gc
@@ -193,6 +227,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.stepcounter.xml \
     frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.stepdetector.xml \
     frameworks/native/data/etc/android.hardware.sensor.hifi_sensors.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.hifi_sensors.xml \
+    frameworks/native/data/etc/android.hardware.context_hub.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.context_hub.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.cdma.xml \
@@ -210,9 +245,12 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
     frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hcef.xml \
+    frameworks/native/data/etc/android.hardware.reboot_escrow.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.reboot_escrow.xml \
+    frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml \
     frameworks/native/data/etc/android.hardware.vulkan.level-1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level.xml \
     frameworks/native/data/etc/android.hardware.vulkan.compute-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.compute.xml \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml \
+    frameworks/native/data/etc/android.software.vulkan.deqp.level-2020-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml \
     frameworks/native/data/etc/android.hardware.telephony.carrierlock.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.carrierlock.xml \
     frameworks/native/data/etc/android.hardware.strongbox_keystore.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.strongbox_keystore.xml \
     frameworks/native/data/etc/android.hardware.nfc.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.uicc.xml \
@@ -245,7 +283,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.feature.usb_offload.enable=true \
     vendor.audio.feature.audiozoom.enable=true \
     vendor.audio.feature.snd_mon.enable=true \
+    vendor.audio.feature.multi_voice_session.enable=true \
     vendor.audio.capture.enforce_legacy_copp_sr=true \
+    persist.vendor.audio_hal.dsp_bit_width_enforce_mode=24 \
+    vendor.audio.offload.gapless.enabled=true \
 
 # MaxxAudio effect and add rotation monitor
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -284,11 +325,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.display.qdcm.mode_combine=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    vendor.display.defer_fps_frame_count=2
-
-# b/136130155: disable client composition layers caching in hwc
-PRODUCT_PROPERTY_OVERRIDES += \
-    vendor.display.comp_mask=65536
+    vendor.display.defer_fps_frame_count=2 \
+    vendor.display.primary_vsyncs_rate_change=2
 
 # camera google face detection
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -344,7 +382,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PACKAGES += \
     hwcomposer.msmnile \
-    android.hardware.graphics.composer@2.3-service-sm8150 \
+    android.hardware.graphics.composer@2.4-service-sm8150 \
     gralloc.msmnile \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     vendor.qti.hardware.display.allocator-service
@@ -371,7 +409,10 @@ PRODUCT_PACKAGES += \
 
 #Bluetooth SAR HAL
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.bluetooth_sar@1.0-impl
+    vendor.qti.hardware.bluetooth_sar@1.0-impl \
+    vendor.qti.hardware.bluetooth_sar@1.1-impl
+PRODUCT_PACKAGES_DEBUG += \
+    bluetooth_sar_test
 
 # Bluetooth SoC
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -390,8 +431,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service \
-    android.hardware.drm@1.2-service.clearkey \
-    android.hardware.drm@1.2-service.widevine
+    android.hardware.drm@1.3-service.clearkey \
+    android.hardware.drm@1.3-service.widevine
 
 # NFC and Secure Element packages
 PRODUCT_PACKAGES += \
@@ -452,28 +493,35 @@ PRODUCT_PACKAGES += \
     vendor.qti.media.c2@1.0-service \
     media_codecs_c2.xml \
     codec2.vendor.ext.policy \
-    codec2.vendor.base.policy 
+    codec2.vendor.base.policy
 
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.qc2.venc.avgqp.enable=1
 
+# To reach target bitrate in CBR mode for IMS VT Call
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.ims.mm_minqp=1
+
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4-impl-google \
-    android.hardware.camera.provider@2.4-service-google \
+    android.hardware.camera.provider@2.6-impl-google \
+    android.hardware.camera.provider@2.6-service-google \
     camera.msmnile \
-    libgooglecamerahal \
+    lib_multicam_dualfov_capture_session \
     libgooglecamerahwl_impl \
-    libgoogle_camera_hal_tests \
     libqomx_core \
     libmmjpeg_interface \
     libmmcamera_interface \
     libcameradepthcalibrator
 
+# Google Camera HAL test libraries in debug builds
+PRODUCT_PACKAGES_DEBUG += \
+    libgoogle_camera_hal_proprietary_tests \
+    libgoogle_camera_hal_tests.vendor
+
 PRODUCT_PACKAGES += \
     sensors.$(PRODUCT_HARDWARE) \
-    android.hardware.sensors@2.0-impl \
-    android.hardware.sensors@2.0-service \
-    android.hardware.sensors@2.0-service.rc
+    android.hardware.sensors@2.0-service.multihal \
+    hals.conf
 
 PRODUCT_PACKAGES += \
     fs_config_dirs \
@@ -481,22 +529,13 @@ PRODUCT_PACKAGES += \
 
 # Context hub HAL
 PRODUCT_PACKAGES += \
-    android.hardware.contexthub@1.0-impl.generic \
-    android.hardware.contexthub@1.0-service
+    android.hardware.contexthub@1.1-service.generic
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.0-impl \
-    android.hardware.boot@1.0-impl.recovery \
-    android.hardware.boot@1.0-service \
-
-# Vibrator HAL
-PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.3-service.coral \
-
-# Thermal HAL
-PRODUCT_PACKAGES += \
-    android.hardware.thermal@2.0-service.pixel \
+    android.hardware.boot@1.1-impl-pixel-legacy \
+    android.hardware.boot@1.1-impl-pixel-legacy.recovery \
+    android.hardware.boot@1.1-service \
 
 # Thermal HAL config
 PRODUCT_COPY_FILES += \
@@ -516,7 +555,7 @@ PRODUCT_PACKAGES += \
 
 # Wireless Charger HAL
 PRODUCT_PACKAGES += \
-    vendor.google.wireless_charger@1.1
+    vendor.google.wireless_charger@1.2
 
 ENABLE_VENDOR_RIL_SERVICE := true
 
@@ -537,7 +576,8 @@ endif
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
     wificond \
-    libwpa_client
+    libwpa_client \
+    WifiOverlay
 
 # WLAN driver configuration files
 PRODUCT_COPY_FILES += \
@@ -567,10 +607,9 @@ PRODUCT_PACKAGES += \
     audio.bluetooth.default
 
 PRODUCT_PACKAGES += \
-    android.hardware.audio@5.0-impl:32 \
-    android.hardware.audio.effect@5.0-impl:32 \
-    android.hardware.broadcastradio@1.0-impl \
-    android.hardware.soundtrigger@2.2-impl \
+    android.hardware.audio@6.0-impl:32 \
+    android.hardware.audio.effect@6.0-impl:32 \
+    android.hardware.soundtrigger@2.3-impl \
     android.hardware.bluetooth.audio@2.0-impl \
     android.hardware.audio@2.0-service
 
@@ -697,10 +736,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audiozoom.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audiozoom.xml
 
-# and ensure that the xaac decoder is built
-PRODUCT_PACKAGES += \
-    libstagefright_soft_xaacdec.vendor
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
     $(LOCAL_PATH)/media_codecs_omx.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_omx.xml \
@@ -748,7 +783,7 @@ endif
 
 # Dumpstate HAL
 PRODUCT_PACKAGES += \
-    android.hardware.dumpstate@1.0-service.coral
+    android.hardware.dumpstate@1.1-service.coral
 
 # Citadel
 PRODUCT_PACKAGES += \
@@ -757,7 +792,8 @@ PRODUCT_PACKAGES += \
     android.hardware.authsecret@1.0-service.citadel \
     android.hardware.oemlock@1.0-service.citadel \
     android.hardware.weaver@1.0-service.citadel \
-    android.hardware.keymaster@4.0-service.citadel \
+    android.hardware.keymaster@4.1-service.citadel \
+    android.hardware.identity@1.0-service.citadel \
     wait_for_strongbox
 
 # Citadel debug stuff
@@ -771,11 +807,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     vndk-sp
 
-PRODUCT_ENFORCE_RRO_TARGETS := *
-
 # Override heap growth limit due to high display density on device
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapgrowthlimit=256m
+    dalvik.vm.heapgrowthlimit=256m \
+
+# Use 64-bit dex2oat for better dexopt time.
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.dex2oat64.enabled=true
 
 PRODUCT_PACKAGES += \
     ipacm \
@@ -785,6 +823,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_cdma_sub=0
 
+# Set network mode to Global by default and no DSDS/DSDA
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.telephony.default_network=10
+
 # Set display color mode to Adaptive by default
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.sf.color_saturation=1.0 \
@@ -793,7 +835,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Keymaster configuration
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.software.device_id_attestation.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.device_id_attestation.xml
+    frameworks/native/data/etc/android.software.device_id_attestation.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.device_id_attestation.xml \
+    frameworks/native/data/etc/android.hardware.device_unique_attestation.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.device_unique_attestation.xml
 
 # Enable modem logging
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -803,10 +846,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Enable modem logging for debug
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.sys.modem.diag.mdlog=true \
-    persist.vendor.sys.modem.diag.mdlog_br_num=5
+    persist.vendor.sys.modem.diag.mdlog=true
 else
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.sys.modem.diag.mdlog=false
 endif
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.sys.modem.diag.mdlog_br_num=5
 
 # Enable tcpdump_logger on userdebug and eng
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
@@ -828,27 +874,21 @@ ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
       persist.vendor.usb.usbradio.config=diag
 endif
 
-# Default app/sf phase offset
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.vsync_event_phase_offset_ns=2000000
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.vsync_sf_event_phase_offset_ns=6000000
-# Early phase offset configuration for SurfaceFlinger (b/75985430)
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.early_phase_offset_ns=500000
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.early_app_phase_offset_ns=500000
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.early_gl_phase_offset_ns=3000000
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.early_gl_app_phase_offset_ns=15000000
-# The default sf phase offset is set to 6ms, to avoid it be included into next
-# vsync threshold, set high fps early sf and next vsync threshold phase offset
-# to 6.1ms, which is bigger than all sf phase offsets in normal frame rate.
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.high_fps_early_phase_offset_ns=6100000
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.high_fps_early_gl_phase_offset_ns=9000000
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.phase_offset_threshold_for_next_vsync_ns=6100000
+# Enable app/sf phase offset as durations. The numbers below are translated from the existing
+# positive offsets by finding the duration app/sf will have with the offsets.
+# For SF the previous value was 6ms which under 16.6ms vsync time (60Hz) will leave SF with ~10.5ms
+# for each frame. For App the previous value was 2ms which under 16.6ms vsync time will leave the
+# App with ~20.5ms (16.6ms * 2 - 10.5ms - 2ms). The other values were calculated similarly.
+# Full comparison between the old vs. the new values are captured in
+# https://docs.google.com/spreadsheets/d/1a_5cVNY3LUAkeg-yL56rYQNwved6Hy-dvEcKSxp6f8k/edit
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += debug.sf.use_phase_offsets_as_durations=1
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += debug.sf.late.sf.duration=10500000
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += debug.sf.late.app.duration=20500000
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += debug.sf.early.sf.duration=16000000
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += debug.sf.early.app.duration=16500000
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += debug.sf.earlyGl.sf.duration=13500000
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += debug.sf.earlyGl.app.duration=21000000
 
 # Enable backpressure for GL comp
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -871,10 +911,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
-# power HAL
-PRODUCT_PACKAGES += \
-    android.hardware.power@1.3-service.pixel-libperfmgr
-
 # GPS configuration file
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf
@@ -882,10 +918,6 @@ PRODUCT_COPY_FILES += \
 # pixel atrace HAL
 PRODUCT_PACKAGES += \
     android.hardware.atrace@1.0-service.pixel
-
-# Reliability reporting
-PRODUCT_PACKAGES += \
-    pixelstats-vendor
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
@@ -932,7 +964,7 @@ PRODUCT_PACKAGES += $(HIDL_WRAPPER)
 
 # Increment the SVN for any official public releases
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.vendor.build.svn=24
+	ro.vendor.build.svn=27
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
@@ -952,10 +984,32 @@ ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
     PRODUCT_PROPERTY_OVERRIDES += persist.vendor.iwlan.logging.logcat=true
 endif
 
-# Write flags to the vendor space in /misc partition.
+# Resume on Reboot support
 PRODUCT_PACKAGES += \
-    misc_writer
+    android.hardware.rebootescrow-service.citadel
 
-ifneq (,$(filter true,$(TARGET_VIRTUAL_AB)))
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota_retrofit.mk)
+# Vendor verbose logging default property
+ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.verbose_logging_enabled=true
+else
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.verbose_logging_enabled=false
 endif
+
+# Disable Rescue Party on userdebug & eng build
+ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.sys.disable_rescue=true
+endif
+
+include hardware/google/pixel/common/pixel-common-device.mk
+include hardware/google/pixel/vibrator/cs40l25/device.mk
+include hardware/google/pixel/pixelstats/device.mk
+include hardware/google/pixel/mm/device_legacy.mk
+include hardware/google/pixel/thermal/device.mk
+
+# power HAL
+-include hardware/google/pixel/power-libperfmgr/aidl/device.mk
+
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota_retrofit.mk)

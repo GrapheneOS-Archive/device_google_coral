@@ -20,6 +20,7 @@ PRODUCT_PLATFORM := sm8150
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
+include build/make/target/product/iorap_large_memory_config.mk
 include device/google/coral/device.mk
 
 # Set Vendor SPL to match platform
@@ -72,9 +73,6 @@ persist.vendor.bt.aac_frm_ctl.enabled=true
 # Set lmkd options
 PRODUCT_PRODUCT_PROPERTIES += \
 	ro.config.low_ram = false \
-	ro.lmk.kill_heaviest_task = true \
-	ro.lmk.kill_timeout_ms = 100 \
-	ro.lmk.use_minfree_levels = true \
 	ro.lmk.log_stats = true \
 
 # Modem logging file
@@ -84,7 +82,9 @@ PRODUCT_COPY_FILES += \
 # Pixelstats broken mic detection
 PRODUCT_PROPERTY_OVERRIDES += vendor.audio.mic_break=true
 
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += vendor.display.enable_kernel_idle_timer=true
+# Enable APK Verity, which depends on fs-verity support in kernel.
+PRODUCT_PROPERTY_OVERRIDES += ro.apk_verity.mode=2
+
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.use_color_management=true
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.has_wide_color_display=true
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.has_HDR_display=true
@@ -92,9 +92,8 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.set_idle_timer_ms=80
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.set_touch_timer_ms=200
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.set_display_power_timer_ms=1000
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.support_kernel_idle_timer=true
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.use_smart_90_for_video=true
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.use_content_detection_for_refresh_rate=true
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.protected_contents=true
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.refresh_rate_switching=true
 
 # Must align with HAL types Dataspace
 # The data space of wide color gamut composition preference is Dataspace::DISPLAY_P3
@@ -119,3 +118,9 @@ PRODUCT_PACKAGES += \
 # Set thermal warm reset
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.thermal_warmreset = true \
+
+# Enable Incremental on the device via kernel module
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.incremental.enable=module:/vendor/lib/modules/incrementalfs.ko
+
+PRODUCT_ENFORCE_PRODUCT_PARTITION_INTERFACE := true
