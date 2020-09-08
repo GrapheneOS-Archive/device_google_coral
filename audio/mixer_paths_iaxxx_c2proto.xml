@@ -1900,6 +1900,10 @@
         <path name="audio-playback-voip speaker"/>
     </path>
 
+    <path name="audio-playback-voip voice-tty-hco-handset">
+        <path name="audio-playback-voip" />
+    </path>
+
     <!-- VoIP Tx settings -->
     <path name="audio-record-voip">
         <ctl name="MultiMedia10 Mixer QUAT_TDM_TX_0" value="1"/>
@@ -3747,6 +3751,10 @@
     </path>
 
     <path name="mmap-playback">
+        <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia16" value="1"/>
+    </path>
+
+    <path name="mmap-playback handset">
         <ctl name="TERT_TDM_RX_0 Audio Mixer MultiMedia16" value="1"/>
     </path>
 

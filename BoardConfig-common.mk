@@ -44,6 +44,7 @@ BOARD_KERNEL_CMDLINE += androidboot.memcg=1 cgroup.memory=nokmem
 BOARD_KERNEL_CMDLINE += usbcore.autosuspend=7
 BOARD_KERNEL_CMDLINE += androidboot.usbcontroller=a600000.dwc3 swiotlb=2048
 BOARD_KERNEL_CMDLINE += androidboot.boot_devices=soc/1d84000.ufshc
+BOARD_KERNEL_CMDLINE += loop.max_part=7
 
 BOARD_KERNEL_BASE        := 0x00000000
 BOARD_KERNEL_PAGESIZE    := 4096
@@ -106,8 +107,7 @@ BOARD_BOOTIMAGE_PARTITION_SIZE := 0x04000000
 
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-BOARD_ROOT_EXTRA_SYMLINKS := /vendor/lib/dsp:/dsp
-BOARD_ROOT_EXTRA_SYMLINKS += /mnt/vendor/persist:/persist
+BOARD_ROOT_EXTRA_SYMLINKS := /mnt/vendor/persist:/persist
 
 include device/google/coral-sepolicy/coral-sepolicy.mk
 
@@ -118,6 +118,7 @@ QC_PROP_ROOT := vendor/qcom/sm8150/proprietary
 QC_PROP_PATH := $(QC_PROP_ROOT)
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BOARD_HAVE_QCOM_FM := false
+TARGET_USE_QTI_BT_SAR := true
 BOARD_USES_COMMON_BLUETOOTH_HAL := true
 
 # Camera
@@ -141,6 +142,12 @@ TARGET_SUPPORT_DIRECT_REPORT := true
 # Enable sensor Version V_2
 USE_SENSOR_HAL_VER := 2.0
 
+# CHRE
+CHRE_DAEMON_ENABLED := true
+CHRE_DAEMON_LPMA_ENABLED := true
+CHRE_DAEMON_LOAD_INTO_SENSORSPD := true
+CHRE_DAEMON_USE_SDSPRPC := true
+
 # wlan
 BOARD_WLAN_DEVICE := qcwcn
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
@@ -151,6 +158,9 @@ BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 WIFI_HIDL_FEATURE_AWARE := true
 WIFI_HIDL_FEATURE_DUAL_INTERFACE:= true
+WIFI_FEATURE_WIFI_EXT_HAL := true
+WIFI_FEATURE_IMU_DETECTION := true
+WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
@@ -160,7 +170,7 @@ AUDIO_FEATURE_ENABLED_USB_TUNNEL := true
 AUDIO_FEATURE_ENABLED_CIRRUS_SPKR_PROTECTION := true
 AUDIO_FEATURE_CONFIG_CIRRUS_RX_CHANNELS := 4
 BOARD_SUPPORTS_SOUND_TRIGGER := true
-AUDIO_FEATURE_FLICKER_SENSOR_INPUT := true
+AUDIO_FEATURE_FLICKER_SENSOR_INPUT := false
 SOUND_TRIGGER_FEATURE_LPMA_ENABLED := true
 AUDIO_FEATURE_ENABLED_MAXX_AUDIO := true
 AUDIO_FEATURE_ENABLED_24BITS_CAMCORDER := true
@@ -187,9 +197,6 @@ USE_SOUND_TRIGGER_HAL := iaxxx
 TARGET_USES_GRALLOC1 := true
 TARGET_USES_HWC2 := true
 
-VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
-SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
-
 # Display
 TARGET_USES_DISPLAY_RENDER_INTENTS := true
 TARGET_USES_COLOR_METADATA := true
@@ -200,7 +207,8 @@ TARGET_HAS_HDR_DISPLAY := true
 # Vendor Interface Manifest
 DEVICE_MANIFEST_FILE := device/google/coral/manifest.xml
 DEVICE_MATRIX_FILE := device/google/coral/compatibility_matrix.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := device/google/coral/device_framework_matrix.xml
+# Intall device framework compatibility matrix to product partition
+DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE := device/google/coral/device_framework_matrix_product.xml
 
 # Use mke2fs to create ext4 images
 TARGET_USES_MKE2FS := true
@@ -209,6 +217,9 @@ TARGET_USES_MKE2FS := true
 ifeq (,$(filter-out flame_kasan coral_kasan, $(TARGET_PRODUCT)))
 BOARD_VENDOR_KERNEL_MODULES += \
     $(wildcard device/google/coral-kernel/kasan/*.ko)
+else ifeq (,$(filter-out flame_hwasan coral_hwasan, $(TARGET_PRODUCT)))
+BOARD_VENDOR_KERNEL_MODULES += \
+    $(wildcard device/google/coral-kernel/khwasan/*.ko)
 else ifeq (,$(filter-out flame_kernel_debug_memory coral_kernel_debug_memory, $(TARGET_PRODUCT)))
 BOARD_VENDOR_KERNEL_MODULES += \
     $(wildcard device/google/coral-kernel/debug_memory/*.ko)

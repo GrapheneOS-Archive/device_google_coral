@@ -14,17 +14,17 @@
 # limitations under the License.
 #
 
-on property:vendor.display.enable_kernel_idle_timer=true
+on property:graphics.display.kernel_idle_timer.enabled=true
     # Switch display mode to 60hz when idle
     write /sys/devices/platform/soc/soc:qcom,dsi-display-primary/idle_mode "@60"
 
-on property:vendor.display.enable_kernel_idle_timer=false
+on property:graphics.display.kernel_idle_timer.enabled=false
     # Disable agressive idle mode switching
     write /sys/devices/platform/soc/soc:qcom,dsi-display-primary/idle_mode "none"
 
 on property:vendor.setup.power=1
     # Enable EAS
-    write /sys/kernel/debug/sched_features ENERGY_AWARE
+    write /proc/sys/kernel/sched_energy_aware 1
 
     # Enable suspend clock reporting
     write /sys/kernel/debug/clk/debug_suspend 1
@@ -113,7 +113,6 @@ on property:vendor.setup.power=1
 
     # Enable UFS powersaving
     write /sys/devices/platform/soc/${ro.boot.bootdevice}/clkgate_enable 1
-    write /sys/devices/platform/soc/${ro.boot.bootdevice}/hibern8_on_idle_enable 1
 
     # Enable idle state listener
     write /sys/class/drm/card0/device/idle_encoder_mask 1

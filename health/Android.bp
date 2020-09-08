@@ -40,8 +40,6 @@ cc_library_shared {
         "libbase",
         "libcutils",
         "libhidlbase",
-        "libhidltransport",
-        "libhwbinder",
         "libpixelhealth",
         "libutils",
         "android.hardware.health@2.0",
