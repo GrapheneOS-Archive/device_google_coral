@@ -179,6 +179,9 @@ on charger
     # Health HAL
     chown system system /sys/devices/virtual/thermal/tz-by-name/soc/mode
 
+    # NFC streset tool name
+    setprop persist.vendor.nfc.streset libstreset
+
 on late-init
     chown system system /sys/devices/virtual/thermal/tz-by-name/sdm-therm-monitor/trip_point_0_temp
     chown system system /sys/devices/virtual/thermal/tz-by-name/sdm-therm-monitor/trip_point_0_hyst
