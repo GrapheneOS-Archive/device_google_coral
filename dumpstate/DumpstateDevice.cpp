@@ -567,6 +567,8 @@ Return<DumpstateStatus> DumpstateDevice::dumpstateBoard_1_1(const hidl_handle& h
     // Report Knowles framework info
     RunCommandToFd(fd, "KN version", {"/vendor/bin/sh", "-c", "for f in `ls -d /sys/devices/platform/soc/a8c000.spi/spi_master/spi5/spi5.0/iaxxx/*_version` ; do echo \"------ $f\\n`cat $f`\\n\" ; done"});
 
+    // Dump page owner
+    DumpFileToFd(fd, "Page Owner", "/sys/kernel/debug/page_owner");
     if (modemThreadHandle) {
         pthread_join(modemThreadHandle, NULL);
     }
