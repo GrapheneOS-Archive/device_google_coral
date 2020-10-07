@@ -1,4 +1,0 @@
-service vendor.powerstats.pixel /vendor/bin/hw/android.hardware.powerstats-service.pixel
-    class hal
-    user system
-    group system
