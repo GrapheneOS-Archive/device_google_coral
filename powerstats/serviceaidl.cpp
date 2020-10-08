@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "android.hardware.powerstats-service.pixel"
+#define LOG_TAG "android.hardware.power.stats-service.pixel"
 
 #include <android-base/logging.h>
 #include <android/binder_manager.h>
@@ -23,7 +23,7 @@
 
 #include <PowerStatsAidl.h>
 
-using aidl::android::hardware::powerstats::PowerStats;
+using aidl::android::hardware::power::stats::PowerStats;
 
 int main() {
     LOG(INFO) << "Pixel PowerStats HAL AIDL Service is starting.";
