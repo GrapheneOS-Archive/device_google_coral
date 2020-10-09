@@ -16,14 +16,20 @@
 
 #define LOG_TAG "android.hardware.power.stats-service.pixel"
 
+#include <PowerStatsAidl.h>
+#include <dataproviders/IioEnergyMeterDataProvider.h>
+
 #include <android-base/logging.h>
 #include <android/binder_manager.h>
 #include <android/binder_process.h>
 #include <log/log.h>
 
-#include <PowerStatsAidl.h>
-
+using aidl::android::hardware::power::stats::IioEnergyMeterDataProvider;
 using aidl::android::hardware::power::stats::PowerStats;
+
+void setEnergyMeter(std::shared_ptr<PowerStats> p) {
+    p->setEnergyMeterDataProvider(std::make_unique<IioEnergyMeterDataProvider>("microchip,pac1934"));
+}
 
 int main() {
     LOG(INFO) << "Pixel PowerStats HAL AIDL Service is starting.";
@@ -32,6 +38,8 @@ int main() {
     ABinderProcess_setThreadPoolMaxThreadCount(0);
 
     std::shared_ptr<PowerStats> p = ndk::SharedRefBase::make<PowerStats>();
+
+    setEnergyMeter(p);
 
     const std::string instance = std::string() + PowerStats::descriptor + "/default";
     binder_status_t status = AServiceManager_addService(p->asBinder().get(), instance.c_str());
