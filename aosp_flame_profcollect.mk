@@ -34,10 +34,3 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/lib64/liblibprofcollectd.dylib.so \
     system/lib64/libprofcollectd_bindgen.dylib.so
-
-# TODO remove these when mainline eventually includes these
-PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
-    system/lib64/libgetopts.dylib.so \
-    system/lib64/libstd.dylib.so \
-    system/lib64/libterm.dylib.so \
-    system/lib64/libtest.dylib.so
