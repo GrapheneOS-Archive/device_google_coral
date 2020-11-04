@@ -25,8 +25,6 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/aosp_flame.mk \
     $(LOCAL_DIR)/aosp_coral_hwasan.mk \
     $(LOCAL_DIR)/aosp_flame_hwasan.mk \
-    $(LOCAL_DIR)/aosp_coral_profcollect.mk \
-    $(LOCAL_DIR)/aosp_flame_profcollect.mk \
 
 COMMON_LUNCH_CHOICES := \
     aosp_coral-userdebug \
