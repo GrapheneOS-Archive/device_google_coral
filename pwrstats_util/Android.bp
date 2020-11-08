@@ -20,7 +20,7 @@ cc_binary {
         "CstateResidencyDataProvider.cpp",
     ],
     static_libs: [
-        "libpowerstatsutil",
+        "libpwrstatsutil",
     ],
     shared_libs: [
         "libhidlbase",
