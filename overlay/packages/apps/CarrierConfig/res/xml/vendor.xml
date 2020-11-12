@@ -1,16 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <carrier_config_list>
     <carrier_config mcc="000" mnc="000">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <int name="emergency_sms_mode_timer_ms_int" value="300000" />
         <string name="gps.lpp_profile">2</string>
-        <string name="gps.nfw_proxy_apps">com.google.android.carrierlocation</string>
     </carrier_config>
     <carrier_config mcc="202" mnc="01">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="202" mnc="05">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="202" mnc="09" />
     <carrier_config mcc="202" mnc="10" />
@@ -62,8 +58,7 @@
             <item value="*72" />
         </string-array>
         <boolean name="carrier_allow_turnoff_ims_bool" value="false" />
-        <string-array name="carrier_app_wake_signal_config" num="2">
-            <item value="com.google.android.carriersetup/.VzwActivationReceiver:com.android.internal.telephony.CARRIER_SIGNAL_PCO_VALUE,com.android.internal.telephony.CARRIER_SIGNAL_REDIRECTED,com.android.internal.telephony.CARRIER_SIGNAL_RESET" />
+        <string-array name="carrier_app_wake_signal_config" num="1">
             <item value="com.android.carrierdefaultapp/.CarrierDefaultBroadcastReceiver:com.android.internal.telephony.CARRIER_SIGNAL_REDIRECTED,com.android.internal.telephony.CARRIER_SIGNAL_RESET,com.android.internal.telephony.CARRIER_SIGNAL_DEFAULT_NETWORK_AVAILABLE" />
         </string-array>
         <string-array name="carrier_data_call_permanent_failure_strings" num="14">
@@ -104,7 +99,6 @@
         <boolean name="carrier_name_override_bool" value="true" />
         <string name="carrier_name_string">Verizon</string>
         <boolean name="carrier_promote_wfc_on_call_fail_bool" value="true" />
-        <string name="carrier_setup_app_string">com.google.android.carriersetup/.VzwSetupActivity</string>
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_override_wfc_provisioning_bool" value="true" />
         <boolean name="carrier_volte_provisioned_bool" value="true" />
@@ -126,11 +120,6 @@
         </int-array>
         <boolean name="cdma_home_registered_plmn_name_override_bool" value="true" />
         <string name="cdma_home_registered_plmn_name_string">Verizon</string>
-        <boolean name="ci_action_on_sys_update_bool" value="true" />
-        <string name="ci_action_on_sys_update_extra_string">ServerID</string>
-        <string name="ci_action_on_sys_update_extra_val_string">com.vzwdmserver</string>
-        <string name="ci_action_on_sys_update_intent_string">com.android.omadm.service.CONFIGURATION_UPDATE</string>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="convert_cdma_caller_id_mmi_codes_while_roaming_on_3gpp_bool" value="true" />
         <string name="default_vm_number_string">*86</string>
         <string-array name="dial_string_replace_string_array" num="2">
@@ -147,23 +136,7 @@
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
-        <string-array name="enable_apps_string_array" num="15">
-            <item value="com.customermobile.preload.vzw" />
-            <item value="com.verizon.llkagent" />
-            <item value="com.verizon.mips.services" />
-            <item value="com.verizon.obdm" />
-            <item value="com.verizon.obdm_permissions" />
-            <item value="com.verizon.services" />
-            <item value="com.vzw.apnlib" />
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.connmo" />
-            <item value="com.android.sdm.plugins.dcmo" />
-            <item value="com.android.sdm.plugins.diagmon" />
-            <item value="com.android.vzwomatrigger" />
-            <item value="com.htc.omadm.trigger" />
-            <item value="com.google.omadm.trigger" />
-            <item value="com.google.android.carrier.authdialog" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <boolean name="enhanced_4g_lte_title_variant_bool" value="true" />
@@ -253,7 +226,6 @@
         <boolean name="video_calls_can_be_hd_audio" value="false" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.VzwEmergencyAddressActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <int name="wifi.carrier_profiles_version_int" value="2" />
         <string-array name="wifi.network_profiles_string_array" num="2">
@@ -651,17 +623,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -853,7 +821,6 @@
         <boolean name="carrier_volte_available_bool" value="false" />
         <string name="carrier_vvm_package_name_string">com.orange.vvm</string>
         <boolean name="carrier_wfc_ims_available_bool" value="false" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">888</string>
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_enhanced_4g_lte_bool" value="true" />
@@ -917,7 +884,6 @@
         <boolean name="carrier_volte_available_bool" value="false" />
         <string name="carrier_vvm_package_name_string">com.orange.vvm</string>
         <boolean name="carrier_wfc_ims_available_bool" value="false" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">888</string>
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_enhanced_4g_lte_bool" value="true" />
@@ -942,7 +908,6 @@
         <boolean name="carrier_volte_available_bool" value="false" />
         <string name="carrier_vvm_package_name_string">com.orange.vvm</string>
         <boolean name="carrier_wfc_ims_available_bool" value="false" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">888</string>
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_enhanced_4g_lte_bool" value="true" />
@@ -971,7 +936,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">123</string>
         <string-array name="ims_reasoninfo_mapping_string_array" num="1">
             <item value="*|Call is dropped due to Wi-Fi signal is degraded|1407" />
@@ -1050,7 +1014,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">123</string>
         <string-array name="ims_reasoninfo_mapping_string_array" num="1">
             <item value="*|Call is dropped due to Wi-Fi signal is degraded|1407" />
@@ -1157,7 +1120,6 @@
     <carrier_config mcc="214" mnc="01">
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="csp_enabled_bool" value="true" />
         <string name="default_vm_number_string">22177</string>
         <boolean name="show_4g_for_lte_data_icon_bool" value="true" />
@@ -1291,7 +1253,6 @@
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_tty_supported_bool" value="false" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">242</string>
         <string-array name="ims_reasoninfo_mapping_string_array" num="1">
             <item value="*|Call is dropped due to Wi-Fi signal is degraded|1407" />
@@ -1360,7 +1321,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="false" />
         <boolean name="carrier_volte_available_bool" value="false" />
         <boolean name="carrier_wfc_ims_available_bool" value="false" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">123</string>
         <int name="maxImageHeight" value="1944" />
         <int name="maxImageWidth" value="2592" />
@@ -1557,7 +1517,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="false" />
         <boolean name="carrier_volte_available_bool" value="false" />
         <boolean name="carrier_wfc_ims_available_bool" value="false" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">123</string>
         <int name="maxImageHeight" value="1944" />
         <int name="maxImageWidth" value="2592" />
@@ -1727,7 +1686,6 @@
         <boolean name="show_4g_for_lte_data_icon_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="216" mnc="30">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="display_hd_audio_property_bool" value="false" />
     </carrier_config>
     <carrier_config mcc="216" mnc="70" imsi="21670xx1">
@@ -1882,7 +1840,6 @@
     </carrier_config>
     <carrier_config mcc="222" mnc="10">
         <boolean name="carrier_volte_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">42020</string>
         <string-array name="read_only_apn_types_string_array" num="0" />
         <boolean name="show_4g_for_lte_data_icon_bool" value="true" />
@@ -2001,10 +1958,8 @@
         <string name="default_vm_number_string">4133</string>
     </carrier_config>
     <carrier_config mcc="226" mnc="01">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="226" mnc="03">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="display_hd_audio_property_bool" value="false" />
         <boolean name="show_4g_for_lte_data_icon_bool" value="true" />
     </carrier_config>
@@ -2014,7 +1969,6 @@
         <boolean name="show_4g_for_lte_data_icon_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="226" mnc="10">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="228" mnc="01">
         <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
@@ -2042,11 +1996,9 @@
         <boolean name="show_4g_for_lte_data_icon_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="231" mnc="01">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="show_4g_for_lte_data_icon_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="231" mnc="02">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="show_4g_for_lte_data_icon_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="231" mnc="06">
@@ -2163,7 +2115,6 @@
     </carrier_config>
     <carrier_config mcc="234" mnc="10" gid1="61">
         <boolean name="auto_retry_failed_wifi_emergency_call" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">901</string>
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_lte_plus_data_icon_bool" value="false" />
@@ -2187,7 +2138,6 @@
     </carrier_config>
     <carrier_config mcc="234" mnc="10" gid1="67">
         <boolean name="auto_retry_failed_wifi_emergency_call" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">901</string>
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_lte_plus_data_icon_bool" value="false" />
@@ -2211,7 +2161,6 @@
     </carrier_config>
     <carrier_config mcc="234" mnc="10" gid1="85">
         <boolean name="auto_retry_failed_wifi_emergency_call" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">901</string>
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_lte_plus_data_icon_bool" value="false" />
@@ -2235,7 +2184,6 @@
     </carrier_config>
     <carrier_config mcc="234" mnc="10" gid1="99">
         <boolean name="auto_retry_failed_wifi_emergency_call" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">901</string>
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_lte_plus_data_icon_bool" value="false" />
@@ -2306,7 +2254,6 @@
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_provisioning_required_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">901</string>
         <boolean name="disable_supplementary_services_in_airplane_mode_bool" value="true" />
         <boolean name="display_hd_audio_property_bool" value="false" />
@@ -2421,7 +2368,6 @@
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_provisioning_required_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">121</string>
         <boolean name="editable_wfc_mode_bool" value="false" />
         <string-array name="feature_access_codes_string_array" num="3">
@@ -2968,7 +2914,6 @@
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_provisioning_required_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">121</string>
         <boolean name="editable_wfc_mode_bool" value="false" />
         <string-array name="feature_access_codes_string_array" num="3">
@@ -3082,7 +3027,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="false" />
         <boolean name="carrier_volte_available_bool" value="false" />
         <boolean name="carrier_wfc_ims_available_bool" value="false" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <int name="maxImageHeight" value="1944" />
         <int name="maxImageWidth" value="2592" />
         <int name="maxMessageSize" value="2097152" />
@@ -3120,7 +3064,6 @@
     <carrier_config mcc="238" mnc="20" spn="DLG TELE" />
     <carrier_config mcc="238" mnc="30" />
     <carrier_config mcc="238" mnc="77">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="240" mnc="01" imsi="240017">
         <int name="maxImageHeight" value="1944" />
@@ -3133,7 +3076,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="false" />
         <boolean name="carrier_volte_available_bool" value="false" />
         <boolean name="carrier_wfc_ims_available_bool" value="false" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <int name="maxImageHeight" value="1944" />
         <int name="maxImageWidth" value="2592" />
         <int name="maxMessageSize" value="614400" />
@@ -3247,7 +3189,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="false" />
         <boolean name="carrier_volte_available_bool" value="false" />
         <boolean name="carrier_wfc_ims_available_bool" value="false" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <int name="maxImageHeight" value="1944" />
         <int name="maxImageWidth" value="2592" />
         <int name="maxMessageSize" value="2097152" />
@@ -3296,7 +3237,6 @@
     <carrier_config mcc="248" mnc="03" spn="TELE2" />
     <carrier_config mcc="248" mnc="03" />
     <carrier_config mcc="250" mnc="01">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="250" mnc="02" />
     <carrier_config mcc="250" mnc="11" />
@@ -3346,7 +3286,6 @@
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <boolean name="check_pricing_with_carrier_data_roaming_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">3311</string>
         <boolean name="display_hd_audio_property_bool" value="false" />
         <boolean name="editable_wfc_mode_bool" value="false" />
@@ -3382,7 +3321,6 @@
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <boolean name="check_pricing_with_carrier_data_roaming_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">3311</string>
         <boolean name="display_hd_audio_property_bool" value="false" />
         <boolean name="editable_wfc_mode_bool" value="false" />
@@ -3401,7 +3339,6 @@
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <boolean name="check_pricing_with_carrier_data_roaming_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">5500</string>
         <boolean name="editable_wfc_mode_bool" value="false" />
         <int name="emergency_notification_delay_int" value="30000" />
@@ -3423,7 +3360,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">+491793000333</string>
         <boolean name="hide_ims_apn_bool" value="true" />
         <boolean name="hide_lte_plus_data_icon_bool" value="false" />
@@ -3449,7 +3385,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">+491793000333</string>
         <boolean name="hide_ims_apn_bool" value="true" />
         <boolean name="hide_lte_plus_data_icon_bool" value="false" />
@@ -3511,7 +3446,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">+491793000333</string>
         <boolean name="hide_ims_apn_bool" value="true" />
         <boolean name="hide_lte_plus_data_icon_bool" value="false" />
@@ -3537,7 +3471,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">+491793000333</string>
         <boolean name="hide_ims_apn_bool" value="true" />
         <boolean name="hide_lte_plus_data_icon_bool" value="false" />
@@ -3563,7 +3496,6 @@
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <boolean name="check_pricing_with_carrier_data_roaming_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">5500</string>
         <boolean name="editable_wfc_mode_bool" value="false" />
         <int name="emergency_notification_delay_int" value="30000" />
@@ -3585,7 +3517,6 @@
     <carrier_config mcc="262" mnc="840" />
     <carrier_config mcc="268" mnc="01">
         <boolean name="carrier_volte_available_bool" value="false" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">123</string>
         <boolean name="show_4g_for_lte_data_icon_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
@@ -3601,7 +3532,6 @@
     <carrier_config mcc="270" mnc="77" />
     <carrier_config mcc="270" mnc="99" />
     <carrier_config mcc="272" mnc="01">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">171</string>
         <boolean name="show_4g_for_lte_data_icon_bool" value="true" />
     </carrier_config>
@@ -3722,7 +3652,6 @@
         <int name="smsToMmsTextThreshold" value="5" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="302" mnc="220" gid1="4D4F">
@@ -3758,7 +3687,6 @@
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_tty_supported_bool" value="false" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_wfc_mode_bool" value="false" />
         <string name="gps.es_extension_sec">300</string>
         <boolean name="gsm_cdma_calls_can_be_hd_audio" value="true" />
@@ -3775,7 +3703,6 @@
         <int name="smsToMmsTextThreshold" value="5" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="302" mnc="220">
@@ -3814,7 +3741,6 @@
         <int name="smsToMmsTextThreshold" value="5" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="302" mnc="221" gid1="4D4F">
@@ -3850,7 +3776,6 @@
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_tty_supported_bool" value="false" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_wfc_mode_bool" value="false" />
         <string name="gps.es_extension_sec">300</string>
         <boolean name="gsm_cdma_calls_can_be_hd_audio" value="true" />
@@ -3867,7 +3792,6 @@
         <int name="smsToMmsTextThreshold" value="5" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="302" mnc="221">
@@ -3939,7 +3863,6 @@
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_tty_supported_bool" value="false" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="gps.es_extension_sec">300</string>
         <boolean name="hide_lte_plus_data_icon_bool" value="false" />
         <int name="maxImageHeight" value="1944" />
@@ -3958,7 +3881,6 @@
         <boolean name="show_iccid_in_sim_status_bool" value="true" />
         <int name="smsToMmsTextThreshold" value="6" />
         <boolean name="use_wfc_home_network_mode_in_roaming_network_bool" value="true" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationCanadaActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="302" mnc="370">
@@ -3969,7 +3891,6 @@
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_tty_supported_bool" value="false" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="gps.es_extension_sec">300</string>
         <boolean name="hide_lte_plus_data_icon_bool" value="false" />
         <int name="maxImageHeight" value="1944" />
@@ -3988,7 +3909,6 @@
         <boolean name="show_iccid_in_sim_status_bool" value="true" />
         <int name="smsToMmsTextThreshold" value="6" />
         <boolean name="use_wfc_home_network_mode_in_roaming_network_bool" value="true" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationCanadaActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="302" mnc="490" gid1="53">
@@ -3997,7 +3917,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="hide_lte_plus_data_icon_bool" value="false" />
         <int name="ims_conference_size_limit_int" value="2" />
         <boolean name="is_ims_conference_size_enforced_bool" value="true" />
@@ -4010,7 +3929,6 @@
         <string name="sim_country_iso_override_string">ca</string>
         <int name="smsToMmsTextThreshold" value="6" />
         <boolean name="use_wfc_home_network_mode_in_roaming_network_bool" value="true" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationCanadaActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="302" mnc="490" imsi="302490400">
@@ -4019,7 +3937,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="hide_lte_plus_data_icon_bool" value="false" />
         <int name="ims_conference_size_limit_int" value="2" />
         <boolean name="is_ims_conference_size_enforced_bool" value="true" />
@@ -4032,7 +3949,6 @@
         <string name="sim_country_iso_override_string">ca</string>
         <int name="smsToMmsTextThreshold" value="6" />
         <boolean name="use_wfc_home_network_mode_in_roaming_network_bool" value="true" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationCanadaActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="302" mnc="490" imsi="302490500">
@@ -4041,7 +3957,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="hide_lte_plus_data_icon_bool" value="false" />
         <int name="ims_conference_size_limit_int" value="2" />
         <boolean name="is_ims_conference_size_enforced_bool" value="true" />
@@ -4054,7 +3969,6 @@
         <string name="sim_country_iso_override_string">ca</string>
         <int name="smsToMmsTextThreshold" value="6" />
         <boolean name="use_wfc_home_network_mode_in_roaming_network_bool" value="true" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationCanadaActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="302" mnc="490">
@@ -4063,7 +3977,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="gps.es_extension_sec">300</string>
         <boolean name="hide_lte_plus_data_icon_bool" value="false" />
         <int name="ims_conference_size_limit_int" value="2" />
@@ -4077,7 +3990,6 @@
         <string name="sim_country_iso_override_string">ca</string>
         <int name="smsToMmsTextThreshold" value="6" />
         <boolean name="use_wfc_home_network_mode_in_roaming_network_bool" value="true" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationCanadaActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="302" mnc="500" gid1="53">
@@ -4105,7 +4017,6 @@
         <boolean name="support_no_reply_timer_for_cfnry_bool" value="false" />
         <boolean name="use_wfc_home_network_mode_in_roaming_network_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationCanadaActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="302" mnc="500" gid1="55">
@@ -4158,7 +4069,6 @@
         <int name="smsToMmsTextThreshold" value="8" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationCanadaActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="302" mnc="610" gid1="3F">
@@ -4232,7 +4142,6 @@
         <int name="smsToMmsTextThreshold" value="8" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationCanadaActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="302" mnc="630">
@@ -4258,7 +4167,6 @@
         <int name="smsToMmsTextThreshold" value="8" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationCanadaActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="302" mnc="640">
@@ -4284,7 +4192,6 @@
         <int name="smsToMmsTextThreshold" value="8" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationCanadaActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="302" mnc="660">
@@ -4309,7 +4216,6 @@
         <boolean name="carrier_volte_available_bool" value="false" />
         <boolean name="carrier_volte_tty_supported_bool" value="false" />
         <boolean name="carrier_wfc_ims_available_bool" value="false" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="hide_lte_plus_data_icon_bool" value="false" />
         <int name="maxImageHeight" value="1944" />
         <int name="maxImageWidth" value="2592" />
@@ -4328,7 +4234,6 @@
         <int name="smsToMmsTextThreshold" value="6" />
         <boolean name="use_wfc_home_network_mode_in_roaming_network_bool" value="true" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationCanadaActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="302" mnc="720" gid1="D2">
@@ -4421,7 +4326,6 @@
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_tty_supported_bool" value="false" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="gps.es_extension_sec">300</string>
         <boolean name="hide_lte_plus_data_icon_bool" value="false" />
         <int name="maxImageHeight" value="1944" />
@@ -4441,7 +4345,6 @@
         <int name="smsToMmsTextThreshold" value="6" />
         <boolean name="use_wfc_home_network_mode_in_roaming_network_bool" value="true" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationCanadaActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="302" mnc="780">
@@ -4487,8 +4390,7 @@
             <item value="*72" />
         </string-array>
         <boolean name="carrier_allow_turnoff_ims_bool" value="false" />
-        <string-array name="carrier_app_wake_signal_config" num="2">
-            <item value="com.google.android.carriersetup/.VzwActivationReceiver:com.android.internal.telephony.CARRIER_SIGNAL_PCO_VALUE,com.android.internal.telephony.CARRIER_SIGNAL_REDIRECTED,com.android.internal.telephony.CARRIER_SIGNAL_RESET" />
+        <string-array name="carrier_app_wake_signal_config" num="1">
             <item value="com.android.carrierdefaultapp/.CarrierDefaultBroadcastReceiver:com.android.internal.telephony.CARRIER_SIGNAL_REDIRECTED,com.android.internal.telephony.CARRIER_SIGNAL_RESET,com.android.internal.telephony.CARRIER_SIGNAL_DEFAULT_NETWORK_AVAILABLE" />
         </string-array>
         <string-array name="carrier_data_call_permanent_failure_strings" num="14">
@@ -4529,7 +4431,6 @@
         <boolean name="carrier_name_override_bool" value="true" />
         <string name="carrier_name_string">Verizon</string>
         <boolean name="carrier_promote_wfc_on_call_fail_bool" value="true" />
-        <string name="carrier_setup_app_string">com.google.android.carriersetup/.VzwSetupActivity</string>
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_override_wfc_provisioning_bool" value="true" />
         <boolean name="carrier_volte_provisioned_bool" value="true" />
@@ -4551,11 +4452,6 @@
         </int-array>
         <boolean name="cdma_home_registered_plmn_name_override_bool" value="true" />
         <string name="cdma_home_registered_plmn_name_string">Verizon</string>
-        <boolean name="ci_action_on_sys_update_bool" value="true" />
-        <string name="ci_action_on_sys_update_extra_string">ServerID</string>
-        <string name="ci_action_on_sys_update_extra_val_string">com.vzwdmserver</string>
-        <string name="ci_action_on_sys_update_intent_string">com.android.omadm.service.CONFIGURATION_UPDATE</string>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="convert_cdma_caller_id_mmi_codes_while_roaming_on_3gpp_bool" value="true" />
         <string name="default_vm_number_string">*86</string>
         <string-array name="dial_string_replace_string_array" num="2">
@@ -4572,23 +4468,7 @@
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
-        <string-array name="enable_apps_string_array" num="15">
-            <item value="com.customermobile.preload.vzw" />
-            <item value="com.verizon.llkagent" />
-            <item value="com.verizon.mips.services" />
-            <item value="com.verizon.obdm" />
-            <item value="com.verizon.obdm_permissions" />
-            <item value="com.verizon.services" />
-            <item value="com.vzw.apnlib" />
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.connmo" />
-            <item value="com.android.sdm.plugins.dcmo" />
-            <item value="com.android.sdm.plugins.diagmon" />
-            <item value="com.android.vzwomatrigger" />
-            <item value="com.htc.omadm.trigger" />
-            <item value="com.google.omadm.trigger" />
-            <item value="com.google.android.carrier.authdialog" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <boolean name="enhanced_4g_lte_title_variant_bool" value="true" />
@@ -4678,7 +4558,6 @@
         <boolean name="video_calls_can_be_hd_audio" value="false" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.VzwEmergencyAddressActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <int name="wifi.carrier_profiles_version_int" value="2" />
         <string-array name="wifi.network_profiles_string_array" num="2">
@@ -4962,7 +4841,6 @@
             <item value="-89" />
             <item value="-79" />
         </int-array>
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <int name="wifi.carrier_profiles_version_int" value="1" />
         <string-array name="wifi.passpoint_profiles_string_array" num="1">
@@ -5017,14 +4895,12 @@
         <boolean name="carrier_name_override_bool" value="true" />
         <string name="carrier_name_string">Sprint</string>
         <boolean name="carrier_promote_wfc_on_call_fail_bool" value="true" />
-        <string name="carrier_settings_activity_component_name_string">com.android.sdm.plugins.sprintdm/.SprintCarrierSettingsActivity</string>
         <boolean name="carrier_settings_enable_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_provisioning_required_bool" value="true" />
         <boolean name="carrier_volte_tty_supported_bool" value="false" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <int name="cdma_3waycall_flash_delay_int" value="300" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
@@ -5032,11 +4908,7 @@
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
         <boolean name="enableSMSDeliveryReports" value="false" />
-        <string-array name="enable_apps_string_array" num="3">
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.sprintdm" />
-            <item value="com.google.android.hiddenmenu" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledMMS" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="1">
             <item value="311490" />
@@ -5070,7 +4942,6 @@
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <boolean name="volte_5g_limited_alert_dialog_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="310" mnc="120" gid1="000002">
@@ -5079,10 +4950,8 @@
         <int name="carrier_default_wfc_ims_mode_int" value="1" />
         <int name="carrier_default_wfc_ims_roaming_mode_int" value="1" />
         <string name="carrier_eri_file_name_string">eri_311870.xml</string>
-        <string name="carrier_settings_activity_component_name_string">com.android.sdm.plugins.sprintdm/.SprintCarrierSettingsActivity</string>
         <boolean name="carrier_settings_enable_bool" value="true" />
         <int name="cdma_3waycall_flash_delay_int" value="300" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
@@ -5090,11 +4959,7 @@
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
         <boolean name="enableSMSDeliveryReports" value="false" />
-        <string-array name="enable_apps_string_array" num="3">
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.sprintdm" />
-            <item value="com.google.android.hiddenmenu" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledMMS" value="true" />
         <string name="httpParams">X-MDN: ##LINE1##|Proxy-Authorization: Basic ##NAI##</string>
         <int name="maxImageHeight" value="1944" />
@@ -5115,7 +4980,6 @@
         <boolean name="use_hfa_for_provisioning_bool" value="true" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="310" mnc="120" gid1="000003">
@@ -5124,10 +4988,8 @@
         <int name="carrier_default_wfc_ims_mode_int" value="1" />
         <int name="carrier_default_wfc_ims_roaming_mode_int" value="1" />
         <string name="carrier_eri_file_name_string">eri_311490.xml</string>
-        <string name="carrier_settings_activity_component_name_string">com.android.sdm.plugins.sprintdm/.SprintCarrierSettingsActivity</string>
         <boolean name="carrier_settings_enable_bool" value="true" />
         <int name="cdma_3waycall_flash_delay_int" value="300" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
@@ -5135,11 +4997,7 @@
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
         <boolean name="enableSMSDeliveryReports" value="false" />
-        <string-array name="enable_apps_string_array" num="3">
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.sprintdm" />
-            <item value="com.google.android.hiddenmenu" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledMMS" value="true" />
         <string name="httpParams">X-MDN: ##LINE1##|Proxy-Authorization: Basic ##NAI##</string>
         <int name="maxImageHeight" value="1944" />
@@ -5160,7 +5018,6 @@
         <boolean name="use_hfa_for_provisioning_bool" value="true" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="310" mnc="120" gid1="000004">
@@ -5169,10 +5026,8 @@
         <int name="carrier_default_wfc_ims_mode_int" value="1" />
         <int name="carrier_default_wfc_ims_roaming_mode_int" value="1" />
         <string name="carrier_eri_file_name_string">eri_310120.xml</string>
-        <string name="carrier_settings_activity_component_name_string">com.android.sdm.plugins.sprintdm/.SprintCarrierSettingsActivity</string>
         <boolean name="carrier_settings_enable_bool" value="true" />
         <int name="cdma_3waycall_flash_delay_int" value="300" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
@@ -5180,11 +5035,7 @@
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
         <boolean name="enableSMSDeliveryReports" value="false" />
-        <string-array name="enable_apps_string_array" num="3">
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.sprintdm" />
-            <item value="com.google.android.hiddenmenu" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledMMS" value="true" />
         <string name="httpParams">X-MDN: ##LINE1##|Proxy-Authorization: Basic ##NAI##</string>
         <int name="maxImageHeight" value="1944" />
@@ -5205,7 +5056,6 @@
         <boolean name="use_hfa_for_provisioning_bool" value="true" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="310" mnc="120" gid1="A00184">
@@ -5227,14 +5077,12 @@
         <boolean name="carrier_name_override_bool" value="true" />
         <string name="carrier_name_string">Sprint</string>
         <boolean name="carrier_promote_wfc_on_call_fail_bool" value="true" />
-        <string name="carrier_settings_activity_component_name_string">com.android.sdm.plugins.sprintdm/.SprintCarrierSettingsActivity</string>
         <boolean name="carrier_settings_enable_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_provisioning_required_bool" value="true" />
         <boolean name="carrier_volte_tty_supported_bool" value="false" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <int name="cdma_3waycall_flash_delay_int" value="300" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
@@ -5242,11 +5090,7 @@
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
         <boolean name="enableSMSDeliveryReports" value="false" />
-        <string-array name="enable_apps_string_array" num="3">
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.sprintdm" />
-            <item value="com.google.android.hiddenmenu" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledMMS" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="1">
             <item value="311490" />
@@ -5280,7 +5124,6 @@
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <boolean name="volte_5g_limited_alert_dialog_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="310" mnc="120" spn="Fi Network">
@@ -5305,13 +5148,11 @@
         <int name="carrier_default_wfc_ims_roaming_mode_int" value="1" />
         <string name="carrier_eri_file_name_string">eri_310120.xml</string>
         <boolean name="carrier_promote_wfc_on_call_fail_bool" value="true" />
-        <string name="carrier_settings_activity_component_name_string">com.android.sdm.plugins.sprintdm/.SprintCarrierSettingsActivity</string>
         <boolean name="carrier_settings_enable_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_provisioning_required_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <int name="cdma_3waycall_flash_delay_int" value="300" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
@@ -5319,11 +5160,7 @@
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
         <boolean name="enableSMSDeliveryReports" value="false" />
-        <string-array name="enable_apps_string_array" num="3">
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.sprintdm" />
-            <item value="com.google.android.hiddenmenu" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledMMS" value="true" />
         <string name="httpParams">X-MDN: ##LINE1##|Proxy-Authorization: Basic ##NAI##</string>
         <boolean name="ignore_rtt_mode_setting_bool" value="true" />
@@ -5350,7 +5187,6 @@
         <boolean name="use_hfa_for_provisioning_bool" value="true" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="310" mnc="130">
@@ -5438,7 +5274,6 @@
         <string name="show_carrier_data_icon_pattern_string">.*\.{3}[12]$</string>
         <boolean name="skip_cf_fail_to_disable_dialog_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="310" mnc="150">
@@ -5514,7 +5349,6 @@
         <string name="show_carrier_data_icon_pattern_string">.*\.{3}[12]$</string>
         <boolean name="skip_cf_fail_to_disable_dialog_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="310" mnc="160" gid1="6D38">
@@ -5742,7 +5576,6 @@
             <item value="-89" />
             <item value="-79" />
         </int-array>
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <int name="wifi.carrier_profiles_version_int" value="1" />
         <string-array name="wifi.passpoint_profiles_string_array" num="1">
@@ -7011,7 +6844,6 @@
             <item value="-89" />
             <item value="-79" />
         </int-array>
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <int name="wifi.carrier_profiles_version_int" value="1" />
         <string-array name="wifi.passpoint_profiles_string_array" num="1">
@@ -7455,7 +7287,6 @@
             <item value="-89" />
             <item value="-79" />
         </int-array>
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <int name="wifi.carrier_profiles_version_int" value="1" />
         <string-array name="wifi.passpoint_profiles_string_array" num="1">
@@ -7821,7 +7652,6 @@
             <item value="-89" />
             <item value="-79" />
         </int-array>
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <int name="wifi.carrier_profiles_version_int" value="1" />
         <string-array name="wifi.passpoint_profiles_string_array" num="1">
@@ -8244,7 +8074,6 @@
             <item value="-89" />
             <item value="-79" />
         </int-array>
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <int name="wifi.carrier_profiles_version_int" value="1" />
         <string-array name="wifi.passpoint_profiles_string_array" num="1">
@@ -8688,7 +8517,6 @@
             <item value="-89" />
             <item value="-79" />
         </int-array>
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <int name="wifi.carrier_profiles_version_int" value="1" />
         <string-array name="wifi.passpoint_profiles_string_array" num="1">
@@ -9027,7 +8855,6 @@
             <item value="-89" />
             <item value="-79" />
         </int-array>
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <int name="wifi.carrier_profiles_version_int" value="1" />
         <string-array name="wifi.passpoint_profiles_string_array" num="1">
@@ -9539,11 +9366,6 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <boolean name="ci_action_on_sys_update_bool" value="true" />
-        <string name="ci_action_on_sys_update_extra_string">ServerID</string>
-        <string name="ci_action_on_sys_update_extra_val_string">com.vzwdmserver</string>
-        <string name="ci_action_on_sys_update_intent_string">com.android.omadm.service.CONFIGURATION_UPDATE</string>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="convert_cdma_caller_id_mmi_codes_while_roaming_on_3gpp_bool" value="true" />
         <string-array name="dial_string_replace_string_array" num="2">
@@ -9561,23 +9383,7 @@
         <boolean name="enableMMSDeliveryReports" value="false" />
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
-        <string-array name="enable_apps_string_array" num="15">
-            <item value="com.customermobile.preload.vzw" />
-            <item value="com.verizon.llkagent" />
-            <item value="com.verizon.mips.services" />
-            <item value="com.verizon.obdm" />
-            <item value="com.verizon.obdm_permissions" />
-            <item value="com.verizon.services" />
-            <item value="com.vzw.apnlib" />
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.connmo" />
-            <item value="com.android.sdm.plugins.dcmo" />
-            <item value="com.android.sdm.plugins.diagmon" />
-            <item value="com.android.vzwomatrigger" />
-            <item value="com.htc.omadm.trigger" />
-            <item value="com.google.omadm.trigger" />
-            <item value="com.google.android.carrier.authdialog" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledMMS" value="true" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
@@ -9686,7 +9492,6 @@
         <boolean name="video_calls_can_be_hd_audio" value="false" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.VzwEmergencyAddressActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <int name="wifi.carrier_profiles_version_int" value="2" />
         <string-array name="wifi.network_profiles_string_array" num="2">
@@ -10175,7 +9980,6 @@
             <item value="-89" />
             <item value="-79" />
         </int-array>
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <int name="wifi.carrier_profiles_version_int" value="1" />
         <string-array name="wifi.passpoint_profiles_string_array" num="1">
@@ -10317,7 +10121,6 @@
             <item value="-89" />
             <item value="-79" />
         </int-array>
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <int name="wifi.carrier_profiles_version_int" value="1" />
         <string-array name="wifi.passpoint_profiles_string_array" num="1">
@@ -10534,7 +10337,6 @@
             <item value="-89" />
             <item value="-79" />
         </int-array>
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <int name="wifi.carrier_profiles_version_int" value="1" />
         <string-array name="wifi.passpoint_profiles_string_array" num="1">
@@ -10676,7 +10478,6 @@
             <item value="-89" />
             <item value="-79" />
         </int-array>
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <int name="wifi.carrier_profiles_version_int" value="1" />
         <string-array name="wifi.passpoint_profiles_string_array" num="1">
@@ -11010,17 +10811,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -11385,17 +11182,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -11760,17 +11553,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -12135,17 +11924,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -12510,17 +12295,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -12885,17 +12666,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -13260,17 +13037,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -13635,17 +13408,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -14010,17 +13779,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -14385,17 +14150,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -15003,11 +14764,6 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <boolean name="ci_action_on_sys_update_bool" value="true" />
-        <string name="ci_action_on_sys_update_extra_string">ServerID</string>
-        <string name="ci_action_on_sys_update_extra_val_string">com.vzwdmserver</string>
-        <string name="ci_action_on_sys_update_intent_string">com.android.omadm.service.CONFIGURATION_UPDATE</string>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="convert_cdma_caller_id_mmi_codes_while_roaming_on_3gpp_bool" value="true" />
         <string-array name="dial_string_replace_string_array" num="2">
@@ -15025,23 +14781,7 @@
         <boolean name="enableMMSDeliveryReports" value="false" />
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
-        <string-array name="enable_apps_string_array" num="15">
-            <item value="com.customermobile.preload.vzw" />
-            <item value="com.verizon.llkagent" />
-            <item value="com.verizon.mips.services" />
-            <item value="com.verizon.obdm" />
-            <item value="com.verizon.obdm_permissions" />
-            <item value="com.verizon.services" />
-            <item value="com.vzw.apnlib" />
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.connmo" />
-            <item value="com.android.sdm.plugins.dcmo" />
-            <item value="com.android.sdm.plugins.diagmon" />
-            <item value="com.android.vzwomatrigger" />
-            <item value="com.htc.omadm.trigger" />
-            <item value="com.google.omadm.trigger" />
-            <item value="com.google.android.carrier.authdialog" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledMMS" value="true" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
@@ -15150,7 +14890,6 @@
         <boolean name="video_calls_can_be_hd_audio" value="false" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.VzwEmergencyAddressActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <int name="wifi.carrier_profiles_version_int" value="2" />
         <string-array name="wifi.network_profiles_string_array" num="2">
@@ -15560,11 +15299,6 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <boolean name="ci_action_on_sys_update_bool" value="true" />
-        <string name="ci_action_on_sys_update_extra_string">ServerID</string>
-        <string name="ci_action_on_sys_update_extra_val_string">com.vzwdmserver</string>
-        <string name="ci_action_on_sys_update_intent_string">com.android.omadm.service.CONFIGURATION_UPDATE</string>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="convert_cdma_caller_id_mmi_codes_while_roaming_on_3gpp_bool" value="true" />
         <string-array name="dial_string_replace_string_array" num="2">
@@ -15582,23 +15316,7 @@
         <boolean name="enableMMSDeliveryReports" value="false" />
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
-        <string-array name="enable_apps_string_array" num="15">
-            <item value="com.customermobile.preload.vzw" />
-            <item value="com.verizon.llkagent" />
-            <item value="com.verizon.mips.services" />
-            <item value="com.verizon.obdm" />
-            <item value="com.verizon.obdm_permissions" />
-            <item value="com.verizon.services" />
-            <item value="com.vzw.apnlib" />
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.connmo" />
-            <item value="com.android.sdm.plugins.dcmo" />
-            <item value="com.android.sdm.plugins.diagmon" />
-            <item value="com.android.vzwomatrigger" />
-            <item value="com.htc.omadm.trigger" />
-            <item value="com.google.omadm.trigger" />
-            <item value="com.google.android.carrier.authdialog" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledMMS" value="true" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
@@ -15707,7 +15425,6 @@
         <boolean name="video_calls_can_be_hd_audio" value="false" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.VzwEmergencyAddressActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <int name="wifi.carrier_profiles_version_int" value="2" />
         <string-array name="wifi.network_profiles_string_array" num="2">
@@ -15739,9 +15456,7 @@
             <item value="*72" />
         </string-array>
         <boolean name="carrier_allow_turnoff_ims_bool" value="false" />
-        <string-array name="carrier_app_wake_signal_config" num="1">
-            <item value="com.google.android.carriersetup/.VzwActivationReceiver:com.android.internal.telephony.CARRIER_SIGNAL_PCO_VALUE" />
-        </string-array>
+        <string-array name="carrier_app_wake_signal_config" num="0" />
         <string-array name="carrier_certificate_string_array" num="3">
             <item value="E751E163E91E041382839556D31302DB7058C44D9DF1B5B27FC43BD8F0EE2BBA" />
             <item value="4AD124DE517BC6BA915B88C17F0AADF764469842156325C26B7CD8B888C41C71" />
@@ -15780,7 +15495,6 @@
         <boolean name="carrier_name_override_bool" value="true" />
         <string name="carrier_name_string">Tracfone</string>
         <boolean name="carrier_promote_wfc_on_call_fail_bool" value="true" />
-        <string name="carrier_setup_app_string">com.google.android.carriersetup/.VzwSetupActivity</string>
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_override_wfc_provisioning_bool" value="true" />
         <boolean name="carrier_volte_provisioned_bool" value="true" />
@@ -15802,10 +15516,6 @@
         </int-array>
         <boolean name="cdma_home_registered_plmn_name_override_bool" value="true" />
         <string name="cdma_home_registered_plmn_name_string">Tracfone</string>
-        <boolean name="ci_action_on_sys_update_bool" value="true" />
-        <string name="ci_action_on_sys_update_extra_string">ServerID</string>
-        <string name="ci_action_on_sys_update_extra_val_string">com.vzwdmserver</string>
-        <string name="ci_action_on_sys_update_intent_string">com.android.omadm.service.CONFIGURATION_UPDATE</string>
         <string name="default_vm_number_string">*86</string>
         <string-array name="dial_string_replace_string_array" num="2">
             <item value="*611:+19085594899" />
@@ -15820,15 +15530,7 @@
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
-        <string-array name="enable_apps_string_array" num="7">
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.connmo" />
-            <item value="com.android.sdm.plugins.dcmo" />
-            <item value="com.android.sdm.plugins.diagmon" />
-            <item value="com.android.vzwomatrigger" />
-            <item value="com.htc.omadm.trigger" />
-            <item value="com.google.omadm.trigger" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <boolean name="enhanced_4g_lte_title_variant_bool" value="true" />
@@ -15885,7 +15587,6 @@
         <boolean name="video_calls_can_be_hd_audio" value="false" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.VzwEmergencyAddressActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <boolean name="wifi_calls_can_be_hd_audio" value="false" />
         <boolean name="world_mode_enabled_bool" value="true" />
@@ -15910,9 +15611,7 @@
             <item value="*72" />
         </string-array>
         <boolean name="carrier_allow_turnoff_ims_bool" value="false" />
-        <string-array name="carrier_app_wake_signal_config" num="1">
-            <item value="com.google.android.carriersetup/.VzwActivationReceiver:com.android.internal.telephony.CARRIER_SIGNAL_PCO_VALUE" />
-        </string-array>
+        <string-array name="carrier_app_wake_signal_config" num="0" />
         <string-array name="carrier_certificate_string_array" num="1">
             <item value="141E264EB08B576F6C32E49FD47A34300553A132EC5EB1DD58B354A0B15A5E40" />
         </string-array>
@@ -15951,7 +15650,6 @@
         <boolean name="carrier_name_override_bool" value="true" />
         <string name="carrier_name_string">Xfinity Mobile</string>
         <boolean name="carrier_promote_wfc_on_call_fail_bool" value="true" />
-        <string name="carrier_setup_app_string">com.google.android.carriersetup/.VzwSetupActivity</string>
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_override_wfc_provisioning_bool" value="true" />
         <boolean name="carrier_volte_provisioned_bool" value="true" />
@@ -15972,10 +15670,6 @@
         </int-array>
         <boolean name="cdma_home_registered_plmn_name_override_bool" value="true" />
         <string name="cdma_home_registered_plmn_name_string">Xfinity Mobile</string>
-        <boolean name="ci_action_on_sys_update_bool" value="true" />
-        <string name="ci_action_on_sys_update_extra_string">ServerID</string>
-        <string name="ci_action_on_sys_update_extra_val_string">com.vzwdmserver</string>
-        <string name="ci_action_on_sys_update_intent_string">com.android.omadm.service.CONFIGURATION_UPDATE</string>
         <boolean name="convert_cdma_caller_id_mmi_codes_while_roaming_on_3gpp_bool" value="true" />
         <string name="default_vm_number_string">*86</string>
         <string-array name="dial_string_replace_string_array" num="4">
@@ -15994,21 +15688,7 @@
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
-        <string-array name="enable_apps_string_array" num="13">
-            <item value="com.customermobile.preload.vzw" />
-            <item value="com.verizon.llkagent" />
-            <item value="com.verizon.mips.services" />
-            <item value="com.verizon.services" />
-            <item value="com.vzw.apnlib" />
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.connmo" />
-            <item value="com.android.sdm.plugins.dcmo" />
-            <item value="com.android.sdm.plugins.diagmon" />
-            <item value="com.android.vzwomatrigger" />
-            <item value="com.htc.omadm.trigger" />
-            <item value="com.google.omadm.trigger" />
-            <item value="com.google.android.carrier.authdialog" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <boolean name="enhanced_4g_lte_title_variant_bool" value="true" />
@@ -16068,7 +15748,6 @@
         <boolean name="video_calls_can_be_hd_audio" value="false" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.VzwEmergencyAddressActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <int name="wifi.carrier_profiles_version_int" value="1" />
         <string-array name="wifi.network_profiles_string_array" num="1">
@@ -16096,9 +15775,7 @@
             <item value="*72" />
         </string-array>
         <boolean name="carrier_allow_turnoff_ims_bool" value="false" />
-        <string-array name="carrier_app_wake_signal_config" num="1">
-            <item value="com.google.android.carriersetup/.VzwActivationReceiver:com.android.internal.telephony.CARRIER_SIGNAL_PCO_VALUE" />
-        </string-array>
+        <string-array name="carrier_app_wake_signal_config" num="0" />
         <string-array name="carrier_certificate_string_array" num="3">
             <item value="B09473061A2A8A197B97A3B3EFEE52E1919BA548CC26B785FB7E5F769A7333F0" />
             <item value="2FBD0E00759E4293AE10DBB1AF83250455EB532F296D090705A5EAE79009E48D" />
@@ -16137,7 +15814,6 @@
         <boolean name="carrier_name_override_bool" value="true" />
         <string name="carrier_name_string">Spectrum</string>
         <boolean name="carrier_promote_wfc_on_call_fail_bool" value="true" />
-        <string name="carrier_setup_app_string">com.google.android.carriersetup/.VzwSetupActivity</string>
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_override_wfc_provisioning_bool" value="true" />
         <boolean name="carrier_volte_provisioned_bool" value="true" />
@@ -16158,10 +15834,6 @@
         </int-array>
         <boolean name="cdma_home_registered_plmn_name_override_bool" value="true" />
         <string name="cdma_home_registered_plmn_name_string">Spectrum</string>
-        <boolean name="ci_action_on_sys_update_bool" value="true" />
-        <string name="ci_action_on_sys_update_extra_string">ServerID</string>
-        <string name="ci_action_on_sys_update_extra_val_string">com.vzwdmserver</string>
-        <string name="ci_action_on_sys_update_intent_string">com.android.omadm.service.CONFIGURATION_UPDATE</string>
         <boolean name="convert_cdma_caller_id_mmi_codes_while_roaming_on_3gpp_bool" value="true" />
         <string name="default_vm_number_string">*86</string>
         <string-array name="dial_string_replace_string_array" num="2">
@@ -16178,16 +15850,7 @@
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
-        <string-array name="enable_apps_string_array" num="8">
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.connmo" />
-            <item value="com.android.sdm.plugins.dcmo" />
-            <item value="com.android.sdm.plugins.diagmon" />
-            <item value="com.android.vzwomatrigger" />
-            <item value="com.htc.omadm.trigger" />
-            <item value="com.google.omadm.trigger" />
-            <item value="com.verizon.mips.services" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <boolean name="enhanced_4g_lte_title_variant_bool" value="true" />
@@ -16269,7 +15932,6 @@
         <boolean name="video_calls_can_be_hd_audio" value="false" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.VzwEmergencyAddressActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <boolean name="world_mode_enabled_bool" value="true" />
     </carrier_config>
@@ -16337,14 +15999,7 @@
         <boolean name="editable_wfc_roaming_mode_bool" value="true" />
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
-        <string-array name="enable_apps_string_array" num="6">
-            <item value="com.customermobile.preload.vzw" />
-            <item value="com.verizon.llkagent" />
-            <item value="com.verizon.mips.services" />
-            <item value="com.verizon.services" />
-            <item value="com.vzw.apnlib" />
-            <item value="com.google.android.carrier.authdialog" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <boolean name="enhanced_4g_lte_title_variant_bool" value="true" />
@@ -16434,7 +16089,6 @@
         <boolean name="video_calls_can_be_hd_audio" value="false" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.VzwEmergencyAddressActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <boolean name="wifi_calls_can_be_hd_audio" value="false" />
         <boolean name="world_mode_enabled_bool" value="true" />
@@ -16463,8 +16117,7 @@
             <item value="*72" />
         </string-array>
         <boolean name="carrier_allow_turnoff_ims_bool" value="false" />
-        <string-array name="carrier_app_wake_signal_config" num="2">
-            <item value="com.google.android.carriersetup/.VzwActivationReceiver:com.android.internal.telephony.CARRIER_SIGNAL_PCO_VALUE,com.android.internal.telephony.CARRIER_SIGNAL_REDIRECTED,com.android.internal.telephony.CARRIER_SIGNAL_RESET" />
+        <string-array name="carrier_app_wake_signal_config" num="1">
             <item value="com.android.carrierdefaultapp/.CarrierDefaultBroadcastReceiver:com.android.internal.telephony.CARRIER_SIGNAL_REDIRECTED,com.android.internal.telephony.CARRIER_SIGNAL_RESET,com.android.internal.telephony.CARRIER_SIGNAL_DEFAULT_NETWORK_AVAILABLE" />
         </string-array>
         <string-array name="carrier_data_call_permanent_failure_strings" num="14">
@@ -16505,7 +16158,6 @@
         <boolean name="carrier_name_override_bool" value="true" />
         <string name="carrier_name_string">Verizon</string>
         <boolean name="carrier_promote_wfc_on_call_fail_bool" value="true" />
-        <string name="carrier_setup_app_string">com.google.android.carriersetup/.VzwSetupActivity</string>
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_override_wfc_provisioning_bool" value="true" />
         <boolean name="carrier_volte_provisioned_bool" value="true" />
@@ -16527,11 +16179,6 @@
         </int-array>
         <boolean name="cdma_home_registered_plmn_name_override_bool" value="true" />
         <string name="cdma_home_registered_plmn_name_string">Verizon</string>
-        <boolean name="ci_action_on_sys_update_bool" value="true" />
-        <string name="ci_action_on_sys_update_extra_string">ServerID</string>
-        <string name="ci_action_on_sys_update_extra_val_string">com.vzwdmserver</string>
-        <string name="ci_action_on_sys_update_intent_string">com.android.omadm.service.CONFIGURATION_UPDATE</string>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="convert_cdma_caller_id_mmi_codes_while_roaming_on_3gpp_bool" value="true" />
         <string name="default_vm_number_string">*86</string>
         <string-array name="dial_string_replace_string_array" num="2">
@@ -16548,23 +16195,7 @@
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
-        <string-array name="enable_apps_string_array" num="15">
-            <item value="com.customermobile.preload.vzw" />
-            <item value="com.verizon.llkagent" />
-            <item value="com.verizon.mips.services" />
-            <item value="com.verizon.obdm" />
-            <item value="com.verizon.obdm_permissions" />
-            <item value="com.verizon.services" />
-            <item value="com.vzw.apnlib" />
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.connmo" />
-            <item value="com.android.sdm.plugins.dcmo" />
-            <item value="com.android.sdm.plugins.diagmon" />
-            <item value="com.android.vzwomatrigger" />
-            <item value="com.htc.omadm.trigger" />
-            <item value="com.google.omadm.trigger" />
-            <item value="com.google.android.carrier.authdialog" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <boolean name="enhanced_4g_lte_title_variant_bool" value="true" />
@@ -16654,7 +16285,6 @@
         <boolean name="video_calls_can_be_hd_audio" value="false" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.VzwEmergencyAddressActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <int name="wifi.carrier_profiles_version_int" value="2" />
         <string-array name="wifi.network_profiles_string_array" num="2">
@@ -16673,10 +16303,8 @@
         <int name="carrier_default_wfc_ims_mode_int" value="1" />
         <int name="carrier_default_wfc_ims_roaming_mode_int" value="1" />
         <string name="carrier_eri_file_name_string">eri_311490.xml</string>
-        <string name="carrier_settings_activity_component_name_string">com.android.sdm.plugins.sprintdm/.SprintCarrierSettingsActivity</string>
         <boolean name="carrier_settings_enable_bool" value="true" />
         <int name="cdma_3waycall_flash_delay_int" value="300" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
@@ -16684,11 +16312,7 @@
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
         <boolean name="enableSMSDeliveryReports" value="false" />
-        <string-array name="enable_apps_string_array" num="3">
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.sprintdm" />
-            <item value="com.google.android.hiddenmenu" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledMMS" value="true" />
         <string name="httpParams">X-MDN: ##LINE1##|Proxy-Authorization: Basic ##NAI##</string>
         <int name="maxImageHeight" value="1944" />
@@ -16709,7 +16333,6 @@
         <boolean name="use_hfa_for_provisioning_bool" value="true" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="311" mnc="500" spn="24-7 WIRELESS" />
@@ -17058,17 +16681,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -17433,17 +17052,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -17808,17 +17423,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -18183,17 +17794,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -18558,17 +18165,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -18933,17 +18536,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -19308,17 +18907,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -19683,17 +19278,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -20058,17 +19649,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -20433,17 +20020,13 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="false" />
-        <string-array name="enable_apps_string_array" num="2">
-            <item value="com.android.sdm.plugins.usccdm" />
-            <item value="com.android.omadm.service" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="5">
@@ -20909,11 +20492,6 @@
             <item value="6551" />
             <item value="21625" />
         </string-array>
-        <boolean name="ci_action_on_sys_update_bool" value="true" />
-        <string name="ci_action_on_sys_update_extra_string">ServerID</string>
-        <string name="ci_action_on_sys_update_extra_val_string">com.vzwdmserver</string>
-        <string name="ci_action_on_sys_update_intent_string">com.android.omadm.service.CONFIGURATION_UPDATE</string>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="convert_cdma_caller_id_mmi_codes_while_roaming_on_3gpp_bool" value="true" />
         <string-array name="dial_string_replace_string_array" num="2">
@@ -20931,23 +20509,7 @@
         <boolean name="enableMMSDeliveryReports" value="false" />
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
-        <string-array name="enable_apps_string_array" num="15">
-            <item value="com.customermobile.preload.vzw" />
-            <item value="com.verizon.llkagent" />
-            <item value="com.verizon.mips.services" />
-            <item value="com.verizon.obdm" />
-            <item value="com.verizon.obdm_permissions" />
-            <item value="com.verizon.services" />
-            <item value="com.vzw.apnlib" />
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.connmo" />
-            <item value="com.android.sdm.plugins.dcmo" />
-            <item value="com.android.sdm.plugins.diagmon" />
-            <item value="com.android.vzwomatrigger" />
-            <item value="com.htc.omadm.trigger" />
-            <item value="com.google.omadm.trigger" />
-            <item value="com.google.android.carrier.authdialog" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledMMS" value="true" />
         <boolean name="enabledNotifyWapMMSC" value="true" />
         <boolean name="enabledTransID" value="true" />
@@ -21056,7 +20618,6 @@
         <boolean name="video_calls_can_be_hd_audio" value="false" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.VzwEmergencyAddressActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
         <int name="wifi.carrier_profiles_version_int" value="2" />
         <string-array name="wifi.network_profiles_string_array" num="2">
@@ -21075,10 +20636,8 @@
         <int name="carrier_default_wfc_ims_mode_int" value="1" />
         <int name="carrier_default_wfc_ims_roaming_mode_int" value="1" />
         <string name="carrier_eri_file_name_string">eri_311870.xml</string>
-        <string name="carrier_settings_activity_component_name_string">com.android.sdm.plugins.sprintdm/.SprintCarrierSettingsActivity</string>
         <boolean name="carrier_settings_enable_bool" value="true" />
         <int name="cdma_3waycall_flash_delay_int" value="300" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
@@ -21086,11 +20645,7 @@
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
         <boolean name="enableSMSDeliveryReports" value="false" />
-        <string-array name="enable_apps_string_array" num="3">
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.sprintdm" />
-            <item value="com.google.android.hiddenmenu" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledMMS" value="true" />
         <string name="httpParams">X-MDN: ##LINE1##|Proxy-Authorization: Basic ##NAI##</string>
         <int name="maxImageHeight" value="1944" />
@@ -21111,7 +20666,6 @@
         <boolean name="use_hfa_for_provisioning_bool" value="true" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="311" mnc="910" />
@@ -21155,14 +20709,12 @@
         <boolean name="carrier_name_override_bool" value="true" />
         <string name="carrier_name_string">Sprint</string>
         <boolean name="carrier_promote_wfc_on_call_fail_bool" value="true" />
-        <string name="carrier_settings_activity_component_name_string">com.android.sdm.plugins.sprintdm/.SprintCarrierSettingsActivity</string>
         <boolean name="carrier_settings_enable_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_provisioning_required_bool" value="true" />
         <boolean name="carrier_volte_tty_supported_bool" value="false" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <int name="cdma_3waycall_flash_delay_int" value="300" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
@@ -21170,11 +20722,7 @@
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
         <boolean name="enableSMSDeliveryReports" value="false" />
-        <string-array name="enable_apps_string_array" num="3">
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.sprintdm" />
-            <item value="com.google.android.hiddenmenu" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledMMS" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="1">
             <item value="311490" />
@@ -21208,7 +20756,6 @@
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <boolean name="volte_5g_limited_alert_dialog_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="312" mnc="530" gid1="000002">
@@ -21217,10 +20764,8 @@
         <int name="carrier_default_wfc_ims_mode_int" value="1" />
         <int name="carrier_default_wfc_ims_roaming_mode_int" value="1" />
         <string name="carrier_eri_file_name_string">eri_311870.xml</string>
-        <string name="carrier_settings_activity_component_name_string">com.android.sdm.plugins.sprintdm/.SprintCarrierSettingsActivity</string>
         <boolean name="carrier_settings_enable_bool" value="true" />
         <int name="cdma_3waycall_flash_delay_int" value="300" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
@@ -21228,11 +20773,7 @@
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
         <boolean name="enableSMSDeliveryReports" value="false" />
-        <string-array name="enable_apps_string_array" num="3">
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.sprintdm" />
-            <item value="com.google.android.hiddenmenu" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledMMS" value="true" />
         <string name="httpParams">X-MDN: ##LINE1##|Proxy-Authorization: Basic ##NAI##</string>
         <int name="maxImageHeight" value="1944" />
@@ -21253,7 +20794,6 @@
         <boolean name="use_hfa_for_provisioning_bool" value="true" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="312" mnc="530" gid1="000003">
@@ -21262,10 +20802,8 @@
         <int name="carrier_default_wfc_ims_mode_int" value="1" />
         <int name="carrier_default_wfc_ims_roaming_mode_int" value="1" />
         <string name="carrier_eri_file_name_string">eri_311490.xml</string>
-        <string name="carrier_settings_activity_component_name_string">com.android.sdm.plugins.sprintdm/.SprintCarrierSettingsActivity</string>
         <boolean name="carrier_settings_enable_bool" value="true" />
         <int name="cdma_3waycall_flash_delay_int" value="300" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
@@ -21273,11 +20811,7 @@
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
         <boolean name="enableSMSDeliveryReports" value="false" />
-        <string-array name="enable_apps_string_array" num="3">
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.sprintdm" />
-            <item value="com.google.android.hiddenmenu" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledMMS" value="true" />
         <string name="httpParams">X-MDN: ##LINE1##|Proxy-Authorization: Basic ##NAI##</string>
         <int name="maxImageHeight" value="1944" />
@@ -21298,7 +20832,6 @@
         <boolean name="use_hfa_for_provisioning_bool" value="true" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="312" mnc="530" gid1="000004">
@@ -21307,10 +20840,8 @@
         <int name="carrier_default_wfc_ims_mode_int" value="1" />
         <int name="carrier_default_wfc_ims_roaming_mode_int" value="1" />
         <string name="carrier_eri_file_name_string">eri_310120.xml</string>
-        <string name="carrier_settings_activity_component_name_string">com.android.sdm.plugins.sprintdm/.SprintCarrierSettingsActivity</string>
         <boolean name="carrier_settings_enable_bool" value="true" />
         <int name="cdma_3waycall_flash_delay_int" value="300" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
@@ -21318,11 +20849,7 @@
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
         <boolean name="enableSMSDeliveryReports" value="false" />
-        <string-array name="enable_apps_string_array" num="3">
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.sprintdm" />
-            <item value="com.google.android.hiddenmenu" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledMMS" value="true" />
         <string name="httpParams">X-MDN: ##LINE1##|Proxy-Authorization: Basic ##NAI##</string>
         <int name="maxImageHeight" value="1944" />
@@ -21343,7 +20870,6 @@
         <boolean name="use_hfa_for_provisioning_bool" value="true" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="312" mnc="530" gid1="A00184">
@@ -21365,14 +20891,12 @@
         <boolean name="carrier_name_override_bool" value="true" />
         <string name="carrier_name_string">Sprint</string>
         <boolean name="carrier_promote_wfc_on_call_fail_bool" value="true" />
-        <string name="carrier_settings_activity_component_name_string">com.android.sdm.plugins.sprintdm/.SprintCarrierSettingsActivity</string>
         <boolean name="carrier_settings_enable_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_provisioning_required_bool" value="true" />
         <boolean name="carrier_volte_tty_supported_bool" value="false" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <int name="cdma_3waycall_flash_delay_int" value="300" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
@@ -21380,11 +20904,7 @@
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
         <boolean name="enableSMSDeliveryReports" value="false" />
-        <string-array name="enable_apps_string_array" num="3">
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.sprintdm" />
-            <item value="com.google.android.hiddenmenu" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledMMS" value="true" />
         <string-array name="gsm_nonroaming_networks_string_array" num="1">
             <item value="311490" />
@@ -21418,7 +20938,6 @@
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <boolean name="volte_5g_limited_alert_dialog_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="312" mnc="530">
@@ -21429,13 +20948,11 @@
         <int name="carrier_default_wfc_ims_roaming_mode_int" value="1" />
         <string name="carrier_eri_file_name_string">eri_310120.xml</string>
         <boolean name="carrier_promote_wfc_on_call_fail_bool" value="true" />
-        <string name="carrier_settings_activity_component_name_string">com.android.sdm.plugins.sprintdm/.SprintCarrierSettingsActivity</string>
         <boolean name="carrier_settings_enable_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_volte_provisioning_required_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <int name="cdma_3waycall_flash_delay_int" value="300" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
         <boolean name="dtmf_type_enabled_bool" value="true" />
         <string name="emailGatewayNumber">6245</string>
@@ -21443,11 +20960,7 @@
         <boolean name="enableMMSReadReports" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
         <boolean name="enableSMSDeliveryReports" value="false" />
-        <string-array name="enable_apps_string_array" num="3">
-            <item value="com.android.omadm.service" />
-            <item value="com.android.sdm.plugins.sprintdm" />
-            <item value="com.google.android.hiddenmenu" />
-        </string-array>
+        <string-array name="enable_apps_string_array" num="0" />
         <boolean name="enabledMMS" value="true" />
         <string name="httpParams">X-MDN: ##LINE1##|Proxy-Authorization: Basic ##NAI##</string>
         <boolean name="ignore_rtt_mode_setting_bool" value="true" />
@@ -21474,7 +20987,6 @@
         <boolean name="use_hfa_for_provisioning_bool" value="true" />
         <boolean name="voicemail_notification_persistent_bool" value="true" />
         <int name="volte_replacement_rat_int" value="6" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="312" mnc="570" />
@@ -21574,7 +21086,6 @@
         <boolean name="show_4g_for_3g_data_icon_bool" value="true" />
         <boolean name="skip_cf_fail_to_disable_dialog_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="312" mnc="870">
@@ -21660,7 +21171,6 @@
         <string name="show_carrier_data_icon_pattern_string">.*\.{3}[12]$</string>
         <boolean name="skip_cf_fail_to_disable_dialog_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="313" mnc="110">
@@ -21713,7 +21223,6 @@
         <string name="show_carrier_data_icon_pattern_string">.*\.{3}[12]$</string>
         <boolean name="skip_cf_fail_to_disable_dialog_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="313" mnc="120">
@@ -21766,7 +21275,6 @@
         <string name="show_carrier_data_icon_pattern_string">.*\.{3}[12]$</string>
         <boolean name="skip_cf_fail_to_disable_dialog_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="313" mnc="130">
@@ -21849,7 +21357,6 @@
         <string name="show_carrier_data_icon_pattern_string">.*\.{3}[12]$</string>
         <boolean name="skip_cf_fail_to_disable_dialog_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="313" mnc="140">
@@ -21932,7 +21439,6 @@
         <string name="show_carrier_data_icon_pattern_string">.*\.{3}[12]$</string>
         <boolean name="skip_cf_fail_to_disable_dialog_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
-        <string name="wfc_emergency_address_carrier_app_string">com.google.android.wfcactivation/.WfcActivationActivity</string>
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="313" mnc="450" />
@@ -22011,17 +21517,14 @@
             <item value="UNACCEPTABLE_NETWORK_PARAMETER" />
             <item value="SIGNAL_LOST" />
         </string-array>
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <int name="maxImageHeight" value="1944" />
         <int name="maxImageWidth" value="2592" />
         <int name="maxMessageSize" value="1048576" />
         <boolean name="show_4g_for_lte_data_icon_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="334" mnc="03">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="334" mnc="030">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="334" mnc="050">
         <boolean name="allow_emergency_numbers_in_call_log_bool" value="true" />
@@ -22081,10 +21584,8 @@
     <carrier_config mcc="368" mnc="01" />
     <carrier_config mcc="370" mnc="01" />
     <carrier_config mcc="370" mnc="02">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="370" mnc="020">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="370" mnc="04" />
     <carrier_config mcc="372" mnc="02" />
@@ -24036,7 +23537,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24144,7 +23644,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24162,7 +23661,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24180,7 +23678,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24198,7 +23695,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24216,7 +23712,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24234,7 +23729,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24252,7 +23746,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24270,7 +23763,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24288,7 +23780,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24306,7 +23797,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24324,7 +23814,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24342,7 +23831,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24360,7 +23848,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24378,7 +23865,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24396,7 +23882,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24414,7 +23899,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24432,7 +23916,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24450,7 +23933,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24468,7 +23950,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24486,7 +23967,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24504,7 +23984,6 @@
         <boolean name="carrier_supports_ss_over_ut_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="editable_enhanced_4g_lte_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
         <boolean name="hide_ims_apn_bool" value="true" />
@@ -24651,7 +24130,6 @@
     <carrier_config mcc="416" mnc="01" />
     <carrier_config mcc="416" mnc="03" />
     <carrier_config mcc="416" mnc="77">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="416" mnc="770" />
     <carrier_config mcc="417" mnc="01" />
@@ -25223,7 +24701,6 @@
     <carrier_config mcc="502" mnc="10" />
     <carrier_config mcc="502" mnc="12" />
     <carrier_config mcc="502" mnc="13">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="502" mnc="142" />
     <carrier_config mcc="502" mnc="143" />
@@ -25236,7 +24713,6 @@
     <carrier_config mcc="502" mnc="17" />
     <carrier_config mcc="502" mnc="18" />
     <carrier_config mcc="502" mnc="19">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="505" mnc="01" spn="ALDImobile">
         <boolean name="carrier_default_wfc_ims_enabled_bool" value="true" />
@@ -25274,7 +24750,6 @@
         <boolean name="carrier_volte_available_bool" value="true" />
         <boolean name="carrier_vt_available_bool" value="false" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string name="default_vm_number_string">+61101</string>
         <boolean name="editable_tether_apn_bool" value="true" />
         <boolean name="editable_wfc_mode_bool" value="false" />
@@ -25410,7 +24885,6 @@
     <carrier_config mcc="514" mnc="02" />
     <carrier_config mcc="514" mnc="03" />
     <carrier_config mcc="515" mnc="02">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="515" mnc="03" />
     <carrier_config mcc="515" mnc="05" />
@@ -25550,7 +25024,6 @@
     <carrier_config mcc="603" mnc="02" />
     <carrier_config mcc="603" mnc="03" />
     <carrier_config mcc="604" mnc="00">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <int name="maxImageHeight" value="1944" />
         <int name="maxImageWidth" value="2592" />
         <int name="maxMessageSize" value="102400" />
@@ -25562,7 +25035,6 @@
         <int name="maxMessageSize" value="102400" />
     </carrier_config>
     <carrier_config mcc="605" mnc="01">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="605" mnc="02" />
     <carrier_config mcc="605" mnc="03" />
@@ -25705,7 +25177,6 @@
     <carrier_config mcc="645" mnc="02" />
     <carrier_config mcc="645" mnc="03" />
     <carrier_config mcc="646" mnc="02">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="647" mnc="00" />
     <carrier_config mcc="647" mnc="02" />
@@ -25731,7 +25202,6 @@
     <carrier_config mcc="653" mnc="10" />
     <carrier_config mcc="654" mnc="01" />
     <carrier_config mcc="655" mnc="01">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="655" mnc="02" />
     <carrier_config mcc="655" mnc="07" imsi="6550710" />
@@ -25742,7 +25212,6 @@
     <carrier_config mcc="702" mnc="67" />
     <carrier_config mcc="702" mnc="99" />
     <carrier_config mcc="704" mnc="01">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string-array name="mmi_two_digit_number_pattern_string_array" num="3">
             <item value="*1" />
             <item value="*5" />
@@ -25751,25 +25220,19 @@
     </carrier_config>
     <carrier_config mcc="704" mnc="02" />
     <carrier_config mcc="704" mnc="03">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="704" mnc="030">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="706" mnc="01">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="706" mnc="02" />
     <carrier_config mcc="706" mnc="03" />
     <carrier_config mcc="706" mnc="04">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="706" mnc="040">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="708" mnc="00" />
     <carrier_config mcc="708" mnc="001">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <string-array name="mmi_two_digit_number_pattern_string_array" num="2">
             <item value="*1" />
             <item value="*5" />
@@ -25781,54 +25244,43 @@
     <carrier_config mcc="708" mnc="040" />
     <carrier_config mcc="710" mnc="21" />
     <carrier_config mcc="710" mnc="30">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="710" mnc="300">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="710" mnc="73">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="710" mnc="730" />
     <carrier_config mcc="712" mnc="01" />
     <carrier_config mcc="712" mnc="019" />
     <carrier_config mcc="712" mnc="02" />
     <carrier_config mcc="712" mnc="03">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="712" mnc="04">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="712" mnc="190" />
     <carrier_config mcc="712" mnc="20" />
     <carrier_config mcc="714" mnc="01" />
     <carrier_config mcc="714" mnc="02">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="714" mnc="020">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="714" mnc="03">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="714" mnc="04" />
     <carrier_config mcc="714" mnc="040" />
     <carrier_config mcc="716" mnc="06">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="enableGroupMms" value="false" />
         <boolean name="enableMultipartSMS" value="true" />
         <boolean name="enabledMms" value="false" />
         <boolean name="groupChatDefaultsToMMS" value="false" />
     </carrier_config>
     <carrier_config mcc="716" mnc="10">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="716" mnc="15" />
     <carrier_config mcc="716" mnc="17" />
     <carrier_config mcc="722" mnc="01" spn="CELULAR" />
     <carrier_config mcc="722" mnc="01" spn="QUAM" />
     <carrier_config mcc="722" mnc="07">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="722" mnc="31" />
     <carrier_config mcc="722" mnc="310" />
@@ -25850,7 +25302,6 @@
         <boolean name="show_4g_for_lte_data_icon_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="724" mnc="05">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
         <boolean name="show_4g_for_lte_data_icon_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="724" mnc="06">
@@ -25899,7 +25350,6 @@
         <boolean name="groupChatDefaultsToMMS" value="false" />
     </carrier_config>
     <carrier_config mcc="730" mnc="03">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="730" mnc="07">
         <boolean name="enableGroupMms" value="false" />
@@ -25941,7 +25391,6 @@
     <carrier_config mcc="734" mnc="02" />
     <carrier_config mcc="734" mnc="03" />
     <carrier_config mcc="734" mnc="04">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="734" mnc="06" />
     <carrier_config mcc="736" mnc="01" />
@@ -25950,18 +25399,14 @@
     <carrier_config mcc="738" mnc="01" />
     <carrier_config mcc="738" mnc="02" />
     <carrier_config mcc="740" mnc="00">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="740" mnc="01">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="740" mnc="010">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="740" mnc="02" />
     <carrier_config mcc="744" mnc="01" />
     <carrier_config mcc="744" mnc="02">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="744" mnc="04" />
     <carrier_config mcc="744" mnc="05" />
@@ -25969,10 +25414,8 @@
     <carrier_config mcc="746" mnc="03" />
     <carrier_config mcc="748" mnc="01" />
     <carrier_config mcc="748" mnc="07">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="748" mnc="10">
-        <string name="config_ims_package_override_string">com.google.android.ims</string>
     </carrier_config>
     <carrier_config mcc="901" mnc="58" />
 </carrier_config_list>
