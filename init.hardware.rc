@@ -173,6 +173,9 @@ on init
     write /proc/sys/kernel/sched_lib_name "UnityMain,libunity.so"
     write /proc/sys/kernel/sched_lib_mask_force 255
 
+    # NFC streset tool name
+    setprop persist.vendor.nfc.streset libstreset
+
 # b/134578585
 on charger
     trigger fs
@@ -186,9 +189,6 @@ on charger
 
     # Health HAL
     chown system system /sys/devices/virtual/thermal/tz-by-name/soc/mode
-
-    # NFC streset tool name
-    setprop persist.vendor.nfc.streset libstreset
 
 on late-init
     chown system system /sys/devices/virtual/thermal/tz-by-name/sdm-therm-monitor/trip_point_0_temp
