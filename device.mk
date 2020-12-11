@@ -898,6 +898,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Enable EGL image tracking on SF for b/137514000
 PRODUCT_PROPERTY_OVERRIDES += debug.sf.enable_egl_image_tracker=1
 
+# TODO(b/175348740): STOPSHIP if using skiagl
+PRODUCT_PROPERTY_OVERRIDES += debug.renderengine.backend=skiagl
+
 # Do not skip init trigger by default
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     vendor.skip.init=0
