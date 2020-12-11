@@ -15,6 +15,7 @@
 #
 
 include build/make/target/board/BoardConfigMainlineCommon.mk
+include build/make/target/board/BoardConfigPixelCommon.mk
 
 TARGET_BOARD_PLATFORM := msmnile
 TARGET_BOARD_INFO_FILE := device/google/coral/board-info.txt
