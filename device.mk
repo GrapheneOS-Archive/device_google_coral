@@ -490,6 +490,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.stagefright.c2inputsurface=-1 \
 
+# Transcoding related property.
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.media.transcoding.codec_max_operating_rate_720P=480 \
+    debug.media.transcoding.codec_max_operating_rate_1080P=240 \
+    debug.media.transcoding.codec_max_operating_rate_4k=120 \
+
 # Enable ECO service
 QC2_HAVE_ECO_SERVICE := true
 
