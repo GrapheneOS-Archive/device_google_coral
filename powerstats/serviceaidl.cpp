@@ -60,7 +60,8 @@ void addDisplayEnergyConsumer(std::shared_ptr<PowerStats> p) {
 }
 
 void setEnergyMeter(std::shared_ptr<PowerStats> p) {
-    p->setEnergyMeterDataProvider(std::make_unique<IioEnergyMeterDataProvider>("microchip,pac1934"));
+    std::vector<const std::string> deviceNames { "microchip,pac1934" };
+    p->setEnergyMeterDataProvider(std::make_unique<IioEnergyMeterDataProvider>(deviceNames));
 }
 
 int main() {
