@@ -940,10 +940,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.power.stats@1.0-service.pixel
 
-# PowerStats AIDL HAL
-PRODUCT_PACKAGES += \
-    android.hardware.power.stats-service.pixel
-
 PRODUCT_PACKAGES_DEBUG += \
     pwrstats_util
 
