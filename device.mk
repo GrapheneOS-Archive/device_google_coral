@@ -37,7 +37,8 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/sm8150/proprietary/commonsys/telephony-apps/DataStatusNotification \
     vendor/qcom/sm8150/proprietary/gps \
     vendor/qcom/sm8150/codeaurora/location \
-    vendor/google/interfaces
+    vendor/google/interfaces \
+    vendor/google_nos/test/system-test-harness
 
 # Include sensors soong namespace
 PRODUCT_SOONG_NAMESPACES += \
