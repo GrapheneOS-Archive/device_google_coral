@@ -37,7 +37,8 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/sm8150/proprietary/commonsys/telephony-apps/DataStatusNotification \
     vendor/qcom/sm8150/proprietary/gps \
     vendor/qcom/sm8150/codeaurora/location \
-    vendor/google/interfaces
+    vendor/google/interfaces \
+    vendor/google_nos/test/system-test-harness
 
 # Include sensors soong namespace
 PRODUCT_SOONG_NAMESPACES += \
@@ -903,6 +904,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Enable EGL image tracking on SF for b/137514000
 PRODUCT_PROPERTY_OVERRIDES += debug.sf.enable_egl_image_tracker=1
+
+# TODO(b/175348740): STOPSHIP if using skiagl
+PRODUCT_PROPERTY_OVERRIDES += debug.renderengine.backend=skiagl
 
 # Do not skip init trigger by default
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
