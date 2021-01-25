@@ -49,6 +49,9 @@ $(call inherit-product-if-exists, vendor/google_devices/coral/prebuilts/device-v
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/aosp_excluded_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/aosp_excluded_hardware.xml
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
+
 # Don't build super.img.
 PRODUCT_BUILD_SUPER_PARTITION := false
 
