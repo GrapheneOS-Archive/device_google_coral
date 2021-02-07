@@ -15636,6 +15636,7 @@
         <boolean name="show_4g_for_lte_data_icon_bool" value="true" />
         <boolean name="show_blocking_pay_phone_option_bool" value="true" />
         <boolean name="support_enhanced_call_blocking_bool" value="true" />
+        <boolean name="support_ims_conference_event_package_bool" value="false" />
     </carrier_config>
     <carrier_config mcc="440" mnc="51" gid1="10">
         <string name="5g_icon_configuration_string">connected_mmwave:5G,connected:5G,not_restricted_rrc_idle:5G</string>
@@ -15668,6 +15669,7 @@
         <boolean name="show_4g_for_lte_data_icon_bool" value="true" />
         <boolean name="show_blocking_pay_phone_option_bool" value="true" />
         <boolean name="support_enhanced_call_blocking_bool" value="true" />
+        <boolean name="support_ims_conference_event_package_bool" value="false" />
     </carrier_config>
     <carrier_config mcc="440" mnc="51">
         <boolean name="allow_emergency_numbers_in_call_log_bool" value="true" />
@@ -15680,6 +15682,7 @@
         <string-array name="read_only_apn_types_string_array" num="0" />
         <boolean name="show_4g_for_lte_data_icon_bool" value="true" />
         <boolean name="show_blocking_pay_phone_option_bool" value="true" />
+        <boolean name="support_ims_conference_event_package_bool" value="false" />
     </carrier_config>
     <carrier_config mcc="440" mnc="52">
         <string-array name="carrier_additional_cbs_channels_strings" num="1">
