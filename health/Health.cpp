@@ -127,7 +127,6 @@ static bool FileExists(const std::string& filename)
 void private_healthd_board_init(struct healthd_config *hc) {
   hc->ignorePowerSupplyNames.push_back(android::String8(kTCPMPSYName));
   ccBackupRestore.Restore();
-  battDefender.update();
 
   needs_wlc_updates = FileExists(kWlcCapacity);
 }
@@ -138,7 +137,7 @@ int private_healthd_board_battery_update(struct android::BatteryProperties *prop
   battMetricsLogger.logBatteryProperties(props);
   shutdownMetrics.logShutdownVoltage(props);
   ccBackupRestore.Backup(props->batteryLevel);
-  battDefender.update();
+  battDefender.update(props);
 
   if (needs_wlc_updates &&
       !android::base::WriteStringToFile(std::to_string(props->batteryLevel),
