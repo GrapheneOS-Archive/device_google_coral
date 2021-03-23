@@ -23,7 +23,7 @@ cc_binary {
     init_rc: ["android.hardware.usb@1.2-service.coral.rc"],
     vintf_fragments: [
         "android.hardware.usb@1.2-service.coral.xml",
-        "android.hardware.usb.gadget@1.1-service.coral.xml",
+        "android.hardware.usb.gadget@1.2-service.coral.xml",
     ],
     srcs: ["service.cpp", "Usb.cpp", "UsbGadget.cpp"],
     shared_libs: [
@@ -32,6 +32,7 @@ cc_binary {
         "android.hardware.usb@1.2",
         "android.hardware.usb.gadget@1.0",
         "android.hardware.usb.gadget@1.1",
+        "android.hardware.usb.gadget@1.2",
         "libbase",
         "libcutils",
         "libhardware",
