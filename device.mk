@@ -458,7 +458,7 @@ PRODUCT_COPY_FILES += \
     device/google/coral/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_PRODUCT)/etc/libnfc-nci.conf
 
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.2-service.coral
+    android.hardware.usb@1.3-service.coral
 
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl-coral \
