@@ -23420,6 +23420,7 @@
   />
 
   <apn carrier="Cellcom"
+      carrier_id="10024"
       mcc="311"
       mnc="840"
       apn="CCINTERNET"
@@ -23435,6 +23436,7 @@
   />
 
   <apn carrier="Cellcom IMS"
+      carrier_id="10024"
       mcc="311"
       mnc="840"
       apn="IMS"
@@ -23453,6 +23455,7 @@
   />
 
   <apn carrier="Cellcom FOTA"
+      carrier_id="10024"
       mcc="311"
       mnc="840"
       apn="CCADMIN"
@@ -23471,6 +23474,7 @@
   />
 
   <apn carrier="Cellcom"
+      carrier_id="10024"
       mcc="311"
       mnc="840"
       apn="CCINTERNET"
@@ -23488,6 +23492,7 @@
   />
 
   <apn carrier="Cellcom Hotspot"
+      carrier_id="10024"
       mcc="311"
       mnc="840"
       apn="CCHOTSPOT"
@@ -23500,6 +23505,7 @@
   />
 
   <apn carrier="Cellcom Emergency"
+      carrier_id="10024"
       mcc="311"
       mnc="840"
       apn="SOS"
@@ -26820,7 +26826,7 @@
   />
 
   <apn carrier="ALTEL INTERNET"
-      carrier_id="2164"
+      carrier_id="1986"
       mcc="401"
       mnc="07"
       apn="internet"
