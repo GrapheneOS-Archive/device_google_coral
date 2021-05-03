@@ -3488,6 +3488,7 @@
   />
 
   <apn carrier="Kena Mobile web"
+      carrier_id="2511"
       mcc="222"
       mnc="07"
       apn="web.kenamobile.it"
@@ -3496,6 +3497,7 @@
   />
 
   <apn carrier="Kena Mobile MMS"
+      carrier_id="2511"
       mcc="222"
       mnc="07"
       apn="mms.kenamobile.it"
@@ -3507,6 +3509,7 @@
   />
 
   <apn carrier="IMS"
+      carrier_id="2511"
       mcc="222"
       mnc="07"
       apn="ims"
@@ -3516,6 +3519,7 @@
   />
 
   <apn carrier="XCAP"
+      carrier_id="2511"
       mcc="222"
       mnc="07"
       apn="xcap.kenamobile.it"
@@ -6395,7 +6399,6 @@
   />
 
   <apn carrier="Internet"
-      carrier_id="2287"
       mcc="240"
       mnc="01"
       apn="halebop.telia.se"
@@ -6406,7 +6409,6 @@
   />
 
   <apn carrier="MMS"
-      carrier_id="2287"
       mcc="240"
       mnc="01"
       apn="mms.telia.se"
@@ -6565,7 +6567,6 @@
   />
 
   <apn carrier="Internet"
-      carrier_id="2287"
       mcc="240"
       mnc="05"
       apn="halebop.telia.se"
@@ -6576,7 +6577,6 @@
   />
 
   <apn carrier="MMS"
-      carrier_id="2287"
       mcc="240"
       mnc="05"
       apn="mms.telia.se"
@@ -17554,7 +17554,6 @@
   />
 
   <apn carrier="MetroPCS Tethering"
-      carrier_id="1949"
       mcc="310"
       mnc="590"
       apn="pcweb.metropcs.com"
@@ -17566,7 +17565,6 @@
   />
 
   <apn carrier="MetroPCS"
-      carrier_id="1949"
       mcc="310"
       mnc="590"
       apn=""
@@ -17579,7 +17577,6 @@
   />
 
   <apn carrier="MetroPCS"
-      carrier_id="1949"
       mcc="310"
       mnc="590"
       apn="fast.metropcs.com"
@@ -17593,7 +17590,6 @@
   />
 
   <apn carrier="MetroPCS IMS"
-      carrier_id="1949"
       mcc="310"
       mnc="590"
       apn="ims"
@@ -17607,7 +17603,6 @@
   />
 
   <apn carrier="MetroPCS IMS"
-      carrier_id="1949"
       mcc="310"
       mnc="590"
       apn="ims"
@@ -17622,7 +17617,7 @@
   />
 
   <apn carrier="T-Mobile Tethering"
-      carrier_id="1"
+      carrier_id="1839"
       mcc="310"
       mnc="590"
       apn="pcweb.tmobile.com"
@@ -17632,7 +17627,7 @@
   />
 
   <apn carrier="T-Mobile US"
-      carrier_id="1"
+      carrier_id="1839"
       mcc="310"
       mnc="590"
       apn="fast.t-mobile.com"
@@ -17645,7 +17640,7 @@
   />
 
   <apn carrier="T-Mobile US IMS"
-      carrier_id="1"
+      carrier_id="1839"
       mcc="310"
       mnc="590"
       apn="ims"
@@ -17657,7 +17652,7 @@
   />
 
   <apn carrier="T-Mobile US IMS"
-      carrier_id="1"
+      carrier_id="1839"
       mcc="310"
       mnc="590"
       apn="ims"
@@ -17670,7 +17665,7 @@
   />
 
   <apn carrier="T-Mobile MMS"
-      carrier_id="1"
+      carrier_id="1839"
       mcc="310"
       mnc="590"
       apn="TMUS"
@@ -23420,7 +23415,6 @@
   />
 
   <apn carrier="Cellcom"
-      carrier_id="10024"
       mcc="311"
       mnc="840"
       apn="CCINTERNET"
@@ -23436,7 +23430,6 @@
   />
 
   <apn carrier="Cellcom IMS"
-      carrier_id="10024"
       mcc="311"
       mnc="840"
       apn="IMS"
@@ -23455,7 +23448,6 @@
   />
 
   <apn carrier="Cellcom FOTA"
-      carrier_id="10024"
       mcc="311"
       mnc="840"
       apn="CCADMIN"
@@ -23474,7 +23466,6 @@
   />
 
   <apn carrier="Cellcom"
-      carrier_id="10024"
       mcc="311"
       mnc="840"
       apn="CCINTERNET"
@@ -23492,7 +23483,6 @@
   />
 
   <apn carrier="Cellcom Hotspot"
-      carrier_id="10024"
       mcc="311"
       mnc="840"
       apn="CCHOTSPOT"
@@ -23505,7 +23495,6 @@
   />
 
   <apn carrier="Cellcom Emergency"
-      carrier_id="10024"
       mcc="311"
       mnc="840"
       apn="SOS"
