@@ -115,6 +115,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.thermal_warmreset = true \
 
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.vendor.testing_battery_profile=0
+
 # Enable Incremental on the device via kernel module
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.incremental.enable=module:/vendor/lib/modules/incrementalfs.ko
