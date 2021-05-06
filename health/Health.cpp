@@ -64,7 +64,9 @@ constexpr char kVoltageAvg[] {FG_DIR "/voltage_avg"};
 constexpr char kCycleCountsBins[] {FG_DIR "/cycle_counts"};
 constexpr char kGaugeSerial[] {FG_DIR "/serial_number"};
 
-static BatteryDefender battDefender;
+#define WLC_DIR "/sys/class/power_supply/wireless"
+
+static BatteryDefender battDefender(WLC_DIR "/present");
 static BatteryThermalControl battThermalControl(
     "sys/devices/virtual/thermal/tz-by-name/soc/mode");
 static BatteryMetricsLogger battMetricsLogger(
@@ -84,7 +86,6 @@ constexpr char kUFSName[]{"UFS0"};
 
 constexpr char kTCPMPSYName[]{"tcpm-source-psy-usbpd0"};
 
-#define WLC_DIR "/sys/class/power_supply/wireless"
 static bool needs_wlc_updates = false;
 constexpr char kWlcCapacity[] {WLC_DIR "/capacity" };
 
