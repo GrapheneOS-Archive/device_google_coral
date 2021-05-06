@@ -897,9 +897,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += debug.sf.earlyGl.app.duration=21000000
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.enable_gl_backpressure=1
 
-# Enable EGL image tracking on SF for b/137514000
-PRODUCT_PROPERTY_OVERRIDES += debug.sf.enable_egl_image_tracker=1
-
 # Do not skip init trigger by default
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     vendor.skip.init=0
