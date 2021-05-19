@@ -991,10 +991,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.verbose_logging_enabled=false
 endif
 
-# (b/183612348): Enable skia reduceOpsTaskSplitting
-PRODUCT_PROPERTY_OVERRIDES += \
-    renderthread.skia.reduceopstasksplitting=true
-
 # Disable Rescue Party on userdebug & eng build
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PRODUCT_PROPERTIES += \
