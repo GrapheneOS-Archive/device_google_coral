@@ -525,16 +525,10 @@ PRODUCT_PACKAGES += \
     libmmcamera_interface \
     libcameradepthcalibrator
 
-SOONG_CONFIG_NAMESPACES += gch
-SOONG_CONFIG_gch += \
-    feature \
-# Use legacy common hal modules
-SOONG_CONFIG_gch_feature := use_legacy_hal
-
 # Google Camera HAL test libraries in debug builds
 PRODUCT_PACKAGES_DEBUG += \
     libgoogle_camera_hal_proprietary_tests \
-    libgoogle_camera_hal_tests.vendor
+    libgoogle_camera_hal_tests
 
 PRODUCT_PACKAGES += \
     sensors.$(PRODUCT_HARDWARE) \
@@ -969,7 +963,7 @@ PRODUCT_PACKAGES += $(HIDL_WRAPPER)
 
 # Increment the SVN for any official public releases
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.vendor.build.svn=38
+	ro.vendor.build.svn=39
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
