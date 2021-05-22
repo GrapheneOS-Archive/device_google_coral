@@ -120,3 +120,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.incremental.enable=module:/vendor/lib/modules/incrementalfs.ko
 
 PRODUCT_ENFORCE_PRODUCT_PARTITION_INTERFACE := true
+

@@ -36,6 +36,7 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/sm8150 \
     vendor/qcom/sm8150/proprietary/commonsys/telephony-apps/DataStatusNotification \
     vendor/qcom/sm8150/proprietary/gps \
+    vendor/qcom/sm8150/proprietary/qmi \
     vendor/qcom/sm8150/codeaurora/location \
     vendor/google/interfaces \
     vendor/google_nos/test/system-test-harness
@@ -525,10 +526,16 @@ PRODUCT_PACKAGES += \
     libmmcamera_interface \
     libcameradepthcalibrator
 
+SOONG_CONFIG_NAMESPACES += gch
+SOONG_CONFIG_gch += \
+    feature \
+# Use legacy common hal modules
+SOONG_CONFIG_gch_feature := use_legacy_hal
+
 # Google Camera HAL test libraries in debug builds
 PRODUCT_PACKAGES_DEBUG += \
     libgoogle_camera_hal_proprietary_tests \
-    libgoogle_camera_hal_tests
+    libgoogle_camera_hal_tests.vendor
 
 PRODUCT_PACKAGES += \
     sensors.$(PRODUCT_HARDWARE) \
@@ -1000,6 +1007,10 @@ PRODUCT_PRODUCT_PROPERTIES += \
 # Set system properties identifying the chipset
 PRODUCT_VENDOR_PROPERTIES += ro.soc.manufacturer=Qualcomm
 PRODUCT_VENDOR_PROPERTIES += ro.soc.model=SDM8150
+
+# Security
+-include vendor/qcom/sm8150/proprietary/securemsm/config/keymaster_vendor_proprietary_board.mk
+-include vendor/qcom/sm8150/proprietary/securemsm/config/keymaster_vendor_proprietary_product.mk
 
 include hardware/google/pixel/common/pixel-common-device.mk
 include hardware/google/pixel/vibrator/cs40l25/device.mk
