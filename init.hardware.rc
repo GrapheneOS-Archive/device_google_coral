@@ -155,6 +155,7 @@ on init
     chown system system /sys/devices/platform/soc/soc:google,charger/bd_trigger_voltage
     chown system system /sys/devices/platform/soc/soc:google,charger/bd_temp_enable
     chown system system /sys/devices/platform/soc/soc:google,charger/bd_temp_dry_run
+    chown system system /sys/devices/platform/soc/soc:google,charger/bd_clear
     chown system system /sys/devices/platform/soc/soc:google,battery/power_supply/battery/bd_trickle_enable
     chown system system /sys/devices/platform/soc/soc:google,battery/power_supply/battery/bd_trickle_recharge_soc
     chown system system /sys/devices/platform/soc/soc:google,battery/power_supply/battery/bd_trickle_cnt
