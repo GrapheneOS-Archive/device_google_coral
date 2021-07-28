@@ -1003,7 +1003,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Set system properties identifying the chipset
 PRODUCT_VENDOR_PROPERTIES += ro.soc.manufacturer=Qualcomm
-PRODUCT_VENDOR_PROPERTIES += ro.soc.model=SDM8150
+PRODUCT_VENDOR_PROPERTIES += ro.soc.model=SM8150
 
 # Security
 -include vendor/qcom/sm8150/proprietary/securemsm/config/keymaster_vendor_proprietary_board.mk
