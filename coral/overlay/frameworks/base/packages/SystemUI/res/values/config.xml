@@ -75,4 +75,6 @@
     <bool name="config_showNotificationForUnknownBatteryState">true</bool>
     <!-- content URL in a notification when ACTION_BATTERY_CHANGED.EXTRA_PRESENT field is false -->
     <string translatable="false" name="config_batteryStateUnknownUrl">https://support.google.com/pixelphone/?p=p4xl_battery</string>
+
 </resources>
+

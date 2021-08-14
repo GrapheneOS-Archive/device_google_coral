@@ -227,6 +227,10 @@ BOARD_VENDOR_KERNEL_MODULES += \
 else ifeq (,$(filter-out flame_kernel_debug_memory coral_kernel_debug_memory, $(TARGET_PRODUCT)))
 BOARD_VENDOR_KERNEL_MODULES += \
     $(wildcard device/google/coral-kernel/debug_memory/*.ko)
+else ifeq (,$(filter-out flame_kernel_debug_memory_accounting coral_kernel_debug_memory_accounting, $(TARGET_PRODUCT)))
+BOARD_VENDOR_KERNEL_MODULES += \
+    $(wildcard device/google/coral-kernel/debug_memory_accounting/*.ko)
+BOARD_KERNEL_CMDLINE += page_owner=on
 else ifeq (,$(filter-out flame_kernel_debug_locking coral_kernel_debug_locking, $(TARGET_PRODUCT)))
 BOARD_VENDOR_KERNEL_MODULES += \
     $(wildcard device/google/coral-kernel/debug_locking/*.ko)
@@ -252,14 +256,16 @@ BOARD_GOOGLE_DYNAMIC_PARTITIONS_PARTITION_LIST := \
 #BOARD_GOOGLE_DYNAMIC_PARTITIONS_SIZE is set to BOARD_SUPER_PARTITION_SIZE / 2 - 4MB
 BOARD_GOOGLE_DYNAMIC_PARTITIONS_SIZE := 4873781248
 
-# Set error limit to BOARD_SUPER_PARTITON_SIZE - 500MB
-BOARD_SUPER_PARTITION_ERROR_LIMIT := 9231663104
+# Set error limit to BOARD_SUPER_PARTITON_SIZE - 100MB
+BOARD_SUPER_PARTITION_ERROR_LIMIT := 9651093504
 
 # DTB
 ifeq (,$(filter-out coral_kasan flame_kasan, $(TARGET_PRODUCT)))
 BOARD_PREBUILT_DTBIMAGE_DIR := device/google/coral-kernel/kasan
 else ifeq (,$(filter-out flame_kernel_debug_memory coral_kernel_debug_memory, $(TARGET_PRODUCT)))
 BOARD_PREBUILT_DTBIMAGE_DIR := device/google/coral-kernel/debug_memory
+else ifeq (,$(filter-out flame_kernel_debug_memory_accounting coral_kernel_debug_memory_accounting, $(TARGET_PRODUCT)))
+BOARD_PREBUILT_DTBIMAGE_DIR := device/google/coral-kernel/debug_memory_accounting
 else ifeq (,$(filter-out flame_kernel_debug_locking coral_kernel_debug_locking, $(TARGET_PRODUCT)))
 BOARD_PREBUILT_DTBIMAGE_DIR := device/google/coral-kernel/debug_locking
 else ifeq (,$(filter-out flame_kernel_debug_hang coral_kernel_debug_hang, $(TARGET_PRODUCT)))

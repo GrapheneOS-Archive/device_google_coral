@@ -308,7 +308,7 @@
     },
     {
       "Name": "UfsClkGateEnable",
-      "Path": "/sys/devices/platform/soc/1d84000.ufshc/clkgate_enable",
+      "Path": "/dev/sys/block/bootdevice/clkgate_enable",
       "Values": [
         "0",
         "1"
@@ -331,6 +331,15 @@
         "1",
         "0"
       ]
+    },
+    {
+      "Name": "F2fsRecessModeEnable",
+      "Path": "/dev/sys/fs/by-name/userdata/gc_urgent",
+      "Values": [
+        "2",
+        "0"
+      ],
+      "ResetOnInit": true
     },
     {
       "Name": "PowerHALMainState",
@@ -458,6 +467,12 @@
       "Value": "0"
     },
     {
+      "PowerHint": "DEVICE_IDLE",
+      "Node": "F2fsRecessModeEnable",
+      "Duration": 0,
+      "Value": "2"
+    },
+    {
       "PowerHint": "LAUNCH",
       "Node": "EnergyAware",
       "Duration": 5000,
@@ -558,6 +573,12 @@
       "Node": "UfsClkGateEnable",
       "Duration": 5000,
       "Value": "0"
+    },
+    {
+      "PowerHint": "DISPLAY_INACTIVE",
+      "Node": "F2fsRecessModeEnable",
+      "Duration": 0,
+      "Value": "2"
     },
     {
       "PowerHint": "CAMERA_LAUNCH",
