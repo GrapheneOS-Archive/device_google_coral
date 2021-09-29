@@ -5215,7 +5215,6 @@
   />
 
   <apn carrier="EE Internet"
-      carrier_id="718"
       mcc="234"
       mnc="31"
       apn="everywhere"
@@ -5228,7 +5227,6 @@
   />
 
   <apn carrier="EE MMS"
-      carrier_id="718"
       mcc="234"
       mnc="31"
       apn="eezone"
@@ -5242,7 +5240,6 @@
   />
 
   <apn carrier="EE Internet"
-      carrier_id="718"
       mcc="234"
       mnc="32"
       apn="everywhere"
@@ -5255,7 +5252,6 @@
   />
 
   <apn carrier="EE MMS"
-      carrier_id="718"
       mcc="234"
       mnc="32"
       apn="eezone"
