@@ -87,7 +87,7 @@
         <int name="smsToMmsTextThreshold" value="-1" />
         <boolean name="support_swap_after_merge_bool" value="false" />
     </carrier_config>
-    <carrier_config mcc="204" mnc="04" spn="C Spire&#13;">
+    <carrier_config mcc="204" mnc="04" spn="C Spire&#10;">
         <string name="carrier_config_version_string">cspire_nl-0.33</string>
         <int name="cdma_3waycall_flash_delay_int" value="300" />
         <boolean name="config_telephony_use_own_number_for_voicemail_bool" value="true" />
@@ -347,7 +347,7 @@
         <string name="carrier_config_version_string">unleashed_be-0.33</string>
     </carrier_config>
     <carrier_config mcc="208" mnc="00">
-        <string name="carrier_config_version_string">orange_fr-25000000324.33</string>
+        <string name="carrier_config_version_string">orange_fr-25000000316.33</string>
         <boolean name="allow_ussd_requests_via_telephony_manager_bool" value="false" />
         <string-array name="carrier_metered_apn_types_strings" num="3">
             <item value="default" />
@@ -370,7 +370,6 @@
         <int name="maxImageWidth" value="2592" />
         <int name="maxMessageSize" value="614400" />
         <boolean name="show_4g_for_lte_data_icon_bool" value="true" />
-        <boolean name="show_wfc_location_privacy_policy_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
@@ -420,7 +419,7 @@
         <boolean name="show_blocking_pay_phone_option_bool" value="true" />
     </carrier_config>
     <carrier_config mcc="208" mnc="01">
-        <string name="carrier_config_version_string">orange_fr-25000000324.33</string>
+        <string name="carrier_config_version_string">orange_fr-25000000316.33</string>
         <boolean name="allow_ussd_requests_via_telephony_manager_bool" value="false" />
         <string-array name="carrier_metered_apn_types_strings" num="3">
             <item value="default" />
@@ -443,12 +442,11 @@
         <int name="maxImageWidth" value="2592" />
         <int name="maxMessageSize" value="614400" />
         <boolean name="show_4g_for_lte_data_icon_bool" value="true" />
-        <boolean name="show_wfc_location_privacy_policy_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="208" mnc="02">
-        <string name="carrier_config_version_string">orange_fr-25000000324.33</string>
+        <string name="carrier_config_version_string">orange_fr-25000000316.33</string>
         <boolean name="allow_ussd_requests_via_telephony_manager_bool" value="false" />
         <string-array name="carrier_metered_apn_types_strings" num="3">
             <item value="default" />
@@ -471,7 +469,6 @@
         <int name="maxImageWidth" value="2592" />
         <int name="maxMessageSize" value="614400" />
         <boolean name="show_4g_for_lte_data_icon_bool" value="true" />
-        <boolean name="show_wfc_location_privacy_policy_bool" value="true" />
         <int name="volte_replacement_rat_int" value="3" />
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
@@ -12839,7 +12836,7 @@
         <string name="carrier_config_version_string">311210-0.33</string>
     </carrier_config>
     <carrier_config mcc="311" mnc="230">
-        <string name="carrier_config_version_string">cspire_us-25000000426.33</string>
+        <string name="carrier_config_version_string">cspire_us-25000000425.33</string>
         <int name="carrier_default_wfc_ims_mode_int" value="1" />
         <boolean name="carrier_default_wfc_ims_roaming_enabled_bool" value="true" />
         <int name="carrier_ussd_method_int" value="2" />
@@ -12876,7 +12873,6 @@
         <int name="smsToMmsTextThreshold" value="-1" />
         <boolean name="support_swap_after_merge_bool" value="false" />
         <boolean name="use_wfc_home_network_mode_in_roaming_network_bool" value="true" />
-        <int name="volte_replacement_rat_int" value="6" />
         <int name="wfc_spn_format_idx_int" value="1" />
     </carrier_config>
     <carrier_config mcc="311" mnc="310" spn="LEACO">
