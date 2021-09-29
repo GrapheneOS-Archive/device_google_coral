@@ -14,11 +14,6 @@
 # limitations under the License.
 #
 
-# PRODUCT_COPY_FILES retains the first dest match, so this must appear
-# before mainline.mk to override device/sample/etc/apns-full-conf.xml.
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/apns-full-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
-
 # avoid using generic aosp_product.mk libnfc-nci.conf
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_PRODUCT)/etc/libnfc-nci.conf
