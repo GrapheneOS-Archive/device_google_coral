@@ -16,6 +16,14 @@
           <instance>qti.ims.connectionmanagerservice</instance>
         </interface>
     </hal>
+    <hal format="hidl" optional="false">
+        <name>vendor.qti.ims.factory</name>
+        <version>1.0</version>
+        <interface>
+            <name>IImsFactory</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
     <hal format="hidl">
         <name>vendor.qti.data.factory</name>
         <version>2.2</version>
