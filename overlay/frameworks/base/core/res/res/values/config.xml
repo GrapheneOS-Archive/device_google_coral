@@ -351,13 +351,6 @@
         <item>"9,1"</item>
     </string-array>
 
-    <!-- If the hardware supports specially marking packets that caused a wakeup of the
-         main CPU, set this value to the mark used. -->
-    <integer name="config_networkWakeupPacketMark">0x80000000</integer>
-
-    <!-- Mask to use when checking skb mark defined in config_networkWakeupPacketMark above. -->
-    <integer name="config_networkWakeupPacketMask">0x80000000</integer>
-
     <!-- Specifies whether to decouple the auto-suspend state of the device from the display on/off state. -->
     <bool name="config_powerDecoupleAutoSuspendModeFromDisplay">true</bool>
 
@@ -424,7 +417,7 @@
         <item>"/apex/com.android.art/javalib/core-libart.jar"</item>
         <item>"/apex/com.android.media/javalib/updatable-media.jar"</item>
         <item>"/system_ext/priv-app/SystemUIGoogle/SystemUIGoogle.apk"</item>
-        <item>"/system/lib64/libsurfaceflinger.so"</item>
+        <item>"/system/bin/surfaceflinger"</item>
     </string-array>
 
     <!-- Should the pinner service pin the Camera application? -->
@@ -501,6 +494,20 @@
         <item>2.0</item>
         <item>450.0</item>
     </array>
+
+    <!-- Nonlinear coefficients for maximum panel brightness of 450 nits -->
+    <string-array name="config_reduceBrightColorsCoefficientsNonlinear">
+        <!-- a-coefficient --> <item>-0.4429953456</item>
+        <!-- b-coefficient --> <item>-0.2434077725</item>
+        <!-- y-intercept --> <item>0.9809063061</item>
+    </string-array>
+
+    <!-- Linear coefficients for maximum panel brightness of 450 nits -->
+    <string-array name="config_reduceBrightColorsCoefficients">
+        <!-- a-coefficient --> <item>-0.000000000000001</item>
+        <!-- b-coefficient --> <item>-0.955555555555554</item>
+        <!-- y-intercept --> <item>1.000000000000000</item>
+    </string-array>
 
     <!-- Disable AOD by default -->
     <bool name="config_dozeAlwaysOnEnabled">false</bool>
