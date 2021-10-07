@@ -17,6 +17,8 @@
 include build/make/target/board/BoardConfigMainlineCommon.mk
 include build/make/target/board/BoardConfigPixelCommon.mk
 
+BUILD_BROKEN_DUP_RULES := true
+
 TARGET_BOARD_PLATFORM := msmnile
 TARGET_BOARD_INFO_FILE := device/google/coral/board-info.txt
 USES_DEVICE_GOOGLE_CORAL := true
