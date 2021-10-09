@@ -76,5 +76,12 @@
     <!-- content URL in a notification when ACTION_BATTERY_CHANGED.EXTRA_PRESENT field is false -->
     <string translatable="false" name="config_batteryStateUnknownUrl">https://support.google.com/pixelphone/?p=p4xl_battery</string>
 
+    <!-- The properties of the face auth camera in pixels -->
+    <integer-array name="config_face_auth_props">
+        <item>720</item> <!-- sensorLocationX -->
+        <item>0</item> <!-- sensorLocationY -->
+        <item>40</item> <!--sensorRadius -->
+    </integer-array>
+
 </resources>
 
