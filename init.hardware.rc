@@ -543,6 +543,9 @@ on property:sys.boot_completed=1
     write /sys/block/sdf/queue/nr_requests 128
     write /sys/block/sdf/queue/iostats 1
 
+    # Limit 4KB discards to 2GB of space
+    write /dev/sys/fs/by-name/userdata/max_small_discards 5120
+
     # Back to default VM settings
     write /proc/sys/vm/dirty_expire_centisecs 3000
     write /proc/sys/vm/dirty_background_ratio 10
