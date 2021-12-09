@@ -523,4 +523,7 @@
     <string-array name="config_biometric_sensors" translatable="false" >
         <item>0:8:15</item> <!-- ID0:Face:Strong -->
     </string-array>
+
+    <!-- Whether device supports increased touch sensitvity -->
+    <bool name="config_supportGloveMode">true</bool>
 </resources>
