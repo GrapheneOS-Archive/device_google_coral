@@ -68,7 +68,9 @@ AB_OTA_PARTITIONS += \
     vbmeta \
     dtbo \
     product \
-    system_ext
+    system_ext \
+    msadp \
+    apdp
 
 # Partitions (listed in the file) to be wiped under recovery.
 TARGET_RECOVERY_WIPE := device/google/coral/recovery.wipe
