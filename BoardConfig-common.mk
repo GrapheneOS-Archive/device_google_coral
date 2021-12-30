@@ -223,4 +223,4 @@ BOARD_PREBUILT_DTBIMAGE_DIR := device/google/coral-kernel
 # Testing related defines
 BOARD_PERFSETUP_SCRIPT := platform_testing/scripts/perf-setup/c2f2-setup.sh
 
--include vendor/google_devices/coral/proprietary/BoardConfigVendor.mk
+-include vendor/google_devices/$(TARGET_DEVICE)/proprietary/BoardConfigVendor.mk
