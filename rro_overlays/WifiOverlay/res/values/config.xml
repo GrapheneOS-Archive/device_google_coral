@@ -116,4 +116,7 @@
          1: verbose logging on by default for userdebug
          2: verbose logging on by default for all builds -->
     <integer translatable="false" name="config_wifiVerboseLoggingAlwaysOnLevel">1</integer>
+
+    <!-- Indicate the driver support NL80211_REG_CHANGED event. -->
+    <bool translatable="false" name="config_wifiDriverSupportedNl80211RegChangedEvent">true</bool>
 </resources>
