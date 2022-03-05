@@ -114,7 +114,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Enable Incremental on the device via kernel module
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.incremental.enable=module:/vendor/lib/modules/incrementalfs.ko
+    ro.incremental.enable=yes
 
 PRODUCT_ENFORCE_PRODUCT_PARTITION_INTERFACE := true
 
