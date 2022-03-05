@@ -118,3 +118,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_ENFORCE_PRODUCT_PARTITION_INTERFACE := true
 
+# RCS packages (com.android.service.ims.presence and com.android.service.ims)
+PRODUCT_PACKAGES += \
+    PresencePolling \
+    RcsService
