@@ -1,5 +1,10 @@
 LOCAL_PATH := $(call my-dir)
 
+$(eval $(call declare-copy-files-license-metadata,vendor/qcom/coral,:qcom,legacy_proprietary,proprietary,vendor/qcom/coral/LICENSE,))
+$(eval $(call declare-copy-files-license-metadata,vendor/qcom/coral,.jar,legacy_proprietary,proprietary,vendor/qcom/coral/LICENSE,))
+$(eval $(call declare-copy-files-license-metadata,vendor/qcom/coral,.xml,legacy_proprietary,proprietary,vendor/qcom/coral/LICENSE,))
+
+
 ifneq ($(filter coral, $(TARGET_DEVICE)),)
 include $(CLEAR_VARS)
 LOCAL_MODULE_SUFFIX := $(COMMON_ANDROID_PACKAGE_SUFFIX)
