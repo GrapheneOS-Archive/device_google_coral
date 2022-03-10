@@ -1,5 +1,9 @@
 LOCAL_PATH := $(call my-dir)
 
+$(eval $(call declare-copy-files-license-metadata,vendor/qcom/flame,:qcom,legacy_proprietary,proprietary,vendor/qcom/flame/LICENSE,))
+$(eval $(call declare-copy-files-license-metadata,vendor/qcom/flame,.jar,legacy_proprietary,proprietary,vendor/qcom/flame/LICENSE,))
+$(eval $(call declare-copy-files-license-metadata,vendor/qcom/flame,.xml,legacy_proprietary,proprietary,vendor/qcom/flame/LICENSE,))
+
 ifneq ($(filter flame, $(TARGET_DEVICE)),)
 include $(CLEAR_VARS)
 LOCAL_MODULE_SUFFIX := $(COMMON_ANDROID_PACKAGE_SUFFIX)
