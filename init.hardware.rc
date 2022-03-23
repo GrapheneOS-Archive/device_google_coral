@@ -844,9 +844,3 @@ service vendor.crash_event_logger /vendor/bin/crash_event_logger -m
     user audio
     group audio system
     disabled
-
-# For Japan radio builds, always enforce camera shutter sound
-# Since this property is read by the audio server in system service,
-# it should be written by the system init.
-on property:ro.boot.hardware.radio.subtype=1
-    setprop audio.camerasound.force true
