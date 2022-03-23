@@ -120,3 +120,8 @@ PRODUCT_ENFORCE_PRODUCT_PARTITION_INTERFACE := true
 
 PRODUCT_COPY_FILES += \
     device/google/coral/product-permissions-stock.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/product-permissions-stock.xml
+
+# RCS packages (com.android.service.ims.presence and com.android.service.ims)
+PRODUCT_PACKAGES += \
+    PresencePolling \
+    RcsService
