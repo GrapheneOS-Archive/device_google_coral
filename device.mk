@@ -98,7 +98,7 @@ TARGET_PRODUCT_PROP := $(LOCAL_PATH)/product.prop
 
 $(call inherit-product, $(LOCAL_PATH)/utils.mk)
 
-ifeq ($(wildcard vendor/google_devices/coral/proprietary/device-vendor-coral.mk),)
+ifeq ($(wildcard vendor/google_devices/$(TARGET_DEVICE)/proprietary/device-vendor-coral.mk),)
     BUILD_WITHOUT_VENDOR := true
 endif
 
