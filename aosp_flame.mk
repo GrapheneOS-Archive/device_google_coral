@@ -70,7 +70,7 @@ ifneq (REL,$(PLATFORM_VERSION_CODENAME))
 endif
 
 PRODUCT_MANUFACTURER := Google
-PRODUCT_BRAND := google
+PRODUCT_BRAND := Android
 PRODUCT_NAME := aosp_flame
 PRODUCT_DEVICE := flame
 PRODUCT_MODEL := Pixel 4
