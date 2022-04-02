@@ -518,11 +518,6 @@
         <item>0:8:15</item> <!-- ID0:Face:Strong -->
     </string-array>
 
-    <!-- Whether this device is supporting the microphone toggle -->
-    <bool name="config_supportsMicToggle">true</bool>
-    <!-- Whether this device is supporting the camera toggle -->
-    <bool name="config_supportsCamToggle">true</bool>
-
     <!-- Whether device supports increased touch sensitvity -->
     <bool name="config_supportGloveMode">true</bool>
 </resources>
