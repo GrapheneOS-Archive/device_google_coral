@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<config>
+
+    <!-- Note: This is exactly the same as flame -->
+
+    <component-override package="com.android.settings" >
+        <!-- Display regulatory info in settings. -->
+        <component class=".RegulatoryInfoDisplayActivity" enabled="true" />
+    </component-override>
+    <!-- coral/proprietary/product/etc/sysconfig/google_build.xml -->
+    <feature name="com.google.android.feature.GOOGLE_EXPERIENCE" />
+    <!-- coral/proprietary/product/etc/sysconfig/nexus.xml -->
+    <feature name="com.google.android.feature.PIXEL_EXPERIENCE" />
+    <allow-in-power-save package="com.qualcomm.atfwd" />
+    <allow-in-power-save package="com.qualcomm.embms" />
+    <allow-in-power-save package="com.qualcomm.qti.telephonyservice" />
+    <allow-in-power-save package="com.qulacomm.qcrilmsgtunnel" />
+    <allow-in-power-save package="com.qualcomm.qti.ims" />
+    <allow-in-power-save package="com.qualcomm.qti.radioconfiginterface" />
+    <allow-in-power-save package="com.qualcomm.ltebc_vzw" />
+    <allow-in-power-save package="com.qualcomm.ltebc" />
+    <!-- coral/proprietary/product/etc/sysconfig/nga.xml -->
+    <feature name="com.google.android.feature.NEXT_GENERATION_ASSISTANT" />
+    <!-- coral/proprietary/product/etc/sysconfig/pixel_experience_2017.xml -->
+    <feature name="com.google.android.feature.PIXEL_2017_EXPERIENCE" />
+    <feature name="com.google.android.feature.AER_OPTIMIZED" />
+    <!-- coral/proprietary/product/etc/sysconfig/pixel_experience_2018.xml -->
+    <feature name="com.google.android.feature.PIXEL_2018_EXPERIENCE" />
+    <!-- coral/proprietary/product/etc/sysconfig/pixel_experience_2019_midyear.xml -->
+    <feature name="com.google.android.feature.PIXEL_2019_MIDYEAR_EXPERIENCE" />
+    <!-- coral/proprietary/product/etc/sysconfig/pixel_experience_2019.xml -->
+    <feature name="com.google.android.feature.PIXEL_2019_EXPERIENCE" />
+    <!-- coral/proprietary/product/etc/sysconfig/pixel_2019_exclusive.xml -->
+    <feature name="com.google.android.apps.photos.PIXEL_2019_PRELOAD" />
+</config>
