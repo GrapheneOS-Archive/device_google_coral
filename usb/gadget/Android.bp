@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2018 The Android Open Source Project
+// Copyright (C) 2022 The Android Open Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,19 +18,14 @@ package {
 }
 
 cc_binary {
-    name: "android.hardware.usb@1.3-service.coral",
+    name: "android.hardware.usb.gadget-service.coral",
     relative_install_path: "hw",
-    init_rc: ["android.hardware.usb@1.3-service.coral.rc"],
+    init_rc: ["android.hardware.usb.gadget-service.coral.rc"],
     vintf_fragments: [
-        "android.hardware.usb@1.3-service.coral.xml",
         "android.hardware.usb.gadget@1.1-service.coral.xml",
     ],
-    srcs: ["service.cpp", "Usb.cpp", "UsbGadget.cpp"],
+    srcs: ["service_gadget.cpp", "UsbGadget.cpp"],
     shared_libs: [
-        "android.hardware.usb@1.0",
-        "android.hardware.usb@1.1",
-        "android.hardware.usb@1.2",
-        "android.hardware.usb@1.3",
         "android.hardware.usb.gadget@1.0",
         "android.hardware.usb.gadget@1.1",
         "libbase",
