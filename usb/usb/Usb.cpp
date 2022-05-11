@@ -731,8 +731,8 @@ static void uevent_event(uint32_t /*epevents*/, struct data *payload) {
             pthread_cond_signal(&payload->usb->mPartnerCV);
             pthread_mutex_unlock(&payload->usb->mPartnerLock);
         } else if (!strncmp(cp, "DEVTYPE=typec_", strlen("DEVTYPE=typec_")) ||
-                   !strncmp(cp, "DRIVER=max77759tcpc",
-                            strlen("DRIVER=max77759tcpc"))) {
+                   !strncmp(cp, "POWER_SUPPLY_MOISTURE_DETECTED",
+                            strlen("POWER_SUPPLY_MOISTURE_DETECTED"))) {
             std::vector<PortStatus> currentPortStatus;
             queryVersionHelper(payload->usb, &currentPortStatus);
 
