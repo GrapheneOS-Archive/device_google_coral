@@ -210,6 +210,11 @@ DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE := device/google/coral/device_framework
 # Use mke2fs to create ext4 images
 TARGET_USES_MKE2FS := true
 
+BOARD_DO_NOT_STRIP_RECOVERY_MODULES := true
+BOARD_DO_NOT_STRIP_VENDOR_MODULES := true
+BOARD_DO_NOT_STRIP_VENDOR_RAMDISK_MODULES := true
+BOARD_DO_NOT_STRIP_VENDOR_KERNEL_RAMDISK_MODULES := true
+
 # Kernel modules
 ifeq (,$(filter-out flame_kasan coral_kasan, $(TARGET_PRODUCT)))
 BOARD_VENDOR_KERNEL_MODULES += \
