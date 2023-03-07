@@ -132,3 +132,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     extracted-carrierconfig \
     extracted-apns
+
+PRODUCT_PACKAGES += \
+    PixelNFCStub
