@@ -27,6 +27,7 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/qcom/sm8150/display \
     hardware/qcom/sm8150/data/ipacfg-mgr \
     hardware/qcom/sm8150/gps \
+    system/chre/host/hal_generic \
     vendor/google/airbrush/floral \
     vendor/google/biometrics/face/florence \
     vendor/google/camera \
