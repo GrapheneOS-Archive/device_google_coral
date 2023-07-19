@@ -39,8 +39,7 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/sm8150/proprietary/qmi \
     vendor/qcom/sm8150/codeaurora/location \
     vendor/google/interfaces \
-    vendor/google_nos/test/system-test-harness \
-    vendor/carriersettings-extractor
+    vendor/google_nos/test/system-test-harness
 
 # Include sensors soong namespace
 PRODUCT_SOONG_NAMESPACES += \
